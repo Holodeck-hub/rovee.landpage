@@ -65,11 +65,20 @@ export function FiscalAgentsSection() {
 
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
-      {/* Header */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
-        <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
-          <PixelIcon type="agents" size={32} />
+      {/* Header com PixelIcons Originais de Fundo nas Laterais */}
+      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative overflow-hidden">
+        {/* PixelIcon Esquerdo (De cabeça para baixo na base inferior) */}
+        <div className="absolute left-2 sm:left-4 md:left-8 lg:left-10 bottom-0 pointer-events-none select-none hidden sm:block scale-y-[-1] opacity-35 md:opacity-45">
+          <PixelIcon type="agents" size={200} />
+        </div>
 
+        {/* PixelIcon Direito (De cabeça para baixo espelhado na base inferior) */}
+        <div className="absolute right-2 sm:right-4 md:right-8 lg:right-10 bottom-0 pointer-events-none select-none hidden sm:block scale-x-[-1] scale-y-[-1] opacity-35 md:opacity-45">
+          <PixelIcon type="agents" size={200} />
+        </div>
+
+        {/* Conteúdo Central */}
+        <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center relative z-10">
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
             Agentes Especializados
           </span>
