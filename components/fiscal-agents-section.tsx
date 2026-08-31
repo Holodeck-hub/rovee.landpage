@@ -106,8 +106,8 @@ export function FiscalAgentsSection() {
                 key={item.id}
                 onClick={() => setSelectedAgent(idx)}
                 className={`p-3 sm:p-4 rounded-xl text-left transition-all flex flex-col gap-1 border ${selectedAgent === idx
-                    ? "bg-white border-[#37322F] shadow-[0px_4px_12px_rgba(55,50,47,0.08)] ring-1 ring-[#37322F]"
-                    : "bg-[#F1F5F9] border-[rgba(55,50,47,0.1)] hover:bg-white text-[#605A57]"
+                  ? "bg-white border-[#37322F] shadow-[0px_4px_12px_rgba(55,50,47,0.08)] ring-1 ring-[#37322F]"
+                  : "bg-[#F1F5F9] border-[rgba(55,50,47,0.1)] hover:bg-white text-[#605A57]"
                   }`}
               >
                 <span className="text-[10px] font-mono uppercase font-semibold text-[#82807c]">
