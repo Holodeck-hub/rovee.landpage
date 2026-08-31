@@ -462,15 +462,12 @@ export default function LandingPage() {
             <div id="fiscal" className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
 
               {/* Header */}
-              <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative">
-                {/* Badge no canto superior esquerdo */}
-                <div className="w-full flex justify-start mb-6 px-4 sm:px-6 lg:px-8">
-                  <span className="px-3 py-1 rounded-none text-xs font-mono font-bold uppercase tracking-wider bg-white text-[#37322F] border border-[rgba(55,50,47,0.18)] shadow-xs">
+              <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
+                <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
+                  <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
                     Motor de Inteligência Fiscal
                   </span>
-                </div>
 
-                <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-4 text-center">
                   <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
                     O fim das dúvidas sobre imposto e pró-labore
                   </h2>
@@ -497,7 +494,7 @@ export default function LandingPage() {
                 <div className="flex-1 max-w-[1060px] grid grid-cols-1 md:grid-cols-2 gap-0 border-l border-r border-[rgba(55,50,47,0.12)]">
 
                   {/* Card 1: Clareza de Caixa */}
-                  <div className="border-b border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-4 bg-white/70 hover:bg-white transition-colors">
+                  <div className="border-b border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
                     <div>
                       <div className="flex items-center gap-2.5 mb-2">
                         <DollarSign className="w-5 h-5 text-[#37322F] shrink-0" />
@@ -507,13 +504,14 @@ export default function LandingPage() {
                         Divide o dinheiro da empresa em 3 partes claras: o que você pode transferir para sua física sem pagar imposto de novo, a reserva da empresa e o imposto do próximo dia 20.
                       </p>
                     </div>
-                    <div className="p-3 bg-emerald-50 rounded-lg text-xs text-emerald-800 font-mono font-medium">
-                      ✓ Responde todo dia: &quot;Quanto posso gastar hoje?&quot;
+                    <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
+                      <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Decisão</span>
+                      <span className="font-medium text-[#37322F]">Responde todo dia: &quot;Quanto posso gastar hoje?&quot;</span>
                     </div>
                   </div>
 
                   {/* Card 2: Fator R */}
-                  <div className="border-b border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-4 bg-white/70 hover:bg-white transition-colors">
+                  <div className="border-b border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
                     <div>
                       <div className="flex items-center gap-2.5 mb-2">
                         <TrendingUp className="w-5 h-5 text-[#37322F] shrink-0" />
@@ -523,13 +521,14 @@ export default function LandingPage() {
                         Calcula o pró-labore ideal para pagar 6% de Simples Nacional (Anexo III) em vez de 15,5% (Anexo V). Mostra exatamente quanto você economiza em reais por ano.
                       </p>
                     </div>
-                    <div className="p-3 bg-blue-50 rounded-lg text-xs text-blue-800 font-mono font-medium">
-                      ✓ Economia média comprovada de R$ 28k a R$ 60k/ano
+                    <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
+                      <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Impacto</span>
+                      <span className="font-medium text-emerald-700">Economia média de R$ 28k a R$ 60k/ano</span>
                     </div>
                   </div>
 
                   {/* Card 3: Sentinela PF x PJ */}
-                  <div className="border-b md:border-b-0 border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-4 bg-white/70 hover:bg-white transition-colors">
+                  <div className="border-b md:border-b-0 border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
                     <div>
                       <div className="flex items-center gap-2.5 mb-2">
                         <ShieldAlert className="w-5 h-5 text-[#37322F] shrink-0" />
@@ -539,13 +538,14 @@ export default function LandingPage() {
                         Detecta despesas pessoais pagas na conta da empresa e avisa o custo tributário e os riscos do Art. 50 do Código Civil (desconsideração da personalidade jurídica).
                       </p>
                     </div>
-                    <div className="p-3 bg-amber-50 rounded-lg text-xs text-amber-800 font-mono font-medium">
-                      ✓ Blindagem patrimonial e extratos 100% limpos
+                    <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
+                      <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Segurança</span>
+                      <span className="font-medium text-[#37322F]">Blindagem patrimonial e extrato 100% limpo</span>
                     </div>
                   </div>
 
                   {/* Card 4: Provisão DAS */}
-                  <div className="p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-4 bg-white/70 hover:bg-white transition-colors">
+                  <div className="p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
                     <div>
                       <div className="flex items-center gap-2.5 mb-2">
                         <Clock className="w-5 h-5 text-[#37322F] shrink-0" />
@@ -555,8 +555,9 @@ export default function LandingPage() {
                         Conforme suas notas e recebimentos entram, a Rovee calcula e provisiona o imposto do mês. Botão de 1 clique para separar o valor e nunca ser pego de surpresa.
                       </p>
                     </div>
-                    <div className="p-3 bg-purple-50 rounded-lg text-xs text-purple-800 font-mono font-medium">
-                      ✓ O dinheiro do imposto sempre reservado no dia 20
+                    <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
+                      <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Pontualidade</span>
+                      <span className="font-medium text-[#37322F]">Dinheiro do imposto sempre reservado no dia 20</span>
                     </div>
                   </div>
 

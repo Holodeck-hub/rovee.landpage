@@ -80,16 +80,13 @@ export function LiveMetricsSection() {
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Header */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative">
-        {/* Badge no canto superior esquerdo */}
-        <div className="w-full flex justify-start mb-6 px-4 sm:px-6 lg:px-8">
-          <span className="px-3 py-1 rounded-none text-xs font-mono font-bold uppercase tracking-wider bg-white text-[#37322F] border border-[rgba(55,50,47,0.18)] shadow-xs">
+      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
+        <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
+          <PixelIcon type="metrics" size={40} />
+
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
             Métricas em Tempo Real
           </span>
-        </div>
-
-        <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-4 text-center">
-          <PixelIcon type="metrics" size={40} />
 
           <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
             Números que comprovam a economia e a segurança da Rovee
