@@ -144,33 +144,30 @@ export default function LandingPage() {
                 <HeroStatsMarquee />
               </div>
 
-              {/* ── 4. PRODUCT SHOWCASE INTERACTIVE DASHBOARD ─────────────── */}
-              <div className="w-full max-w-[960px] pt-4 pb-2 px-2 sm:px-4 md:px-6 lg:px-8 flex flex-col justify-center items-center relative z-10 mt-4">
+              {/* ── 4. PRODUCT SHOWCASE INTERACTIVE DASHBOARD (FULL WIDTH) ─────────────── */}
+              <div className="self-stretch -mx-4 md:-mx-8 lg:mx-0 w-[calc(100%+32px)] md:w-[calc(100%+64px)] lg:w-full border-t border-[rgba(55,50,47,0.12)] bg-white flex flex-col text-left relative z-10 mt-10">
 
-                {/* Showcase Screen Frame - Estilo Brillance Minimalista Branco Gelo */}
-                <div className="w-full bg-white shadow-none overflow-hidden rounded-xl border border-[rgba(55,50,47,0.12)] flex flex-col text-left">
-
-                  {/* Mockup Top Window Bar */}
-                  <div className="w-full px-5 py-3.5 bg-[#F1F5F9] border-b border-[rgba(55,50,47,0.12)] flex flex-wrap items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-1.5">
-                        <div className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400/70" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/70" />
-                      </div>
-                      <span className="text-xs font-mono text-[#605A57] font-medium">app.rovee.com.br / fiscal-console</span>
+                {/* Mockup Top Window Bar */}
+                <div className="w-full px-4 sm:px-6 md:px-8 py-3.5 bg-[#F1F5F9] border-b border-[rgba(55,50,47,0.12)] flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-amber-400/70" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/70" />
                     </div>
-
-                    <div className="flex items-center gap-4 text-xs font-mono text-[#605A57]">
-                      <span className="hidden sm:inline">Simples Nacional · Anexo III</span>
-                      <span className="px-2 py-0.5 bg-white text-emerald-800 border border-[rgba(55,50,47,0.14)] rounded text-[11px] font-semibold">
-                        Extrato Conciliado
-                      </span>
-                    </div>
+                    <span className="text-xs font-mono text-[#605A57] font-medium">app.rovee.com.br / fiscal-console</span>
                   </div>
 
-                  {/* Dashboard Content per Active Card Tab */}
-                  <div className="p-6 sm:p-8 bg-white flex flex-col gap-6">
+                  <div className="flex items-center gap-4 text-xs font-mono text-[#605A57]">
+                    <span className="hidden sm:inline">Simples Nacional · Anexo III</span>
+                    <span className="px-2 py-0.5 bg-white text-emerald-800 border border-[rgba(55,50,47,0.14)] rounded text-[11px] font-semibold">
+                      Extrato Conciliado
+                    </span>
+                  </div>
+                </div>
+
+                {/* Dashboard Content per Active Card Tab */}
+                <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8 bg-white flex flex-col gap-6">
 
                     {/* ── TAB 0: O SEU CHEQUE DO MÊS (TABELA FINANCEIRA) ── */}
                     {activeCard === 0 && (
@@ -409,10 +406,9 @@ export default function LandingPage() {
 
                   </div>
                 </div>
-              </div>
 
               {/* Showcase Tab Selector Controls */}
-              <div className="self-stretch -mx-4 md:-mx-8 lg:mx-0 w-[calc(100%+32px)] md:w-[calc(100%+64px)] lg:w-full border-t border-b border-[#E0DEDB] flex justify-center items-stretch mt-6">
+              <div className="self-stretch -mx-4 md:-mx-8 lg:mx-0 w-[calc(100%+32px)] md:w-[calc(100%+64px)] lg:w-full border-t border-b border-[#E0DEDB] flex justify-center items-stretch">
                 <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
                   <div className="w-[120px] sm:w-[140px] md:w-[162px] left-[-40px] sm:left-[-50px] md:left-[-58px] top-[-120px] absolute flex flex-col justify-start items-start">
                     {Array.from({ length: 150 }).map((_, i) => (
