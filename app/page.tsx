@@ -112,12 +112,12 @@ export default function LandingPage() {
 
               {/* Main Headline */}
               <div className="w-full max-w-[840px] flex flex-col justify-center items-center gap-4">
-                <h1 className="text-[#37322F] text-[28px] xs:text-[34px] sm:text-[46px] md:text-[58px] lg:text-[72px] font-semibold leading-[1.08] font-sans tracking-tight">
-                  Saiba quanto do seu faturamento é seu de verdade.
+                <h1 className="text-[#37322F] text-[24px] xs:text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] font-semibold leading-[1.14] font-sans tracking-tight">
+                  Sua contabilidade calcula o imposto. A Rovee garante que você pague o mínimo.
                 </h1>
 
-                <p className="w-full max-w-[620px] text-[rgba(55,50,47,0.85)] text-sm sm:text-base md:text-lg leading-relaxed font-sans font-normal mt-2">
-                  A Fintech que calcula seu <strong>pró-labore ótimo no Simples Nacional</strong>, separa o caixa pessoal da PJ e usa <strong>machine learning preditivo</strong> para antecipar seu faturamento sem alucinações.
+                <p className="w-full max-w-[620px] text-[rgba(55,50,47,0.85)] text-sm sm:text-base md:text-base leading-relaxed font-sans font-normal mt-1">
+                  A Fintech que calcula seu <strong>pró-labore ótimo no Simples Nacional</strong>, separa o caixa pessoal da PJ e usa <strong>inteligência preditiva</strong> para antecipar seu faturamento sem surpresas fiscais.
                 </p>
               </div>
 

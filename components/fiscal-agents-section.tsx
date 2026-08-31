@@ -65,16 +65,45 @@ export function FiscalAgentsSection() {
 
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
-      {/* Header com PixelIcons Originais de Fundo nas Laterais */}
+      {/* Header com PixelIcons Lado a Lado (Mesma Direção, sem espelhamento) */}
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative overflow-hidden">
-        {/* PixelIcon Esquerdo (De cabeça para baixo na base inferior) */}
-        <div className="absolute left-2 sm:left-4 md:left-8 lg:left-10 bottom-0 pointer-events-none select-none hidden sm:block scale-y-[-1] opacity-35 md:opacity-45">
-          <PixelIcon type="agents" size={200} />
+        {/* Fila Esquerda: 6 Agentes em Degrau Suave com novo agente no cantinho extremo (mb-20) */}
+        <div className="absolute left-[-15px] sm:left-[-10px] md:left-[-5px] lg:left-0 bottom-[-45px] flex items-end -space-x-12 md:-space-x-14 pointer-events-none select-none hidden sm:flex opacity-35 md:opacity-45 z-0">
+          <div className="mb-16">
+            <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
+          </div>
+          <div className="mb-12">
+            <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
+          </div>
+          <div className="mb-8">
+            <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
+          </div>
+          <div className="mb-4">
+            <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
+          </div>
+          <div className="mb-0">
+            <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
+          </div>
         </div>
 
-        {/* PixelIcon Direito (De cabeça para baixo espelhado na base inferior) */}
-        <div className="absolute right-2 sm:right-4 md:right-8 lg:right-10 bottom-0 pointer-events-none select-none hidden sm:block scale-x-[-1] scale-y-[-1] opacity-35 md:opacity-45">
-          <PixelIcon type="agents" size={200} />
+        {/* Fila Direita: 6 Agentes em Degrau Suave com novo agente no cantinho extremo (mb-20) */}
+        <div className="absolute right-[-15px] sm:right-[-10px] md:right-[-5px] lg:right-0 bottom-[-45px] flex items-end -space-x-12 md:-space-x-14 pointer-events-none select-none hidden sm:flex opacity-35 md:opacity-45 z-0">
+          <div className="mb-0">
+            <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
+          </div>
+          <div className="mb-4">
+            <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
+          </div>
+          <div className="mb-8">
+            <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
+          </div>
+          <div className="mb-12">
+            <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
+          </div>
+          <div className="mb-16">
+            <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
+          </div>
+          
         </div>
 
         {/* Conteúdo Central */}
@@ -95,7 +124,7 @@ export function FiscalAgentsSection() {
 
       {/* Interactive Stacking Cards & Agent Selector */}
       <div className="self-stretch flex justify-center items-start">
-        {/* Left vertical pattern */}
+        {/* Left vertical pattern with stationed pixel agent */}
         <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
           <div className="w-[120px] sm:w-[140px] md:w-[162px] left-[-40px] sm:left-[-50px] md:left-[-58px] top-[-120px] absolute flex flex-col justify-start items-start">
             {Array.from({ length: 150 }).map((_, i) => (
@@ -169,7 +198,10 @@ export function FiscalAgentsSection() {
             {/* Visual Simulation Graphic */}
             <div className="lg:col-span-5 bg-[#F1F5F9] p-6 rounded-xl border border-[rgba(55,50,47,0.08)] flex flex-col gap-4">
               <div className="flex items-center justify-between text-xs font-mono text-[#605A57] pb-2 border-b border-[rgba(55,50,47,0.08)]">
-                <span>ESTADO DO AGENTE</span>
+                <div className="flex items-center gap-2">
+                  <PixelIcon type="agents" size={20} />
+                  <span>ESTADO DO AGENTE</span>
+                </div>
                 <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   EM EXECUÇÃO
