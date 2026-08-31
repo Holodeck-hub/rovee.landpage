@@ -65,8 +65,8 @@ export default function LandingPage() {
 
               <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[760px] lg:w-[760px] h-11 sm:h-12 py-1.5 px-4 bg-[#F8FAFC]/90 backdrop-blur-md shadow-[0px_0px_0px_2px_white] overflow-hidden rounded flex justify-between items-center relative z-30 border border-[rgba(55,50,47,0.1)]">
                 <div className="flex justify-center items-center gap-6">
-                  <a href="#" className="flex items-center">
-                    <span className="text-[#37322F] text-lg sm:text-xl font-bold font-sans tracking-tight hover:opacity-80 transition-opacity">
+                  <a href="#" className="flex items-center hover:opacity-85 transition-opacity">
+                    <span className="text-[#37322F] text-lg sm:text-xl font-bold font-sans tracking-tight">
                       Rovee
                     </span>
                   </a>

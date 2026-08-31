@@ -19,10 +19,14 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  title: "Brillance - Effortless Custom Contract Billing",
+  title: "Rovee Finance — Inteligência Fiscal & Otimização de Pró-labore",
   description:
-    "Streamline your billing process with seamless automation for every custom contract, tailored by Brillance.",
-    generator: 'v0.app'
+    "A Fintech que calcula seu pró-labore ótimo no Simples Nacional, separa o caixa pessoal da PJ e usa inteligência preditiva para antecipar seu faturamento sem surpresas fiscais.",
+  icons: {
+    icon: "/logo/logo-rovee-icon.PNG",
+    shortcut: "/logo/logo-rovee-icon.PNG",
+    apple: "/logo/logo-rovee-icon.PNG",
+  },
 }
 
 export default function RootLayout({
@@ -31,8 +35,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable} antialiased`}>
+    <html lang="pt-BR" className={`${inter.variable} ${instrumentSerif.variable} antialiased`}>
       <head>
+        <link rel="icon" href="/logo/logo-rovee-icon.PNG" type="image/png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
