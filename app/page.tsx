@@ -147,293 +147,266 @@ export default function LandingPage() {
               {/* ── 4. PRODUCT SHOWCASE INTERACTIVE DASHBOARD ─────────────── */}
               <div className="w-full max-w-[960px] pt-4 pb-2 px-2 sm:px-4 md:px-6 lg:px-8 flex flex-col justify-center items-center relative z-10 mt-4">
 
-                {/* Showcase Screen Frame */}
-                <div className="w-full bg-white shadow-[0px_12px_40px_rgba(55,50,47,0.12)] overflow-hidden rounded-2xl border border-[rgba(55,50,47,0.14)] flex flex-col">
+                {/* Showcase Screen Frame - Estilo Brillance Minimalista Branco Gelo */}
+                <div className="w-full bg-white shadow-none overflow-hidden rounded-xl border border-[rgba(55,50,47,0.12)] flex flex-col text-left">
 
                   {/* Mockup Top Window Bar */}
-                  <div className="w-full px-4 py-3 bg-[#F1F5F9] border-b border-[rgba(55,50,47,0.1)] flex flex-wrap items-center justify-between gap-2">
-                    <div className="flex items-center gap-2">
+                  <div className="w-full px-5 py-3.5 bg-[#F1F5F9] border-b border-[rgba(55,50,47,0.12)] flex flex-wrap items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
                       <div className="flex items-center gap-1.5">
-                        <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400/70" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/70" />
                       </div>
-                      <span className="text-[11px] font-mono text-[#605A57] ml-2 hidden sm:inline">app.rovee.com.br/dashboard/fiscal</span>
+                      <span className="text-xs font-mono text-[#605A57] font-medium">app.rovee.com.br / fiscal-console</span>
                     </div>
 
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-1.5 px-2 py-0.5 bg-emerald-100/80 text-emerald-800 text-[10px] font-mono font-medium rounded">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-                        Extrato Nubank PJ Sincronizado
-                      </div>
-                      <span className="text-[11px] font-mono text-[#82807c] hidden md:inline">Competência: Maio/2026</span>
+                    <div className="flex items-center gap-4 text-xs font-mono text-[#605A57]">
+                      <span className="hidden sm:inline">Simples Nacional · Anexo III</span>
+                      <span className="px-2 py-0.5 bg-white text-emerald-800 border border-[rgba(55,50,47,0.14)] rounded text-[11px] font-semibold">
+                        Extrato Conciliado
+                      </span>
                     </div>
                   </div>
 
                   {/* Dashboard Content per Active Card Tab */}
-                  <div className="p-5 sm:p-8 lg:p-10 bg-white">
+                  <div className="p-6 sm:p-8 bg-white flex flex-col gap-6">
+
+                    {/* ── TAB 0: O SEU CHEQUE DO MÊS (TABELA FINANCEIRA) ── */}
                     {activeCard === 0 && (
-                      <div className="flex flex-col gap-6 animate-fadeIn">
-                        {/* Top Financial Overview */}
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-[rgba(55,50,47,0.08)]">
+                      <div className="flex flex-col gap-5 animate-fadeIn">
+                        {/* Header Summary */}
+                        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                           <div>
-                            <div className="text-[11px] font-mono text-[#82807c] uppercase tracking-wider">
-                              DEMONSTRATIVO DE CAIXA REAL
-                            </div>
-                            <h3 className="text-xl sm:text-2xl font-bold text-[#37322F] tracking-tight">
-                              O Seu &quot;Cheque do Mês&quot;
+                            <h3 className="text-lg sm:text-xl font-semibold text-[#37322F]">
+                              Demonstrativo de Clareza de Caixa
                             </h3>
+                            <p className="text-xs text-[#605A57] mt-0.5">
+                              Decomposição matemática de R$ 38.450,00 de faturamento bruto do mês.
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <span className="text-xs text-[#82807c] font-mono">Margem Líquida</span>
+                            <div className="text-lg font-semibold text-emerald-700 font-mono">62,9%</div>
+                          </div>
+                        </div>
+
+                        {/* Minimalist Financial Table */}
+                        <div className="w-full border border-[rgba(55,50,47,0.12)] rounded-lg overflow-hidden">
+                          {/* Table Header */}
+                          <div className="grid grid-cols-12 gap-2 px-4 py-2.5 bg-[#F8FAFC] border-b border-[rgba(55,50,47,0.12)] text-[11px] font-mono font-semibold text-[#605A57] uppercase">
+                            <div className="col-span-4">Destinação / Balde</div>
+                            <div className="col-span-3">Status Fiscal</div>
+                            <div className="col-span-3 hidden sm:block">Composição</div>
+                            <div className="col-span-5 sm:col-span-2 text-right">Valor Líquido</div>
                           </div>
 
-                          <div className="flex items-center gap-4 bg-[#F8FAFC] px-4 py-2 rounded-lg border border-[rgba(55,50,47,0.08)]">
-                            <div>
-                              <div className="text-[10px] font-mono text-[#82807c] uppercase">Faturamento Bruto</div>
-                              <div className="text-lg font-bold text-[#37322F]">R$ 38.450,00</div>
+                          {/* Row 1: Seu para Retirar */}
+                          <div className="grid grid-cols-12 gap-2 px-4 py-3.5 border-b border-[rgba(55,50,47,0.12)] items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
+                            <div className="col-span-4 font-medium text-[#37322F]">
+                              1. Retirada Pessoal PF
                             </div>
-                            <div className="h-7 w-[1px] bg-[rgba(55,50,47,0.1)]" />
-                            <div>
-                              <div className="text-[10px] font-mono text-[#82807c] uppercase">Margem Líquida</div>
-                              <div className="text-lg font-bold text-emerald-700">62,9%</div>
+                            <div className="col-span-3">
+                              <span className="px-2 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded text-[10px] font-mono font-medium">
+                                100% Livre de IRPF
+                              </span>
+                            </div>
+                            <div className="col-span-3 hidden sm:block text-[#605A57] text-[11px]">
+                              Pró-labore R$ 8.5k + Isento R$ 15.7k
+                            </div>
+                            <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text-[#37322F]">
+                              R$ 24.200,00
+                            </div>
+                          </div>
+
+                          {/* Row 2: Reserva da Empresa */}
+                          <div className="grid grid-cols-12 gap-2 px-4 py-3.5 border-b border-[rgba(55,50,47,0.12)] items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
+                            <div className="col-span-4 font-medium text-[#37322F]">
+                              2. Reserva Operacional PJ
+                            </div>
+                            <div className="col-span-3">
+                              <span className="px-2 py-0.5 bg-slate-100 text-[#605A57] border border-slate-200 rounded text-[10px] font-mono font-medium">
+                                Capital Protegido
+                              </span>
+                            </div>
+                            <div className="col-span-3 hidden sm:block text-[#605A57] text-[11px]">
+                              Custos Fixos + Giro Seguro
+                            </div>
+                            <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text-[#37322F]">
+                              R$ 9.800,00
+                            </div>
+                          </div>
+
+                          {/* Row 3: Provisão DAS */}
+                          <div className="grid grid-cols-12 gap-2 px-4 py-3.5 items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
+                            <div className="col-span-4 font-medium text-[#37322F]">
+                              3. Provisão Guia DAS
+                            </div>
+                            <div className="col-span-3">
+                              <span className="px-2 py-0.5 bg-amber-50 text-amber-900 border border-amber-200 rounded text-[10px] font-mono font-medium">
+                                Vencimento 20/06
+                              </span>
+                            </div>
+                            <div className="col-span-3 hidden sm:block text-[#605A57] text-[11px]">
+                              Alíquota 6,0% (Anexo III)
+                            </div>
+                            <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text-[#37322F]">
+                              R$ 4.450,00
                             </div>
                           </div>
                         </div>
 
-                        {/* Distribution Visual Spectrum Bar */}
-                        <div className="space-y-1.5">
-                          <div className="flex justify-between items-center text-[11px] font-mono text-[#605A57]">
-                            <span>DIVISÃO INTELIGENTE DE CAIXA</span>
-                            <span>100% DISTRIBUÍDO</span>
-                          </div>
-                          <div className="w-full h-3 bg-gray-100 rounded-none flex overflow-hidden border border-[rgba(55,50,47,0.1)]">
-                            <div className="h-full bg-emerald-600" style={{ width: "63%" }} title="Seu para Retirar: 63%" />
-                            <div className="h-full bg-[#37322F]" style={{ width: "25%" }} title="Reserva da Empresa: 25%" />
-                            <div className="h-full bg-amber-500" style={{ width: "12%" }} title="Provisão DAS: 12%" />
-                          </div>
-                        </div>
-
-                        {/* 3 Buckets Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                          {/* Bucket 1: Seu para Retirar */}
-                          <div className="p-5 rounded-xl bg-[#F8FAFC] border-2 border-emerald-600/80 flex flex-col justify-between gap-3 shadow-xs">
-                            <div>
-                              <div className="flex items-center justify-between text-[11px] font-mono font-bold text-emerald-800 uppercase tracking-wider mb-2">
-                                <span>1. SEU PARA RETIRAR</span>
-                                <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                              </div>
-                              <div className="text-2xl sm:text-3xl font-bold text-[#37322F] tracking-tight">
-                                R$ 24.200,00
-                              </div>
-                              <div className="mt-3 pt-3 border-t border-[rgba(55,50,47,0.08)] space-y-1 text-xs text-[#605A57]">
-                                <div className="flex justify-between">
-                                  <span>Pró-labore líquido:</span>
-                                  <span className="font-semibold text-[#37322F]">R$ 8.500,00</span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span>Lucro isento na PF:</span>
-                                  <span className="font-semibold text-emerald-700">R$ 15.700,00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="px-2.5 py-1 bg-emerald-100/60 rounded text-[10px] font-mono text-emerald-900 font-medium">
-                              ✓ 100% livre de IRPF (Art. 14 LC 123)
-                            </div>
+                        {/* Segmented Pill Allocation Bar (Estilo Ticks idêntico à imagem) */}
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
+                          <div className="flex items-center gap-2 text-[11px] font-mono text-[#82807c] shrink-0">
+                            <span>Alocação do Caixa:</span>
                           </div>
 
-                          {/* Bucket 2: Reserva da Empresa */}
-                          <div className="p-5 rounded-xl bg-[#F8FAFC] border border-[rgba(55,50,47,0.12)] flex flex-col justify-between gap-3">
-                            <div>
-                              <div className="flex items-center justify-between text-[11px] font-mono font-bold text-[#605A57] uppercase tracking-wider mb-2">
-                                <span>2. RESERVA DA EMPRESA</span>
-                                <span className="w-2 h-2 rounded-full bg-[#37322F]" />
-                              </div>
-                              <div className="text-2xl sm:text-3xl font-bold text-[#37322F] tracking-tight">
-                                R$ 9.800,00
-                              </div>
-                              <div className="mt-3 pt-3 border-t border-[rgba(55,50,47,0.08)] space-y-1 text-xs text-[#605A57]">
-                                <div className="flex justify-between">
-                                  <span>Custos fixos provisionados:</span>
-                                  <span className="font-semibold text-[#37322F]">R$ 3.800,00</span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span>Fundo de capital de giro:</span>
-                                  <span className="font-semibold text-[#37322F]">R$ 6.000,00</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="px-2.5 py-1 bg-gray-100 rounded text-[10px] font-mono text-[#605A57] font-medium">
-                              ✓ Mantém 3 meses de despesas fixas
-                            </div>
+                          <div className="flex-1 flex items-center gap-[3px] sm:gap-1 px-1 overflow-hidden">
+                            {Array.from({ length: 48 }).map((_, i) => {
+                              // Paleta exata da imagem do usuário:
+                              // Verde principal: #248259
+                              // Verde claro/menta: #7cb99d
+                              // Âmbar / Laranja: #c8681b
+                              let bg = "bg-[#248259]"
+
+                              if (i === 6) bg = "bg-[#7cb99d]"
+                              else if (i === 9 || i === 11) bg = "bg-[#c8681b]"
+                              else if (i === 28) bg = "bg-[#c8681b]"
+                              else if (i === 45) bg = "bg-[#c8681b]"
+                              else if (i >= 42) bg = "bg-[#c8681b]" // Provisão DAS
+
+                              return (
+                                <div
+                                  key={i}
+                                  className={`h-4.5 flex-1 min-w-[3px] rounded-[3px] ${bg} transition-all hover:opacity-80`}
+                                />
+                              )
+                            })}
                           </div>
 
-                          {/* Bucket 3: Provisão DAS */}
-                          <div className="p-5 rounded-xl bg-[#F8FAFC] border border-amber-300 flex flex-col justify-between gap-3">
-                            <div>
-                              <div className="flex items-center justify-between text-[11px] font-mono font-bold text-amber-800 uppercase tracking-wider mb-2">
-                                <span>3. PROVISÃO DO DAS</span>
-                                <span className="w-2 h-2 rounded-full bg-amber-500" />
-                              </div>
-                              <div className="text-2xl sm:text-3xl font-bold text-[#37322F] tracking-tight">
-                                R$ 4.450,00
-                              </div>
-                              <div className="mt-3 pt-3 border-t border-[rgba(55,50,47,0.08)] space-y-1 text-xs text-[#605A57]">
-                                <div className="flex justify-between">
-                                  <span>Alíquota Efetiva:</span>
-                                  <span className="font-semibold text-emerald-700">6,0% (Anexo III)</span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span>Vencimento oficial:</span>
-                                  <span className="font-semibold text-[#37322F]">Dia 20 do próximo mês</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="px-2.5 py-1 bg-amber-100/60 rounded text-[10px] font-mono text-amber-900 font-medium">
-                              ✓ Valor já separado e retido na conta
-                            </div>
+                          <div className="text-[11px] font-mono text-emerald-800 font-semibold shrink-0">
+                            100% Conciliado
                           </div>
                         </div>
                       </div>
                     )}
 
+                    {/* ── TAB 1: OTIMIZADOR DE FATOR R ── */}
                     {activeCard === 1 && (
-                      <div className="flex flex-col gap-6 animate-fadeIn">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-[rgba(55,50,47,0.08)]">
+                      <div className="flex flex-col gap-5 animate-fadeIn">
+                        {/* Header Summary */}
+                        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                           <div>
-                            <div className="text-[11px] font-mono text-emerald-700 font-bold uppercase tracking-wider">
-                              DIAGNÓSTICO TRIBUTÁRIO COMPARATIVO
-                            </div>
-                            <h3 className="text-xl sm:text-2xl font-bold text-[#37322F] tracking-tight">
-                              Otimizador do Fator R (Folha vs Faturamento)
+                            <h3 className="text-lg sm:text-xl font-semibold text-[#37322F]">
+                              Diagnóstico Comparativo de Enquadramento
                             </h3>
+                            <p className="text-xs text-[#605A57] mt-0.5">
+                              Calibragem da folha de pagamento para atingir os 28% do Fator R.
+                            </p>
                           </div>
-                          <div className="px-3.5 py-1.5 bg-emerald-100 text-emerald-800 text-xs font-mono font-bold rounded">
-                            Economia Prescrita: +R$ 34.200/ano
+                          <div className="text-right">
+                            <span className="text-xs text-[#82807c] font-mono">Economia Prescrita</span>
+                            <div className="text-lg font-semibold text-emerald-700 font-mono">+R$ 34.200/ano</div>
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          {/* Scenario 1: Without Rovee */}
-                          <div className="p-5 rounded-xl bg-red-50/40 border border-red-200 flex flex-col justify-between gap-4">
-                            <div>
-                              <div className="flex justify-between items-center text-xs font-mono text-red-700 font-bold uppercase">
-                                <span>SEM OTIMIZAÇÃO (ANEXO V)</span>
-                                <span className="px-2 py-0.5 bg-red-100 rounded text-[10px]">Alíquota Alta</span>
-                              </div>
-                              <div className="text-3xl font-bold text-red-900 mt-2 font-mono">15,50%</div>
-                              <div className="space-y-1.5 text-xs text-[#605A57] mt-3 pt-3 border-t border-red-200/60">
-                                <div className="flex justify-between">
-                                  <span>Folha declarada (salário mín.):</span>
-                                  <span className="font-semibold text-red-800 font-mono">R$ 1.518,00 (3,9%)</span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span>Imposto anual estimado:</span>
-                                  <span className="font-semibold text-red-900 font-mono">R$ 55.800,00/ano</span>
-                                </div>
-                              </div>
-                            </div>
-                            <p className="text-[11px] text-red-700">
-                              Imposto pago em excesso por falta de atingir 28% da folha no Fator R.
-                            </p>
+                        {/* Comparison Matrix Table */}
+                        <div className="w-full border border-[rgba(55,50,47,0.12)] rounded-lg overflow-hidden">
+                          <div className="grid grid-cols-12 gap-2 px-4 py-2.5 bg-[#F8FAFC] border-b border-[rgba(55,50,47,0.12)] text-[11px] font-mono font-semibold text-[#605A57] uppercase">
+                            <div className="col-span-4">Variável Tributária</div>
+                            <div className="col-span-4">Sem Gestão (Anexo V)</div>
+                            <div className="col-span-4 text-right">Com Rovee (Anexo III)</div>
                           </div>
 
-                          {/* Scenario 2: With Rovee */}
-                          <div className="p-5 rounded-xl bg-emerald-50/50 border-2 border-emerald-600 flex flex-col justify-between gap-4 shadow-xs">
-                            <div>
-                              <div className="flex justify-between items-center text-xs font-mono text-emerald-800 font-bold uppercase">
-                                <span>COM ROVEE PROATIVO (ANEXO III)</span>
-                                <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded text-[10px] font-bold">Recomendado</span>
-                              </div>
-                              <div className="text-3xl font-bold text-emerald-700 mt-2 font-mono">6,00%</div>
-                              <div className="space-y-1.5 text-xs text-[#605A57] mt-3 pt-3 border-t border-emerald-200/60">
-                                <div className="flex justify-between">
-                                  <span>Pró-labore calibrado exato:</span>
-                                  <span className="font-semibold text-emerald-900 font-mono">R$ 8.500,00 (28,2%)</span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span>Imposto anual otimizado:</span>
-                                  <span className="font-semibold text-emerald-900 font-mono">R$ 21.600,00/ano</span>
-                                </div>
-                              </div>
-                            </div>
-                            <p className="text-[11px] text-emerald-800 font-medium">
-                              Memória de cálculo gerada automaticamente para envio em 1 clique ao contador.
-                            </p>
+                          <div className="grid grid-cols-12 gap-2 px-4 py-3 border-b border-[rgba(55,50,47,0.12)] items-center text-xs">
+                            <div className="col-span-4 text-[#605A57]">Alíquota Efetiva do DAS</div>
+                            <div className="col-span-4 font-mono font-medium text-red-700">15,50%</div>
+                            <div className="col-span-4 text-right font-mono font-semibold text-emerald-700">6,00% (-9,5%)</div>
                           </div>
+
+                          <div className="grid grid-cols-12 gap-2 px-4 py-3 border-b border-[rgba(55,50,47,0.12)] items-center text-xs">
+                            <div className="col-span-4 text-[#605A57]">Pró-labore / Folha Mensal</div>
+                            <div className="col-span-4 font-mono text-[#605A57]">R$ 1.518,00 (3,9%)</div>
+                            <div className="col-span-4 text-right font-mono font-semibold text-[#37322F]">R$ 8.500,00 (28,2%)</div>
+                          </div>
+
+                          <div className="grid grid-cols-12 gap-2 px-4 py-3 items-center text-xs bg-emerald-50/30">
+                            <div className="col-span-4 font-semibold text-[#37322F]">Imposto Devido Estimado/Ano</div>
+                            <div className="col-span-4 font-mono text-red-700">R$ 55.800,00</div>
+                            <div className="col-span-4 text-right font-mono font-bold text-emerald-700">R$ 21.600,00</div>
+                          </div>
+                        </div>
+
+                        <div className="p-3 bg-[#F8FAFC] border border-[rgba(55,50,47,0.12)] rounded-md text-xs text-[#605A57]">
+                          ✓ Memória de cálculo pronta com o valor exato de pró-labore para envio ao contador no fechamento.
                         </div>
                       </div>
                     )}
 
+                    {/* ── TAB 2: PREVISÃO & RUNWAY ── */}
                     {activeCard === 2 && (
-                      <div className="flex flex-col gap-6 animate-fadeIn">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-[rgba(55,50,47,0.08)]">
+                      <div className="flex flex-col gap-5 animate-fadeIn">
+                        {/* Header Summary */}
+                        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                           <div>
-                            <div className="text-[11px] font-mono text-blue-700 font-bold uppercase tracking-wider">
-                              INTELIGÊNCIA PREDITIVA DE CAIXA
-                            </div>
-                            <h3 className="text-xl sm:text-2xl font-bold text-[#37322F] tracking-tight">
-                              Previsão de Faturamento & Fôlego Operacional
+                            <h3 className="text-lg sm:text-xl font-semibold text-[#37322F]">
+                              Previsibilidade de Caixa & Runway
                             </h3>
+                            <p className="text-xs text-[#605A57] mt-0.5">
+                              Projeção contínua dos próximos meses com análise de fôlego operacional.
+                            </p>
                           </div>
-                          <div className="px-3.5 py-1.5 bg-blue-50 text-blue-800 text-xs font-mono font-bold rounded border border-blue-200">
-                            Projeção Contínua · 94% de Confiança
+                          <div className="text-right">
+                            <span className="text-xs text-[#82807c] font-mono">Fôlego de Reserva</span>
+                            <div className="text-lg font-semibold text-emerald-700 font-mono">8.4 meses</div>
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
-                          {/* Runway Gauge */}
-                          <div className="md:col-span-5 p-5 rounded-xl bg-[#F8FAFC] border border-[rgba(55,50,47,0.12)] flex flex-col justify-between gap-3">
-                            <div>
-                              <div className="text-[11px] font-mono text-[#82807c] uppercase">FÔLEGO ATUAL (RUNWAY)</div>
-                              <div className="text-3xl font-bold text-[#37322F] mt-1">
-                                8.4 <span className="text-sm font-normal text-[#605A57]">meses</span>
-                              </div>
-                              <div className="w-full h-2 bg-gray-200 rounded-full mt-3 overflow-hidden">
-                                <div className="h-full bg-emerald-500 rounded-full" style={{ width: "70%" }} />
-                              </div>
-                            </div>
-                            <div className="text-xs text-[#605A57] space-y-1 pt-2 border-t border-[rgba(55,50,47,0.08)]">
-                              <div className="flex justify-between">
-                                <span>Burn Rate médio:</span>
-                                <span className="font-semibold text-[#37322F]">R$ 4.580/mês</span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span>Risco de liquidez:</span>
-                                <span className="font-semibold text-emerald-700">Zona Segura (0% risco)</span>
-                              </div>
-                            </div>
+                        {/* Forecast Schedule Table */}
+                        <div className="w-full border border-[rgba(55,50,47,0.12)] rounded-lg overflow-hidden">
+                          <div className="grid grid-cols-12 gap-2 px-4 py-2.5 bg-[#F8FAFC] border-b border-[rgba(55,50,47,0.12)] text-[11px] font-mono font-semibold text-[#605A57] uppercase">
+                            <div className="col-span-3">Competência</div>
+                            <div className="col-span-3">Tipo</div>
+                            <div className="col-span-3">Receita Prevista</div>
+                            <div className="col-span-3 text-right">Provisão DAS</div>
                           </div>
 
-                          {/* Mini Forecast Bars */}
-                          <div className="md:col-span-7 p-5 rounded-xl bg-[#F8FAFC] border border-[rgba(55,50,47,0.12)] flex flex-col justify-between gap-3">
-                            <div className="flex justify-between items-center text-[11px] font-mono text-[#605A57]">
-                              <span>TENDÊNCIA TRIMESTRAL</span>
-                              <span className="font-semibold text-emerald-700">+18% de crescimento</span>
-                            </div>
+                          <div className="grid grid-cols-12 gap-2 px-4 py-3 border-b border-[rgba(55,50,47,0.12)] items-center text-xs">
+                            <div className="col-span-3 font-medium text-[#37322F]">Maio/2026</div>
+                            <div className="col-span-3 text-xs text-[#605A57]">Realizado</div>
+                            <div className="col-span-3 font-mono font-semibold text-[#37322F]">R$ 38.450,00</div>
+                            <div className="col-span-3 text-right font-mono text-[#605A57]">R$ 4.450,00</div>
+                          </div>
 
-                            <div className="h-24 flex items-end justify-between gap-2 pt-2 px-1">
-                              {[
-                                { m: "Fev", v: 40, p: false },
-                                { m: "Mar", v: 48, p: false },
-                                { m: "Abr", v: 55, p: false },
-                                { m: "Mai (Atual)", v: 65, p: false },
-                                { m: "Jun (Proj)", v: 75, p: true },
-                                { m: "Jul (Proj)", v: 84, p: true },
-                              ].map((b, i) => (
-                                <div key={i} className="flex-1 flex flex-col items-center gap-1 h-full justify-end">
-                                  <div
-                                    className={`w-full rounded-t-sm ${b.p ? "bg-emerald-500 border-t border-dashed border-emerald-400" : "bg-[#37322F]"}`}
-                                    style={{ height: `${b.v}%` }}
-                                  />
-                                  <span className="text-[10px] font-mono text-[#605A57]">{b.m.split(" ")[0]}</span>
-                                </div>
-                              ))}
-                            </div>
-                            <div className="text-[11px] text-[#605A57]">
-                              Picos de recebimento identificados nos dias 05 e 20 de cada mês.
-                            </div>
+                          <div className="grid grid-cols-12 gap-2 px-4 py-3 border-b border-[rgba(55,50,47,0.12)] items-center text-xs">
+                            <div className="col-span-3 font-medium text-[#37322F]">Junho/2026</div>
+                            <div className="col-span-3 text-xs text-emerald-700 font-medium">Projetado (+12%)</div>
+                            <div className="col-span-3 font-mono font-semibold text-[#37322F]">R$ 43.000,00</div>
+                            <div className="col-span-3 text-right font-mono text-[#605A57]">R$ 4.730,00</div>
+                          </div>
+
+                          <div className="grid grid-cols-12 gap-2 px-4 py-3 items-center text-xs">
+                            <div className="col-span-3 font-medium text-[#37322F]">Julho/2026</div>
+                            <div className="col-span-3 text-xs text-emerald-700 font-medium">Projetado (+18%)</div>
+                            <div className="col-span-3 font-mono font-semibold text-[#37322F]">R$ 45.500,00</div>
+                            <div className="col-span-3 text-right font-mono text-[#605A57]">R$ 5.005,00</div>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                          <div className="p-3 bg-[#F8FAFC] border border-[rgba(55,50,47,0.12)] rounded-md flex justify-between">
+                            <span className="text-[#605A57]">Burn Rate Médio:</span>
+                            <span className="font-mono font-semibold text-[#37322F]">R$ 4.580,00/mês</span>
+                          </div>
+                          <div className="p-3 bg-[#F8FAFC] border border-[rgba(55,50,47,0.12)] rounded-md flex justify-between">
+                            <span className="text-[#605A57]">Alerta de Liquidez:</span>
+                            <span className="font-mono font-semibold text-emerald-700">0% de Risco</span>
                           </div>
                         </div>
                       </div>
                     )}
+
                   </div>
                 </div>
               </div>
