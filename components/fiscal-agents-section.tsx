@@ -104,7 +104,7 @@ export function FiscalAgentsSection() {
             Agentes Especializados
           </span>
 
-          <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
             4 Agentes Autônomos trabalhando pelo seu caixa
           </h2>
 
@@ -140,13 +140,7 @@ export function FiscalAgentsSection() {
         {/* Center Container: Active Agent Showcase */}
         <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] bg-white p-6 sm:p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch text-left h-[560px] sm:h-[500px] lg:h-[440px] overflow-hidden">
           <div className="lg:col-span-7 flex flex-col justify-between gap-4 h-full">
-            <div className="flex items-center gap-2">
-              <span className={`px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase border ${agent.pillColor}`}>
-                {agent.tag}
-              </span>
-            </div>
-
-            <h3 className="text-[#37322F] text-2xl sm:text-3xl font-semibold leading-tight font-sans">
+            <h3 className="text-secondary text-2xl sm:text-3xl font-semibold leading-tight font-sans">
               {agent.title}: {agent.subtitle}
             </h3>
 
@@ -158,7 +152,7 @@ export function FiscalAgentsSection() {
             <div className="grid grid-cols-2 gap-4 py-4 border-y border-[rgba(55,50,47,0.08)] my-2">
               {agent.stats.map((stat, i) => (
                 <div key={i}>
-                  <div className="text-xl sm:text-2xl font-semibold text-[#37322F] font-sans">
+                  <div className="text-xl sm:text-2xl font-semibold text-secondary font-sans">
                     {stat.value}
                   </div>
                   <div className="text-xs text-[#605A57] font-medium font-sans">
@@ -209,11 +203,11 @@ export function FiscalAgentsSection() {
               <div className="space-y-2">
                 <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)]">
                   <div className="text-[11px] text-[#605A57]">1. Seu para Retirar (Lucro Isento)</div>
-                  <div className="text-base font-semibold text-[#37322F]">R$ 18.450,00</div>
+                  <div className="text-base font-semibold text-secondary">R$ 18.450,00</div>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)]">
                   <div className="text-[11px] text-[#605A57]">2. Reserva Operacional da Empresa</div>
-                  <div className="text-base font-semibold text-[#37322F]">R$ 8.200,00</div>
+                  <div className="text-base font-semibold text-secondary">R$ 8.200,00</div>
                 </div>
                 <div className="bg-white p-3 rounded-lg border border-emerald-300">
                   <div className="text-[11px] text-emerald-800 font-medium">3. Provisão do DAS (Imposto)</div>
@@ -244,7 +238,7 @@ export function FiscalAgentsSection() {
                 <div className="bg-white p-3.5 rounded-lg border border-[rgba(55,50,47,0.08)] flex justify-between items-center">
                   <div>
                     <div className="text-xs text-[#605A57]">DAS Competência Atual</div>
-                    <div className="text-base font-semibold text-[#37322F]">R$ 3.420,00</div>
+                    <div className="text-base font-semibold text-secondary">R$ 3.420,00</div>
                   </div>
                   <span className="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-[11px] font-semibold rounded-full">
                     100% Coberto

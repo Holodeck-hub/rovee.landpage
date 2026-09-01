@@ -21,7 +21,7 @@ export default function CTASection() {
               <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
                 Comece Hoje Mesmo
               </span>
-              <h2 className="self-stretch text-center text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+              <h2 className="self-stretch text-center text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
                 Pronto para saber seu lucro real e pagar menos imposto?
               </h2>
               <p className="self-stretch text-center text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px] mx-auto">
@@ -32,13 +32,13 @@ export default function CTASection() {
             <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
               <a
                 href="#comecar"
-                className="h-12 px-8 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium rounded flex items-center justify-center shadow-sm transition-all"
+                className="h-12 px-8 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded flex items-center justify-center shadow-sm transition-all"
               >
                 Criar Conta Gratuita
               </a>
               <a
                 href="#fiscal"
-                className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-[#37322F] border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
+                className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-secondary border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
               >
                 Ver Demonstração
               </a>

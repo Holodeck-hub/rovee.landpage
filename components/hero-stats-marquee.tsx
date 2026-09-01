@@ -36,7 +36,7 @@ export function HeroStatsMarquee() {
           <div key={setIndex} className="flex items-center gap-12 pr-12 shrink-0">
             {stats.map((stat, idx) => (
               <div key={`${stat.context}-${setIndex}-${idx}`} className="flex items-center gap-3 shrink-0">
-                <span className="text-xl sm:text-2xl font-semibold tracking-tight text-[#37322F]">
+                <span className="text-xl sm:text-2xl font-semibold tracking-tight text-secondary">
                   {stat.value}
                 </span>
                 <span className="text-xs text-[#605A57] font-medium font-sans">

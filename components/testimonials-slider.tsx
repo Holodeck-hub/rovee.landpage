@@ -72,7 +72,7 @@ export function TestimonialsSlider() {
             Depoimentos Reais
           </span>
 
-          <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
             Quem empreende com a Rovee lucra mais e dorme tranquilo
           </h2>
 
@@ -111,14 +111,14 @@ export function TestimonialsSlider() {
               </span>
               <button
                 onClick={handlePrev}
-                className="w-8 h-8 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-[#F1F5F9] text-[#37322F] cursor-pointer"
+                className="w-8 h-8 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-[#F1F5F9] text-secondary cursor-pointer"
                 aria-label="Anterior"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 onClick={handleNext}
-                className="w-8 h-8 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-[#F1F5F9] text-[#37322F] cursor-pointer"
+                className="w-8 h-8 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-[#F1F5F9] text-secondary cursor-pointer"
                 aria-label="Próximo"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -130,7 +130,7 @@ export function TestimonialsSlider() {
             className={`transition-opacity duration-300 ${isAnimating ? "opacity-0" : "opacity-100"
               }`}
           >
-            <blockquote className="text-xl sm:text-2xl md:text-3xl text-[#37322F] font-normal leading-relaxed font-sans mb-8">
+            <blockquote className="text-xl sm:text-2xl md:text-3xl text-secondary font-normal leading-relaxed font-sans mb-8">
               &ldquo;{activeTestimonial.quote}&rdquo;
             </blockquote>
 
@@ -139,7 +139,7 @@ export function TestimonialsSlider() {
                 {activeTestimonial.author.charAt(0)}
               </div>
               <div>
-                <div className="text-sm font-semibold text-[#37322F]">
+                <div className="text-sm font-semibold text-secondary">
                   {activeTestimonial.author}
                 </div>
                 <div className="text-xs text-[#605A57]">

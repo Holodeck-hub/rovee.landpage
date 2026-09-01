@@ -15,7 +15,7 @@ export default function FooterSection() {
         <div className="h-auto p-4 md:p-8 flex flex-col justify-start items-start gap-6 max-w-sm">
           {/* Brand Section */}
           <div className="self-stretch flex items-center">
-            <div className="text-[#37322F] text-2xl font-bold font-sans tracking-tight">Rovee</div>
+            <div className="text-secondary text-2xl font-bold font-sans tracking-tight">Rovee</div>
           </div>
 
           <p className="text-[#605A57] text-xs sm:text-sm font-normal leading-relaxed font-sans">
@@ -35,19 +35,19 @@ export default function FooterSection() {
               Produto
             </div>
             <div className="flex flex-col justify-end items-start gap-2 text-xs font-medium text-[#49423D]">
-              <a href="#fiscal" className="hover:text-[#37322F] transition-colors">
+              <a href="#fiscal" className="hover:text-secondary transition-colors">
                 Inteligência Fiscal
               </a>
-              <a href="#predicao" className="hover:text-[#37322F] transition-colors">
+              <a href="#predicao" className="hover:text-secondary transition-colors">
                 Predição & Machine Learning
               </a>
-              <a href="#agentes" className="hover:text-[#37322F] transition-colors">
+              <a href="#agentes" className="hover:text-secondary transition-colors">
                 Agentes Proativos
               </a>
-              <a href="#metricas" className="hover:text-[#37322F] transition-colors">
+              <a href="#metricas" className="hover:text-secondary transition-colors">
                 Métricas ao Vivo
               </a>
-              <a href="#depoimentos" className="hover:text-[#37322F] transition-colors">
+              <a href="#depoimentos" className="hover:text-secondary transition-colors">
                 Depoimentos
               </a>
             </div>
@@ -72,9 +72,9 @@ export default function FooterSection() {
               Empresa
             </div>
             <div className="flex flex-col justify-center items-start gap-2 text-xs font-medium text-[#49423D]">
-              <span className="hover:text-[#37322F] cursor-pointer">Termos de Uso</span>
-              <span className="hover:text-[#37322F] cursor-pointer">Privacidade</span>
-              <span className="hover:text-[#37322F] cursor-pointer">Suporte</span>
+              <span className="hover:text-secondary cursor-pointer">Termos de Uso</span>
+              <span className="hover:text-secondary cursor-pointer">Privacidade</span>
+              <span className="hover:text-secondary cursor-pointer">Suporte</span>
             </div>
           </div>
         </div>

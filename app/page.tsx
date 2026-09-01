@@ -69,28 +69,28 @@ export default function LandingPage() {
         <div className="flex items-center justify-between w-full max-w-[1060px] mx-auto">
           <div className="flex justify-center items-center gap-6">
             <a href="#" className="flex items-center hover:opacity-85 transition-opacity">
-              <span className="text-[#37322F] text-lg sm:text-xl font-bold font-sans tracking-tight">
+              <span className="text-secondary text-lg sm:text-xl font-bold font-sans tracking-tight">
                 Rovee
               </span>
             </a>
 
             <nav className="hidden md:flex items-center gap-3.5 pl-2 text-xs font-medium text-[rgba(49,45,43,0.80)] font-sans">
-              <a href="#fiscal" className="hover:text-[#37322F] transition-colors">
+              <a href="#fiscal" className="hover:text-secondary transition-colors">
                 Inteligência Fiscal
               </a>
-              <a href="#agentes" className="hover:text-[#37322F] transition-colors">
+              <a href="#agentes" className="hover:text-secondary transition-colors">
                 Agentes
               </a>
-              <a href="#contador" className="hover:text-[#37322F] transition-colors">
+              <a href="#contador" className="hover:text-secondary transition-colors">
                 Contador
               </a>
-              <a href="#metricas" className="hover:text-[#37322F] transition-colors">
+              <a href="#metricas" className="hover:text-secondary transition-colors">
                 Métricas
               </a>
-              <a href="#roadmap" className="hover:text-[#37322F] transition-colors">
+              <a href="#roadmap" className="hover:text-secondary transition-colors">
                 Roadmap
               </a>
-              <a href="#planos" className="hover:text-[#37322F] transition-colors">
+              <a href="#planos" className="hover:text-secondary transition-colors">
                 Planos
               </a>
             </nav>
@@ -99,7 +99,7 @@ export default function LandingPage() {
           <div className="flex items-center gap-2">
             <a
               href="#comecar"
-              className="px-3 sm:px-4 py-1.5 bg-white hover:bg-gray-100 text-[#37322F] text-xs font-semibold rounded shadow-[0px_1px_2px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)] transition-all"
+              className="px-3 sm:px-4 py-1.5 bg-white hover:bg-gray-100 text-secondary text-xs font-semibold rounded shadow-[0px_1px_2px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)] transition-all"
             >
               Entrar
             </a>
@@ -133,28 +133,28 @@ export default function LandingPage() {
               <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[760px] lg:w-[760px] h-11 sm:h-12 py-1.5 px-4 bg-[#F8FAFC]/90 backdrop-blur-md shadow-[0px_0px_0px_2px_white] overflow-hidden rounded flex justify-between items-center relative z-30 border border-[rgba(55,50,47,0.1)]">
                 <div className="flex justify-center items-center gap-6">
                   <a href="#" className="flex items-center hover:opacity-85 transition-opacity">
-                    <span className="text-[#37322F] text-lg sm:text-xl font-bold font-sans tracking-tight">
+                    <span className="text-secondary text-lg sm:text-xl font-bold font-sans tracking-tight">
                       Rovee
                     </span>
                   </a>
 
                   <nav className="hidden md:flex items-center gap-3.5 pl-2 text-xs font-medium text-[rgba(49,45,43,0.80)] font-sans">
-                    <a href="#fiscal" className="hover:text-[#37322F] transition-colors">
+                    <a href="#fiscal" className="hover:text-secondary transition-colors">
                       Inteligência Fiscal
                     </a>
-                    <a href="#agentes" className="hover:text-[#37322F] transition-colors">
+                    <a href="#agentes" className="hover:text-secondary transition-colors">
                       Agentes
                     </a>
-                    <a href="#contador" className="hover:text-[#37322F] transition-colors">
+                    <a href="#contador" className="hover:text-secondary transition-colors">
                       Contador
                     </a>
-                    <a href="#metricas" className="hover:text-[#37322F] transition-colors">
+                    <a href="#metricas" className="hover:text-secondary transition-colors">
                       Métricas
                     </a>
-                    <a href="#roadmap" className="hover:text-[#37322F] transition-colors">
+                    <a href="#roadmap" className="hover:text-secondary transition-colors">
                       Roadmap
                     </a>
-                    <a href="#planos" className="hover:text-[#37322F] transition-colors">
+                    <a href="#planos" className="hover:text-secondary transition-colors">
                       Planos
                     </a>
                   </nav>
@@ -163,7 +163,7 @@ export default function LandingPage() {
                 <div className="flex items-center gap-2">
                   <a
                     href="#comecar"
-                    className="px-3 sm:px-4 py-1.5 bg-white hover:bg-gray-100 text-[#37322F] text-xs font-semibold rounded shadow-[0px_1px_2px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)] transition-all"
+                    className="px-3 sm:px-4 py-1.5 bg-white hover:bg-gray-100 text-secondary text-xs font-semibold rounded shadow-[0px_1px_2px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)] transition-all"
                   >
                     Entrar
                   </a>
@@ -182,7 +182,7 @@ export default function LandingPage() {
 
               {/* Main Headline */}
               <div className="w-full max-w-[840px] flex flex-col justify-center items-center gap-4">
-                <h1 className="text-[#37322F] text-[24px] xs:text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] font-semibold leading-[1.14] font-sans tracking-tight">
+                <h1 className="text-secondary text-[24px] xs:text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] font-semibold leading-[1.14] font-sans tracking-tight">
                   Sua contabilidade calcula o imposto. A Rovee garante que você pague o mínimo.
                 </h1>
 
@@ -195,7 +195,7 @@ export default function LandingPage() {
               <div className="flex flex-col sm:flex-row items-center gap-3 mt-8 z-20">
                 <a
                   href="#comecar"
-                  className="h-12 px-8 bg-indigo-500 hover:bg-[#201d1b] text-white text-sm font-semibold rounded flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
+                  className="h-12 px-8 bg-primary hover:bg-primary-hover text-white text-sm font-semibold rounded flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
                 >
                   Começar Gratuitamente
                   <ArrowUpRight className="w-4 h-4" />
@@ -203,7 +203,7 @@ export default function LandingPage() {
 
                 <a
                   href="#fiscal"
-                  className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-[#37322F] border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
+                  className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-secondary border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
                 >
                   Ver Demonstração
                 </a>
@@ -233,7 +233,7 @@ export default function LandingPage() {
                       {/* Header Summary */}
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                         <div>
-                          <h3 className="text-lg sm:text-xl font-semibold text-[#37322F]">
+                          <h3 className="text-lg sm:text-xl font-semibold text-secondary">
                             Demonstrativo de Clareza de Caixa
                           </h3>
                           <p className="text-xs text-[#605A57] mt-0.5">
@@ -258,7 +258,7 @@ export default function LandingPage() {
 
                         {/* Row 1: Seu para Retirar */}
                         <div className="grid grid-cols-12 gap-2 px-4 py-3.5 border-b border-[rgba(55,50,47,0.12)] items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
-                          <div className="col-span-4 font-medium text-[#37322F]">
+                          <div className="col-span-4 font-medium text-secondary">
                             1. Retirada Pessoal PF
                           </div>
                           <div className="col-span-3">
@@ -269,14 +269,14 @@ export default function LandingPage() {
                           <div className="col-span-3 hidden sm:block text-[#605A57] text-[11px]">
                             Pró-labore R$ 8.5k + Isento R$ 15.7k
                           </div>
-                          <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text-[#37322F]">
+                          <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text-secondary">
                             R$ 24.200,00
                           </div>
                         </div>
 
                         {/* Row 2: Reserva da Empresa */}
                         <div className="grid grid-cols-12 gap-2 px-4 py-3.5 border-b border-[rgba(55,50,47,0.12)] items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
-                          <div className="col-span-4 font-medium text-[#37322F]">
+                          <div className="col-span-4 font-medium text-secondary">
                             2. Reserva Operacional PJ
                           </div>
                           <div className="col-span-3">
@@ -287,14 +287,14 @@ export default function LandingPage() {
                           <div className="col-span-3 hidden sm:block text-[#605A57] text-[11px]">
                             Custos Fixos + Giro Seguro
                           </div>
-                          <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text-[#37322F]">
+                          <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text-secondary">
                             R$ 9.800,00
                           </div>
                         </div>
 
                         {/* Row 3: Provisão DAS */}
                         <div className="grid grid-cols-12 gap-2 px-4 py-3.5 items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
-                          <div className="col-span-4 font-medium text-[#37322F]">
+                          <div className="col-span-4 font-medium text-secondary">
                             3. Provisão Guia DAS
                           </div>
                           <div className="col-span-3">
@@ -305,7 +305,7 @@ export default function LandingPage() {
                           <div className="col-span-3 hidden sm:block text-[#605A57] text-[11px]">
                             Alíquota 6,0% (Anexo III)
                           </div>
-                          <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text-[#37322F]">
+                          <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text-secondary">
                             R$ 4.450,00
                           </div>
                         </div>
@@ -353,7 +353,7 @@ export default function LandingPage() {
                       {/* Header Summary */}
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                         <div>
-                          <h3 className="text-lg sm:text-xl font-semibold text-[#37322F]">
+                          <h3 className="text-lg sm:text-xl font-semibold text-secondary">
                             Diagnóstico Comparativo de Enquadramento
                           </h3>
                           <p className="text-xs text-[#605A57] mt-0.5">
@@ -383,11 +383,11 @@ export default function LandingPage() {
                         <div className="grid grid-cols-12 gap-2 px-4 py-3 border-b border-[rgba(55,50,47,0.12)] items-center text-xs">
                           <div className="col-span-4 text-[#605A57]">Pró-labore / Folha Mensal</div>
                           <div className="col-span-4 font-mono text-[#605A57]">R$ 1.518,00 (3,9%)</div>
-                          <div className="col-span-4 text-right font-mono font-semibold text-[#37322F]">R$ 8.500,00 (28,2%)</div>
+                          <div className="col-span-4 text-right font-mono font-semibold text-secondary">R$ 8.500,00 (28,2%)</div>
                         </div>
 
                         <div className="grid grid-cols-12 gap-2 px-4 py-3 items-center text-xs bg-emerald-50/30">
-                          <div className="col-span-4 font-semibold text-[#37322F]">Imposto Devido Estimado/Ano</div>
+                          <div className="col-span-4 font-semibold text-secondary">Imposto Devido Estimado/Ano</div>
                           <div className="col-span-4 font-mono text-red-700">R$ 55.800,00</div>
                           <div className="col-span-4 text-right font-mono font-bold text-emerald-700">R$ 21.600,00</div>
                         </div>
@@ -405,7 +405,7 @@ export default function LandingPage() {
                       {/* Header Summary */}
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                         <div>
-                          <h3 className="text-lg sm:text-xl font-semibold text-[#37322F]">
+                          <h3 className="text-lg sm:text-xl font-semibold text-secondary">
                             Previsibilidade de Caixa & Runway
                           </h3>
                           <p className="text-xs text-[#605A57] mt-0.5">
@@ -428,23 +428,23 @@ export default function LandingPage() {
                         </div>
 
                         <div className="grid grid-cols-12 gap-2 px-4 py-3 border-b border-[rgba(55,50,47,0.12)] items-center text-xs">
-                          <div className="col-span-3 font-medium text-[#37322F]">Maio/2026</div>
+                          <div className="col-span-3 font-medium text-secondary">Maio/2026</div>
                           <div className="col-span-3 text-xs text-[#605A57]">Realizado</div>
-                          <div className="col-span-3 font-mono font-semibold text-[#37322F]">R$ 38.450,00</div>
+                          <div className="col-span-3 font-mono font-semibold text-secondary">R$ 38.450,00</div>
                           <div className="col-span-3 text-right font-mono text-[#605A57]">R$ 4.450,00</div>
                         </div>
 
                         <div className="grid grid-cols-12 gap-2 px-4 py-3 border-b border-[rgba(55,50,47,0.12)] items-center text-xs">
-                          <div className="col-span-3 font-medium text-[#37322F]">Junho/2026</div>
+                          <div className="col-span-3 font-medium text-secondary">Junho/2026</div>
                           <div className="col-span-3 text-xs text-emerald-700 font-medium">Projetado (+12%)</div>
-                          <div className="col-span-3 font-mono font-semibold text-[#37322F]">R$ 43.000,00</div>
+                          <div className="col-span-3 font-mono font-semibold text-secondary">R$ 43.000,00</div>
                           <div className="col-span-3 text-right font-mono text-[#605A57]">R$ 4.730,00</div>
                         </div>
 
                         <div className="grid grid-cols-12 gap-2 px-4 py-3 items-center text-xs">
-                          <div className="col-span-3 font-medium text-[#37322F]">Julho/2026</div>
+                          <div className="col-span-3 font-medium text-secondary">Julho/2026</div>
                           <div className="col-span-3 text-xs text-emerald-700 font-medium">Projetado (+18%)</div>
-                          <div className="col-span-3 font-mono font-semibold text-[#37322F]">R$ 45.500,00</div>
+                          <div className="col-span-3 font-mono font-semibold text-secondary">R$ 45.500,00</div>
                           <div className="col-span-3 text-right font-mono text-[#605A57]">R$ 5.005,00</div>
                         </div>
                       </div>
@@ -452,7 +452,7 @@ export default function LandingPage() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                         <div className="p-3 bg-[#F8FAFC] border border-[rgba(55,50,47,0.12)] rounded-md flex justify-between">
                           <span className="text-[#605A57]">Burn Rate Médio:</span>
-                          <span className="font-mono font-semibold text-[#37322F]">R$ 4.580,00/mês</span>
+                          <span className="font-mono font-semibold text-secondary">R$ 4.580,00/mês</span>
                         </div>
                         <div className="p-3 bg-[#F8FAFC] border border-[rgba(55,50,47,0.12)] rounded-md flex justify-between">
                           <span className="text-[#605A57]">Alerta de Liquidez:</span>
@@ -526,7 +526,7 @@ export default function LandingPage() {
                     Motor de Inteligência Fiscal
                   </span>
 
-                  <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+                  <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
                     O fim das dúvidas sobre imposto e pró-labore
                   </h2>
 
@@ -555,8 +555,8 @@ export default function LandingPage() {
                   <div className="border-b border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
                     <div>
                       <div className="flex items-center gap-2.5 mb-2">
-                        <DollarSign className="w-5 h-5 text-[#37322F] shrink-0" />
-                        <h3 className="text-xl font-semibold text-[#37322F]">Clareza de Caixa (&quot;Cheque do Mês&quot;)</h3>
+                        <DollarSign className="w-5 h-5 text-secondary shrink-0" />
+                        <h3 className="text-xl font-semibold text-secondary">Clareza de Caixa (&quot;Cheque do Mês&quot;)</h3>
                       </div>
                       <p className="text-sm text-[#605A57] leading-relaxed">
                         Divide o dinheiro da empresa em 3 partes claras: o que você pode transferir para sua física sem pagar imposto de novo, a reserva da empresa e o imposto do próximo dia 20.
@@ -564,7 +564,7 @@ export default function LandingPage() {
                     </div>
                     <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
                       <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Decisão</span>
-                      <span className="font-medium text-[#37322F]">Responde todo dia: &quot;Quanto posso gastar hoje?&quot;</span>
+                      <span className="font-medium text-secondary">Responde todo dia: &quot;Quanto posso gastar hoje?&quot;</span>
                     </div>
                   </div>
 
@@ -572,8 +572,8 @@ export default function LandingPage() {
                   <div className="border-b border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
                     <div>
                       <div className="flex items-center gap-2.5 mb-2">
-                        <TrendingUp className="w-5 h-5 text-[#37322F] shrink-0" />
-                        <h3 className="text-xl font-semibold text-[#37322F]">Otimizador do Fator R</h3>
+                        <TrendingUp className="w-5 h-5 text-secondary shrink-0" />
+                        <h3 className="text-xl font-semibold text-secondary">Otimizador do Fator R</h3>
                       </div>
                       <p className="text-sm text-[#605A57] leading-relaxed">
                         Calcula o pró-labore ideal para pagar 6% de Simples Nacional (Anexo III) em vez de 15,5% (Anexo V). Mostra exatamente quanto você economiza em reais por ano.
@@ -589,8 +589,8 @@ export default function LandingPage() {
                   <div className="border-b md:border-b-0 border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
                     <div>
                       <div className="flex items-center gap-2.5 mb-2">
-                        <ShieldAlert className="w-5 h-5 text-[#37322F] shrink-0" />
-                        <h3 className="text-xl font-semibold text-[#37322F]">Sentinela Anti-Mistura PF × PJ</h3>
+                        <ShieldAlert className="w-5 h-5 text-secondary shrink-0" />
+                        <h3 className="text-xl font-semibold text-secondary">Sentinela Anti-Mistura PF × PJ</h3>
                       </div>
                       <p className="text-sm text-[#605A57] leading-relaxed">
                         Detecta despesas pessoais pagas na conta da empresa e avisa o custo tributário e os riscos do Art. 50 do Código Civil (desconsideração da personalidade jurídica).
@@ -598,7 +598,7 @@ export default function LandingPage() {
                     </div>
                     <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
                       <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Segurança</span>
-                      <span className="font-medium text-[#37322F]">Blindagem patrimonial e extrato 100% limpo</span>
+                      <span className="font-medium text-secondary">Blindagem patrimonial e extrato 100% limpo</span>
                     </div>
                   </div>
 
@@ -606,8 +606,8 @@ export default function LandingPage() {
                   <div className="p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
                     <div>
                       <div className="flex items-center gap-2.5 mb-2">
-                        <Clock className="w-5 h-5 text-[#37322F] shrink-0" />
-                        <h3 className="text-xl font-semibold text-[#37322F]">Provisão em Tempo Real do DAS</h3>
+                        <Clock className="w-5 h-5 text-secondary shrink-0" />
+                        <h3 className="text-xl font-semibold text-secondary">Provisão em Tempo Real do DAS</h3>
                       </div>
                       <p className="text-sm text-[#605A57] leading-relaxed">
                         Conforme suas notas e recebimentos entram, a Rovee calcula e provisiona o imposto do mês. Botão de 1 clique para separar o valor e nunca ser pego de surpresa.
@@ -615,7 +615,7 @@ export default function LandingPage() {
                     </div>
                     <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
                       <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Pontualidade</span>
-                      <span className="font-medium text-[#37322F]">Dinheiro do imposto sempre reservado no dia 20</span>
+                      <span className="font-medium text-secondary">Dinheiro do imposto sempre reservado no dia 20</span>
                     </div>
                   </div>
 
@@ -722,7 +722,7 @@ function FeatureCard({
         </div>
       )}
 
-      <div className="self-stretch flex justify-center flex-col text-[#37322F] text-sm font-semibold leading-5 font-sans">
+      <div className="self-stretch flex justify-center flex-col text-secondary text-sm font-semibold leading-5 font-sans">
         {title}
       </div>
       <div className="self-stretch text-[#605A57] text-xs font-normal leading-relaxed font-sans">

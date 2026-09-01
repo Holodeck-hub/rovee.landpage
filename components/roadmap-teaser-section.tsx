@@ -42,7 +42,7 @@ export function RoadmapTeaserSection() {
             Evolução Contínua & Roadmap
           </span>
 
-          <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
             O futuro da gestão fiscal e patrimonial está sendo construído aqui
           </h2>
 
@@ -79,17 +79,16 @@ export function RoadmapTeaserSection() {
               >
                 <div>
                   <div className="flex items-center gap-2.5 mb-2">
-                    <Icon className="w-5 h-5 text-[#37322F] shrink-0" />
-                    <h3 className="text-xl font-semibold text-[#37322F]">{item.title}</h3>
+                    <Icon className="w-5 h-5 text-secondary shrink-0" />
+                    <h3 className="text-xl font-semibold text-secondary">{item.title}</h3>
                   </div>
                   <p className="text-sm text-[#605A57] leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
+                <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center text-xs font-mono text-[#605A57]">
                   <span className="text-[#82807C] text-[11px] uppercase tracking-wider">{item.tag}</span>
-                  <span className="font-medium text-indigo-600">{item.badge}</span>
                 </div>
               </div>
             )
