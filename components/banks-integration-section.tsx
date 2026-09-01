@@ -1,135 +1,223 @@
 "use client"
 
-const BANKS = [
-  { name: "Itaú Empresas", type: "Conta Corrente PJ", protocol: "Open Finance & OFX" },
-  { name: "Nubank PJ", type: "Conta Digital PJ", protocol: "Open Finance & OFX" },
-  { name: "Banco Inter", type: "Inter Empresas", protocol: "Open Finance & OFX" },
-  { name: "Cora", type: "Gestão Financeira PJ", protocol: "Open Finance & OFX" },
-  { name: "C6 Bank PJ", type: "Conta Empresas", protocol: "Open Finance & OFX" },
-  { name: "Bradesco", type: "Net Empresa PJ", protocol: "Open Finance & OFX" },
-  { name: "Santander", type: "Santander Empresas", protocol: "Open Finance & OFX" },
-  { name: "BTG Pactual", type: "Empresas & Corporate", protocol: "Open Finance & OFX" },
-  { name: "Banco do Brasil", type: "BB Empresas", protocol: "Open Finance & OFX" },
-  { name: "Sicoob & Sicredi", type: "Cooperativas PJ", protocol: "Open Finance & OFX" },
-  { name: "Safra & Daycoval", type: "Bancos Médios PJ", protocol: "Open Finance & OFX" },
-  { name: "Outros Bancos", type: "Qualquer Banco BR", protocol: "Importação OFX / PDF" },
-]
+import { ArrowRight, ShieldCheck } from "lucide-react"
 
-export function BanksIntegrationSection() {
-  return (
-    <div id="integracoes" className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
-      {/* Section Header */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
-        <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
-            Integrações & Bancos
+interface BanksIntegrationSectionProps {
+  onOpenConsultant?: () => void
+}
+
+// Authentic Bank Logos with exact brand colors and icons
+function BankIcon({ code }: { code: string }) {
+  switch (code) {
+    case "itau":
+      return (
+        <div className="w-6 h-6 rounded-md bg-[#EC7000] flex items-center justify-center text-white font-bold text-[10px] shadow-xs shrink-0">
+          <span className="font-sans font-black tracking-tighter text-[#003399] bg-[#FFF] px-1 py-0.5 rounded-[2px] scale-75">
+            itaú
           </span>
-
-          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
-            Compatível com as principais contas PJ do país
-          </h2>
-
-          <p className="text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
-            Conecte suas contas bancárias via Open Finance com leitura em tempo real ou importe arquivos de extrato OFX e PDF com 1 clique.
-          </p>
         </div>
-      </div>
+      )
+    case "nubank":
+      return (
+        <div className="w-6 h-6 rounded-md bg-[#820AD1] flex items-center justify-center text-white font-bold text-xs shadow-xs shrink-0 font-sans">
+          Nu
+        </div>
+      )
+    case "inter":
+      return (
+        <div className="w-6 h-6 rounded-md bg-[#FF7A00] flex items-center justify-center text-white font-bold text-[10px] shadow-xs shrink-0 font-sans">
+          inter
+        </div>
+      )
+    case "cora":
+      return (
+        <div className="w-6 h-6 rounded-md bg-[#FE3E6D] flex items-center justify-center text-white font-black text-xs shadow-xs shrink-0 font-sans">
+          C
+        </div>
+      )
+    case "c6":
+      return (
+        <div className="w-6 h-6 rounded-md bg-[#1E1E1E] flex items-center justify-center text-white font-bold text-[11px] shadow-xs shrink-0 font-sans border border-neutral-700">
+          C6
+        </div>
+      )
+    case "bradesco":
+      return (
+        <div className="w-6 h-6 rounded-md bg-[#CC092F] flex items-center justify-center text-white font-bold text-[11px] shadow-xs shrink-0 font-sans">
+          <div className="w-3.5 h-3.5 border-2 border-white rounded-full flex items-center justify-center">
+            <div className="w-1.5 h-1.5 bg-white rounded-full" />
+          </div>
+        </div>
+      )
+    case "santander":
+      return (
+        <div className="w-6 h-6 rounded-md bg-[#EC0000] flex items-center justify-center text-white font-bold text-[11px] shadow-xs shrink-0">
+          <div className="w-3 h-3 border-b-2 border-r-2 border-white rotate-45" />
+        </div>
+      )
+    case "btg":
+      return (
+        <div className="w-6 h-6 rounded-md bg-[#001E62] flex items-center justify-center text-white font-black text-[9px] shadow-xs shrink-0 font-sans">
+          BTG
+        </div>
+      )
+    case "bb":
+      return (
+        <div className="w-6 h-6 rounded-md bg-[#FFF000] flex items-center justify-center text-[#003882] font-black text-[10px] shadow-xs shrink-0 font-sans">
+          BB
+        </div>
+      )
+    case "sicoob":
+      return (
+        <div className="w-6 h-6 rounded-md bg-[#003641] flex items-center justify-center text-[#00AE9D] font-black text-[10px] shadow-xs shrink-0 font-sans">
+          S
+        </div>
+      )
+    default:
+      return (
+        <div className="w-6 h-6 rounded-md bg-slate-800 flex items-center justify-center text-white font-bold text-[10px] shadow-xs shrink-0">
+          OFX
+        </div>
+      )
+  }
+}
 
+export function BanksIntegrationSection({ onOpenConsultant }: BanksIntegrationSectionProps) {
+  return (
+    <div id="integracoes" className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center overflow-hidden">
       {/* Framing Container */}
       <div className="self-stretch flex justify-center items-stretch relative">
-        {/* Left vertical pattern */}
-        <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
-          <div className="w-[120px] sm:w-[140px] md:w-[162px] left-[-40px] sm:left-[-50px] md:left-[-58px] top-[-120px] absolute flex flex-col justify-start items-start">
-            {Array.from({ length: 150 }).map((_, i) => (
-              <div
-                key={i}
-                className="self-stretch h-3 sm:h-4 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-              />
-            ))}
-          </div>
-        </div>
 
-        {/* Center Container: Uniform Divided Grid */}
-        <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[rgba(55,50,47,0.12)] bg-white">
-          {/* Column 1 */}
-          <div className="flex flex-col divide-y divide-[rgba(55,50,47,0.12)]">
-            {BANKS.slice(0, 4).map((bank, idx) => (
-              <div
-                key={idx}
-                className="p-6 sm:p-7 flex flex-col justify-between gap-2 bg-white hover:bg-[#F8FAFC]/80 transition-colors"
+        {/* Center Canvas with Dotted Pattern & Floating Bank Badges */}
+        <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white relative flex flex-col items-center justify-center min-h-[540px]">
+          
+          {/* Subtle Dot Grid Background */}
+          <div
+            className="absolute inset-0 opacity-[0.45] pointer-events-none"
+            style={{
+              backgroundImage: `radial-gradient(rgba(55, 50, 47, 0.25) 1px, transparent 1px)`,
+              backgroundSize: "20px 20px",
+            }}
+          />
+
+          {/* ── FLOATING BANK BADGES (DESKTOP / TABLET) ── */}
+
+          {/* Top Left: Itaú Empresas */}
+          <div className="hidden lg:flex absolute left-8 top-12 items-center gap-2.5 px-4 py-2 bg-white/95 backdrop-blur-xs rounded-full border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.08)] hover:scale-105 hover:shadow-md transition-all z-20 cursor-default animate-pulse">
+            <BankIcon code="itau" />
+            <span className="text-xs font-semibold text-secondary font-sans">Itaú Empresas</span>
+          </div>
+
+          {/* Mid Left: Nubank PJ */}
+          <div className="hidden lg:flex absolute left-4 top-48 items-center gap-2.5 px-4 py-2 bg-white/95 backdrop-blur-xs rounded-full border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.08)] hover:scale-105 hover:shadow-md transition-all z-20 cursor-default">
+            <BankIcon code="nubank" />
+            <span className="text-xs font-semibold text-secondary font-sans">Nubank PJ</span>
+          </div>
+
+          {/* Bottom Left: Banco Inter */}
+          <div className="hidden lg:flex absolute left-10 bottom-14 items-center gap-2.5 px-4 py-2 bg-white/95 backdrop-blur-xs rounded-full border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.08)] hover:scale-105 hover:shadow-md transition-all z-20 cursor-default">
+            <BankIcon code="inter" />
+            <span className="text-xs font-semibold text-secondary font-sans">Inter Empresas</span>
+          </div>
+
+          {/* Top Right: Bradesco */}
+          <div className="hidden lg:flex absolute right-8 top-12 items-center gap-2.5 px-4 py-2 bg-white/95 backdrop-blur-xs rounded-full border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.08)] hover:scale-105 hover:shadow-md transition-all z-20 cursor-default">
+            <BankIcon code="bradesco" />
+            <span className="text-xs font-semibold text-secondary font-sans">Bradesco PJ</span>
+          </div>
+
+          {/* Mid Right: C6 Bank PJ */}
+          <div className="hidden lg:flex absolute right-4 top-44 items-center gap-2.5 px-4 py-2 bg-white/95 backdrop-blur-xs rounded-full border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.08)] hover:scale-105 hover:shadow-md transition-all z-20 cursor-default">
+            <BankIcon code="c6" />
+            <span className="text-xs font-semibold text-secondary font-sans">C6 Bank Empresas</span>
+          </div>
+
+          {/* Bottom Right: Santander */}
+          <div className="hidden lg:flex absolute right-12 bottom-14 items-center gap-2.5 px-4 py-2 bg-white/95 backdrop-blur-xs rounded-full border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.08)] hover:scale-105 hover:shadow-md transition-all z-20 cursor-default">
+            <BankIcon code="santander" />
+            <span className="text-xs font-semibold text-secondary font-sans">Santander PJ</span>
+          </div>
+
+          {/* ── CENTRAL HERO CONTENT ── */}
+          <div className="relative z-10 max-w-[620px] flex flex-col items-center text-center gap-4 py-4">
+            {/* Tag */}
+            <div className="px-3.5 py-1 bg-white border border-[rgba(55,50,47,0.15)] rounded-full text-xs font-mono font-semibold text-secondary shadow-2xs">
+              Integrações
+            </div>
+
+            {/* Main Headline */}
+            <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+              Integre como quiser!
+              <br />
+              <span className="text-primary font-bold">Open Finance, OFX, PDF!</span>
+            </h2>
+
+            {/* Subtitle */}
+            <p className="text-[#605A57] text-xs sm:text-sm md:text-base leading-relaxed font-sans max-w-[500px]">
+              Conecte automaticamente suas contas bancárias via Open Finance a partir do Rovee Pro ou faça upload de arquivos de extrato com 1 clique no Starter.
+            </p>
+
+            {/* Action Button */}
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={onOpenConsultant}
+                className="px-6 py-3 bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-semibold rounded-full flex items-center gap-2 transition-all shadow-sm cursor-pointer"
               >
-                <div className="flex items-center justify-between">
-                  <h3 className="text-base font-semibold text-secondary font-sans">
-                    {bank.name}
-                  </h3>
-                  <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200/60">
-                    CONECTADO
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-xs text-[#605A57]">
-                  <span>{bank.type}</span>
-                  <span className="font-mono text-[11px] text-[#82807C]">{bank.protocol}</span>
-                </div>
-              </div>
-            ))}
+                <span>Fale com um consultor</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Footnote */}
+            <div className="text-[11px] text-[#82807C] font-sans flex items-center justify-center gap-1.5 pt-1">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Conexão 100% segura e regulada pelo Banco Central</span>
+            </div>
           </div>
 
-          {/* Column 2 */}
-          <div className="flex flex-col divide-y divide-[rgba(55,50,47,0.12)]">
-            {BANKS.slice(4, 8).map((bank, idx) => (
-              <div
-                key={idx}
-                className="p-6 sm:p-7 flex flex-col justify-between gap-2 bg-white hover:bg-[#F8FAFC]/80 transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="text-base font-semibold text-secondary font-sans">
-                    {bank.name}
-                  </h3>
-                  <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200/60">
-                    CONECTADO
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-xs text-[#605A57]">
-                  <span>{bank.type}</span>
-                  <span className="font-mono text-[11px] text-[#82807C]">{bank.protocol}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Column 3 */}
-          <div className="flex flex-col divide-y divide-[rgba(55,50,47,0.12)]">
-            {BANKS.slice(8, 12).map((bank, idx) => (
-              <div
-                key={idx}
-                className="p-6 sm:p-7 flex flex-col justify-between gap-2 bg-white hover:bg-[#F8FAFC]/80 transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="text-base font-semibold text-secondary font-sans">
-                    {bank.name}
-                  </h3>
-                  <span className="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200/60">
-                    SUPORTADO
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-xs text-[#605A57]">
-                  <span>{bank.type}</span>
-                  <span className="font-mono text-[11px] text-[#82807C]">{bank.protocol}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Right vertical pattern */}
-        <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
-          <div className="w-[120px] sm:w-[140px] md:w-[162px] left-[-40px] sm:left-[-50px] md:left-[-58px] top-[-120px] absolute flex flex-col justify-start items-start">
-            {Array.from({ length: 150 }).map((_, i) => (
-              <div
-                key={i}
-                className="self-stretch h-3 sm:h-4 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-              />
-            ))}
+          {/* ── MOBILE / TABLET PILLS GRID (FLEX-WRAP) ── */}
+          <div className="flex lg:hidden flex-wrap items-center justify-center gap-2.5 pt-8 relative z-10 max-w-[540px]">
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-[rgba(55,50,47,0.12)] shadow-2xs text-xs font-medium text-secondary">
+              <BankIcon code="itau" />
+              <span>Itaú</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-[rgba(55,50,47,0.12)] shadow-2xs text-xs font-medium text-secondary">
+              <BankIcon code="nubank" />
+              <span>Nubank</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-[rgba(55,50,47,0.12)] shadow-2xs text-xs font-medium text-secondary">
+              <BankIcon code="inter" />
+              <span>Inter</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-[rgba(55,50,47,0.12)] shadow-2xs text-xs font-medium text-secondary">
+              <BankIcon code="cora" />
+              <span>Cora</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-[rgba(55,50,47,0.12)] shadow-2xs text-xs font-medium text-secondary">
+              <BankIcon code="c6" />
+              <span>C6 Bank</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-[rgba(55,50,47,0.12)] shadow-2xs text-xs font-medium text-secondary">
+              <BankIcon code="bradesco" />
+              <span>Bradesco</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-[rgba(55,50,47,0.12)] shadow-2xs text-xs font-medium text-secondary">
+              <BankIcon code="santander" />
+              <span>Santander</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-[rgba(55,50,47,0.12)] shadow-2xs text-xs font-medium text-secondary">
+              <BankIcon code="btg" />
+              <span>BTG</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-[rgba(55,50,47,0.12)] shadow-2xs text-xs font-medium text-secondary">
+              <BankIcon code="bb" />
+              <span>Banco do Brasil</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-[rgba(55,50,47,0.12)] shadow-2xs text-xs font-medium text-secondary">
+              <BankIcon code="sicoob" />
+              <span>Sicoob / Sicredi</span>
+            </div>
           </div>
         </div>
       </div>

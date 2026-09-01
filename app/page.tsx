@@ -665,7 +665,7 @@ export default function LandingPage() {
 
             {/* ── 8.1 SEÇÃO: BANCOS & CONTAS INTEGRADAS (Open Finance) ── */}
             <div id="integracoes" className="w-full">
-              <BanksIntegrationSection />
+              <BanksIntegrationSection onOpenConsultant={() => setIsConsultantModalOpen(true)} />
             </div>
 
             {/* ── 9. SEÇÃO: LIVE METRICS (Optimus Base) ────────────────── */}
