@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { HeroStatsMarquee } from "../components/hero-stats-marquee"
+import { AnimatedWave } from "../components/animated-wave"
 import { PredictiveIntelligenceSection } from "../components/predictive-intelligence-section"
 import { FiscalAgentsSection } from "../components/fiscal-agents-section"
 import { AccountantChannelSection } from "../components/accountant-channel-section"
@@ -181,7 +182,7 @@ export default function LandingPage() {
 
               {/* Main Headline */}
               <div className="w-full max-w-[840px] flex flex-col justify-center items-center gap-4">
-                <h1 className="text--indigo-500 text-[24px] xs:text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] font-semibold leading-[1.14] font-sans tracking-tight">
+                <h1 className="text-[#37322F] text-[24px] xs:text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] font-semibold leading-[1.14] font-sans tracking-tight">
                   Sua contabilidade calcula o imposto. A Rovee garante que você pague o mínimo.
                 </h1>
 
@@ -202,7 +203,7 @@ export default function LandingPage() {
 
                 <a
                   href="#fiscal"
-                  className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text--indigo-500 border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
+                  className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-[#37322F] border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
                 >
                   Ver Demonstração
                 </a>
@@ -213,38 +214,26 @@ export default function LandingPage() {
                 <HeroStatsMarquee />
               </div>
 
-              {/* ── 4. PRODUCT SHOWCASE INTERACTIVE DASHBOARD (FULL WIDTH) ─────────────── */}
-              <div className="self-stretch -mx-4 md:-mx-8 lg:mx-0 w-[calc(100%+32px)] md:w-[calc(100%+64px)] lg:w-full border-t border-[rgba(55,50,47,0.12)] bg-white flex flex-col text-left relative z-10 mt-10">
-
-                {/* Mockup Top Window Bar */}
-                <div className="w-full px-4 sm:px-6 md:px-8 py-3.5 bg-[#F1F5F9] border-b border-[rgba(55,50,47,0.12)] flex flex-wrap items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-amber-400/70" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/70" />
-                    </div>
-                    <span className="text-xs font-mono text-[#605A57] font-medium">app.rovee.com.br / fiscal-console</span>
-                  </div>
-
-                  <div className="flex items-center gap-4 text-xs font-mono text-[#605A57]">
-                    <span className="hidden sm:inline">Simples Nacional · Anexo III</span>
-                    <span className="px-2 py-0.5 bg-white text-emerald-800 border border-[rgba(55,50,47,0.14)] rounded text-[11px] font-semibold">
-                      Extrato Conciliado
-                    </span>
-                  </div>
+              {/* ── DIVISOR DE TRANSIÇÃO COM ANIMATED WAVE ── */}
+              <div className="self-stretch -mx-4 md:-mx-8 lg:mx-0 w-[calc(100%+32px)] md:w-[calc(100%+64px)] lg:w-full h-12 sm:h-14 relative overflow-hidden flex items-center justify-center bg-[#F8FAFC]">
+                <div className="w-full h-full opacity-40 pointer-events-none select-none">
+                  <AnimatedWave />
                 </div>
+              </div>
+
+              {/* ── 4. PRODUCT SHOWCASE INTERACTIVE DASHBOARD (FULL WIDTH) ─────────────── */}
+              <div className="self-stretch -mx-4 md:-mx-8 lg:mx-0 w-[calc(100%+32px)] md:w-[calc(100%+64px)] lg:w-full border-t border-[rgba(55,50,47,0.12)] bg-white flex flex-col text-left relative z-10">
 
                 {/* Dashboard Content per Active Card Tab */}
-                <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8 bg-white flex flex-col gap-6">
+                <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8 bg-white flex flex-col gap-6 h-[390px] sm:h-[350px] overflow-hidden justify-between">
 
                   {/* ── TAB 0: O SEU CHEQUE DO MÊS (TABELA FINANCEIRA) ── */}
                   {activeCard === 0 && (
-                    <div className="flex flex-col gap-5 animate-fadeIn">
+                    <div className="flex flex-col gap-5 animate-fadeIn h-full justify-between">
                       {/* Header Summary */}
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                         <div>
-                          <h3 className="text-lg sm:text-xl font-semibold text--indigo-500">
+                          <h3 className="text-lg sm:text-xl font-semibold text-[#37322F]">
                             Demonstrativo de Clareza de Caixa
                           </h3>
                           <p className="text-xs text-[#605A57] mt-0.5">
@@ -269,7 +258,7 @@ export default function LandingPage() {
 
                         {/* Row 1: Seu para Retirar */}
                         <div className="grid grid-cols-12 gap-2 px-4 py-3.5 border-b border-[rgba(55,50,47,0.12)] items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
-                          <div className="col-span-4 font-medium text--indigo-500">
+                          <div className="col-span-4 font-medium text-[#37322F]">
                             1. Retirada Pessoal PF
                           </div>
                           <div className="col-span-3">
@@ -280,14 +269,14 @@ export default function LandingPage() {
                           <div className="col-span-3 hidden sm:block text-[#605A57] text-[11px]">
                             Pró-labore R$ 8.5k + Isento R$ 15.7k
                           </div>
-                          <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text--indigo-500">
+                          <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text-[#37322F]">
                             R$ 24.200,00
                           </div>
                         </div>
 
                         {/* Row 2: Reserva da Empresa */}
                         <div className="grid grid-cols-12 gap-2 px-4 py-3.5 border-b border-[rgba(55,50,47,0.12)] items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
-                          <div className="col-span-4 font-medium text--indigo-500">
+                          <div className="col-span-4 font-medium text-[#37322F]">
                             2. Reserva Operacional PJ
                           </div>
                           <div className="col-span-3">
@@ -298,14 +287,14 @@ export default function LandingPage() {
                           <div className="col-span-3 hidden sm:block text-[#605A57] text-[11px]">
                             Custos Fixos + Giro Seguro
                           </div>
-                          <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text--indigo-500">
+                          <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text-[#37322F]">
                             R$ 9.800,00
                           </div>
                         </div>
 
                         {/* Row 3: Provisão DAS */}
                         <div className="grid grid-cols-12 gap-2 px-4 py-3.5 items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
-                          <div className="col-span-4 font-medium text--indigo-500">
+                          <div className="col-span-4 font-medium text-[#37322F]">
                             3. Provisão Guia DAS
                           </div>
                           <div className="col-span-3">
@@ -316,7 +305,7 @@ export default function LandingPage() {
                           <div className="col-span-3 hidden sm:block text-[#605A57] text-[11px]">
                             Alíquota 6,0% (Anexo III)
                           </div>
-                          <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text--indigo-500">
+                          <div className="col-span-5 sm:col-span-2 text-right font-mono font-semibold text-[#37322F]">
                             R$ 4.450,00
                           </div>
                         </div>
@@ -360,11 +349,11 @@ export default function LandingPage() {
 
                   {/* ── TAB 1: OTIMIZADOR DE FATOR R ── */}
                   {activeCard === 1 && (
-                    <div className="flex flex-col gap-5 animate-fadeIn">
+                    <div className="flex flex-col gap-5 animate-fadeIn h-full justify-between">
                       {/* Header Summary */}
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                         <div>
-                          <h3 className="text-lg sm:text-xl font-semibold text--indigo-500">
+                          <h3 className="text-lg sm:text-xl font-semibold text-[#37322F]">
                             Diagnóstico Comparativo de Enquadramento
                           </h3>
                           <p className="text-xs text-[#605A57] mt-0.5">
@@ -394,11 +383,11 @@ export default function LandingPage() {
                         <div className="grid grid-cols-12 gap-2 px-4 py-3 border-b border-[rgba(55,50,47,0.12)] items-center text-xs">
                           <div className="col-span-4 text-[#605A57]">Pró-labore / Folha Mensal</div>
                           <div className="col-span-4 font-mono text-[#605A57]">R$ 1.518,00 (3,9%)</div>
-                          <div className="col-span-4 text-right font-mono font-semibold text--indigo-500">R$ 8.500,00 (28,2%)</div>
+                          <div className="col-span-4 text-right font-mono font-semibold text-[#37322F]">R$ 8.500,00 (28,2%)</div>
                         </div>
 
                         <div className="grid grid-cols-12 gap-2 px-4 py-3 items-center text-xs bg-emerald-50/30">
-                          <div className="col-span-4 font-semibold text--indigo-500">Imposto Devido Estimado/Ano</div>
+                          <div className="col-span-4 font-semibold text-[#37322F]">Imposto Devido Estimado/Ano</div>
                           <div className="col-span-4 font-mono text-red-700">R$ 55.800,00</div>
                           <div className="col-span-4 text-right font-mono font-bold text-emerald-700">R$ 21.600,00</div>
                         </div>
@@ -412,11 +401,11 @@ export default function LandingPage() {
 
                   {/* ── TAB 2: PREVISÃO & RUNWAY ── */}
                   {activeCard === 2 && (
-                    <div className="flex flex-col gap-5 animate-fadeIn">
+                    <div className="flex flex-col gap-5 animate-fadeIn h-full justify-between">
                       {/* Header Summary */}
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                         <div>
-                          <h3 className="text-lg sm:text-xl font-semibold text--indigo-500">
+                          <h3 className="text-lg sm:text-xl font-semibold text-[#37322F]">
                             Previsibilidade de Caixa & Runway
                           </h3>
                           <p className="text-xs text-[#605A57] mt-0.5">
@@ -439,23 +428,23 @@ export default function LandingPage() {
                         </div>
 
                         <div className="grid grid-cols-12 gap-2 px-4 py-3 border-b border-[rgba(55,50,47,0.12)] items-center text-xs">
-                          <div className="col-span-3 font-medium text--indigo-500">Maio/2026</div>
+                          <div className="col-span-3 font-medium text-[#37322F]">Maio/2026</div>
                           <div className="col-span-3 text-xs text-[#605A57]">Realizado</div>
-                          <div className="col-span-3 font-mono font-semibold text--indigo-500">R$ 38.450,00</div>
+                          <div className="col-span-3 font-mono font-semibold text-[#37322F]">R$ 38.450,00</div>
                           <div className="col-span-3 text-right font-mono text-[#605A57]">R$ 4.450,00</div>
                         </div>
 
                         <div className="grid grid-cols-12 gap-2 px-4 py-3 border-b border-[rgba(55,50,47,0.12)] items-center text-xs">
-                          <div className="col-span-3 font-medium text--indigo-500">Junho/2026</div>
+                          <div className="col-span-3 font-medium text-[#37322F]">Junho/2026</div>
                           <div className="col-span-3 text-xs text-emerald-700 font-medium">Projetado (+12%)</div>
-                          <div className="col-span-3 font-mono font-semibold text--indigo-500">R$ 43.000,00</div>
+                          <div className="col-span-3 font-mono font-semibold text-[#37322F]">R$ 43.000,00</div>
                           <div className="col-span-3 text-right font-mono text-[#605A57]">R$ 4.730,00</div>
                         </div>
 
                         <div className="grid grid-cols-12 gap-2 px-4 py-3 items-center text-xs">
-                          <div className="col-span-3 font-medium text--indigo-500">Julho/2026</div>
+                          <div className="col-span-3 font-medium text-[#37322F]">Julho/2026</div>
                           <div className="col-span-3 text-xs text-emerald-700 font-medium">Projetado (+18%)</div>
-                          <div className="col-span-3 font-mono font-semibold text--indigo-500">R$ 45.500,00</div>
+                          <div className="col-span-3 font-mono font-semibold text-[#37322F]">R$ 45.500,00</div>
                           <div className="col-span-3 text-right font-mono text-[#605A57]">R$ 5.005,00</div>
                         </div>
                       </div>
@@ -463,7 +452,7 @@ export default function LandingPage() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                         <div className="p-3 bg-[#F8FAFC] border border-[rgba(55,50,47,0.12)] rounded-md flex justify-between">
                           <span className="text-[#605A57]">Burn Rate Médio:</span>
-                          <span className="font-mono font-semibold text--indigo-500">R$ 4.580,00/mês</span>
+                          <span className="font-mono font-semibold text-[#37322F]">R$ 4.580,00/mês</span>
                         </div>
                         <div className="p-3 bg-[#F8FAFC] border border-[rgba(55,50,47,0.12)] rounded-md flex justify-between">
                           <span className="text-[#605A57]">Alerta de Liquidez:</span>
@@ -537,7 +526,7 @@ export default function LandingPage() {
                     Motor de Inteligência Fiscal
                   </span>
 
-                  <h2 className="text--indigo-500 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+                  <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
                     O fim das dúvidas sobre imposto e pró-labore
                   </h2>
 
@@ -566,8 +555,8 @@ export default function LandingPage() {
                   <div className="border-b border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
                     <div>
                       <div className="flex items-center gap-2.5 mb-2">
-                        <DollarSign className="w-5 h-5 text--indigo-500 shrink-0" />
-                        <h3 className="text-xl font-semibold text--indigo-500">Clareza de Caixa (&quot;Cheque do Mês&quot;)</h3>
+                        <DollarSign className="w-5 h-5 text-[#37322F] shrink-0" />
+                        <h3 className="text-xl font-semibold text-[#37322F]">Clareza de Caixa (&quot;Cheque do Mês&quot;)</h3>
                       </div>
                       <p className="text-sm text-[#605A57] leading-relaxed">
                         Divide o dinheiro da empresa em 3 partes claras: o que você pode transferir para sua física sem pagar imposto de novo, a reserva da empresa e o imposto do próximo dia 20.
@@ -575,7 +564,7 @@ export default function LandingPage() {
                     </div>
                     <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
                       <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Decisão</span>
-                      <span className="font-medium text--indigo-500">Responde todo dia: &quot;Quanto posso gastar hoje?&quot;</span>
+                      <span className="font-medium text-[#37322F]">Responde todo dia: &quot;Quanto posso gastar hoje?&quot;</span>
                     </div>
                   </div>
 
@@ -583,8 +572,8 @@ export default function LandingPage() {
                   <div className="border-b border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
                     <div>
                       <div className="flex items-center gap-2.5 mb-2">
-                        <TrendingUp className="w-5 h-5 text--indigo-500 shrink-0" />
-                        <h3 className="text-xl font-semibold text--indigo-500">Otimizador do Fator R</h3>
+                        <TrendingUp className="w-5 h-5 text-[#37322F] shrink-0" />
+                        <h3 className="text-xl font-semibold text-[#37322F]">Otimizador do Fator R</h3>
                       </div>
                       <p className="text-sm text-[#605A57] leading-relaxed">
                         Calcula o pró-labore ideal para pagar 6% de Simples Nacional (Anexo III) em vez de 15,5% (Anexo V). Mostra exatamente quanto você economiza em reais por ano.
@@ -600,8 +589,8 @@ export default function LandingPage() {
                   <div className="border-b md:border-b-0 border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
                     <div>
                       <div className="flex items-center gap-2.5 mb-2">
-                        <ShieldAlert className="w-5 h-5 text--indigo-500 shrink-0" />
-                        <h3 className="text-xl font-semibold text--indigo-500">Sentinela Anti-Mistura PF × PJ</h3>
+                        <ShieldAlert className="w-5 h-5 text-[#37322F] shrink-0" />
+                        <h3 className="text-xl font-semibold text-[#37322F]">Sentinela Anti-Mistura PF × PJ</h3>
                       </div>
                       <p className="text-sm text-[#605A57] leading-relaxed">
                         Detecta despesas pessoais pagas na conta da empresa e avisa o custo tributário e os riscos do Art. 50 do Código Civil (desconsideração da personalidade jurídica).
@@ -609,7 +598,7 @@ export default function LandingPage() {
                     </div>
                     <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
                       <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Segurança</span>
-                      <span className="font-medium text--indigo-500">Blindagem patrimonial e extrato 100% limpo</span>
+                      <span className="font-medium text-[#37322F]">Blindagem patrimonial e extrato 100% limpo</span>
                     </div>
                   </div>
 
@@ -617,8 +606,8 @@ export default function LandingPage() {
                   <div className="p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
                     <div>
                       <div className="flex items-center gap-2.5 mb-2">
-                        <Clock className="w-5 h-5 text--indigo-500 shrink-0" />
-                        <h3 className="text-xl font-semibold text--indigo-500">Provisão em Tempo Real do DAS</h3>
+                        <Clock className="w-5 h-5 text-[#37322F] shrink-0" />
+                        <h3 className="text-xl font-semibold text-[#37322F]">Provisão em Tempo Real do DAS</h3>
                       </div>
                       <p className="text-sm text-[#605A57] leading-relaxed">
                         Conforme suas notas e recebimentos entram, a Rovee calcula e provisiona o imposto do mês. Botão de 1 clique para separar o valor e nunca ser pego de surpresa.
@@ -626,7 +615,7 @@ export default function LandingPage() {
                     </div>
                     <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
                       <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Pontualidade</span>
-                      <span className="font-medium text--indigo-500">Dinheiro do imposto sempre reservado no dia 20</span>
+                      <span className="font-medium text-[#37322F]">Dinheiro do imposto sempre reservado no dia 20</span>
                     </div>
                   </div>
 
@@ -733,7 +722,7 @@ function FeatureCard({
         </div>
       )}
 
-      <div className="self-stretch flex justify-center flex-col text--indigo-500 text-sm font-semibold leading-5 font-sans">
+      <div className="self-stretch flex justify-center flex-col text-[#37322F] text-sm font-semibold leading-5 font-sans">
         {title}
       </div>
       <div className="self-stretch text-[#605A57] text-xs font-normal leading-relaxed font-sans">

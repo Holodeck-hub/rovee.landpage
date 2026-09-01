@@ -85,10 +85,6 @@ export default function FooterSection() {
         <div>
           © {new Date().getFullYear()} Rovee Tecnologia Financeira Ltda. Todos os direitos reservados.
         </div>
-        <div className="flex items-center gap-4 text-[11px] font-mono">
-          <span>STATUS: TODOS OS SISTEMAS OPERACIONAIS</span>
-          <span className="w-2 h-2 rounded-full bg-emerald-500" />
-        </div>
       </div>
     </div>
   )

@@ -2,7 +2,13 @@
 
 import { useEffect, useRef } from "react"
 
-export function AnimatedWave({ className = "" }: { className?: string }) {
+export function AnimatedWave({
+  className = "",
+  color = "99, 102, 241",
+}: {
+  className?: string
+  color?: string
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const frameRef = useRef(0)
 
@@ -52,9 +58,9 @@ export function AnimatedWave({ className = "" }: { className?: string }) {
           const normalized = (combined + 1) / 2
 
           const charIndex = Math.floor(normalized * (chars.length - 1))
-          const alpha = 0.08 + normalized * 0.35
+          const alpha = 0.12 + normalized * 0.45
 
-          ctx.fillStyle = `rgba(55, 50, 47, ${alpha})`
+          ctx.fillStyle = `rgba(${color}, ${alpha})`
           ctx.fillText(chars[charIndex], px, py)
         }
       }

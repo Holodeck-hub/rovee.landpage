@@ -39,7 +39,7 @@ function AnimatedCounter({ end, suffix = "", prefix = "" }: { end: number; suffi
   }, [end, hasAnimated])
 
   return (
-    <div ref={ref} className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text--indigo-500">
+    <div ref={ref} className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[#37322F]">
       {prefix}{count.toLocaleString("pt-BR")}{suffix}
     </div>
   )
@@ -88,7 +88,7 @@ export function LiveMetricsSection() {
             Métricas em Tempo Real
           </span>
 
-          <h2 className="text--indigo-500 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
             Números que comprovam a economia e a segurança da Rovee
           </h2>
 
@@ -121,7 +121,7 @@ export function LiveMetricsSection() {
             >
               <AnimatedCounter end={metric.value} suffix={metric.suffix} prefix={metric.prefix} />
               <div>
-                <h3 className="text-base sm:text-lg font-semibold text--indigo-500 mb-1">
+                <h3 className="text-base sm:text-lg font-semibold text-[#37322F] mb-1">
                   {metric.label}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#605A57] leading-relaxed">

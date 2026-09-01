@@ -99,11 +99,11 @@ export function AccountantChannelSection() {
         {/* Center Container: Live Content */}
         <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] bg-white flex flex-col text-left">
           {/* Dashboard Content per Active Tab */}
-          <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8 bg-white flex flex-col gap-6">
+          <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8 bg-white flex flex-col gap-6 h-[520px] sm:h-[460px] lg:h-[430px] overflow-hidden justify-between">
             
             {/* ── TAB 0: MEMÓRIA DE CÁLCULO FATOR R ── */}
             {activeTab === 0 && (
-              <div className="flex flex-col gap-5 animate-fadeIn">
+              <div className="flex flex-col gap-5 animate-fadeIn h-full justify-between">
                 {/* Header Summary */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                   <div>
@@ -216,7 +216,7 @@ export function AccountantChannelSection() {
 
             {/* ── TAB 1: EXTRATO CONCILIADO PJ x PF ── */}
             {activeTab === 1 && (
-              <div className="flex flex-col gap-5 animate-fadeIn">
+              <div className="flex flex-col gap-5 animate-fadeIn h-full justify-between">
                 {/* Header Summary */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                   <div>
@@ -284,7 +284,7 @@ export function AccountantChannelSection() {
 
             {/* ── TAB 2: GERENCIAMENTO DE ACESSO DO CONTADOR ── */}
             {activeTab === 2 && (
-              <div className="flex flex-col gap-5 animate-fadeIn">
+              <div className="flex flex-col gap-5 animate-fadeIn h-full justify-between">
                 {/* Header Summary */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                   <div>
@@ -343,7 +343,7 @@ export function AccountantChannelSection() {
                         />
                         <button
                           type="submit"
-                          className="px-3 py-1.5 bg-[#37322F] hover:bg-[#201d1b] text-white text-xs font-semibold rounded flex items-center gap-1 transition-all shadow-xs cursor-pointer shrink-0"
+                          className="px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-semibold rounded flex items-center gap-1 transition-all shadow-xs cursor-pointer shrink-0"
                         >
                           Convidar
                           <ArrowRight className="w-3 h-3" />

@@ -138,8 +138,8 @@ export function FiscalAgentsSection() {
         </div>
 
         {/* Center Container: Active Agent Showcase */}
-        <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] bg-white p-6 sm:p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
-          <div className="lg:col-span-7 flex flex-col gap-4">
+        <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] bg-white p-6 sm:p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch text-left h-[560px] sm:h-[500px] lg:h-[440px] overflow-hidden">
+          <div className="lg:col-span-7 flex flex-col justify-between gap-4 h-full">
             <div className="flex items-center gap-2">
               <span className={`px-3 py-1 rounded-full text-xs font-mono font-semibold uppercase border ${agent.pillColor}`}>
                 {agent.tag}
@@ -175,7 +175,7 @@ export function FiscalAgentsSection() {
           </div>
 
           {/* Visual Simulation Graphic */}
-          <div className="lg:col-span-5 bg-[#F8FAFC] p-6 rounded-xl border border-[rgba(55,50,47,0.08)] flex flex-col gap-4">
+          <div className="lg:col-span-5 bg-[#F8FAFC] p-6 rounded-xl border border-[rgba(55,50,47,0.08)] flex flex-col justify-between min-h-[290px] h-full gap-4">
             <div className="flex items-center justify-between text-xs font-mono text-[#605A57] pb-2 border-b border-[rgba(55,50,47,0.08)]">
               <div className="flex items-center gap-2">
                 <PixelIcon type="agents" size={20} />

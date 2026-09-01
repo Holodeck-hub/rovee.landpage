@@ -103,7 +103,7 @@ export default function FAQSection() {
                     </div>
                     <div className="flex justify-center items-center">
                       <ChevronDownIcon
-                        className={`w-5 h-5 text-[#82807c] transition-transform duration-300 ease-in-out ${isOpen ? "rotate-180 text--indigo-500" : "rotate-0"
+                        className={`w-5 h-5 text-[#82807c] transition-transform duration-300 ease-in-out ${isOpen ? "rotate-180 text-[#37322F]" : "rotate-0"
                           }`}
                       />
                     </div>

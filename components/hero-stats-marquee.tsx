@@ -10,7 +10,7 @@ export function HeroStatsMarquee() {
   ]
 
   return (
-    <div className="w-full overflow-hidden border-y border-[rgba(55,50,47,0.12)] bg-[#F8FAFC] py-4 my-6 select-none">
+    <div className="w-full overflow-hidden border-y border-[rgba(55,50,47,0.12)] bg-[#F8FAFC] py-4 select-none">
       <style>{`
         @keyframes scrollMarquee {
           0% {
@@ -36,7 +36,7 @@ export function HeroStatsMarquee() {
           <div key={setIndex} className="flex items-center gap-12 pr-12 shrink-0">
             {stats.map((stat, idx) => (
               <div key={`${stat.context}-${setIndex}-${idx}`} className="flex items-center gap-3 shrink-0">
-                <span className="text-xl sm:text-2xl font-semibold tracking-tight text--indigo-500">
+                <span className="text-xl sm:text-2xl font-semibold tracking-tight text-[#37322F]">
                   {stat.value}
                 </span>
                 <span className="text-xs text-[#605A57] font-medium font-sans">

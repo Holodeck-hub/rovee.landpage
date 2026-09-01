@@ -15,7 +15,7 @@ export default function PricingSection() {
             Planos & Preços
           </span>
 
-          <h2 className="text--indigo-500 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
             Investimento que se paga no primeiro DAS economizado
           </h2>
 
@@ -57,12 +57,12 @@ export default function PricingSection() {
           <div className="flex flex-col gap-4">
             <div>
               <span className="text-xs font-mono font-semibold uppercase text-[#82807c]">Gratuito</span>
-              <h3 className="text-xl font-semibold text--indigo-500 mt-1">Starter PJ</h3>
+              <h3 className="text-xl font-semibold text-[#37322F] mt-1">Starter PJ</h3>
               <p className="text-xs text-[#605A57] mt-1">Para quem quer organizar contas e testar o Cheque do Mês.</p>
             </div>
 
             <div className="py-2">
-              <span className="text-3xl sm:text-4xl font-semibold text--indigo-500">R$ 0</span>
+              <span className="text-3xl sm:text-4xl font-semibold text-[#37322F]">R$ 0</span>
               <span className="text-xs text-[#605A57] ml-1">/mês</span>
             </div>
 
@@ -88,7 +88,7 @@ export default function PricingSection() {
 
           <a
             href="#comecar"
-            className="w-full mt-6 py-2.5 px-4 bg-[#F1F5F9] hover:bg-gray-200 text--indigo-500 text-xs font-semibold rounded-full text-center transition-colors border border-[rgba(55,50,47,0.1)]"
+            className="w-full mt-6 py-2.5 px-4 bg-[#F1F5F9] hover:bg-gray-200 text-[#37322F] text-xs font-semibold rounded-full text-center transition-colors border border-[rgba(55,50,47,0.1)]"
           >
             Começar Grátis
           </a>
@@ -103,12 +103,12 @@ export default function PricingSection() {
           <div className="flex flex-col gap-4">
             <div>
               <span className="text-xs font-mono font-semibold uppercase text-emerald-700">Inteligência Completa</span>
-              <h3 className="text-xl font-semibold text--indigo-500 mt-1">Pro Fintech Fiscal</h3>
+              <h3 className="text-xl font-semibold text-[#37322F] mt-1">Pro Fintech Fiscal</h3>
               <p className="text-xs text-[#605A57] mt-1">Para devs, consultores e prestadores PJ que faturam acima de R$ 10k/mês.</p>
             </div>
 
             <div className="py-2">
-              <span className="text-3xl sm:text-4xl font-semibold text--indigo-500">
+              <span className="text-3xl sm:text-4xl font-semibold text-[#37322F]">
                 R$ {billingPeriod === "annually" ? "39" : "49"}
               </span>
               <span className="text-xs text-[#605A57] ml-1">/mês</span>
@@ -151,12 +151,12 @@ export default function PricingSection() {
           <div className="flex flex-col gap-4">
             <div>
               <span className="text-xs font-mono font-semibold uppercase text-[#82807c]">Multi-Empresas</span>
-              <h3 className="text-xl font-semibold text--indigo-500 mt-1">Escritório & Sócios</h3>
+              <h3 className="text-xl font-semibold text-[#37322F] mt-1">Escritório & Sócios</h3>
               <p className="text-xs text-[#605A57] mt-1">Para quem opera múltiplos CNPJs ou escritórios com clientes PJ.</p>
             </div>
 
             <div className="py-2">
-              <span className="text-3xl sm:text-4xl font-semibold text--indigo-500">
+              <span className="text-3xl sm:text-4xl font-semibold text-[#37322F]">
                 R$ {billingPeriod === "annually" ? "119" : "149"}
               </span>
               <span className="text-xs text-[#605A57] ml-1">/mês</span>
@@ -184,7 +184,7 @@ export default function PricingSection() {
 
           <a
             href="#comecar"
-            className="w-full mt-6 py-2.5 px-4 bg-[#F1F5F9] hover:bg-gray-200 text--indigo-500 text-xs font-semibold rounded-full text-center transition-colors border border-[rgba(55,50,47,0.1)]"
+            className="w-full mt-6 py-2.5 px-4 bg-[#F1F5F9] hover:bg-gray-200 text-[#37322F] text-xs font-semibold rounded-full text-center transition-colors border border-[rgba(55,50,47,0.1)]"
           >
             Falar com Consultor
           </a>
