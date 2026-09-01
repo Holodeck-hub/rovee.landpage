@@ -105,7 +105,7 @@ export default function LandingPage() {
             </a>
             <a
               href="#comecar"
-              className="px-3.5 sm:px-4 py-1.5 bg-[#37322F] hover:bg-[#201d1b] text-white text-xs font-semibold rounded transition-all shadow-xs"
+              className="px-3.5 sm:px-4 py-1.5 bg-primary hover:bg-primary/80 text-white text-xs font-semibold rounded transition-all shadow-xs"
             >
               Criar Conta
             </a>
@@ -169,7 +169,7 @@ export default function LandingPage() {
                   </a>
                   <a
                     href="#comecar"
-                    className="px-3.5 sm:px-4 py-1.5 bg-[#37322F] hover:bg-[#201d1b] text-white text-xs font-semibold rounded transition-all shadow-xs"
+                    className="px-3.5 sm:px-4 py-1.5 bg-primary hover:bg-primary/80 text-white text-xs font-semibold rounded transition-all shadow-xs"
                   >
                     Criar Conta
                   </a>

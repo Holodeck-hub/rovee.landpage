@@ -20,7 +20,7 @@ export default function PricingSection() {
           </h2>
 
           <p className="text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
-            Comece gratuitamente e evolua conforme o faturamento da sua PJ cresce. Todos os planos incluem segurança de padrão bancário e suporte dedicado.
+            Escolha o plano ideal para o faturamento da sua PJ. Todos os planos incluem segurança de padrão bancário e suporte dedicado.
           </p>
         </div>
       </div>
@@ -30,7 +30,7 @@ export default function PricingSection() {
         <button
           onClick={() => setBillingPeriod("monthly")}
           className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${billingPeriod === "monthly"
-            ? "bg-indigo-500 text-white shadow-xs"
+            ? "bg-primary text-white shadow-xs"
             : "bg-white text-[#605A57] border border-[rgba(55,50,47,0.12)] hover:bg-[#F1F5F9]"
             }`}
         >
@@ -54,11 +54,13 @@ export default function PricingSection() {
           <div className="flex flex-col gap-4">
             <div>
               <h3 className="text-xl font-semibold text-secondary mt-1">Starter PJ</h3>
-              <p className="text-xs text-[#605A57] mt-1">Para quem quer organizar contas e testar o Cheque do Mês.</p>
+              <p className="text-xs text-[#605A57] mt-1">Para quem quer organizar contas e ter clareza inicial do caixa.</p>
             </div>
 
             <div className="py-2">
-              <span className="text-3xl sm:text-4xl font-semibold text-secondary">R$ 0</span>
+              <span className="text-3xl sm:text-4xl font-semibold text-secondary">
+                R$ {billingPeriod === "annually" ? "79,99" : "99,99"}
+              </span>
               <span className="text-xs text-[#605A57] ml-1">/mês</span>
             </div>
 
@@ -86,7 +88,7 @@ export default function PricingSection() {
             href="#comecar"
             className="w-full mt-6 py-2.5 px-4 bg-[#F1F5F9] hover:bg-gray-200 text-secondary text-xs font-semibold rounded-full text-center transition-colors border border-[rgba(55,50,47,0.1)]"
           >
-            Começar Grátis
+            Assinar Starter
           </a>
         </div>
 
@@ -100,7 +102,7 @@ export default function PricingSection() {
 
             <div className="py-2">
               <span className="text-3xl sm:text-4xl font-semibold text-secondary">
-                R$ {billingPeriod === "annually" ? "39" : "49"}
+                R$ {billingPeriod === "annually" ? "159,99" : "199,99"}
               </span>
               <span className="text-xs text-[#605A57] ml-1">/mês</span>
             </div>
@@ -147,7 +149,7 @@ export default function PricingSection() {
 
             <div className="py-2">
               <span className="text-3xl sm:text-4xl font-semibold text-secondary">
-                R$ {billingPeriod === "annually" ? "119" : "149"}
+                R$ {billingPeriod === "annually" ? "229,99" : "289,99"}
               </span>
               <span className="text-xs text-[#605A57] ml-1">/mês</span>
             </div>
