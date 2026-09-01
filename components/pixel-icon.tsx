@@ -58,8 +58,8 @@ const AGENT_FRAMES: number[][][] = [
   ],
 ]
 
-function drawAgents(ctx: CanvasRenderingContext2D, W: number, t: number) {
-  const fps = 6
+function drawAgents(ctx: CanvasRenderingContext2D, W: number, t: number, color = "99, 102, 241") {
+  const fps = 1.5
   const rawIdx = Math.floor(t / (1000 / fps))
   const frameIdx = ((rawIdx % AGENT_FRAMES.length) + AGENT_FRAMES.length) % AGENT_FRAMES.length
   const frame = AGENT_FRAMES[frameIdx] || AGENT_FRAMES[0]
@@ -71,20 +71,20 @@ function drawAgents(ctx: CanvasRenderingContext2D, W: number, t: number) {
   const offX = Math.floor((W - cols * ps) / 2)
   const offY = Math.floor((W - rows * ps) / 2)
 
-  const bobY = Math.sin(t * 0.012) * ps * 0.4
+  const bobY = Math.sin(t * 0.0025) * ps * 0.35
 
   frame.forEach((row, r) => {
     row.forEach((cell, c) => {
       if (!cell) return
-      const opacity = 0.4 + 0.55 * Math.sin(t * 0.001 + r * 0.3)
-      ctx.fillStyle = `rgba(0,0,0,${opacity})`
+      const opacity = 0.45 + 0.55 * Math.sin(t * 0.0003 + r * 0.3)
+      ctx.fillStyle = `rgba(${color}, ${opacity})`
       ctx.fillRect(offX + c * ps, offY + r * ps + bobY, ps - 1, ps - 1)
     })
   })
 }
 
 // ── Metrics icon: growing pixel bar chart (size 40px) ─────────────────────────
-function drawMetrics(ctx: CanvasRenderingContext2D, W: number, t: number) {
+function drawMetrics(ctx: CanvasRenderingContext2D, W: number, t: number, color = "99, 102, 241") {
   const ps = Math.floor(W / 12)
   const bars = 3
   const bw = ps * 2
@@ -94,7 +94,7 @@ function drawMetrics(ctx: CanvasRenderingContext2D, W: number, t: number) {
   const maxH = W * 0.7
 
   const heights = [0.45, 0.75, 0.55]
-  const wave = Math.sin(t * 0.0015) * 0.12
+  const wave = Math.sin(t * 0.0005) * 0.12
 
   heights.forEach((h, i) => {
     const animated = Math.max(0.1, h + wave * (i % 2 === 0 ? 1 : -1))
@@ -105,8 +105,8 @@ function drawMetrics(ctx: CanvasRenderingContext2D, W: number, t: number) {
     const rowCount = Math.floor(bh / ps)
     for (let row = 0; row < rowCount; row++) {
       const progress = 1 - row / rowCount
-      const alpha = 0.15 + progress * 0.7
-      ctx.fillStyle = `rgba(0,0,0,${alpha})`
+      const alpha = 0.2 + progress * 0.8
+      ctx.fillStyle = `rgba(${color}, ${alpha})`
       ctx.fillRect(x, y + row * ps, bw, ps - 1)
     }
   })
@@ -135,9 +135,9 @@ export function PixelIcon({ type, size = 40, className = "" }: PixelIconProps) {
       ctx.imageSmoothingEnabled = false
 
       if (type === "agents") {
-        drawAgents(ctx, size, t)
+        drawAgents(ctx, size, t, "99, 102, 241")
       } else {
-        drawMetrics(ctx, size, t)
+        drawMetrics(ctx, size, t, "99, 102, 241")
       }
 
       rafRef.current = requestAnimationFrame(draw)

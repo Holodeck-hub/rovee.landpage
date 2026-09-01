@@ -71,7 +71,7 @@ export default function FAQSection() {
             Dúvidas Frequentes
           </span>
 
-          <h2 className="w-full text-[#37322F] font-semibold leading-tight font-sans text-3xl sm:text-4xl tracking-tight">
+          <h2 className="w-full text--indigo-500 font-semibold leading-tight font-sans text-3xl sm:text-4xl tracking-tight">
             Perguntas Frequentes sobre a Rovee
           </h2>
 
@@ -93,22 +93,20 @@ export default function FAQSection() {
                     className="w-full py-4 sm:py-5 flex justify-between items-center gap-4 text-left hover:bg-[rgba(55,50,47,0.02)] transition-colors duration-200"
                     aria-expanded={isOpen}
                   >
-                    <div className="flex-1 text-[#37322F] text-sm sm:text-base font-semibold leading-snug font-sans">
+                    <div className="flex-1 text--indigo-500 text-sm sm:text-base font-semibold leading-snug font-sans">
                       {item.question}
                     </div>
                     <div className="flex justify-center items-center">
                       <ChevronDownIcon
-                        className={`w-5 h-5 text-[#82807c] transition-transform duration-300 ease-in-out ${
-                          isOpen ? "rotate-180 text-[#37322F]" : "rotate-0"
-                        }`}
+                        className={`w-5 h-5 text-[#82807c] transition-transform duration-300 ease-in-out ${isOpen ? "rotate-180 text--indigo-500" : "rotate-0"
+                          }`}
                       />
                     </div>
                   </button>
 
                   <div
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      isOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"
-                    }`}
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"
+                      }`}
                   >
                     <div className="text-[#605A57] text-xs sm:text-sm font-normal leading-relaxed font-sans">
                       {item.answer}

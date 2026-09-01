@@ -17,7 +17,7 @@ export default function CTASection() {
             <span className="px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-mono font-semibold rounded-full uppercase">
               ⚡ Destrave sua Inteligência Fiscal Hoje
             </span>
-            <h2 className="self-stretch text-center text-[#37322F] text-3xl md:text-5xl font-semibold leading-tight font-sans tracking-tight">
+            <h2 className="self-stretch text-center text--indigo-500 text-3xl md:text-5xl font-semibold leading-tight font-sans tracking-tight">
               Pronto para saber seu lucro real e pagar menos imposto?
             </h2>
             <p className="self-stretch text-center text-[#605A57] text-sm sm:text-base leading-relaxed font-sans font-medium">
@@ -28,13 +28,13 @@ export default function CTASection() {
           <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
             <a
               href="#comecar"
-              className="h-12 px-8 relative bg-[#37322F] hover:bg-[#262320] text-white text-sm font-medium rounded-full flex items-center justify-center shadow-md transition-all"
+              className="h-12 px-8 relative bg-indigo-500 hover:bg-[#262320] text-white text-sm font-medium rounded-full flex items-center justify-center shadow-md transition-all"
             >
               Criar Conta Gratuita
             </a>
             <a
               href="#fiscal"
-              className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-[#37322F] border border-[rgba(55,50,47,0.16)] text-sm font-medium rounded-full flex items-center justify-center transition-all"
+              className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text--indigo-500 border border-[rgba(55,50,47,0.16)] text-sm font-medium rounded-full flex items-center justify-center transition-all"
             >
               Ver Demonstração
             </a>

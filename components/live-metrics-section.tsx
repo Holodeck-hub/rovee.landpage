@@ -39,37 +39,37 @@ function AnimatedCounter({ end, suffix = "", prefix = "" }: { end: number; suffi
   }, [end, hasAnimated])
 
   return (
-    <div ref={ref} className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[#37322F]">
+    <div ref={ref} className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text--indigo-500">
       {prefix}{count.toLocaleString("pt-BR")}{suffix}
     </div>
   )
 }
 
 const metrics = [
-  { 
-    value: 14820000, 
-    suffix: "+", 
+  {
+    value: 14820000,
+    suffix: "+",
     prefix: "R$ ",
     label: "Volume fiscal e provisões otimizadas",
     desc: "Em faturamentos gerenciados com cálculo de Fator R e Clareza de Caixa"
   },
-  { 
-    value: 99, 
-    suffix: ".9%", 
+  {
+    value: 99,
+    suffix: ".9%",
     prefix: "",
     label: "Precisão matemática determinística",
     desc: "Sem alucinações de IA nos seus números, precisão matemática absoluta"
   },
-  { 
-    value: 3, 
-    suffix: " min", 
+  {
+    value: 3,
+    suffix: " min",
     prefix: "",
     label: "Tempo médio para primeiro diagnóstico",
     desc: "Basta cadastrar o perfil fiscal e importar o primeiro extrato OFX/PDF"
   },
-  { 
-    value: 0, 
-    suffix: "", 
+  {
+    value: 0,
+    suffix: "",
     prefix: "",
     label: "Surpresas no pagamento do DAS",
     desc: "Provisão contínua em tempo real com separação automática"
@@ -88,7 +88,7 @@ export function LiveMetricsSection() {
             Métricas em Tempo Real
           </span>
 
-          <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text--indigo-500 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
             Números que comprovam a economia e a segurança da Rovee
           </h2>
 
@@ -116,13 +116,12 @@ export function LiveMetricsSection() {
           {metrics.map((metric, index) => (
             <div
               key={index}
-              className={`p-6 sm:p-8 md:p-12 border-b border-[rgba(55,50,47,0.12)] ${
-                index % 2 === 0 ? "sm:border-r" : ""
-              } flex flex-col justify-between gap-4 bg-white/60 hover:bg-white transition-colors`}
+              className={`p-6 sm:p-8 md:p-12 border-b border-[rgba(55,50,47,0.12)] ${index % 2 === 0 ? "sm:border-r" : ""
+                } flex flex-col justify-between gap-4 bg-white/60 hover:bg-white transition-colors`}
             >
               <AnimatedCounter end={metric.value} suffix={metric.suffix} prefix={metric.prefix} />
               <div>
-                <h3 className="text-base sm:text-lg font-semibold text-[#37322F] mb-1">
+                <h3 className="text-base sm:text-lg font-semibold text--indigo-500 mb-1">
                   {metric.label}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#605A57] leading-relaxed">

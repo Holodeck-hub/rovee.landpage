@@ -8,7 +8,7 @@ function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
     <div className="px-[14px] py-[6px] bg-white shadow-[0px_0px_0px_4px_rgba(55,50,47,0.05)] overflow-hidden rounded-[90px] flex justify-start items-center gap-[8px] border border-[rgba(2,6,23,0.08)] shadow-xs">
       <div className="w-[14px] h-[14px] relative overflow-hidden flex items-center justify-center">{icon}</div>
-      <div className="text-center flex justify-center flex-col text-[#37322F] text-xs font-medium leading-3 font-sans">
+      <div className="text-center flex justify-center flex-col text--indigo-500 text-xs font-medium leading-3 font-sans">
         {text}
       </div>
     </div>
@@ -58,7 +58,7 @@ export default function DocumentationSection() {
         <div className="w-full max-w-[586px] px-6 py-5 shadow-[0px_2px_4px_rgba(50,45,43,0.06)] overflow-hidden rounded-lg flex flex-col justify-start items-center gap-4 shadow-none">
           <Badge
             icon={
-              <div className="w-[10.50px] h-[10.50px] outline outline-[1.17px] outline-[#37322F] outline-offset-[-0.58px] rounded-full"></div>
+              <div className="w-[10.50px] h-[10.50px] outline outline-[1.17px] outline--indigo-500 outline-offset-[-0.58px] rounded-full"></div>
             }
             text="Platform Features"
           />
@@ -85,11 +85,10 @@ export default function DocumentationSection() {
                 <div
                   key={index}
                   onClick={() => handleCardClick(index)}
-                  className={`w-full overflow-hidden flex flex-col justify-start items-start transition-all duration-300 cursor-pointer ${
-                    isActive
+                  className={`w-full overflow-hidden flex flex-col justify-start items-start transition-all duration-300 cursor-pointer ${isActive
                       ? "bg-white shadow-[0px_0px_0px_0.75px_#E0DEDB_inset]"
                       : "border border-[rgba(2,6,23,0.08)]"
-                  }`}
+                    }`}
                 >
                   <div
                     className={`w-full h-0.5 bg-[rgba(50,45,43,0.08)] overflow-hidden ${isActive ? "opacity-100" : "opacity-0"}`}
@@ -116,13 +115,12 @@ export default function DocumentationSection() {
           <div className="w-full md:w-auto rounded-lg flex flex-col justify-center items-center gap-2 order-1 md:order-2 md:px-0 px-[00]">
             <div className="w-full md:w-[580px] h-[250px] md:h-[420px] bg-white shadow-[0px_0px_0px_0.9056603908538818px_rgba(0,0,0,0.08)] overflow-hidden rounded-lg flex flex-col justify-start items-start">
               <div
-                className={`w-full h-full transition-all duration-300 ${
-                  activeCard === 0
+                className={`w-full h-full transition-all duration-300 ${activeCard === 0
                     ? "bg-gradient-to-br from-blue-50 to-blue-100"
                     : activeCard === 1
                       ? "bg-gradient-to-br from-purple-50 to-purple-100"
                       : "bg-gradient-to-br from-green-50 to-green-100"
-                }`}
+                  }`}
               />
             </div>
           </div>

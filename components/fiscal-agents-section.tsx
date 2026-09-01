@@ -67,9 +67,13 @@ export function FiscalAgentsSection() {
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Header com PixelIcons Lado a Lado (Mesma Direção, sem espelhamento) */}
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative overflow-hidden">
-        {/* Fila Esquerda: 6 Agentes em Degrau Suave com novo agente no cantinho extremo (mb-20) */}
-        <div className="absolute left-[-15px] sm:left-[-10px] md:left-[-5px] lg:left-0 bottom-[-45px] flex items-end -space-x-12 md:-space-x-14 pointer-events-none select-none hidden sm:flex opacity-35 md:opacity-45 z-0">
-          <div className="mb-16">
+        {/* Fila Esquerda: 6 Agentes em Degrau Suave rebaixados e deslocados à esquerda */}
+        <div className="absolute left-[-45px] sm:left-[-40px] md:left-[-35px] lg:left-[-30px] bottom-[-95px] flex items-end -space-x-12 md:-space-x-14 pointer-events-none select-none hidden sm:flex opacity-35 md:opacity-45 z-0">
+
+          <div className="mb-24">
+            <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
+          </div>
+          <div className="mb-20">
             <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
           </div>
           <div className="mb-12">
@@ -86,8 +90,8 @@ export function FiscalAgentsSection() {
           </div>
         </div>
 
-        {/* Fila Direita: 6 Agentes em Degrau Suave com novo agente no cantinho extremo (mb-20) */}
-        <div className="absolute right-[-15px] sm:right-[-10px] md:right-[-5px] lg:right-0 bottom-[-45px] flex items-end -space-x-12 md:-space-x-14 pointer-events-none select-none hidden sm:flex opacity-35 md:opacity-45 z-0">
+        {/* Fila Direita: 6 Agentes em Degrau Suave rebaixados e deslocados à direita */}
+        <div className="absolute right-[-45px] sm:right-[-40px] md:right-[-35px] lg:right-[-30px] bottom-[-95px] flex items-end -space-x-12 md:-space-x-14 pointer-events-none select-none hidden sm:flex opacity-35 md:opacity-45 z-0">
           <div className="mb-0">
             <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
           </div>
@@ -100,10 +104,13 @@ export function FiscalAgentsSection() {
           <div className="mb-12">
             <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
           </div>
-          <div className="mb-16">
+          <div className="mb-20">
             <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
           </div>
-          
+          <div className="mb-24">
+            <PixelIcon type="agents" size={160} className="scale-y-[-1]" />
+          </div>
+
         </div>
 
         {/* Conteúdo Central */}
@@ -112,7 +119,7 @@ export function FiscalAgentsSection() {
             Agentes Especializados
           </span>
 
-          <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text--indigo-500 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
             4 Agentes Autônomos trabalhando pelo seu caixa
           </h2>
 
@@ -144,14 +151,14 @@ export function FiscalAgentsSection() {
                 key={item.id}
                 onClick={() => setSelectedAgent(idx)}
                 className={`p-3 sm:p-4 rounded-xl text-left transition-all flex flex-col gap-1 border ${selectedAgent === idx
-                  ? "bg-white border-[#37322F] shadow-[0px_4px_12px_rgba(55,50,47,0.08)] ring-1 ring-[#37322F]"
+                  ? "bg-white border--indigo-500 shadow-[0px_4px_12px_rgba(55,50,47,0.08)] ring-1 ring--indigo-500"
                   : "bg-[#F1F5F9] border-[rgba(55,50,47,0.1)] hover:bg-white text-[#605A57]"
                   }`}
               >
                 <span className="text-[10px] font-mono uppercase font-semibold text-[#82807c]">
                   0{idx + 1}
                 </span>
-                <span className="text-xs sm:text-sm font-semibold text-[#37322F] leading-tight">
+                <span className="text-xs sm:text-sm font-semibold text--indigo-500 leading-tight">
                   {item.title}
                 </span>
               </button>
@@ -167,7 +174,7 @@ export function FiscalAgentsSection() {
                 </span>
               </div>
 
-              <h3 className="text-[#37322F] text-2xl sm:text-3xl font-semibold leading-tight font-sans">
+              <h3 className="text--indigo-500 text-2xl sm:text-3xl font-semibold leading-tight font-sans">
                 {agent.title}: {agent.subtitle}
               </h3>
 
@@ -179,7 +186,7 @@ export function FiscalAgentsSection() {
               <div className="grid grid-cols-2 gap-4 py-4 border-y border-[rgba(55,50,47,0.08)] my-2">
                 {agent.stats.map((stat, i) => (
                   <div key={i}>
-                    <div className="text-xl sm:text-2xl font-semibold text-[#37322F] font-sans">
+                    <div className="text-xl sm:text-2xl font-semibold text--indigo-500 font-sans">
                       {stat.value}
                     </div>
                     <div className="text-xs text-[#605A57] font-medium font-sans">
@@ -230,11 +237,11 @@ export function FiscalAgentsSection() {
                 <div className="space-y-2">
                   <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)]">
                     <div className="text-[11px] text-[#605A57]">1. Seu para Retirar (Lucro Isento)</div>
-                    <div className="text-base font-semibold text-[#37322F]">R$ 18.450,00</div>
+                    <div className="text-base font-semibold text--indigo-500">R$ 18.450,00</div>
                   </div>
                   <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)]">
                     <div className="text-[11px] text-[#605A57]">2. Reserva Operacional da Empresa</div>
-                    <div className="text-base font-semibold text-[#37322F]">R$ 8.200,00</div>
+                    <div className="text-base font-semibold text--indigo-500">R$ 8.200,00</div>
                   </div>
                   <div className="bg-white p-3 rounded-lg border border-emerald-300">
                     <div className="text-[11px] text-emerald-800 font-medium">3. Provisão do DAS (Imposto)</div>
@@ -265,7 +272,7 @@ export function FiscalAgentsSection() {
                   <div className="bg-white p-3.5 rounded-lg border border-[rgba(55,50,47,0.08)] flex justify-between items-center">
                     <div>
                       <div className="text-xs text-[#605A57]">DAS Competência Atual</div>
-                      <div className="text-base font-semibold text-[#37322F]">R$ 3.420,00</div>
+                      <div className="text-base font-semibold text--indigo-500">R$ 3.420,00</div>
                     </div>
                     <span className="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-[11px] font-semibold rounded-full">
                       100% Coberto
