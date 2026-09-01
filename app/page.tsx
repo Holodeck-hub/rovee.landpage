@@ -4,8 +4,10 @@ import { useState, useEffect, useRef } from "react"
 import { HeroStatsMarquee } from "../components/hero-stats-marquee"
 import { PredictiveIntelligenceSection } from "../components/predictive-intelligence-section"
 import { FiscalAgentsSection } from "../components/fiscal-agents-section"
+import { AccountantChannelSection } from "../components/accountant-channel-section"
 import { LiveMetricsSection } from "../components/live-metrics-section"
 import { TestimonialsSlider } from "../components/testimonials-slider"
+import { RoadmapTeaserSection } from "../components/roadmap-teaser-section"
 import PricingSection from "../components/pricing-section"
 import FAQSection from "../components/faq-section"
 import CTASection from "../components/cta-section"
@@ -66,25 +68,28 @@ export default function LandingPage() {
               <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[760px] lg:w-[760px] h-11 sm:h-12 py-1.5 px-4 bg-[#F8FAFC]/90 backdrop-blur-md shadow-[0px_0px_0px_2px_white] overflow-hidden rounded flex justify-between items-center relative z-30 border border-[rgba(55,50,47,0.1)]">
                 <div className="flex justify-center items-center gap-6">
                   <a href="#" className="flex items-center hover:opacity-85 transition-opacity">
-                    <span className="text--indigo-500 text-lg sm:text-xl font-bold font-sans tracking-tight">
+                    <span className="text-[#37322F] text-lg sm:text-xl font-bold font-sans tracking-tight">
                       Rovee
                     </span>
                   </a>
 
-                  <nav className="hidden md:flex items-center gap-4 pl-2 text-xs font-medium text-[rgba(49,45,43,0.80)] font-sans">
-                    <a href="#fiscal" className="hover:text--indigo-500 transition-colors">
+                  <nav className="hidden md:flex items-center gap-3.5 pl-2 text-xs font-medium text-[rgba(49,45,43,0.80)] font-sans">
+                    <a href="#fiscal" className="hover:text-[#37322F] transition-colors">
                       Inteligência Fiscal
                     </a>
-                    <a href="#predicao" className="hover:text--indigo-500 transition-colors">
-                      Predição
-                    </a>
-                    <a href="#agentes" className="hover:text--indigo-500 transition-colors">
+                    <a href="#agentes" className="hover:text-[#37322F] transition-colors">
                       Agentes
                     </a>
-                    <a href="#metricas" className="hover:text--indigo-500 transition-colors">
+                    <a href="#contador" className="hover:text-[#37322F] transition-colors">
+                      Contador
+                    </a>
+                    <a href="#metricas" className="hover:text-[#37322F] transition-colors">
                       Métricas
                     </a>
-                    <a href="#planos" className="hover:text--indigo-500 transition-colors">
+                    <a href="#roadmap" className="hover:text-[#37322F] transition-colors">
+                      Roadmap
+                    </a>
+                    <a href="#planos" className="hover:text-[#37322F] transition-colors">
                       Planos
                     </a>
                   </nav>
@@ -587,18 +592,28 @@ export default function LandingPage() {
               <FiscalAgentsSection />
             </div>
 
-            {/* ── 8. SEÇÃO: LIVE METRICS (Optimus Base) ────────────────── */}
+            {/* ── 8. SEÇÃO: CANAL DO CONTADOR & HARMONIA (B2B2A - SCRUM-168) ── */}
+            <div id="contador" className="w-full">
+              <AccountantChannelSection />
+            </div>
+
+            {/* ── 9. SEÇÃO: LIVE METRICS (Optimus Base) ────────────────── */}
             <div id="metricas" className="w-full">
               <LiveMetricsSection />
             </div>
 
-            {/* ── 9. SEÇÃO: DEPOIMENTOS (Optimus Base) ─────────────────── */}
+            {/* ── 10. SEÇÃO: DEPOIMENTOS (Optimus Base) ─────────────────── */}
             <div id="depoimentos" className="w-full">
               <TestimonialsSlider />
             </div>
 
-            {/* ── 10. SEÇÃO: PLANOS & PRICING ─────────────────────────── */}
-            <div className="w-full">
+            {/* ── 11. SEÇÃO: ROADMAP ROVEE (Transparência de Produto) ──── */}
+            <div id="roadmap" className="w-full">
+              <RoadmapTeaserSection />
+            </div>
+
+            {/* ── 12. SEÇÃO: PLANOS & PRICING ─────────────────────────── */}
+            <div id="planos" className="w-full">
               <PricingSection />
             </div>
 

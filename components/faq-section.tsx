@@ -34,6 +34,11 @@ const faqData: FAQItem[] = [
       "Sim. Utilizamos criptografia de padrão bancário (AES-256) em repouso e em trânsito (TLS 1.3), controle rigoroso de acesso multi-tenant (RBAC), verificação em 2 etapas por OTP e estrita conformidade com a LGPD.",
   },
   {
+    question: "Meu contador pode acessar a Rovee para pegar os relatórios?",
+    answer:
+      "Sim. Você pode convidar seu contador para um perfil exclusivo de visualização (Viewer somente-leitura). Ele terá acesso direto aos relatórios de faturamento, memórias de cálculo do Fator R e demonstrativos de conciliação, sem precisar ficar pedindo extratos por e-mail ou WhatsApp no fechamento do mês.",
+  },
+  {
     question: "Como funciona a importação de extratos bancários?",
     answer:
       "Você pode subir extratos bancários em formato OFX, CSV ou PDF de qualquer banco brasileiro (Nubank PJ, Itaú, Inter, C6, etc.). O sistema remove duplicidades automaticamente e nossa IA limpa e categoriza todas as transações em segundos.",
@@ -71,7 +76,7 @@ export default function FAQSection() {
             Dúvidas Frequentes
           </span>
 
-          <h2 className="w-full text--indigo-500 font-semibold leading-tight font-sans text-3xl sm:text-4xl tracking-tight">
+          <h2 className="w-full text-[#37322F] font-semibold leading-tight font-sans text-3xl sm:text-4xl tracking-tight">
             Perguntas Frequentes sobre a Rovee
           </h2>
 
@@ -93,7 +98,7 @@ export default function FAQSection() {
                     className="w-full py-4 sm:py-5 flex justify-between items-center gap-4 text-left hover:bg-[rgba(55,50,47,0.02)] transition-colors duration-200"
                     aria-expanded={isOpen}
                   >
-                    <div className="flex-1 text--indigo-500 text-sm sm:text-base font-semibold leading-snug font-sans">
+                    <div className="flex-1 text-[#37322F] text-sm sm:text-base font-semibold leading-snug font-sans">
                       {item.question}
                     </div>
                     <div className="flex justify-center items-center">

@@ -66,13 +66,13 @@ export function TestimonialsSlider() {
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Header */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
+      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
             Depoimentos Reais
           </span>
 
-          <h2 className="text--indigo-500 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text-[#37322F] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
             Quem empreende com a Rovee lucra mais e dorme tranquilo
           </h2>
 
@@ -99,7 +99,7 @@ export function TestimonialsSlider() {
         <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-10 md:p-16 bg-white/70">
           <div className="flex items-center justify-between gap-4 mb-8">
             <div className="flex items-center gap-2">
-              <span className="px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-mono font-semibold rounded-full">
+              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
                 {activeTestimonial.metric}
               </span>
             </div>
@@ -111,14 +111,14 @@ export function TestimonialsSlider() {
               </span>
               <button
                 onClick={handlePrev}
-                className="w-8 h-8 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-[#F1F5F9] text--indigo-500"
+                className="w-8 h-8 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-[#F1F5F9] text-[#37322F] cursor-pointer"
                 aria-label="Anterior"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 onClick={handleNext}
-                className="w-8 h-8 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-[#F1F5F9] text--indigo-500"
+                className="w-8 h-8 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-[#F1F5F9] text-[#37322F] cursor-pointer"
                 aria-label="Próximo"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -130,7 +130,7 @@ export function TestimonialsSlider() {
             className={`transition-opacity duration-300 ${isAnimating ? "opacity-0" : "opacity-100"
               }`}
           >
-            <blockquote className="text-xl sm:text-2xl md:text-3xl text--indigo-500 font-normal leading-relaxed font-sans mb-8">
+            <blockquote className="text-xl sm:text-2xl md:text-3xl text-[#37322F] font-normal leading-relaxed font-sans mb-8">
               &ldquo;{activeTestimonial.quote}&rdquo;
             </blockquote>
 
@@ -139,7 +139,7 @@ export function TestimonialsSlider() {
                 {activeTestimonial.author.charAt(0)}
               </div>
               <div>
-                <div className="text-sm font-semibold text--indigo-500">
+                <div className="text-sm font-semibold text-[#37322F]">
                   {activeTestimonial.author}
                 </div>
                 <div className="text-xs text-[#605A57]">
