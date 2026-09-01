@@ -64,7 +64,7 @@ export function AccountantChannelSection() {
   }
 
   return (
-    <div id="contador" className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
+    <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Section Header */}
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
@@ -114,7 +114,7 @@ export function AccountantChannelSection() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <span className="text-xs text-[#82807C] font-mono">Fator R Apurado</span>
+                    <span className="text-xs text-[#6B6560] font-mono">Fator R Apurado</span>
                     <div className="text-lg font-semibold text-emerald-700 font-mono">28,15%</div>
                   </div>
                 </div>
@@ -225,7 +225,7 @@ export function AccountantChannelSection() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <span className="text-xs text-[#82807C] font-mono">Status da Conta PJ</span>
+                    <span className="text-xs text-[#6B6560] font-mono">Status da Conta PJ</span>
                     <div className="text-lg font-semibold text-emerald-700 font-mono">100% Limpo</div>
                   </div>
                 </div>
@@ -240,7 +240,7 @@ export function AccountantChannelSection() {
                   </div>
 
                   <div className="grid grid-cols-12 gap-2 px-4 py-3.5 border-b border-[rgba(55,50,47,0.12)] items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
-                    <div className="col-span-3 font-mono text-[#82807C]">18/05 · Itaú PJ</div>
+                    <div className="col-span-3 font-mono text-[#6B6560]">18/05 · Itaú PJ</div>
                     <div className="col-span-4 font-medium text-secondary">AWS Cloud Infrastructure</div>
                     <div className="col-span-3">
                       <span className="px-2 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded text-[10px] font-mono font-medium">
@@ -251,7 +251,7 @@ export function AccountantChannelSection() {
                   </div>
 
                   <div className="grid grid-cols-12 gap-2 px-4 py-3.5 border-b border-[rgba(55,50,47,0.12)] items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
-                    <div className="col-span-3 font-mono text-[#82807C]">19/05 · Itaú PJ</div>
+                    <div className="col-span-3 font-mono text-[#6B6560]">19/05 · Itaú PJ</div>
                     <div className="col-span-4 font-medium text-secondary">Google Workspace & Cloud</div>
                     <div className="col-span-3">
                       <span className="px-2 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded text-[10px] font-mono font-medium">
@@ -262,7 +262,7 @@ export function AccountantChannelSection() {
                   </div>
 
                   <div className="grid grid-cols-12 gap-2 px-4 py-3.5 border-b border-[rgba(55,50,47,0.12)] items-center text-xs bg-amber-50/40">
-                    <div className="col-span-3 font-mono text-[#82807C]">19/05 · Nubank PJ</div>
+                    <div className="col-span-3 font-mono text-[#6B6560]">19/05 · Nubank PJ</div>
                     <div className="col-span-4 font-medium text-amber-950">Supermercado Pão de Açúcar</div>
                     <div className="col-span-3">
                       <span className="px-2 py-0.5 bg-amber-50 text-amber-900 border border-amber-200 rounded text-[10px] font-mono font-medium">
@@ -273,7 +273,7 @@ export function AccountantChannelSection() {
                   </div>
 
                   <div className="grid grid-cols-12 gap-2 px-4 py-3.5 items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
-                    <div className="col-span-3 font-mono text-[#82807C]">20/05 · Itaú PJ</div>
+                    <div className="col-span-3 font-mono text-[#6B6560]">20/05 · Itaú PJ</div>
                     <div className="col-span-4 font-medium text-secondary">Nota Fiscal de Serviços 0142</div>
                     <div className="col-span-3">
                       <span className="px-2 py-0.5 bg-indigo-50 text-indigo-700 border border-indigo-200 rounded text-[10px] font-mono font-medium">
@@ -311,7 +311,7 @@ export function AccountantChannelSection() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <span className="text-xs text-[#82807C] font-mono">Tipo de Acesso</span>
+                    <span className="text-xs text-[#6B6560] font-mono">Tipo de Acesso</span>
                     <div className="text-lg font-semibold text-purple-700 font-mono">Viewer (Consulta)</div>
                   </div>
                 </div>
@@ -329,7 +329,7 @@ export function AccountantChannelSection() {
                       </div>
                       <div className="text-xs font-mono text-secondary">contabilidade@escritorio.com.br</div>
                     </div>
-                    <div className="text-[11px] text-[#82807C] leading-relaxed">
+                    <div className="text-[11px] text-[#6B6560] leading-relaxed">
                       Pode baixar relatórios, extratos conciliados e memórias de cálculo. Sem autorização de movimentação bancária.
                     </div>
                   </div>
@@ -338,13 +338,15 @@ export function AccountantChannelSection() {
                   <div className="border border-[rgba(55,50,47,0.12)] rounded-lg p-5 bg-white flex flex-col justify-between gap-3 min-h-[160px]">
                     <div className="flex flex-col gap-1">
                       <span className="text-xs font-semibold text-secondary">Convidar Novo Contador</span>
-                      <span className="text-[11px] text-[#82807C]">Envie o link de acesso seguro por e-mail:</span>
+                      <span className="text-[11px] text-[#6B6560]">Envie o link de acesso seguro por e-mail:</span>
                     </div>
 
                     {inviteSent ? (
                       <div className="p-2.5 bg-emerald-50 border border-emerald-200 rounded text-xs text-emerald-900 font-medium flex items-center gap-2">
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                        <span>Convite enviado para <b>{email}</b>!</span>
+                        <span>
+                          Prévia: dentro do app, o convite de acesso seria enviado para <b>{email}</b>.
+                        </span>
                       </div>
                     ) : (
                       <form onSubmit={handleInvite} className="flex gap-2">
@@ -354,11 +356,14 @@ export function AccountantChannelSection() {
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="contador@escritorio.com.br"
-                          className="flex-1 px-3 py-1.5 text-xs bg-white border border-[rgba(55,50,47,0.15)] rounded text-secondary placeholder-[#82807C] focus:outline-none focus:ring-1 focus:ring-[#37322F]"
+                          aria-label="E-mail do contador (prévia da interface)"
+                          autoComplete="off"
+                          inputMode="email"
+                          className="flex-1 px-3 py-2.5 min-h-[44px] text-xs bg-white border border-[rgba(55,50,47,0.2)] rounded text-secondary placeholder-[#6B6560] focus:outline-none focus:ring-2 focus:ring-primary"
                         />
                         <button
                           type="submit"
-                          className="px-3 py-1.5 bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded flex items-center gap-1 transition-all shadow-xs cursor-pointer shrink-0"
+                          className="px-4 py-2.5 min-h-[44px] bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded flex items-center gap-1 transition-all shadow-xs cursor-pointer shrink-0"
                         >
                           Convidar
                           <ArrowRight className="w-3 h-3" />

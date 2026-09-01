@@ -1,5 +1,5 @@
 interface CTASectionProps {
-  onOpenConsultant?: () => void
+  onOpenConsultant?: (origem?: string) => void
 }
 
 export default function CTASection({ onOpenConsultant }: CTASectionProps) {
@@ -36,7 +36,7 @@ export default function CTASection({ onOpenConsultant }: CTASectionProps) {
             <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
               <button
                 type="button"
-                onClick={onOpenConsultant}
+                onClick={() => onOpenConsultant?.("cta_final")}
                 className="h-12 px-8 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded flex items-center justify-center shadow-sm transition-all cursor-pointer"
               >
                 Fale com Consultor
@@ -45,11 +45,11 @@ export default function CTASection({ onOpenConsultant }: CTASectionProps) {
                 href="#fiscal"
                 className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-secondary border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
               >
-                Ver Demonstração
+                Ver como funciona
               </a>
             </div>
 
-            <p className="text-[11px] text-[#82807c] font-sans">
+            <p className="text-[11px] text-[#6B6560] font-sans">
               Sem necessidade de cartão de crédito • Totalmente compatível com Simples Nacional e Lucro Presumido
             </p>
           </div>

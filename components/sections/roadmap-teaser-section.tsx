@@ -88,7 +88,7 @@ export function RoadmapTeaserSection() {
                 </div>
 
                 <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center text-xs font-mono text-[#605A57]">
-                  <span className="text-[#82807C] text-[11px] uppercase tracking-wider">{item.tag}</span>
+                  <span className="text-[#6B6560] text-[11px] uppercase tracking-wider">{item.tag}</span>
                 </div>
               </div>
             )

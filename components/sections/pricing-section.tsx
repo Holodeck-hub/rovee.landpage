@@ -1,18 +1,135 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Check } from "lucide-react"
 import { AnimatedWave } from "../shared/animated-wave"
+import { trackEvent } from "../../lib/analytics"
 
 interface PricingSectionProps {
-  onOpenConsultant?: () => void
+  onOpenConsultant?: (origem?: string) => void
+}
+
+type BillingPeriod = "mensal" | "anual"
+
+interface Plan {
+  id: string
+  name: string
+  tagline: string
+  /** Preço cheio, cobrado mês a mês. */
+  monthly: number
+  /** Preço mensal equivalente quando o pagamento é anual (20% OFF). */
+  annualMonthly: number
+  features: string[]
+  /** Destaca visualmente as features (plano principal). */
+  featured?: boolean
+  ctaLabel: string
+}
+
+const PLANS: Plan[] = [
+  {
+    id: "starter",
+    name: "Starter PJ",
+    tagline: "Para quem quer organizar contas e ter clareza inicial do caixa.",
+    monthly: 99.99,
+    annualMonthly: 79.99,
+    ctaLabel: "Falar sobre o Starter",
+    features: [
+      "Importação manual de extratos (OFX / PDF)",
+      "Gestão multi-contas bancárias",
+      "Diagnóstico inicial de Fator R",
+      "Cheque do Mês básico",
+    ],
+  },
+  {
+    id: "pro",
+    name: "Rovee Pro",
+    tagline: "Para devs, consultores e prestadores PJ que faturam acima de R$ 10 mil/mês.",
+    monthly: 199.99,
+    annualMonthly: 159.99,
+    featured: true,
+    ctaLabel: "Falar sobre o Rovee Pro",
+    features: [
+      "Conexão automática de bancos via Open Finance",
+      "Otimizador contínuo do Fator R (Anexo III)",
+      "Sentinela Anti-Mistura PF × PJ (art. 50 do Código Civil)",
+      "Provisão de DAS em tempo real + ação em 1 clique",
+      "Inteligência Preditiva (projeção de caixa e runway)",
+      "Orçamentos, metas e gestão de dívidas",
+    ],
+  },
+  {
+    id: "escritorio",
+    name: "Escritório & Sócios",
+    tagline: "Para quem opera múltiplos CNPJs ou escritórios com clientes PJ.",
+    monthly: 289.99,
+    annualMonthly: 229.99,
+    ctaLabel: "Falar sobre o Escritório",
+    features: [
+      "Tudo do plano Pro",
+      "Multi-tenancy para até 5 CNPJs",
+      "Controle de acessos e papéis (RBAC)",
+      "Relatórios executivos e exportação em PDF",
+    ],
+  },
+]
+
+const brl = new Intl.NumberFormat("pt-BR", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+})
+
+function formatBRL(value: number) {
+  return `R$ ${brl.format(value)}`
 }
 
 export default function PricingSection({ onOpenConsultant }: PricingSectionProps) {
-  const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annually">("annually")
+  // Padrão é "mensal": o preço exibido por default é o que se paga sem
+  // compromisso anual. O desconto é uma escolha do visitante, não o preço-âncora.
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("mensal")
+  const sectionRef = useRef<HTMLElement>(null)
+  const hasTrackedScroll = useRef(false)
+
+  // Evento de funil: o visitante chegou até a seção de planos.
+  useEffect(() => {
+    const node = sectionRef.current
+    if (!node) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasTrackedScroll.current) {
+          hasTrackedScroll.current = true
+          trackEvent("scroll_planos")
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.2 },
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
+
+  const handlePlanClick = (plan: Plan) => {
+    trackEvent("clicou_plano", {
+      plano: plan.name,
+      periodo: billingPeriod,
+      preco_mensal: billingPeriod === "anual" ? plan.annualMonthly : plan.monthly,
+    })
+    onOpenConsultant?.(`planos_${plan.id}`)
+  }
+
+  const toggleBase =
+    "px-4 py-2.5 min-h-[44px] rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer"
+  const toggleActive = "bg-primary text-white shadow-xs"
+  const toggleIdle =
+    "bg-white text-[#605A57] border border-[rgba(55,50,47,0.12)] hover:bg-[#F1F5F9]"
 
   return (
-    <div id="planos" className="w-full flex flex-col justify-center items-center gap-2 border-b border-[rgba(55,50,47,0.12)]">
+    <section
+      ref={sectionRef}
+      aria-labelledby="planos-titulo"
+      className="w-full flex flex-col justify-center items-center gap-2 border-b border-[rgba(55,50,47,0.12)]"
+    >
       {/* Header Section com AnimatedWave */}
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative overflow-hidden">
         {/* Background Animated Wave */}
@@ -25,178 +142,123 @@ export default function PricingSection({ onOpenConsultant }: PricingSectionProps
             Planos & Preços
           </span>
 
-          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2
+            id="planos-titulo"
+            className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight"
+          >
             Investimento que se paga no primeiro DAS economizado
           </h2>
 
           <p className="text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
-            Escolha o plano ideal para o faturamento da sua PJ. Todos os planos incluem segurança de padrão bancário e suporte dedicado.
+            Escolha o plano ideal para o faturamento da sua PJ. Todos os planos incluem
+            segurança de padrão bancário e suporte dedicado.
           </p>
         </div>
       </div>
 
-      {/* Billing Toggle (Monthly / Annually) */}
-      <div className="flex justify-center items-center gap-2 my-6">
+      {/* Alternador de periodicidade */}
+      <div
+        className="flex justify-center items-center gap-2 my-6"
+        role="group"
+        aria-label="Periodicidade da cobrança"
+      >
         <button
-          onClick={() => setBillingPeriod("monthly")}
-          className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${billingPeriod === "monthly"
-            ? "bg-primary text-white shadow-xs"
-            : "bg-white text-[#605A57] border border-[rgba(55,50,47,0.12)] hover:bg-[#F1F5F9]"
-            }`}
+          type="button"
+          onClick={() => setBillingPeriod("mensal")}
+          aria-pressed={billingPeriod === "mensal"}
+          className={`${toggleBase} ${billingPeriod === "mensal" ? toggleActive : toggleIdle}`}
         >
           Mensal
         </button>
         <button
-          onClick={() => setBillingPeriod("annually")}
-          className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${billingPeriod === "annually"
-            ? "bg-primary text-white shadow-xs"
-            : "bg-white text-[#605A57] border border-[rgba(55,50,47,0.12)] hover:bg-[#F1F5F9]"
-            }`}
+          type="button"
+          onClick={() => setBillingPeriod("anual")}
+          aria-pressed={billingPeriod === "anual"}
+          className={`${toggleBase} flex items-center gap-2 ${
+            billingPeriod === "anual" ? toggleActive : toggleIdle
+          }`}
         >
-          Anual (20% OFF)
+          Anual <span className="font-semibold">(20% OFF)</span>
         </button>
       </div>
 
       {/* Pricing Cards Grid */}
       <div className="w-full px-4 sm:px-6 md:px-8 pb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Starter Plan */}
-        <div className="bg-white rounded-2xl border border-[rgba(55,50,47,0.12)] p-6 sm:p-8 flex flex-col justify-between shadow-[0px_2px_8px_rgba(55,50,47,0.04)]">
-          <div className="flex flex-col gap-4">
-            <div>
-              <h3 className="text-xl font-semibold text-secondary mt-1">Starter PJ</h3>
-              <p className="text-xs text-[#605A57] mt-1">Para quem quer organizar contas e ter clareza inicial do caixa.</p>
+        {PLANS.map((plan) => {
+          const isAnnual = billingPeriod === "anual"
+          const displayMonthly = isAnnual ? plan.annualMonthly : plan.monthly
+          const annualTotal = plan.annualMonthly * 12
+          const annualSaving = (plan.monthly - plan.annualMonthly) * 12
+
+          return (
+            <div
+              key={plan.id}
+              className={`bg-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between ${
+                plan.featured
+                  ? "border-2 border-primary shadow-[0px_8px_30px_rgba(55,50,47,0.12)] relative"
+                  : "border border-[rgba(55,50,47,0.12)] shadow-[0px_2px_8px_rgba(55,50,47,0.04)]"
+              }`}
+            >
+              <div className="flex flex-col gap-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-secondary mt-1">{plan.name}</h3>
+                  <p className="text-xs text-[#605A57] mt-1">{plan.tagline}</p>
+                </div>
+
+                <div className="py-2">
+                  <div className="flex items-baseline flex-wrap gap-x-1">
+                    <span className="text-3xl sm:text-4xl font-semibold text-secondary">
+                      {formatBRL(displayMonthly)}
+                    </span>
+                    <span className="text-xs text-[#6B6560]">/mês</span>
+                  </div>
+
+                  {isAnnual ? (
+                    <p className="text-[11px] leading-relaxed text-[#6B6560] mt-1.5">
+                      {formatBRL(annualTotal)} cobrados uma vez por ano.
+                      <br />
+                      <span className="text-emerald-700 font-medium">
+                        Economia de {formatBRL(annualSaving)} por ano
+                      </span>{" "}
+                      em relação ao plano mensal ({formatBRL(plan.monthly)}/mês).
+                    </p>
+                  ) : (
+                    <p className="text-[11px] leading-relaxed text-[#6B6560] mt-1.5">
+                      Cobrança mensal, sem fidelidade.
+                      <br />
+                      No plano anual sai por {formatBRL(plan.annualMonthly)}/mês.
+                    </p>
+                  )}
+                </div>
+
+                <div className="space-y-2.5 pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs text-[#49423D]">
+                  {plan.features.map((feature) => (
+                    <div
+                      key={feature}
+                      className={`flex items-start gap-2 ${plan.featured ? "font-medium" : ""}`}
+                    >
+                      <Check className="w-4 h-4 text-emerald-700 shrink-0 mt-px" aria-hidden="true" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => handlePlanClick(plan)}
+                className={`w-full mt-6 py-3 px-4 min-h-[44px] text-xs font-semibold rounded-full text-center transition-colors cursor-pointer ${
+                  plan.featured
+                    ? "bg-primary hover:bg-primary-hover text-white shadow-sm"
+                    : "bg-[#F1F5F9] hover:bg-gray-200 text-secondary border border-[rgba(55,50,47,0.1)]"
+                }`}
+              >
+                {plan.ctaLabel}
+              </button>
             </div>
-
-            <div className="py-2">
-              <span className="text-3xl sm:text-4xl font-semibold text-secondary">
-                R$ {billingPeriod === "annually" ? "79,99" : "99,99"}
-              </span>
-              <span className="text-xs text-[#605A57] ml-1">/mês</span>
-            </div>
-
-            <div className="space-y-2.5 pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs text-[#49423D]">
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Importação manual de extratos (OFX / PDF)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Gestão multi-contas bancárias</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Diagnóstico inicial de Fator R</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Cheque do Mês básico</span>
-              </div>
-            </div>
-          </div>
-
-          <a
-            href="#comecar"
-            className="w-full mt-6 py-2.5 px-4 bg-[#F1F5F9] hover:bg-gray-200 text-secondary text-xs font-semibold rounded-full text-center transition-colors border border-[rgba(55,50,47,0.1)]"
-          >
-            Assinar Starter
-          </a>
-        </div>
-
-        {/* Pro Plan (Featured) */}
-        <div className="bg-white rounded-2xl border-2 border-primary p-6 sm:p-8 flex flex-col justify-between shadow-[0px_8px_30px_rgba(55,50,47,0.12)] relative">
-          <div className="flex flex-col gap-4">
-            <div>
-              <h3 className="text-xl font-semibold text-secondary mt-1">Rovee Pro</h3>
-              <p className="text-xs text-[#605A57] mt-1">Para devs, consultores e prestadores PJ que faturam acima de R$ 10k/mês.</p>
-            </div>
-
-            <div className="py-2">
-              <span className="text-3xl sm:text-4xl font-semibold text-secondary">
-                R$ {billingPeriod === "annually" ? "159,99" : "199,99"}
-              </span>
-              <span className="text-xs text-[#605A57] ml-1">/mês</span>
-            </div>
-
-            <div className="space-y-2.5 pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs text-[#49423D]">
-              <div className="flex items-center gap-2 font-medium">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Conexão automática de bancos via Open Finance</span>
-              </div>
-              <div className="flex items-center gap-2 font-medium">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Otimizador contínuo do Fator R (Anexo III)</span>
-              </div>
-              <div className="flex items-center gap-2 font-medium">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Sentinela Anti-Mistura PF × PJ (Art. 50 CC)</span>
-              </div>
-              <div className="flex items-center gap-2 font-medium">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Provisão de DAS em tempo real + ação 1 clique</span>
-              </div>
-              <div className="flex items-center gap-2 font-medium">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Inteligência Preditiva (Projeção de Caixa e Runway)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Orçamentos, Metas e Gestão de Dívidas</span>
-              </div>
-            </div>
-          </div>
-
-          <a
-            href="#comecar"
-            className="w-full mt-6 py-2.5 px-4 bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded-full text-center transition-colors shadow-sm"
-          >
-            Assinar Rovee Pro
-          </a>
-        </div>
-
-        {/* Enterprise / Multi-PJ */}
-        <div className="bg-white rounded-2xl border border-[rgba(55,50,47,0.12)] p-6 sm:p-8 flex flex-col justify-between shadow-[0px_2px_8px_rgba(55,50,47,0.04)]">
-          <div className="flex flex-col gap-4">
-            <div>
-              <h3 className="text-xl font-semibold text-secondary mt-1">Escritório & Sócios</h3>
-              <p className="text-xs text-[#605A57] mt-1">Para quem opera múltiplos CNPJs ou escritórios com clientes PJ.</p>
-            </div>
-
-            <div className="py-2">
-              <span className="text-3xl sm:text-4xl font-semibold text-secondary">
-                R$ {billingPeriod === "annually" ? "229,99" : "289,99"}
-              </span>
-              <span className="text-xs text-[#605A57] ml-1">/mês</span>
-            </div>
-
-            <div className="space-y-2.5 pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs text-[#49423D]">
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Tudo do plano Pro</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Multi-tenancy para até 5 CNPJs</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Controle de acessos e papéis (RBAC)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Relatórios executivos e exportação PDF</span>
-              </div>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            onClick={onOpenConsultant}
-            className="w-full mt-6 py-2.5 px-4 bg-[#F1F5F9] hover:bg-gray-200 text-secondary text-xs font-semibold rounded-full text-center transition-colors border border-[rgba(55,50,47,0.1)] cursor-pointer"
-          >
-            Falar com Consultor
-          </button>
-        </div>
+          )
+        })}
       </div>
-    </div>
+    </section>
   )
 }

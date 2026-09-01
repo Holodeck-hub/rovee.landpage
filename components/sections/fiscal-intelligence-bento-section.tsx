@@ -4,7 +4,7 @@ import { DollarSign, TrendingUp, ShieldAlert, Clock } from "lucide-react"
 
 export function FiscalIntelligenceBentoSection() {
   return (
-    <div id="fiscal" className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
+    <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Header */}
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
@@ -48,7 +48,7 @@ export function FiscalIntelligenceBentoSection() {
               </p>
             </div>
             <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
-              <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Decisão</span>
+              <span className="text-[#6B6560] text-[11px] uppercase tracking-wider">Decisão</span>
               <span className="font-medium text-secondary">Responde todo dia: &quot;Quanto posso gastar hoje?&quot;</span>
             </div>
           </div>
@@ -65,7 +65,7 @@ export function FiscalIntelligenceBentoSection() {
               </p>
             </div>
             <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
-              <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Impacto</span>
+              <span className="text-[#6B6560] text-[11px] uppercase tracking-wider">Impacto</span>
               <span className="font-medium text-emerald-700">Economia média de R$ 28k a R$ 60k/ano</span>
             </div>
           </div>
@@ -82,7 +82,7 @@ export function FiscalIntelligenceBentoSection() {
               </p>
             </div>
             <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
-              <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Segurança</span>
+              <span className="text-[#6B6560] text-[11px] uppercase tracking-wider">Segurança</span>
               <span className="font-medium text-secondary">Blindagem patrimonial e extrato 100% limpo</span>
             </div>
           </div>
@@ -99,7 +99,7 @@ export function FiscalIntelligenceBentoSection() {
               </p>
             </div>
             <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
-              <span className="text-[#82807C] text-[11px] uppercase tracking-wider">Pontualidade</span>
+              <span className="text-[#6B6560] text-[11px] uppercase tracking-wider">Pontualidade</span>
               <span className="font-medium text-secondary">Dinheiro do imposto sempre reservado no dia 20</span>
             </div>
           </div>

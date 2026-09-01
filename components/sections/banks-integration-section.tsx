@@ -3,7 +3,7 @@
 import { ArrowRight, ShieldCheck } from "lucide-react"
 
 interface BanksIntegrationSectionProps {
-  onOpenConsultant?: () => void
+  onOpenConsultant?: (origem?: string) => void
 }
 
 // Authentic Bank Logos with exact brand colors and icons
@@ -84,7 +84,7 @@ function BankIcon({ code }: { code: string }) {
 
 export function BanksIntegrationSection({ onOpenConsultant }: BanksIntegrationSectionProps) {
   return (
-    <div id="integracoes" className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center overflow-hidden">
+    <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center overflow-hidden">
       {/* Framing Container */}
       <div className="self-stretch flex justify-center items-stretch relative">
 
@@ -161,7 +161,7 @@ export function BanksIntegrationSection({ onOpenConsultant }: BanksIntegrationSe
             <div className="pt-2">
               <button
                 type="button"
-                onClick={onOpenConsultant}
+                onClick={() => onOpenConsultant?.("integracoes")}
                 className="px-6 py-3 bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-semibold rounded-full flex items-center gap-2 transition-all shadow-sm cursor-pointer"
               >
                 <span>Fale com um consultor</span>
@@ -170,7 +170,7 @@ export function BanksIntegrationSection({ onOpenConsultant }: BanksIntegrationSe
             </div>
 
             {/* Footnote */}
-            <div className="text-[11px] text-[#82807C] font-sans flex items-center justify-center gap-1.5 pt-1">
+            <div className="text-[11px] text-[#6B6560] font-sans flex items-center justify-center gap-1.5 pt-1">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
               <span>Conexão 100% segura e regulada pelo Banco Central</span>
             </div>

@@ -86,7 +86,7 @@ export function FiscalAgentsSection() {
   }
 
   return (
-    <div id="agentes" className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
+    <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Section Header */}
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative overflow-hidden">
         {/* Background Animated Wave */}
@@ -185,7 +185,7 @@ export function FiscalAgentsSection() {
                       <div className="bg-white p-3.5 rounded-lg border border-[rgba(55,50,47,0.08)]">
                         <div className="text-[11px] text-[#605A57]">Cenário Atual (Sem Otimização)</div>
                         <div className="text-sm font-semibold text-red-600">Anexo V · Alíquota 15,5%</div>
-                        <div className="text-xs text-[#82807C] mt-1">Carga Anual: R$ 55.800/ano</div>
+                        <div className="text-xs text-[#6B6560] mt-1">Carga Anual: R$ 55.800/ano</div>
                       </div>
 
                       <div className="bg-white p-3.5 rounded-lg border border-emerald-500/80 shadow-xs">

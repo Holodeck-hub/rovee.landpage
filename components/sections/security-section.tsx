@@ -35,7 +35,7 @@ const SECURITY_PILLARS = [
 
 export function SecuritySection() {
   return (
-    <div id="seguranca" className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
+    <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Section Header */}
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
@@ -78,7 +78,7 @@ export function SecuritySection() {
                     <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-secondary border border-[rgba(55,50,47,0.08)]">
                       <Icon className="w-5 h-5 text-secondary" />
                     </div>
-                    <span className="text-[10px] font-mono text-[#82807C] font-semibold">
+                    <span className="text-[10px] font-mono text-[#6B6560] font-semibold">
                       {pillar.badge}
                     </span>
                   </div>
@@ -108,7 +108,7 @@ export function SecuritySection() {
                     <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-secondary border border-[rgba(55,50,47,0.08)]">
                       <Icon className="w-5 h-5 text-secondary" />
                     </div>
-                    <span className="text-[10px] font-mono text-[#82807C] font-semibold">
+                    <span className="text-[10px] font-mono text-[#6B6560] font-semibold">
                       {pillar.badge}
                     </span>
                   </div>

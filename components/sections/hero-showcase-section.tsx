@@ -6,7 +6,7 @@ import { HeroStatsMarquee } from "../shared/hero-stats-marquee"
 import { AnimatedWave } from "../shared/animated-wave"
 
 interface HeroShowcaseSectionProps {
-  onOpenConsultant?: () => void
+  onOpenConsultant?: (origem?: string) => void
 }
 
 export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionProps) {
@@ -41,7 +41,7 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
         {/* Main Headline */}
         <div className="w-full max-w-[920px] flex flex-col justify-center items-center gap-5">
           <h1 className="text-secondary text-[26px] xs:text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-semibold leading-[1.12] font-sans tracking-tight">
-            A contabilidade entrega números.. <span className="text-primary block sm:inline">A Rovee entrega economia.</span>
+            A contabilidade entrega números. <span className="text-primary block sm:inline">A Rovee entrega economia.</span>
           </h1>
 
           <p className="w-full max-w-[660px] text-[rgba(55,50,47,0.85)] text-sm sm:text-base md:text-lg leading-relaxed font-sans font-normal mt-2">
@@ -53,7 +53,7 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
         <div className="flex flex-col sm:flex-row items-center gap-3 mt-10 z-20">
           <button
             type="button"
-            onClick={onOpenConsultant}
+            onClick={() => onOpenConsultant?.("hero")}
             className="h-12 px-8 bg-primary hover:bg-primary-hover text-white text-sm font-semibold rounded flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
           >
             <span>Falar com Consultor</span>
@@ -64,7 +64,7 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
             href="#fiscal"
             className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-secondary border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
           >
-            Ver Demonstração
+            Ver como funciona
           </a>
         </div>
       </div>
@@ -99,7 +99,7 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
                   </p>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs text-[#82807c] font-mono">Margem Líquida</span>
+                  <span className="text-xs text-[#6B6560] font-mono">Margem Líquida</span>
                   <div className="text-lg font-semibold text-emerald-700 font-mono">62,9%</div>
                 </div>
               </div>
@@ -171,7 +171,7 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
 
               {/* Segmented Pill Allocation Bar (Estilo Ticks idêntico à imagem) */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
-                <div className="flex items-center gap-2 text-[11px] font-mono text-[#82807c] shrink-0">
+                <div className="flex items-center gap-2 text-[11px] font-mono text-[#6B6560] shrink-0">
                   <span>Alocação do Caixa:</span>
                 </div>
 
@@ -213,7 +213,7 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
                   </p>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs text-[#82807c] font-mono">Economia Prescrita</span>
+                  <span className="text-xs text-[#6B6560] font-mono">Economia Prescrita</span>
                   <div className="text-lg font-semibold text-emerald-700 font-mono">+R$ 34.200/ano</div>
                 </div>
               </div>
@@ -263,7 +263,7 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
                   </p>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs text-[#82807c] font-mono">Fôlego de Reserva</span>
+                  <span className="text-xs text-[#6B6560] font-mono">Fôlego de Reserva</span>
                   <div className="text-lg font-semibold text-emerald-700 font-mono">8.4 meses</div>
                 </div>
               </div>
