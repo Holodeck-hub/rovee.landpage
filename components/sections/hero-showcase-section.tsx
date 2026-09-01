@@ -45,7 +45,7 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
           </h1>
 
           <p className="w-full max-w-[660px] text-[rgba(55,50,47,0.85)] text-sm sm:text-base md:text-lg leading-relaxed font-sans font-normal mt-2">
-            A Rovee calcula seu <strong>pró-labore ideal</strong>, separa o caixa da PF e PJ e prevê o faturamento para evitar surpresas fiscais.
+            Não é mais um app de finanças: é o <strong>cálculo</strong> que decide quanto você tira, quanto separa e quanto paga de imposto.
           </p>
         </div>
 
