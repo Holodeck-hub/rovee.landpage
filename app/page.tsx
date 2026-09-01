@@ -9,6 +9,8 @@ import { AccountantChannelSection } from "../components/accountant-channel-secti
 import { LiveMetricsSection } from "../components/live-metrics-section"
 import { TestimonialsSlider } from "../components/testimonials-slider"
 import { RoadmapTeaserSection } from "../components/roadmap-teaser-section"
+import { BanksIntegrationSection } from "../components/banks-integration-section"
+import { SecuritySection } from "../components/security-section"
 import PricingSection from "../components/pricing-section"
 import FAQSection from "../components/faq-section"
 import CTASection from "../components/cta-section"
@@ -661,6 +663,11 @@ export default function LandingPage() {
               <AccountantChannelSection />
             </div>
 
+            {/* ── 8.1 SEÇÃO: BANCOS & CONTAS INTEGRADAS (Open Finance) ── */}
+            <div id="integracoes" className="w-full">
+              <BanksIntegrationSection />
+            </div>
+
             {/* ── 9. SEÇÃO: LIVE METRICS (Optimus Base) ────────────────── */}
             <div id="metricas" className="w-full">
               <LiveMetricsSection />
@@ -674,6 +681,11 @@ export default function LandingPage() {
             {/* ── 11. SEÇÃO: ROADMAP ROVEE (Transparência de Produto) ──── */}
             <div id="roadmap" className="w-full">
               <RoadmapTeaserSection />
+            </div>
+
+            {/* ── 11.1 SEÇÃO: SEGURANÇA DE NÍVEL BANCÁRIO & LGPD ──────── */}
+            <div id="seguranca" className="w-full">
+              <SecuritySection />
             </div>
 
             {/* ── 12. SEÇÃO: PLANOS & PRICING ─────────────────────────── */}

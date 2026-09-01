@@ -71,11 +71,11 @@ export default function PricingSection({ onOpenConsultant }: PricingSectionProps
             <div className="space-y-2.5 pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs text-[#49423D]">
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Gestão multi-contas bancárias</span>
+                <span>Importação manual de extratos (OFX / PDF)</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Importação de extratos (OFX/PDF)</span>
+                <span>Gestão multi-contas bancárias</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -100,7 +100,7 @@ export default function PricingSection({ onOpenConsultant }: PricingSectionProps
         <div className="bg-white rounded-2xl border-2 border-primary p-6 sm:p-8 flex flex-col justify-between shadow-[0px_8px_30px_rgba(55,50,47,0.12)] relative">
           <div className="flex flex-col gap-4">
             <div>
-              <h3 className="text-xl font-semibold text-secondary mt-1">Pro Fintech Fiscal</h3>
+              <h3 className="text-xl font-semibold text-secondary mt-1">Rovee Pro</h3>
               <p className="text-xs text-[#605A57] mt-1">Para devs, consultores e prestadores PJ que faturam acima de R$ 10k/mês.</p>
             </div>
 
@@ -112,6 +112,10 @@ export default function PricingSection({ onOpenConsultant }: PricingSectionProps
             </div>
 
             <div className="space-y-2.5 pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs text-[#49423D]">
+              <div className="flex items-center gap-2 font-medium">
+                <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Conexão automática de bancos via Open Finance</span>
+              </div>
               <div className="flex items-center gap-2 font-medium">
                 <Check className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Otimizador contínuo do Fator R (Anexo III)</span>
@@ -139,7 +143,7 @@ export default function PricingSection({ onOpenConsultant }: PricingSectionProps
             href="#comecar"
             className="w-full mt-6 py-2.5 px-4 bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded-full text-center transition-colors shadow-sm"
           >
-            Assinar Pro
+            Assinar Rovee Pro
           </a>
         </div>
 
