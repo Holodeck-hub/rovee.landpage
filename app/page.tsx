@@ -14,12 +14,9 @@ import CTASection from "../components/cta-section"
 import FooterSection from "../components/footer-section"
 import {
   ArrowUpRight,
-  CheckCircle2,
   DollarSign,
   TrendingUp,
   ShieldAlert,
-  Layers,
-  FileText,
   Clock,
 } from "lucide-react"
 
