@@ -161,7 +161,7 @@ function ConsultantButton({
     <button
       type="button"
       onClick={() => onOpenConsultant(origem)}
-      className="hidden md:inline-flex px-4 py-2.5 min-h-[40px] items-center bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded transition-all shadow-xs cursor-pointer"
+      className="hidden md:inline-flex px-3.5 sm:px-4 py-1.5 items-center bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded transition-all shadow-xs cursor-pointer"
     >
       Falar com Consultor
     </button>
