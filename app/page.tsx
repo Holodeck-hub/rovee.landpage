@@ -26,6 +26,16 @@ import {
 export default function LandingPage() {
   const [activeCard, setActiveCard] = useState(0)
   const [progress, setProgress] = useState(0)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  // Scroll listener for sticky floating header motion
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
     const progressInterval = setInterval(() => {
@@ -50,6 +60,61 @@ export default function LandingPage() {
 
   return (
     <div className="w-full min-h-screen relative bg-[#F8FAFC] overflow-x-hidden flex flex-col justify-start items-center">
+      {/* ── STICKY FULL-WIDTH HEADER (ENTRA COM ZOOM CENTRALIZADO AO SCROLLAR) ── */}
+      <div
+        className={`fixed top-0 left-0 right-0 w-full h-14 z-50 bg-white/95 backdrop-blur-xl border-b border-[rgba(55,50,47,0.12)] shadow-[0px_2px_8px_rgba(55,50,47,0.04)] px-4 sm:px-8 md:px-12 flex items-center justify-between transition-all duration-300 ease-out origin-center ${
+          isScrolled
+            ? "opacity-100 scale-100 pointer-events-auto translate-y-0"
+            : "opacity-0 scale-95 pointer-events-none -translate-y-2"
+        }`}
+      >
+        <div className="flex items-center justify-between w-full max-w-[1060px] mx-auto">
+          <div className="flex justify-center items-center gap-6">
+            <a href="#" className="flex items-center hover:opacity-85 transition-opacity">
+              <span className="text-[#37322F] text-lg sm:text-xl font-bold font-sans tracking-tight">
+                Rovee
+              </span>
+            </a>
+
+            <nav className="hidden md:flex items-center gap-3.5 pl-2 text-xs font-medium text-[rgba(49,45,43,0.80)] font-sans">
+              <a href="#fiscal" className="hover:text-[#37322F] transition-colors">
+                Inteligência Fiscal
+              </a>
+              <a href="#agentes" className="hover:text-[#37322F] transition-colors">
+                Agentes
+              </a>
+              <a href="#contador" className="hover:text-[#37322F] transition-colors">
+                Contador
+              </a>
+              <a href="#metricas" className="hover:text-[#37322F] transition-colors">
+                Métricas
+              </a>
+              <a href="#roadmap" className="hover:text-[#37322F] transition-colors">
+                Roadmap
+              </a>
+              <a href="#planos" className="hover:text-[#37322F] transition-colors">
+                Planos
+              </a>
+            </nav>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <a
+              href="#comecar"
+              className="px-3 sm:px-4 py-1.5 bg-white hover:bg-gray-100 text-[#37322F] text-xs font-semibold rounded shadow-[0px_1px_2px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)] transition-all"
+            >
+              Entrar
+            </a>
+            <a
+              href="#comecar"
+              className="px-3.5 sm:px-4 py-1.5 bg-[#37322F] hover:bg-[#201d1b] text-white text-xs font-semibold rounded transition-all shadow-xs"
+            >
+              Criar Conta
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div className="relative flex flex-col justify-start items-center w-full">
         {/* Main container with framing vertical lines */}
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] relative flex flex-col justify-start items-start min-h-screen">
@@ -59,12 +124,14 @@ export default function LandingPage() {
           {/* Right vertical line */}
           <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0"></div>
 
-          <div className="self-stretch pt-[9px] overflow-hidden border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-center items-center relative z-10">
+          <div className="self-stretch pt-[9px] overflow-visible border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-center items-center relative z-10">
 
-            {/* ── 1. NAVIGATION BAR ────────────────────────────────────── */}
-            <div className="w-full h-12 sm:h-14 md:h-16 lg:h-[84px] sticky top-0 flex justify-center items-center z-50 px-6 sm:px-8 md:px-12 lg:px-0">
+            {/* ── 1. NAVIGATION BAR ORIGINAL NO HERO ────────────────────── */}
+            <div className="w-full h-12 sm:h-14 md:h-16 lg:h-[84px] flex justify-center items-center z-30 px-6 sm:px-8 md:px-12 lg:px-0 relative">
+              {/* Linha horizontal passando por trás (original) */}
               <div className="w-full h-0 absolute left-0 top-6 sm:top-7 md:top-8 lg:top-[42px] border-t border-[rgba(55,50,47,0.12)] shadow-[0px_1px_0px_white]"></div>
 
+              {/* Barra de Navegação Original */}
               <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[760px] lg:w-[760px] h-11 sm:h-12 py-1.5 px-4 bg-[#F8FAFC]/90 backdrop-blur-md shadow-[0px_0px_0px_2px_white] overflow-hidden rounded flex justify-between items-center relative z-30 border border-[rgba(55,50,47,0.1)]">
                 <div className="flex justify-center items-center gap-6">
                   <a href="#" className="flex items-center hover:opacity-85 transition-opacity">
@@ -98,13 +165,13 @@ export default function LandingPage() {
                 <div className="flex items-center gap-2">
                   <a
                     href="#comecar"
-                    className="px-3 sm:px-4 py-1.5 bg-white hover:bg-gray-100 text--indigo-500 text-xs font-semibold rounded shadow-[0px_1px_2px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)] transition-all"
+                    className="px-3 sm:px-4 py-1.5 bg-white hover:bg-gray-100 text-[#37322F] text-xs font-semibold rounded shadow-[0px_1px_2px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)] transition-all"
                   >
                     Entrar
                   </a>
                   <a
                     href="#comecar"
-                    className="px-3.5 sm:px-4 py-1.5 bg-indigo-500 hover:bg-[#201d1b] text-white text-xs font-semibold rounded transition-all shadow-xs"
+                    className="px-3.5 sm:px-4 py-1.5 bg-[#37322F] hover:bg-[#201d1b] text-white text-xs font-semibold rounded transition-all shadow-xs"
                   >
                     Criar Conta
                   </a>
