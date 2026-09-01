@@ -4,7 +4,26 @@ import { ArrowRight, ShieldCheck } from "lucide-react"
 
 interface BanksIntegrationSectionProps {
   onOpenConsultant?: (origem?: string) => void
+  /**
+   * "full" é a seção original, com o canvas e os badges flutuantes.
+   * "strip" é a faixa compacta de prova social que vai logo abaixo do hero —
+   * o mesmo movimento que Brex e Firecrawl fazem com logos de clientes; aqui
+   * o ativo equivalente, e verdadeiro, são os bancos suportados.
+   */
+  variant?: "full" | "strip"
 }
+
+const STRIP_BANKS = [
+  { code: "itau", name: "Itaú" },
+  { code: "nubank", name: "Nubank" },
+  { code: "inter", name: "Inter" },
+  { code: "bradesco", name: "Bradesco" },
+  { code: "santander", name: "Santander" },
+  { code: "bb", name: "Banco do Brasil" },
+  { code: "btg", name: "BTG" },
+  { code: "cora", name: "Cora" },
+  { code: "sicoob", name: "Sicoob" },
+]
 
 // Authentic Bank Logos with exact brand colors and icons
 function BankIcon({ code }: { code: string }) {
@@ -82,7 +101,43 @@ function BankIcon({ code }: { code: string }) {
   }
 }
 
-export function BanksIntegrationSection({ onOpenConsultant }: BanksIntegrationSectionProps) {
+export function BanksIntegrationSection({
+  onOpenConsultant,
+  variant = "full",
+}: BanksIntegrationSectionProps) {
+  if (variant === "strip") {
+    return (
+      <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
+        {/* Mesma moldura das demais seções: as linhas verticais da grade
+            mestra precisam continuar através da faixa. */}
+        <div className="self-stretch flex justify-center items-stretch">
+          <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] bg-[#F8FAFC] py-8 sm:py-10 px-4 sm:px-6 md:px-8 flex flex-col items-center gap-5">
+            <p className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider text-[#6B6560] text-center">
+              Conecta com as contas PJ que você já usa
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3.5">
+              {STRIP_BANKS.map((bank) => (
+                <div
+                  key={bank.code}
+                  className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
+                >
+                  <BankIcon code={bank.code} />
+                  <span className="text-xs font-medium text-[#49423D] font-sans">{bank.name}</span>
+                </div>
+              ))}
+            </div>
+
+            <p className="flex items-center gap-1.5 text-[11px] text-[#6B6560] text-center">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-700 shrink-0" aria-hidden="true" />
+              Via Open Finance regulado pelo Banco Central, em modo somente-leitura
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center overflow-hidden">
       {/* Framing Container */}

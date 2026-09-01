@@ -83,6 +83,11 @@ export default function LandingPage() {
                 <HeroShowcaseSection onOpenConsultant={handleOpenConsultant} />
               </section>
 
+              {/* ── PROVA SOCIAL: bancos suportados, faixa compacta ─────── */}
+              <section aria-label="Bancos suportados" className="w-full">
+                <BanksIntegrationSection variant="strip" />
+              </section>
+
               {/* ── SEÇÃO 2: BENTO GRID - MOTOR DE INTELIGÊNCIA FISCAL ──── */}
               <section id="fiscal" aria-label="Motor de inteligência fiscal" className="w-full">
                 <FiscalIntelligenceBentoSection />
