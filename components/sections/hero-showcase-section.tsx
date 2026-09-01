@@ -35,35 +35,38 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
   }
 
   return (
-    <div id="comecar" className="pt-15 sm:pt-16 md:pt-20 lg:pt-[70px] pb-6 sm:pb-8 flex flex-col justify-start items-center px-0.5 w-full text-center">
-      {/* Main Headline */}
-      <div className="w-full max-w-[880px] flex flex-col justify-center items-center gap-4">
-        <h1 className="text-secondary text-[24px] xs:text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] font-semibold leading-[1.14] font-sans tracking-tight">
-          A contabilidade entrega números.. <span className="text-primary block sm:inline">A Rovee entrega economia.</span>
-        </h1>
+    <div id="comecar" className="w-full flex flex-col justify-start items-center px-0.5 text-center">
+      {/* Main Headline & Actions Container com altura e respiro generosos */}
+      <div className="w-full min-h-[460px] sm:min-h-[500px] md:min-h-[540px] py-16 sm:py-20 md:py-24 flex flex-col justify-center items-center">
+        {/* Main Headline */}
+        <div className="w-full max-w-[920px] flex flex-col justify-center items-center gap-5">
+          <h1 className="text-secondary text-[26px] xs:text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-semibold leading-[1.12] font-sans tracking-tight">
+            A contabilidade entrega números.. <span className="text-primary block sm:inline">A Rovee entrega economia.</span>
+          </h1>
 
-        <p className="w-full max-w-[620px] text-[rgba(55,50,47,0.85)] text-sm sm:text-base md:text-base leading-relaxed font-sans font-normal mt-1">
-          A Rovee calcula seu <strong>pró-labore ideal</strong>, separa o caixa da PF e PJ e prevê o faturamento para evitar surpresas fiscais.
-        </p>
-      </div>
+          <p className="w-full max-w-[660px] text-[rgba(55,50,47,0.85)] text-sm sm:text-base md:text-lg leading-relaxed font-sans font-normal mt-2">
+            A Rovee calcula seu <strong>pró-labore ideal</strong>, separa o caixa da PF e PJ e prevê o faturamento para evitar surpresas fiscais.
+          </p>
+        </div>
 
-      {/* Primary Actions */}
-      <div className="flex flex-col sm:flex-row items-center gap-3 mt-8 z-20">
-        <button
-          type="button"
-          onClick={onOpenConsultant}
-          className="h-12 px-8 bg-primary hover:bg-primary-hover text-white text-sm font-semibold rounded flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
-        >
-          <span>Falar com Consultor</span>
-          <ArrowUpRight className="w-4 h-4" />
-        </button>
+        {/* Primary Actions */}
+        <div className="flex flex-col sm:flex-row items-center gap-3 mt-10 z-20">
+          <button
+            type="button"
+            onClick={onOpenConsultant}
+            className="h-12 px-8 bg-primary hover:bg-primary-hover text-white text-sm font-semibold rounded flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
+          >
+            <span>Falar com Consultor</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </button>
 
-        <a
-          href="#fiscal"
-          className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-secondary border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
-        >
-          Ver Demonstração
-        </a>
+          <a
+            href="#fiscal"
+            className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-secondary border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
+          >
+            Ver Demonstração
+          </a>
+        </div>
       </div>
 
       {/* ── HERO STATS MARQUEE ───────────── */}

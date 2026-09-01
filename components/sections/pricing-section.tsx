@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Check } from "lucide-react"
+import { AnimatedWave } from "../shared/animated-wave"
 
 interface PricingSectionProps {
   onOpenConsultant?: () => void
@@ -12,9 +13,14 @@ export default function PricingSection({ onOpenConsultant }: PricingSectionProps
 
   return (
     <div id="planos" className="w-full flex flex-col justify-center items-center gap-2 border-b border-[rgba(55,50,47,0.12)]">
-      {/* Header Section */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
-        <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
+      {/* Header Section com AnimatedWave */}
+      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative overflow-hidden">
+        {/* Background Animated Wave */}
+        <div className="absolute inset-0 w-full h-full opacity-40 sm:opacity-50 z-0 pointer-events-none">
+          <AnimatedWave />
+        </div>
+
+        <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center relative z-10">
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
             Planos & Preços
           </span>
