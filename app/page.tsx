@@ -13,6 +13,7 @@ import PricingSection from "../components/pricing-section"
 import FAQSection from "../components/faq-section"
 import CTASection from "../components/cta-section"
 import FooterSection from "../components/footer-section"
+import { ConsultantModal } from "../components/consultant-modal"
 import {
   ArrowUpRight,
   DollarSign,
@@ -25,6 +26,7 @@ export default function LandingPage() {
   const [activeCard, setActiveCard] = useState(0)
   const [progress, setProgress] = useState(0)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isConsultantModalOpen, setIsConsultantModalOpen] = useState(false)
 
   // Scroll listener for sticky floating header motion
   useEffect(() => {
@@ -97,6 +99,7 @@ export default function LandingPage() {
           </div>
 
           <div className="flex items-center gap-2">
+            {/*
             <a
               href="#comecar"
               className="px-3 sm:px-4 py-1.5 bg-white hover:bg-gray-100 text-secondary text-xs font-semibold rounded shadow-[0px_1px_2px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)] transition-all"
@@ -109,6 +112,14 @@ export default function LandingPage() {
             >
               Criar Conta
             </a>
+            */}
+            <button
+              type="button"
+              onClick={() => setIsConsultantModalOpen(true)}
+              className="px-3.5 sm:px-4 py-1.5 bg-primary hover:bg-primary/80 text-white text-xs font-semibold rounded transition-all shadow-xs cursor-pointer"
+            >
+              Fale com Consultor
+            </button>
           </div>
         </div>
       </div>
@@ -161,6 +172,7 @@ export default function LandingPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
+                  {/*
                   <a
                     href="#comecar"
                     className="px-3 sm:px-4 py-1.5 bg-white hover:bg-gray-100 text-secondary text-xs font-semibold rounded shadow-[0px_1px_2px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)] transition-all"
@@ -173,6 +185,14 @@ export default function LandingPage() {
                   >
                     Criar Conta
                   </a>
+                  */}
+                  <button
+                    type="button"
+                    onClick={() => setIsConsultantModalOpen(true)}
+                    className="px-3.5 sm:px-4 py-1.5 bg-primary hover:bg-primary/80 text-white text-xs font-semibold rounded transition-all shadow-xs cursor-pointer"
+                  >
+                    Fale com Consultor
+                  </button>
                 </div>
               </div>
             </div>
@@ -658,7 +678,7 @@ export default function LandingPage() {
 
             {/* ── 12. SEÇÃO: PLANOS & PRICING ─────────────────────────── */}
             <div id="planos" className="w-full">
-              <PricingSection />
+              <PricingSection onOpenConsultant={() => setIsConsultantModalOpen(true)} />
             </div>
 
             {/* ── 11. SEÇÃO: FAQ ───────────────────────────────────────── */}
@@ -668,7 +688,7 @@ export default function LandingPage() {
 
             {/* ── 12. SEÇÃO: CTA FINAL COM ANIMATED WAVE ───────────────── */}
             <div className="w-full">
-              <CTASection />
+              <CTASection onOpenConsultant={() => setIsConsultantModalOpen(true)} />
             </div>
 
             {/* ── 13. SEÇÃO: FOOTER ────────────────────────────────────── */}
@@ -679,6 +699,12 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+
+      {/* Modal Fale com Consultor */}
+      <ConsultantModal
+        isOpen={isConsultantModalOpen}
+        onClose={() => setIsConsultantModalOpen(false)}
+      />
     </div>
   )
 }

@@ -1,4 +1,8 @@
-export default function CTASection() {
+interface CTASectionProps {
+  onOpenConsultant?: () => void
+}
+
+export default function CTASection({ onOpenConsultant }: CTASectionProps) {
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       <div className="self-stretch flex justify-center items-stretch relative">
@@ -30,12 +34,13 @@ export default function CTASection() {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
-              <a
-                href="#comecar"
-                className="h-12 px-8 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded flex items-center justify-center shadow-sm transition-all"
+              <button
+                type="button"
+                onClick={onOpenConsultant}
+                className="h-12 px-8 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded flex items-center justify-center shadow-sm transition-all cursor-pointer"
               >
-                Criar Conta Gratuita
-              </a>
+                Fale com Consultor
+              </button>
               <a
                 href="#fiscal"
                 className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-secondary border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"

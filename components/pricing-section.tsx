@@ -3,7 +3,11 @@
 import { useState } from "react"
 import { Check } from "lucide-react"
 
-export default function PricingSection() {
+interface PricingSectionProps {
+  onOpenConsultant?: () => void
+}
+
+export default function PricingSection({ onOpenConsultant }: PricingSectionProps) {
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "annually">("annually")
 
   return (
@@ -174,12 +178,13 @@ export default function PricingSection() {
             </div>
           </div>
 
-          <a
-            href="#comecar"
-            className="w-full mt-6 py-2.5 px-4 bg-[#F1F5F9] hover:bg-gray-200 text-secondary text-xs font-semibold rounded-full text-center transition-colors border border-[rgba(55,50,47,0.1)]"
+          <button
+            type="button"
+            onClick={onOpenConsultant}
+            className="w-full mt-6 py-2.5 px-4 bg-[#F1F5F9] hover:bg-gray-200 text-secondary text-xs font-semibold rounded-full text-center transition-colors border border-[rgba(55,50,47,0.1)] cursor-pointer"
           >
             Falar com Consultor
-          </a>
+          </button>
         </div>
       </div>
     </div>
