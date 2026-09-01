@@ -77,20 +77,23 @@ export function PredictiveIntelligenceSection() {
           </div>
 
           {/* Layer Display Card */}
-          <div className="bg-white rounded-2xl border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.06)] overflow-hidden h-[540px] sm:h-[490px] lg:h-[430px] flex flex-col justify-center">
-            {activeTab === "trend" && (
-              <div className="p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full">
-                <div className="lg:col-span-6 flex flex-col gap-4">
-                  <div className="flex items-center gap-2 text-emerald-700 text-xs font-mono font-semibold uppercase tracking-wider">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    ANÁLISE DE TENDÊNCIA & SAZONALIDADE
+          <div className="bg-white rounded-2xl border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.06)] flex flex-col justify-center overflow-hidden">
+            <div className="grid grid-cols-1 grid-rows-1 w-full h-full">
+              {/* TAB 0: TREND */}
+              <div className={`col-start-1 row-start-1 w-full p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch h-full transition-opacity duration-300 ${activeTab === "trend" ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none invisible z-0"}`}>
+                <div className="lg:col-span-6 flex flex-col justify-between gap-4 h-full">
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-2 text-emerald-700 text-xs font-mono font-semibold uppercase tracking-wider">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      ANÁLISE DE TENDÊNCIA & SAZONALIDADE
+                    </div>
+                    <h3 className="text-secondary text-xl sm:text-2xl font-semibold leading-tight font-sans">
+                      Projeção de Faturamento dos Próximos Meses
+                    </h3>
+                    <p className="text-[#605A57] text-sm leading-relaxed">
+                      O sistema analisa o padrão histórico dos seus recebimentos e identifica a <strong>Tendência de Crescimento + Picos de Entrada no Mês</strong>. Você descobre com antecedência quando o caixa vai oscilar e ajusta seu pró-labore sem apertos.
+                    </p>
                   </div>
-                  <h3 className="text-secondary text-xl sm:text-2xl font-semibold leading-tight font-sans">
-                    Projeção de Faturamento dos Próximos Meses
-                  </h3>
-                  <p className="text-[#605A57] text-sm leading-relaxed">
-                    O sistema analisa o padrão histórico dos seus recebimentos e identifica a <strong>Tendência de Crescimento + Picos de Entrada no Mês</strong>. Você descobre com antecedência quando o caixa vai oscilar e ajusta seu pró-labore sem apertos.
-                  </p>
 
                   <div className="space-y-2 pt-2 border-t border-[rgba(55,50,47,0.08)]">
                     <div className="flex items-center justify-between text-xs">
@@ -105,14 +108,14 @@ export function PredictiveIntelligenceSection() {
                 </div>
 
                 {/* Simulated Chart Container */}
-                <div className="lg:col-span-6 bg-[#F1F5F9] p-5 rounded-xl border border-[rgba(55,50,47,0.08)] flex flex-col gap-3">
+                <div className="lg:col-span-6 bg-[#F1F5F9] p-5 rounded-xl border border-[rgba(55,50,47,0.08)] flex flex-col justify-between gap-3 h-full min-h-[290px]">
                   <div className="flex justify-between items-center text-xs text-[#605A57]">
                     <span className="font-mono">PROJEÇÃO DE FATURAMENTO (R$)</span>
                     <span className="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-mono text-[10px]">CONFIANÇA 94%</span>
                   </div>
 
                   {/* Visual Chart Wave */}
-                  <div className="h-44 w-full flex items-end justify-between gap-1.5 pt-6 pb-2 px-2 relative">
+                  <div className="h-32 w-full flex items-end justify-between gap-1.5 pt-3 pb-1 px-2 relative">
                     {[
                       { m: "Jan", val: 32, proj: false },
                       { m: "Fev", val: 38, proj: false },
@@ -128,7 +131,7 @@ export function PredictiveIntelligenceSection() {
                             ? "bg-emerald-500/80 border-t-2 border-emerald-400 border-dashed"
                             : "bg-indigo-500"
                             }`}
-                          style={{ height: `${item.val * 1.8}px` }}
+                          style={{ height: `${item.val * 1.3}px` }}
                         />
                         <span className={`text-[10px] font-mono ${item.proj ? "text-emerald-700 font-bold" : "text-[#605A57]"}`}>
                           {item.m}
@@ -140,26 +143,27 @@ export function PredictiveIntelligenceSection() {
                   <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.06)] flex items-start gap-2.5">
                     <Sparkles className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                     <p className="text-xs text-[#49423D] leading-snug">
-                      <strong>Orientação de Caixa:</strong> Seu faturamento deve atingir R$ 64k em junho. Mantenha seu pró-labore em R$ 8.500 para continuar pagando a menor alíquota no Simples Nacional.
+                      <strong>Orientação de Caixa:</strong> Faturamento estimado em R$ 64k em junho. Mantenha seu pró-labore em R$ 8.500 para manter a menor alíquota.
                     </p>
                   </div>
                 </div>
               </div>
-            )}
 
-            {activeTab === "anomalies" && (
-              <div className="p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full">
-                <div className="lg:col-span-6 flex flex-col gap-4">
-                  <div className="flex items-center gap-2 text-amber-700 text-xs font-mono font-semibold uppercase tracking-wider">
-                    <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                    MONITORAMENTO DE GASTOS FORA DO PADRÃO
+              {/* TAB 1: ANOMALIES */}
+              <div className={`col-start-1 row-start-1 w-full p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch h-full transition-opacity duration-300 ${activeTab === "anomalies" ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none invisible z-0"}`}>
+                <div className="lg:col-span-6 flex flex-col justify-between gap-4 h-full">
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-2 text-amber-700 text-xs font-mono font-semibold uppercase tracking-wider">
+                      <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                      MONITORAMENTO DE GASTOS FORA DO PADRÃO
+                    </div>
+                    <h3 className="text-secondary text-xl sm:text-2xl font-semibold leading-tight font-sans">
+                      Detecção Instantânea de Despesas Incomuns
+                    </h3>
+                    <p className="text-[#605A57] text-sm leading-relaxed">
+                      Escaneia cada saída do extrato bancário considerando o valor médio, categoria, dia e histórico. Qualquer cobrança duplicada, aumento inesperado em assinatura ou gasto fora do comum é identificado imediatamente.
+                    </p>
                   </div>
-                  <h3 className="text-secondary text-xl sm:text-2xl font-semibold leading-tight font-sans">
-                    Detecção Instantânea de Despesas Incomuns
-                  </h3>
-                  <p className="text-[#605A57] text-sm leading-relaxed">
-                    Escaneia cada saída do extrato bancário considerando o valor médio, categoria, dia e histórico. Qualquer cobrança duplicada, aumento inesperado em assinatura ou gasto fora do comum é identificado imediatamente.
-                  </p>
 
                   <div className="space-y-2 pt-2 border-t border-[rgba(55,50,47,0.08)]">
                     <div className="flex items-center justify-between text-xs">
@@ -173,14 +177,14 @@ export function PredictiveIntelligenceSection() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-6 bg-[#F1F5F9] p-5 rounded-xl border border-[rgba(55,50,47,0.08)] flex flex-col gap-3">
+                <div className="lg:col-span-6 bg-[#F1F5F9] p-5 rounded-xl border border-[rgba(55,50,47,0.08)] flex flex-col justify-between gap-3 h-full min-h-[290px]">
                   <div className="flex justify-between items-center text-xs text-[#605A57]">
                     <span className="font-mono">RASTREAMENTO DE LANÇAMENTOS</span>
                     <span className="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-mono text-[10px]">SENTINELA ATIVO</span>
                   </div>
 
                   <div className="space-y-2.5">
-                    <div className="bg-white p-3.5 rounded-lg border border-red-200/80 flex items-center justify-between shadow-xs">
+                    <div className="bg-white p-3 rounded-lg border border-red-200/80 flex items-center justify-between shadow-xs">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600">
                           <AlertTriangle className="w-4 h-4" />
@@ -195,7 +199,7 @@ export function PredictiveIntelligenceSection() {
                       </span>
                     </div>
 
-                    <div className="bg-white p-3.5 rounded-lg border border-[rgba(55,50,47,0.08)] flex items-center justify-between">
+                    <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)] flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
                           <ShieldCheck className="w-4 h-4" />
@@ -219,21 +223,22 @@ export function PredictiveIntelligenceSection() {
                   </div>
                 </div>
               </div>
-            )}
 
-            {activeTab === "runway" && (
-              <div className="p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full">
-                <div className="lg:col-span-6 flex flex-col gap-4">
-                  <div className="flex items-center gap-2 text-blue-700 text-xs font-mono font-semibold uppercase tracking-wider">
-                    <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                    CÁLCULO DE FÔLEGO E LIQUIDEZ
+              {/* TAB 2: RUNWAY */}
+              <div className={`col-start-1 row-start-1 w-full p-6 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch h-full transition-opacity duration-300 ${activeTab === "runway" ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none invisible z-0"}`}>
+                <div className="lg:col-span-6 flex flex-col justify-between gap-4 h-full">
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-2 text-blue-700 text-xs font-mono font-semibold uppercase tracking-wider">
+                      <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                      CÁLCULO DE FÔLEGO E LIQUIDEZ
+                    </div>
+                    <h3 className="text-secondary text-xl sm:text-2xl font-semibold leading-tight font-sans">
+                      Cálculo do Tempo de Sobrevivência do Caixa (Runway)
+                    </h3>
+                    <p className="text-[#605A57] text-sm leading-relaxed">
+                      Mede a velocidade média dos seus gastos fixos e custos operacionais para informar quantos <strong>meses a sua empresa consegue operar com segurança</strong> caso pare de faturar hoje, evitando riscos de liquidez.
+                    </p>
                   </div>
-                  <h3 className="text-secondary text-xl sm:text-2xl font-semibold leading-tight font-sans">
-                    Cálculo do Tempo de Sobrevivência do Caixa (Runway)
-                  </h3>
-                  <p className="text-[#605A57] text-sm leading-relaxed">
-                    Mede a velocidade média dos seus gastos fixos e custos operacionais para informar quantos <strong>meses a sua empresa consegue operar com segurança</strong> caso pare de faturar hoje, evitando riscos de liquidez.
-                  </p>
 
                   <div className="space-y-2 pt-2 border-t border-[rgba(55,50,47,0.08)]">
                     <div className="flex items-center justify-between text-xs">
@@ -247,13 +252,13 @@ export function PredictiveIntelligenceSection() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-6 bg-[#F1F5F9] p-5 rounded-xl border border-[rgba(55,50,47,0.08)] flex flex-col gap-3">
+                <div className="lg:col-span-6 bg-[#F1F5F9] p-5 rounded-xl border border-[rgba(55,50,47,0.08)] flex flex-col justify-between gap-3 h-full min-h-[290px]">
                   <div className="flex justify-between items-center text-xs text-[#605A57]">
                     <span className="font-mono">FÔLEGO FINANCEIRO (RUNWAY)</span>
                     <span className="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-mono text-[10px]">RESERVA SEGURA</span>
                   </div>
 
-                  <div className="bg-white p-4 rounded-lg border border-[rgba(55,50,47,0.08)] flex flex-col gap-3">
+                  <div className="bg-white p-3.5 rounded-lg border border-[rgba(55,50,47,0.08)] flex flex-col gap-2.5">
                     <div className="flex justify-between items-end">
                       <div>
                         <span className="text-2xl sm:text-3xl font-semibold text-secondary">8.4</span>
@@ -265,7 +270,7 @@ export function PredictiveIntelligenceSection() {
                     </div>
 
                     {/* Progress Runway Bar */}
-                    <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden flex">
+                    <div className="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden flex">
                       <div className="h-full bg-emerald-500 rounded-full" style={{ width: "70%" }} />
                     </div>
 
@@ -283,7 +288,7 @@ export function PredictiveIntelligenceSection() {
                   </div>
                 </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
 

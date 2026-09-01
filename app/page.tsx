@@ -225,11 +225,11 @@ export default function LandingPage() {
               <div className="self-stretch -mx-4 md:-mx-8 lg:mx-0 w-[calc(100%+32px)] md:w-[calc(100%+64px)] lg:w-full border-t border-[rgba(55,50,47,0.12)] bg-white flex flex-col text-left relative z-10">
 
                 {/* Dashboard Content per Active Card Tab */}
-                <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8 bg-white flex flex-col gap-6 h-[390px] sm:h-[350px] overflow-hidden justify-between">
-
-                  {/* ── TAB 0: O SEU CHEQUE DO MÊS (TABELA FINANCEIRA) ── */}
-                  {activeCard === 0 && (
-                    <div className="flex flex-col gap-5 animate-fadeIn h-full justify-between">
+                {/* Dashboard Content per Active Card Tab */}
+                <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8 bg-white flex flex-col gap-6">
+                  <div className="grid grid-cols-1 grid-rows-1 w-full">
+                    {/* ── TAB 0: O SEU CHEQUE DO MÊS (TABELA FINANCEIRA) ── */}
+                    <div className={`col-start-1 row-start-1 w-full flex flex-col gap-5 justify-between transition-opacity duration-300 ${activeCard === 0 ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none invisible z-0"}`}>
                       {/* Header Summary */}
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                         <div>
@@ -319,17 +319,13 @@ export default function LandingPage() {
 
                         <div className="flex-1 flex items-center gap-[3px] sm:gap-1 px-1 overflow-hidden">
                           {Array.from({ length: 48 }).map((_, i) => {
-                            // Paleta exata da imagem do usuário:
-                            // Verde principal: #248259
-                            // Verde claro/menta: #7cb99d
-                            // Âmbar / Laranja: #c8681b
                             let bg = "bg-[#248259]"
 
                             if (i === 6) bg = "bg-[#7cb99d]"
                             else if (i === 9 || i === 11) bg = "bg-[#c8681b]"
                             else if (i === 28) bg = "bg-[#c8681b]"
                             else if (i === 45) bg = "bg-[#c8681b]"
-                            else if (i >= 42) bg = "bg-[#c8681b]" // Provisão DAS
+                            else if (i >= 42) bg = "bg-[#c8681b]"
 
                             return (
                               <div
@@ -345,11 +341,9 @@ export default function LandingPage() {
                         </div>
                       </div>
                     </div>
-                  )}
 
-                  {/* ── TAB 1: OTIMIZADOR DE FATOR R ── */}
-                  {activeCard === 1 && (
-                    <div className="flex flex-col gap-5 animate-fadeIn h-full justify-between">
+                    {/* ── TAB 1: OTIMIZADOR DE FATOR R ── */}
+                    <div className={`col-start-1 row-start-1 w-full flex flex-col gap-5 justify-between transition-opacity duration-300 ${activeCard === 1 ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none invisible z-0"}`}>
                       {/* Header Summary */}
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                         <div>
@@ -397,11 +391,9 @@ export default function LandingPage() {
                         ✓ Memória de cálculo pronta com o valor exato de pró-labore para envio ao contador no fechamento.
                       </div>
                     </div>
-                  )}
 
-                  {/* ── TAB 2: PREVISÃO & RUNWAY ── */}
-                  {activeCard === 2 && (
-                    <div className="flex flex-col gap-5 animate-fadeIn h-full justify-between">
+                    {/* ── TAB 2: PREVISÃO & RUNWAY ── */}
+                    <div className={`col-start-1 row-start-1 w-full flex flex-col gap-5 justify-between transition-opacity duration-300 ${activeCard === 2 ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none invisible z-0"}`}>
                       {/* Header Summary */}
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                         <div>
@@ -460,8 +452,7 @@ export default function LandingPage() {
                         </div>
                       </div>
                     </div>
-                  )}
-
+                  </div>
                 </div>
               </div>
 

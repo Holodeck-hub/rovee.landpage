@@ -99,11 +99,10 @@ export function AccountantChannelSection() {
         {/* Center Container: Live Content */}
         <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] bg-white flex flex-col text-left">
           {/* Dashboard Content per Active Tab */}
-          <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8 bg-white flex flex-col gap-6 h-[520px] sm:h-[460px] lg:h-[430px] overflow-hidden justify-between">
-            
-            {/* ── TAB 0: MEMÓRIA DE CÁLCULO FATOR R ── */}
-            {activeTab === 0 && (
-              <div className="flex flex-col gap-5 animate-fadeIn h-full justify-between">
+          <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8 bg-white flex flex-col gap-6">
+            <div className="grid grid-cols-1 grid-rows-1 w-full">
+              {/* ── TAB 0: MEMÓRIA DE CÁLCULO FATOR R ── */}
+              <div className={`col-start-1 row-start-1 w-full flex flex-col gap-5 justify-between transition-opacity duration-300 ${activeTab === 0 ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none invisible z-0"}`}>
                 {/* Header Summary */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                   <div>
@@ -212,11 +211,9 @@ export function AccountantChannelSection() {
                   </button>
                 </div>
               </div>
-            )}
 
-            {/* ── TAB 1: EXTRATO CONCILIADO PJ x PF ── */}
-            {activeTab === 1 && (
-              <div className="flex flex-col gap-5 animate-fadeIn h-full justify-between">
+              {/* ── TAB 1: EXTRATO CONCILIADO PJ x PF ── */}
+              <div className={`col-start-1 row-start-1 w-full flex flex-col gap-5 justify-between transition-opacity duration-300 ${activeTab === 1 ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none invisible z-0"}`}>
                 {/* Header Summary */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                   <div>
@@ -253,6 +250,17 @@ export function AccountantChannelSection() {
                     <div className="col-span-2 text-right font-mono text-secondary">-R$ 1.420,00</div>
                   </div>
 
+                  <div className="grid grid-cols-12 gap-2 px-4 py-3.5 border-b border-[rgba(55,50,47,0.12)] items-center text-xs hover:bg-[#F8FAFC]/60 transition-colors">
+                    <div className="col-span-3 font-mono text-[#82807C]">19/05 · Itaú PJ</div>
+                    <div className="col-span-4 font-medium text-secondary">Google Workspace & Cloud</div>
+                    <div className="col-span-3">
+                      <span className="px-2 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded text-[10px] font-mono font-medium">
+                        Despesa Operacional PJ
+                      </span>
+                    </div>
+                    <div className="col-span-2 text-right font-mono text-secondary">-R$ 380,00</div>
+                  </div>
+
                   <div className="grid grid-cols-12 gap-2 px-4 py-3.5 border-b border-[rgba(55,50,47,0.12)] items-center text-xs bg-amber-50/40">
                     <div className="col-span-3 font-mono text-[#82807C]">19/05 · Nubank PJ</div>
                     <div className="col-span-4 font-medium text-amber-950">Supermercado Pão de Açúcar</div>
@@ -276,15 +284,22 @@ export function AccountantChannelSection() {
                   </div>
                 </div>
 
-                <div className="p-3 bg-[#F8FAFC] border border-[rgba(55,50,47,0.12)] rounded-md text-xs text-[#605A57]">
-                  O contador recebe o arquivo OFX e CSV limpos, sem itens de consumo pessoal e sem atrito na escrituração fiscal.
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+                  <span className="text-xs text-[#605A57]">
+                    Relatório pronto: <b className="text-secondary font-mono">0 divergências contábeis</b>
+                  </span>
+                  <button
+                    type="button"
+                    className="px-4 py-2 bg-white hover:bg-gray-50 border border-[rgba(55,50,47,0.15)] text-secondary text-xs font-semibold rounded flex items-center gap-2 transition-all shadow-2xs cursor-pointer"
+                  >
+                    <Download className="w-3.5 h-3.5 text-[#605A57]" />
+                    Exportar Extrato OFX/CSV Limpo
+                  </button>
                 </div>
               </div>
-            )}
 
-            {/* ── TAB 2: GERENCIAMENTO DE ACESSO DO CONTADOR ── */}
-            {activeTab === 2 && (
-              <div className="flex flex-col gap-5 animate-fadeIn h-full justify-between">
+              {/* ── TAB 2: GERENCIAMENTO DE ACESSO DO CONTADOR ── */}
+              <div className={`col-start-1 row-start-1 w-full flex flex-col gap-5 justify-between transition-opacity duration-300 ${activeTab === 2 ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none invisible z-0"}`}>
                 {/* Header Summary */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[rgba(55,50,47,0.12)]">
                   <div>
@@ -302,9 +317,9 @@ export function AccountantChannelSection() {
                 </div>
 
                 {/* Active Member & Invite Section */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-1">
                   {/* Connected Account */}
-                  <div className="border border-[rgba(55,50,47,0.12)] rounded-lg p-4 bg-[#F8FAFC] flex flex-col justify-between gap-3">
+                  <div className="border border-[rgba(55,50,47,0.12)] rounded-lg p-5 bg-[#F8FAFC] flex flex-col justify-between gap-3 min-h-[160px]">
                     <div>
                       <div className="flex items-center justify-between text-xs mb-1">
                         <span className="font-semibold text-secondary font-mono">CONTA CONECTADA</span>
@@ -320,7 +335,7 @@ export function AccountantChannelSection() {
                   </div>
 
                   {/* Invite New Form */}
-                  <div className="border border-[rgba(55,50,47,0.12)] rounded-lg p-4 bg-white flex flex-col justify-between gap-3">
+                  <div className="border border-[rgba(55,50,47,0.12)] rounded-lg p-5 bg-white flex flex-col justify-between gap-3 min-h-[160px]">
                     <div className="flex flex-col gap-1">
                       <span className="text-xs font-semibold text-secondary">Convidar Novo Contador</span>
                       <span className="text-[11px] text-[#82807C]">Envie o link de acesso seguro por e-mail:</span>
@@ -357,8 +372,7 @@ export function AccountantChannelSection() {
                   Acesso 100% gratuito e ilimitado para o seu escritório contábil, sem cobrança adicional por usuário convidado.
                 </div>
               </div>
-            )}
-
+            </div>
           </div>
         </div>
 

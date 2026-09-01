@@ -16,7 +16,6 @@ const FISCAL_AGENTS = [
       { value: "R$ 48.000+", label: "economia anual média" },
       { value: "28,0%", label: "alvo ótimo de folha" },
     ],
-    action: "Prescreve o Pró-Labore Ótimo (p*)",
     pillColor: "bg-emerald-50 text-emerald-800 border-emerald-200",
   },
   {
@@ -29,7 +28,6 @@ const FISCAL_AGENTS = [
       { value: "3 Baldes", label: "separação automática" },
       { value: "100%", label: "lucro isento protegido" },
     ],
-    action: 'Gera o "Cheque do Mês" em tempo real',
     pillColor: "bg-blue-50 text-blue-800 border-blue-200",
   },
   {
@@ -42,7 +40,6 @@ const FISCAL_AGENTS = [
       { value: "Art. 50 CC", label: "mitigação jurídica" },
       { value: "0 risco", label: "de desconsideração" },
     ],
-    action: "Alerta antes de misturar despesas",
     pillColor: "bg-amber-50 text-amber-800 border-amber-200",
   },
   {
@@ -55,7 +52,6 @@ const FISCAL_AGENTS = [
       { value: "Dia 20", label: "sempre provisionado" },
       { value: "1 Clique", label: "para reservar valor" },
     ],
-    action: "Executa a reserva proativa do DAS",
     pillColor: "bg-purple-50 text-purple-800 border-purple-200",
   },
 ]
@@ -138,117 +134,123 @@ export function FiscalAgentsSection() {
         </div>
 
         {/* Center Container: Active Agent Showcase */}
-        <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] bg-white p-6 sm:p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch text-left h-[560px] sm:h-[500px] lg:h-[440px] overflow-hidden">
-          <div className="lg:col-span-7 flex flex-col justify-between gap-4 h-full">
-            <h3 className="text-secondary text-2xl sm:text-3xl font-semibold leading-tight font-sans">
-              {agent.title}: {agent.subtitle}
-            </h3>
+        <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] bg-white p-6 sm:p-8 lg:p-12">
+          <div className="grid grid-cols-1 grid-rows-1 w-full">
+            {FISCAL_AGENTS.map((item, idx) => (
+              <div
+                key={item.id}
+                className={`col-start-1 row-start-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch text-left transition-opacity duration-300 ${
+                  selectedAgent === idx ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none invisible z-0"
+                }`}
+              >
+                <div className="lg:col-span-7 flex flex-col justify-between gap-4 h-full">
+                  <h3 className="text-secondary text-2xl sm:text-3xl font-semibold leading-tight font-sans">
+                    {item.title}: {item.subtitle}
+                  </h3>
 
-            <p className="text-[#605A57] text-sm sm:text-base leading-relaxed font-sans">
-              {agent.desc}
-            </p>
-
-            {/* Stats Block */}
-            <div className="grid grid-cols-2 gap-4 py-4 border-y border-[rgba(55,50,47,0.08)] my-2">
-              {agent.stats.map((stat, i) => (
-                <div key={i}>
-                  <div className="text-xl sm:text-2xl font-semibold text-secondary font-sans">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs text-[#605A57] font-medium font-sans">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 bg-emerald-50 px-3 py-2 rounded-lg border border-emerald-200/80">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>{agent.action}</span>
-            </div>
-          </div>
-
-          {/* Visual Simulation Graphic */}
-          <div className="lg:col-span-5 bg-[#F8FAFC] p-6 rounded-xl border border-[rgba(55,50,47,0.08)] flex flex-col justify-between min-h-[290px] h-full gap-4">
-            <div className="flex items-center justify-between text-xs font-mono text-[#605A57] pb-2 border-b border-[rgba(55,50,47,0.08)]">
-              <div className="flex items-center gap-2">
-                <PixelIcon type="agents" size={20} />
-                <span>ESTADO DO AGENTE</span>
-              </div>
-              <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                EM EXECUÇÃO
-              </span>
-            </div>
-
-            {selectedAgent === 0 && (
-              <div className="space-y-3">
-                <div className="bg-white p-3.5 rounded-lg border border-[rgba(55,50,47,0.08)]">
-                  <div className="text-[11px] text-[#605A57]">Cenário Atual (Sem Otimização)</div>
-                  <div className="text-sm font-semibold text-red-600">Anexo V · Alíquota 15,5%</div>
-                  <div className="text-xs text-[#82807C] mt-1">Carga Anual: R$ 55.800/ano</div>
-                </div>
-
-                <div className="bg-white p-3.5 rounded-lg border border-emerald-500/80 shadow-xs">
-                  <div className="text-[11px] text-emerald-800 font-semibold">Prescrição do Agente Rovee</div>
-                  <div className="text-sm font-semibold text-emerald-700">Anexo III · Alíquota a partir de 6,0%</div>
-                  <div className="text-xs text-emerald-900 mt-1 font-mono font-semibold">
-                    Economia Líquida: +R$ 28.400/ano
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {selectedAgent === 1 && (
-              <div className="space-y-2">
-                <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)]">
-                  <div className="text-[11px] text-[#605A57]">1. Seu para Retirar (Lucro Isento)</div>
-                  <div className="text-base font-semibold text-secondary">R$ 18.450,00</div>
-                </div>
-                <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)]">
-                  <div className="text-[11px] text-[#605A57]">2. Reserva Operacional da Empresa</div>
-                  <div className="text-base font-semibold text-secondary">R$ 8.200,00</div>
-                </div>
-                <div className="bg-white p-3 rounded-lg border border-emerald-300">
-                  <div className="text-[11px] text-emerald-800 font-medium">3. Provisão do DAS (Imposto)</div>
-                  <div className="text-base font-semibold text-emerald-700">R$ 2.850,00</div>
-                </div>
-              </div>
-            )}
-
-            {selectedAgent === 2 && (
-              <div className="space-y-3">
-                <div className="bg-white p-4 rounded-lg border border-amber-200 bg-amber-50/50">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-amber-800 mb-1">
-                    <ShieldAlert className="w-4 h-4 text-amber-600" />
-                    Mistura Detectada no Extrato
-                  </div>
-                  <p className="text-xs text-amber-900 leading-snug">
-                    3 gastos pessoais pagos na conta PJ totalizando R$ 420,00 este mês.
+                  <p className="text-[#605A57] text-sm sm:text-base leading-relaxed font-sans">
+                    {item.desc}
                   </p>
-                </div>
-                <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)] text-xs text-[#605A57]">
-                  Orientação: Transfira via pró-labore antes de pagar despesas pessoais.
-                </div>
-              </div>
-            )}
 
-            {selectedAgent === 3 && (
-              <div className="space-y-3">
-                <div className="bg-white p-3.5 rounded-lg border border-[rgba(55,50,47,0.08)] flex justify-between items-center">
-                  <div>
-                    <div className="text-xs text-[#605A57]">DAS Competência Atual</div>
-                    <div className="text-base font-semibold text-secondary">R$ 3.420,00</div>
+                  {/* Stats Block */}
+                  <div className="grid grid-cols-2 gap-4 py-4 border-y border-[rgba(55,50,47,0.08)] my-2">
+                    {item.stats.map((stat, i) => (
+                      <div key={i}>
+                        <div className="text-xl sm:text-2xl font-semibold text-secondary font-sans">
+                          {stat.value}
+                        </div>
+                        <div className="text-xs text-[#605A57] font-medium font-sans">
+                          {stat.label}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <span className="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-[11px] font-semibold rounded-full">
-                    100% Coberto
-                  </span>
                 </div>
-                <div className="text-xs text-center text-[#605A57]">
-                  Vencimento: 20 do próximo mês · Valor já reservado em conta.
+
+                {/* Visual Simulation Graphic */}
+                <div className="lg:col-span-5 bg-[#F8FAFC] p-6 rounded-xl border border-[rgba(55,50,47,0.08)] flex flex-col justify-between min-h-[290px] h-full gap-4">
+                  <div className="flex items-center justify-between text-xs font-mono text-[#605A57] pb-2 border-b border-[rgba(55,50,47,0.08)]">
+                    <div className="flex items-center gap-2">
+                      <PixelIcon type="agents" size={20} />
+                      <span>ESTADO DO AGENTE</span>
+                    </div>
+                    <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      EM EXECUÇÃO
+                    </span>
+                  </div>
+
+                  {idx === 0 && (
+                    <div className="space-y-3">
+                      <div className="bg-white p-3.5 rounded-lg border border-[rgba(55,50,47,0.08)]">
+                        <div className="text-[11px] text-[#605A57]">Cenário Atual (Sem Otimização)</div>
+                        <div className="text-sm font-semibold text-red-600">Anexo V · Alíquota 15,5%</div>
+                        <div className="text-xs text-[#82807C] mt-1">Carga Anual: R$ 55.800/ano</div>
+                      </div>
+
+                      <div className="bg-white p-3.5 rounded-lg border border-emerald-500/80 shadow-xs">
+                        <div className="text-[11px] text-emerald-800 font-semibold">Prescrição do Agente Rovee</div>
+                        <div className="text-sm font-semibold text-emerald-700">Anexo III · Alíquota a partir de 6,0%</div>
+                        <div className="text-xs text-emerald-900 mt-1 font-mono font-semibold">
+                          Economia Líquida: +R$ 28.400/ano
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {idx === 1 && (
+                    <div className="space-y-2">
+                      <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)]">
+                        <div className="text-[11px] text-[#605A57]">1. Seu para Retirar (Lucro Isento)</div>
+                        <div className="text-base font-semibold text-secondary">R$ 18.450,00</div>
+                      </div>
+                      <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)]">
+                        <div className="text-[11px] text-[#605A57]">2. Reserva Operacional da Empresa</div>
+                        <div className="text-base font-semibold text-secondary">R$ 8.200,00</div>
+                      </div>
+                      <div className="bg-white p-3 rounded-lg border border-emerald-300">
+                        <div className="text-[11px] text-emerald-800 font-medium">3. Provisão do DAS (Imposto)</div>
+                        <div className="text-base font-semibold text-emerald-700">R$ 2.850,00</div>
+                      </div>
+                    </div>
+                  )}
+
+                  {idx === 2 && (
+                    <div className="space-y-3">
+                      <div className="bg-white p-4 rounded-lg border border-amber-200 bg-amber-50/50">
+                        <div className="flex items-center gap-2 text-xs font-semibold text-amber-800 mb-1">
+                          <ShieldAlert className="w-4 h-4 text-amber-600" />
+                          Mistura Detectada no Extrato
+                        </div>
+                        <p className="text-xs text-amber-900 leading-snug">
+                          3 gastos pessoais pagos na conta PJ totalizando R$ 420,00 este mês.
+                        </p>
+                      </div>
+                      <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)] text-xs text-[#605A57]">
+                        Orientação: Transfira via pró-labore antes de pagar despesas pessoais.
+                      </div>
+                    </div>
+                  )}
+
+                  {idx === 3 && (
+                    <div className="space-y-3">
+                      <div className="bg-white p-3.5 rounded-lg border border-[rgba(55,50,47,0.08)] flex justify-between items-center">
+                        <div>
+                          <div className="text-xs text-[#605A57]">DAS Competência Atual</div>
+                          <div className="text-base font-semibold text-secondary">R$ 3.420,00</div>
+                        </div>
+                        <span className="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-[11px] font-semibold rounded-full">
+                          100% Coberto
+                        </span>
+                      </div>
+                      <div className="text-xs text-center text-[#605A57]">
+                        Vencimento: 20 do próximo mês · Valor já reservado em conta.
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-            )}
+            ))}
           </div>
         </div>
 
