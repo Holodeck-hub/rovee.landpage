@@ -15,11 +15,11 @@ export default function FooterSection() {
         <div className="h-auto p-4 md:p-8 flex flex-col justify-start items-start gap-6 max-w-sm">
           {/* Brand Section */}
           <div className="self-stretch flex items-center">
-            <div className="text-secondary text-2xl font-bold font-sans tracking-tight">Rovee</div>
+            <div className="text-primary text-2xl font-bold font-sans tracking-tight">Rovee</div>
           </div>
 
           <p className="text-[#605A57] text-xs sm:text-sm font-normal leading-relaxed font-sans">
-            A primeira fintech fiscal construída para transformar faturamento em decisões tributárias lucrativas e clareza absoluta de caixa para quem empreende.
+            A fintech construída para transformar faturamento em decisões tributárias lucrativas e clareza absoluta de caixa para quem empreende.
           </p>
 
           <div className="text-[11px] text-[#82807c] font-mono">
