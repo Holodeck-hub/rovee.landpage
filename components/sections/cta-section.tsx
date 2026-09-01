@@ -19,7 +19,7 @@ export default function CTASection({ onOpenConsultant }: CTASectionProps) {
         </div>
 
         {/* Center Container */}
-        <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] px-4 sm:px-6 md:px-8 py-16 sm:py-20 md:py-28 flex flex-col justify-center items-center text-center relative overflow-hidden bg-white">
+        <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] px-4 sm:px-6 md:px-8 py-16 sm:py-20 md:py-28 flex flex-col justify-center items-center text-center relative overflow-hidden bg-white">
           <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-6 relative z-10">
             <div className="self-stretch flex flex-col justify-start items-center gap-3">
               <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">

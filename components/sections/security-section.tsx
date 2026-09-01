@@ -37,7 +37,7 @@ export function SecuritySection() {
   return (
     <div id="seguranca" className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Section Header */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
+      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
             Segurança & Conformidade
@@ -68,7 +68,7 @@ export function SecuritySection() {
         </div>
 
         {/* Center Container: 4 Pillars Grid */}
-        <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[rgba(55,50,47,0.12)] bg-white">
+        <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[rgba(55,50,47,0.12)] bg-white">
           <div className="flex flex-col divide-y divide-[rgba(55,50,47,0.12)]">
             {SECURITY_PILLARS.slice(0, 2).map((pillar, idx) => {
               const Icon = pillar.icon

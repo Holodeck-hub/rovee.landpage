@@ -69,7 +69,7 @@ export default function FAQSection() {
 
   return (
     <div className="w-full flex justify-center items-start border-b border-[rgba(55,50,47,0.12)]">
-      <div className="flex-1 max-w-[1060px] px-4 md:px-12 py-16 md:py-24 flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-16">
+      <div className="flex-1 w-full px-4 md:px-12 py-16 md:py-24 flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-16">
         {/* Left Column - Header */}
         <div className="w-full lg:flex-1 flex flex-col justify-center items-start gap-3 lg:py-4">
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">

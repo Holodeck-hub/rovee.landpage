@@ -1,6 +1,6 @@
 "use client"
 
-import { AnimatedWave } from "./animated-wave"
+import { AnimatedWave } from "../shared/animated-wave"
 
 export default function FooterSection() {
   return (

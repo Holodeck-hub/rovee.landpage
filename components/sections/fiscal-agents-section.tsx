@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { PixelIcon } from "./pixel-icon"
-import { AnimatedWave } from "./animated-wave"
+import { PixelIcon } from "../shared/pixel-icon"
+import { AnimatedWave } from "../shared/animated-wave"
 import { CheckCircle2, ShieldAlert } from "lucide-react"
 
 const FISCAL_AGENTS = [
@@ -88,7 +88,7 @@ export function FiscalAgentsSection() {
   return (
     <div id="agentes" className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Section Header */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative overflow-hidden">
+      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative overflow-hidden">
         {/* Background Animated Wave */}
         <div className="absolute inset-0 w-full h-full opacity-40 sm:opacity-50 z-0 pointer-events-none">
           <AnimatedWave />
@@ -134,7 +134,7 @@ export function FiscalAgentsSection() {
         </div>
 
         {/* Center Container: Active Agent Showcase */}
-        <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] bg-white p-6 sm:p-8 lg:p-12">
+        <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] bg-white p-6 sm:p-8 lg:p-12">
           <div className="grid grid-cols-1 grid-rows-1 w-full">
             {FISCAL_AGENTS.map((item, idx) => (
               <div
@@ -291,7 +291,7 @@ export function FiscalAgentsSection() {
         </div>
 
         {/* 4 FeatureCards Grid with Active Progress Bars and Dividers */}
-        <div className="flex-1 max-w-[1060px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#E0DEDB] border-l border-r border-[#E0DEDB]">
+        <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#E0DEDB] border-l border-r border-[#E0DEDB]">
           {FISCAL_AGENTS.map((item, idx) => {
             const isActive = selectedAgent === idx
             return (

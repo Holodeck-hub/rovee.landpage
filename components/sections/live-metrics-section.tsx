@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
-import { PixelIcon } from "./pixel-icon"
+import { PixelIcon } from "../shared/pixel-icon"
 
 function AnimatedCounter({ end, suffix = "", prefix = "" }: { end: number; suffix?: string; prefix?: string }) {
   const [count, setCount] = useState(0)
@@ -80,7 +80,7 @@ export function LiveMetricsSection() {
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Header */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1060px] lg:w-[1060px] py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
+      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
           <PixelIcon type="metrics" size={40} />
 
@@ -112,7 +112,7 @@ export function LiveMetricsSection() {
           </div>
         </div>
 
-        <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] grid grid-cols-1 sm:grid-cols-2 gap-0">
+        <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] grid grid-cols-1 sm:grid-cols-2 gap-0">
           {metrics.map((metric, index) => (
             <div
               key={index}

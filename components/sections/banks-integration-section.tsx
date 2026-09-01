@@ -89,7 +89,7 @@ export function BanksIntegrationSection({ onOpenConsultant }: BanksIntegrationSe
       <div className="self-stretch flex justify-center items-stretch relative">
 
         {/* Center Canvas with Dotted Pattern & Floating Bank Badges */}
-        <div className="flex-1 max-w-[1060px] border-l border-r border-[rgba(55,50,47,0.12)] py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white relative flex flex-col items-center justify-center min-h-[540px]">
+        <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white relative flex flex-col items-center justify-center min-h-[540px]">
           
           {/* Subtle Dot Grid Background */}
           <div
