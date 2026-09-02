@@ -8,6 +8,7 @@ import { PredictiveIntelligenceSection } from "../components/sections/predictive
 import { FiscalAgentsSection } from "../components/sections/fiscal-agents-section"
 import { AccountantChannelSection } from "../components/sections/accountant-channel-section"
 import { BanksIntegrationSection } from "../components/sections/banks-integration-section"
+import { MobileShowcaseSection } from "../components/sections/mobile-showcase-section"
 import { LiveMetricsSection } from "../components/sections/live-metrics-section"
 import { TestimonialsSlider } from "../components/sections/testimonials-slider"
 import { RoadmapTeaserSection } from "../components/sections/roadmap-teaser-section"
@@ -86,6 +87,11 @@ export default function LandingPage() {
               {/* ── PROVA SOCIAL: bancos suportados, faixa compacta ─────── */}
               <section aria-label="Bancos suportados" className="w-full band-tint">
                 <BanksIntegrationSection variant="strip" />
+              </section>
+
+              {/* ── APP NO CELULAR: primeira imagem de produto da página ── */}
+              <section aria-label="O app da Rovee no celular" className="w-full">
+                <MobileShowcaseSection onOpenConsultant={handleOpenConsultant} />
               </section>
 
               {/* ── SEÇÃO 2: BENTO GRID - MOTOR DE INTELIGÊNCIA FISCAL ──── */}
