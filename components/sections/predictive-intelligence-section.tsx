@@ -15,7 +15,7 @@ export function PredictiveIntelligenceSection() {
             Inteligência Preditiva em 3 Camadas
           </span>
 
-          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section">
             Preveja o futuro do seu caixa antes que o mês feche
           </h2>
 

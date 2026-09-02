@@ -164,3 +164,39 @@
     animation: none;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   GRAMÁTICA BREX
+   ─────────────────────────────────────────────────────────────────────────
+   Valores medidos rodando script na home da brex.com, não estimados:
+   títulos em peso 500 (não 600), tracking −0,02em, line-height ~1,03, e
+   alternância de fundo entre branco e um cinza de 3% de diferença — nunca
+   blocos escuros. A identidade da Rovee (índigo, Inter, mono nos números)
+   fica por cima dessa estrutura.
+   ══════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* O segundo fundo da alternância. A Brex usa #F3F3F7; este puxa um fio
+     para o índigo da marca em vez de ser cinza neutro. */
+  --ground-alt: #F3F3F8;
+  --ink-muted:  #5E6270;
+  --ink-faint:  #8B8D9B;
+}
+
+@theme inline {
+  --color-ground-alt: var(--ground-alt);
+  --color-ink-muted:  var(--ink-muted);
+  --color-ink-faint:  var(--ink-faint);
+}
+
+/* Escala de título: a Brex é contida no tamanho e generosa no espaço em
+   volta — o oposto de aumentar a fonte para dar importância. */
+.h-display {
+  font-weight: 500;
+  letter-spacing: -0.032em;
+  line-height: 1.02;
+}
+.h-section {
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.06;
+}

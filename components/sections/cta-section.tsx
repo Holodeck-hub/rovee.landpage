@@ -25,7 +25,7 @@ export default function CTASection({ onOpenConsultant }: CTASectionProps) {
               <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
                 Comece Hoje Mesmo
               </span>
-              <h2 className="self-stretch text-center text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+              <h2 className="self-stretch text-center text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section">
                 Pronto para saber seu lucro real e pagar menos imposto?
               </h2>
               <p className="self-stretch text-center text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px] mx-auto">

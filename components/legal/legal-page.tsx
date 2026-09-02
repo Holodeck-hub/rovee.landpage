@@ -36,7 +36,7 @@ export function LegalPage({
         <p className="text-xs font-mono font-semibold uppercase tracking-wider text-[#6B6560]">
           Documento legal
         </p>
-        <h1 className="text-secondary text-3xl sm:text-4xl font-semibold tracking-tight mt-2">
+        <h1 className="text-secondary text-3xl sm:text-4xl font-medium h-display mt-2">
           {title}
         </h1>
         <p className="text-sm text-[#605A57] mt-3 leading-relaxed">{intro}</p>
@@ -78,7 +78,7 @@ export function LegalPage({
 export function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="mb-9">
-      <h2 className="text-secondary text-lg sm:text-xl font-semibold tracking-tight mb-3">{title}</h2>
+      <h2 className="text-secondary text-lg sm:text-xl font-medium h-section mb-3">{title}</h2>
       <div className="space-y-3 text-sm text-[#49423D] leading-relaxed">{children}</div>
     </section>
   )

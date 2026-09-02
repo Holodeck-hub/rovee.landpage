@@ -102,7 +102,7 @@ export function TestimonialsSlider() {
             Cenários de Uso
           </span>
 
-          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section">
             Quem empreende com a Rovee lucra mais e dorme tranquilo
           </h2>
 

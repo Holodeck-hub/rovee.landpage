@@ -12,7 +12,7 @@ export function FiscalIntelligenceBentoSection() {
             Motor de Inteligência Fiscal
           </span>
 
-          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section">
             O fim das dúvidas sobre imposto e pró-labore
           </h2>
 

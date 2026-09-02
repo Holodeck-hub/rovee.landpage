@@ -43,7 +43,7 @@ export function SecuritySection() {
             Segurança & Conformidade
           </span>
 
-          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section">
             Segurança de padrão bancário para blindar o seu negócio
           </h2>
 

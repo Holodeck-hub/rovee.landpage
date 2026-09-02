@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import { ArrowUpRight } from "lucide-react"
-import { HeroStatsMarquee } from "../shared/hero-stats-marquee"
 import { AnimatedWave } from "../shared/animated-wave"
 
 interface HeroShowcaseSectionProps {
@@ -35,43 +34,41 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
   }
 
   return (
-    <div id="comecar" className="w-full flex flex-col justify-start items-center px-0.5 text-center">
-      {/* Main Headline & Actions Container com altura e respiro generosos */}
-      <div className="w-full min-h-[460px] sm:min-h-[500px] md:min-h-[540px] py-16 sm:py-20 md:py-24 flex flex-col justify-center items-center">
-        {/* Main Headline */}
-        <div className="w-full max-w-[920px] flex flex-col justify-center items-center gap-5">
-          <h1 className="text-secondary text-[26px] xs:text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-semibold leading-[1.12] font-sans tracking-tight">
-            A contabilidade entrega números. <span className="text-primary block sm:inline">A Rovee entrega economia.</span>
+    <div id="comecar" className="w-full flex flex-col justify-start items-center px-0.5">
+      {/* Hero na gramática Brex: alinhado à esquerda, contido no tamanho da
+          fonte e generoso no espaço em volta. Nada mais divide a dobra. */}
+      <div className="w-full px-4 sm:px-6 md:px-10 lg:px-14 pt-20 sm:pt-28 md:pt-36 pb-16 sm:pb-20 md:pb-24 flex flex-col justify-center items-start">
+        <div className="w-full max-w-[46rem] flex flex-col justify-center items-start gap-6">
+          <h1 className="text-secondary text-[32px] sm:text-[42px] md:text-[52px] lg:text-[60px] font-medium font-sans h-display text-balance">
+            A contabilidade entrega números.{" "}
+            <span className="text-primary block sm:inline">A Rovee entrega economia.</span>
           </h1>
 
-          <p className="w-full max-w-[660px] text-[rgba(55,50,47,0.85)] text-sm sm:text-base md:text-lg leading-relaxed font-sans font-normal mt-2">
-            Não é mais um app de finanças: é o <strong>cálculo</strong> que decide quanto você tira, quanto separa e quanto paga de imposto.
+          <p className="w-full max-w-[34rem] text-ink-muted text-base md:text-[1.0625rem] leading-[1.58] font-sans font-normal">
+            Não é mais um app de finanças: é o <strong className="font-medium text-secondary">cálculo</strong> que
+            decide quanto você tira, quanto separa e quanto paga de imposto.
           </p>
+
+          {/* Botões: 8px de raio, 14px, peso 400, padding lateral 16px —
+              as medidas exatas do botão primário da Brex. */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 mt-2 z-20">
+            <button
+              type="button"
+              onClick={() => onOpenConsultant?.("hero")}
+              className="h-10 px-4 bg-primary hover:bg-primary-hover text-white text-sm font-normal rounded-lg flex items-center justify-center gap-2 transition-colors cursor-pointer"
+            >
+              <span>Falar com consultor</span>
+              <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+            </button>
+
+            <a
+              href="#fiscal"
+              className="h-10 px-4 bg-white hover:bg-ground-alt text-secondary border border-[rgba(55,50,47,0.14)] text-sm font-normal rounded-lg flex items-center justify-center transition-colors"
+            >
+              Ver como funciona
+            </a>
+          </div>
         </div>
-
-        {/* Primary Actions */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 mt-10 z-20">
-          <button
-            type="button"
-            onClick={() => onOpenConsultant?.("hero")}
-            className="h-12 px-8 bg-primary hover:bg-primary-hover text-white text-sm font-semibold rounded flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
-          >
-            <span>Falar com Consultor</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </button>
-
-          <a
-            href="#fiscal"
-            className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-secondary border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
-          >
-            Ver como funciona
-          </a>
-        </div>
-      </div>
-
-      {/* ── HERO STATS MARQUEE ───────────── */}
-      <div className="w-full mt-10">
-        <HeroStatsMarquee />
       </div>
 
       {/* ── DIVISOR DE TRANSIÇÃO COM ANIMATED WAVE ── */}

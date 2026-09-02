@@ -76,7 +76,7 @@ export default function FAQSection() {
             Dúvidas Frequentes
           </span>
 
-          <h2 className="w-full text-[#37322F] font-semibold leading-tight font-sans text-3xl sm:text-4xl tracking-tight">
+          <h2 className="w-full text-[#37322F] font-medium font-sans text-3xl sm:text-4xl h-section">
             Perguntas Frequentes sobre a Rovee
           </h2>
 

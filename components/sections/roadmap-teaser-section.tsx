@@ -42,7 +42,7 @@ export function RoadmapTeaserSection() {
             Evolução Contínua & Roadmap
           </span>
 
-          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section">
             O futuro da gestão fiscal e patrimonial está sendo construído aqui
           </h2>
 

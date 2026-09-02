@@ -201,7 +201,7 @@ export function BanksIntegrationSection({
             </div>
 
             {/* Main Headline */}
-            <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+            <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section">
               Integre como quiser!
               <br />
               <span className="text-primary font-bold">Open Finance, OFX, PDF!</span>

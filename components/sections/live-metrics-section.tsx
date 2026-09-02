@@ -130,7 +130,7 @@ export function LiveMetricsSection() {
             Métricas em Tempo Real
           </span>
 
-          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight font-sans tracking-tight">
+          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section">
             Números que comprovam a economia e a segurança da Rovee
           </h2>
 

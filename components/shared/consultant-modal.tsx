@@ -193,7 +193,7 @@ _Enviado através da landing page oficial da Rovee._`
             </span>
             <h2
               id="consultor-titulo"
-              className="text-xl sm:text-2xl font-semibold text-secondary mt-1.5 font-sans"
+              className="text-xl sm:text-2xl font-medium text-secondary mt-1.5 font-sans"
             >
               Fale com um Consultor Rovee
             </h2>

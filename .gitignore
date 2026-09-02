@@ -25,3 +25,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Raspagens de referencia baixadas para estudo de design
+f3b1511a-*.zip
+.rovee-src.tgz
