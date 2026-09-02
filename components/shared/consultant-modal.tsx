@@ -9,6 +9,8 @@ import { SITE } from "../../lib/site-config"
 interface ConsultantModalProps {
   isOpen: boolean
   onClose: () => void
+  /** E-mail já digitado no hero, para não pedir a mesma coisa duas vezes. */
+  emailInicial?: string
 }
 
 const INTERESTS = [
@@ -32,7 +34,7 @@ function formatPhone(raw: string) {
   return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`
 }
 
-export function ConsultantModal({ isOpen, onClose }: ConsultantModalProps) {
+export function ConsultantModal({ isOpen, onClose, emailInicial }: ConsultantModalProps) {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
@@ -54,6 +56,7 @@ export function ConsultantModal({ isOpen, onClose }: ConsultantModalProps) {
 
     openerRef.current = document.activeElement as HTMLElement | null
     document.body.style.overflow = "hidden"
+    if (emailInicial) setEmail(emailInicial)
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -94,7 +97,7 @@ export function ConsultantModal({ isOpen, onClose }: ConsultantModalProps) {
       window.clearTimeout(focusTimer)
       document.body.style.overflow = ""
     }
-  }, [isOpen, handleClose])
+  }, [isOpen, handleClose, emailInicial])
 
   // Devolve o foco ao botão de origem quando o modal fecha.
   useEffect(() => {

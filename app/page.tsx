@@ -8,7 +8,6 @@ import { PredictiveIntelligenceSection } from "../components/sections/predictive
 import { FiscalAgentsSection } from "../components/sections/fiscal-agents-section"
 import { AccountantChannelSection } from "../components/sections/accountant-channel-section"
 import { BanksIntegrationSection } from "../components/sections/banks-integration-section"
-import { MobileShowcaseSection } from "../components/sections/mobile-showcase-section"
 import { LiveMetricsSection } from "../components/sections/live-metrics-section"
 import { TestimonialsSlider } from "../components/sections/testimonials-slider"
 import { RoadmapTeaserSection } from "../components/sections/roadmap-teaser-section"
@@ -23,6 +22,7 @@ import { trackEvent } from "../lib/analytics"
 export default function LandingPage() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isConsultantModalOpen, setIsConsultantModalOpen] = useState(false)
+  const [emailInicial, setEmailInicial] = useState<string | undefined>()
 
   // Scroll listener for sticky floating header motion
   useEffect(() => {
@@ -37,8 +37,9 @@ export default function LandingPage() {
    * Ponto único de abertura do modal: todo CTA da página passa por aqui, então
    * o evento `abriu_modal` é disparado uma vez só, sempre com a origem do clique.
    */
-  const handleOpenConsultant = useCallback((origem?: string) => {
+  const handleOpenConsultant = useCallback((origem?: string, email?: string) => {
     trackEvent("abriu_modal", { origem: origem ?? "nao_identificada" })
+    setEmailInicial(email)
     setIsConsultantModalOpen(true)
   }, [])
 
@@ -65,10 +66,10 @@ export default function LandingPage() {
       <div className="relative flex flex-col justify-start items-center w-full">
         {/* Main container with framing vertical lines */}
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1320px] lg:w-[1320px] relative flex flex-col justify-start items-start min-h-screen">
-          {/* Left vertical framing line */}
-          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none"></div>
 
-          {/* Right vertical framing line */}
+
+          {/* Linhas verticais que emolduram a página inteira */}
+          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none"></div>
           <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none"></div>
 
           <div className="self-stretch pt-[9px] overflow-visible border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-center items-center relative z-10">
@@ -87,11 +88,6 @@ export default function LandingPage() {
               {/* ── PROVA SOCIAL: bancos suportados, faixa compacta ─────── */}
               <section aria-label="Bancos suportados" className="w-full band-tint">
                 <BanksIntegrationSection variant="strip" />
-              </section>
-
-              {/* ── APP NO CELULAR: primeira imagem de produto da página ── */}
-              <section aria-label="O app da Rovee no celular" className="w-full">
-                <MobileShowcaseSection onOpenConsultant={handleOpenConsultant} />
               </section>
 
               {/* ── SEÇÃO 2: BENTO GRID - MOTOR DE INTELIGÊNCIA FISCAL ──── */}
@@ -165,7 +161,11 @@ export default function LandingPage() {
       </div>
 
       {/* ── MODAL DE ATENDIMENTO COM CONSULTOR VIA WHATSAPP ── */}
-      <ConsultantModal isOpen={isConsultantModalOpen} onClose={handleCloseConsultant} />
+      <ConsultantModal
+        isOpen={isConsultantModalOpen}
+        onClose={handleCloseConsultant}
+        emailInicial={emailInicial}
+      />
     </div>
   )
 }

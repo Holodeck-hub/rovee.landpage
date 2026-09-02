@@ -113,25 +113,6 @@ export function FiscalAgentsSection() {
       {/* ── TOP SHOWCASE WINDOW ── */}
       <div className="self-stretch flex justify-center items-start">
         {/* Left vertical pattern with stationed pixel agents */}
-        <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
-          <div className="w-[120px] sm:w-[140px] md:w-[162px] left-[-40px] sm:left-[-50px] md:left-[-58px] top-[-120px] absolute flex flex-col justify-start items-start">
-            {Array.from({ length: 150 }).map((_, i) => (
-              <div
-                key={i}
-                className="self-stretch h-3 sm:h-4 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-              />
-            ))}
-          </div>
-          {/* Fila Esquerda: 6 Agentes em Degrau Suave */}
-          <div className="absolute left-[-45px] sm:left-[-40px] md:left-[-35px] lg:left-[-30px] bottom-[-95px] z-20 flex flex-col items-center gap-5 pointer-events-none">
-            <div className="translate-x-1 opacity-70 scale-90"><PixelIcon type="finance" size={20} /></div>
-            <div className="-translate-x-2 opacity-80 scale-90"><PixelIcon type="tax" size={20} /></div>
-            <div className="translate-x-3 opacity-90 scale-95"><PixelIcon type="security" size={22} /></div>
-            <div className="-translate-x-1 scale-100"><PixelIcon type="growth" size={24} /></div>
-            <div className="translate-x-2 scale-105"><PixelIcon type="accounting" size={26} /></div>
-            <div className="-translate-x-3 scale-110 drop-shadow-md"><PixelIcon type="agents" size={28} /></div>
-          </div>
-        </div>
 
         {/* Center Container: Active Agent Showcase */}
         <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] bg-white p-6 sm:p-8 lg:p-12">
@@ -255,40 +236,11 @@ export function FiscalAgentsSection() {
         </div>
 
         {/* Right vertical pattern with stationed pixel agents */}
-        <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
-          <div className="w-[120px] sm:w-[140px] md:w-[162px] left-[-40px] sm:left-[-50px] md:left-[-58px] top-[-120px] absolute flex flex-col justify-start items-start">
-            {Array.from({ length: 150 }).map((_, i) => (
-              <div
-                key={i}
-                className="self-stretch h-3 sm:h-4 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-              />
-            ))}
-          </div>
-          {/* Fila Direita: 6 Agentes em Degrau Suave */}
-          <div className="absolute right-[-45px] sm:right-[-40px] md:right-[-35px] lg:right-[-30px] bottom-[-95px] z-20 flex flex-col items-center gap-5 pointer-events-none">
-            <div className="-translate-x-1 opacity-70 scale-90"><PixelIcon type="growth" size={20} /></div>
-            <div className="translate-x-2 opacity-80 scale-90"><PixelIcon type="security" size={20} /></div>
-            <div className="-translate-x-3 opacity-90 scale-95"><PixelIcon type="tax" size={22} /></div>
-            <div className="translate-x-1 scale-100"><PixelIcon type="finance" size={24} /></div>
-            <div className="-translate-x-2 scale-105"><PixelIcon type="agents" size={26} /></div>
-            <div className="translate-x-3 scale-110 drop-shadow-md"><PixelIcon type="accounting" size={28} /></div>
-          </div>
-        </div>
       </div>
 
       {/* ── BOTTOM FEATURE CARDS SELECTOR ── */}
       <div className="self-stretch flex justify-center items-stretch border-t border-[rgba(55,50,47,0.12)]">
         {/* Left vertical pattern */}
-        <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
-          <div className="w-[120px] sm:w-[140px] md:w-[162px] left-[-40px] sm:left-[-50px] md:left-[-58px] top-[-120px] absolute flex flex-col justify-start items-start">
-            {Array.from({ length: 150 }).map((_, i) => (
-              <div
-                key={i}
-                className="self-stretch h-3 sm:h-4 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-              />
-            ))}
-          </div>
-        </div>
 
         {/* 4 FeatureCards Grid with Active Progress Bars and Dividers */}
         <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#E0DEDB] border-l border-r border-[#E0DEDB]">
@@ -321,16 +273,6 @@ export function FiscalAgentsSection() {
         </div>
 
         {/* Right vertical pattern */}
-        <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden hidden sm:block">
-          <div className="w-[120px] sm:w-[140px] md:w-[162px] left-[-40px] sm:left-[-50px] md:left-[-58px] top-[-120px] absolute flex flex-col justify-start items-start">
-            {Array.from({ length: 150 }).map((_, i) => (
-              <div
-                key={i}
-                className="self-stretch h-3 sm:h-4 rotate-[-45deg] origin-top-left outline outline-[0.5px] outline-[rgba(3,7,18,0.08)] outline-offset-[-0.25px]"
-              />
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   )

@@ -9,7 +9,12 @@ import { useEffect, useState } from "react"
  * remover a janela do simulador e a barra de status — era ali que ficava o
  * banner DEBUG do Flutter. O vídeo carrega só o conteúdo do app.
  */
-export function PhoneFrame({ className = "" }: { className?: string }) {
+export function PhoneFrame({
+  larguraClasse = "w-[248px] sm:w-[280px]",
+}: {
+  /** Classe de largura. A altura vem do aspect-ratio do recorte (720x1442). */
+  larguraClasse?: string
+}) {
   const [reduzirMovimento, setReduzirMovimento] = useState(false)
 
   useEffect(() => {
@@ -22,7 +27,7 @@ export function PhoneFrame({ className = "" }: { className?: string }) {
 
   return (
     <div
-      className={`relative w-[248px] sm:w-[280px] shrink-0 ${className}`}
+      className={`relative shrink-0 ${larguraClasse}`}
       style={{ aspectRatio: "720 / 1442" }}
     >
       {/* Corpo do aparelho */}

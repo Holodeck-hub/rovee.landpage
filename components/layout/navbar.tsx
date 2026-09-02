@@ -1,6 +1,7 @@
 "use client"
 
 import { useCallback, useEffect, useId, useRef, useState } from "react"
+import Link from "next/link"
 import { ChevronDown, Menu, X } from "lucide-react"
 
 interface NavLink {
@@ -11,7 +12,10 @@ interface NavLink {
 
 interface NavGroup {
   label: string
-  items: NavLink[]
+  /** Grupo com dropdown. Ausente quando o item é um link direto. */
+  items?: NavLink[]
+  /** Link direto, sem dropdown. Usado para páginas fora da home. */
+  href?: string
 }
 
 /**
@@ -45,6 +49,8 @@ export const NAV_GROUPS: NavGroup[] = [
       { href: "#roadmap", label: "Roadmap", desc: "O que vem pela frente" },
     ],
   },
+  // Link direto: o escritório contábil tem página própria, com outra promessa.
+  { label: "Contabilidade", href: "/contadores" },
   {
     label: "Planos",
     items: [
@@ -71,7 +77,7 @@ function NavDropdown({
   onOpenOnHover,
   onClose,
 }: {
-  group: NavGroup
+  group: { label: string; items: NavLink[] }
   isOpen: boolean
   onToggle: () => void
   onOpenOnHover: () => void
@@ -112,8 +118,11 @@ function NavDropdown({
       className="relative"
       onMouseEnter={onOpenOnHover}
       onBlur={(event) => {
-        // Fecha ao sair do grupo com Tab, sem atrapalhar o clique do mouse.
-        if (!event.currentTarget.contains(event.relatedTarget as Node)) onClose(false)
+        // So fecha quando o foco vai para outro elemento fora do grupo (Tab).
+        // No mousedown o relatedTarget vem null: fechar ali removia o painel
+        // antes do clique chegar no link.
+        const proximo = event.relatedTarget as Node | null
+        if (proximo && !event.currentTarget.contains(proximo)) onClose(false)
       }}
     >
       <button
@@ -145,8 +154,9 @@ function NavDropdown({
         ref={panelRef}
         id={panelId}
         hidden={!isOpen}
-        className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+8px)] z-50 w-[300px] bg-white border border-[rgba(55,50,47,0.12)] rounded-xl shadow-[0px_12px_32px_rgba(15,23,42,0.14)] p-1.5"
+        className="absolute left-1/2 -translate-x-1/2 top-full z-50 w-[300px] pt-2"
       >
+        <div className="bg-white border border-[rgba(55,50,47,0.12)] rounded-xl shadow-[0px_12px_32px_rgba(15,23,42,0.14)] p-1.5">
         {group.items.map((item, index) => (
           <a
             key={item.href}
@@ -159,6 +169,7 @@ function NavDropdown({
             <span className="block text-[11px] text-[#6B6560] leading-snug mt-0.5">{item.desc}</span>
           </a>
         ))}
+        </div>
       </div>
     </div>
   )
@@ -172,20 +183,29 @@ function DesktopNav({ label }: { label: string }) {
   return (
     <nav
       aria-label={label}
-      onMouseLeave={close}
       className="hidden md:flex items-center gap-1 pl-2 text-xs font-medium text-[rgba(49,45,43,0.80)] font-sans"
     >
-      {NAV_GROUPS.map((group, index) => (
+      {NAV_GROUPS.map((group, index) =>
+        group.href ? (
+          <Link
+            key={group.label}
+            href={group.href}
+            className="px-2 py-1.5 rounded hover:text-secondary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            {group.label}
+          </Link>
+        ) : (
         <NavDropdown
           key={group.label}
-          group={group}
+          group={{ label: group.label, items: group.items ?? [] }}
           isOpen={openIndex === index}
           onToggle={() => setOpenIndex((current) => (current === index ? null : index))}
           // Com um menu já aberto, passar o mouse troca de aba — como num menu de sistema.
           onOpenOnHover={() => setOpenIndex((current) => (current === null ? current : index))}
           onClose={close}
         />
-      ))}
+        ),
+      )}
     </nav>
   )
 }
@@ -267,6 +287,18 @@ function MobileMenu({
       >
         <nav aria-label="Menu principal (mobile)" className="flex flex-col">
           {NAV_GROUPS.map((group, index) => {
+            if (group.href) {
+              return (
+                <Link
+                  key={group.label}
+                  href={group.href}
+                  onClick={() => close(false)}
+                  className="px-3 py-3 min-h-[44px] flex items-center text-sm font-semibold text-secondary rounded-lg hover:bg-[#F1F5F9] border-b border-[rgba(55,50,47,0.08)] last:border-b-0 transition-colors"
+                >
+                  {group.label}
+                </Link>
+              )
+            }
             const isGroupOpen = openGroup === index
             return (
               <div key={group.label} className="border-b border-[rgba(55,50,47,0.08)] last:border-b-0">
@@ -287,7 +319,7 @@ function MobileMenu({
                 </button>
 
                 <div hidden={!isGroupOpen} className="pb-1.5">
-                  {group.items.map((item) => (
+                  {(group.items ?? []).map((item) => (
                     <a
                       key={item.href}
                       href={item.href}

@@ -75,6 +75,9 @@ export default function FooterSection() {
               Empresa
             </div>
             <div className="flex flex-col justify-center items-start gap-1 text-xs font-medium text-[#49423D]">
+              <Link href="/contadores" className="py-2 hover:text-secondary hover:underline transition-colors">
+                Para contadores
+              </Link>
               <Link href="/termos" className="py-2 hover:text-secondary hover:underline transition-colors">
                 Termos de Uso
               </Link>

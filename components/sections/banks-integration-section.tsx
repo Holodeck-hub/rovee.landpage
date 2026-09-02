@@ -26,7 +26,7 @@ const STRIP_BANKS = [
 ]
 
 // Authentic Bank Logos with exact brand colors and icons
-function BankIcon({ code }: { code: string }) {
+export function BankIcon({ code }: { code: string }) {
   switch (code) {
     case "itau":
       return (
