@@ -200,3 +200,8 @@
   letter-spacing: -0.025em;
   line-height: 1.06;
 }
+
+/* Alternância de faixa. Três tons com papéis distintos, em vez de um só:
+   branco é o chão, #F8FAFC é superfície interna (cabeçalho de tabela,
+   subpainel) e #F3F3F8 é a faixa que cria o ritmo entre seções. */
+.band-tint { background-color: var(--ground-alt); }

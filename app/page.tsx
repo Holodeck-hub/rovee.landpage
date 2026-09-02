@@ -46,7 +46,7 @@ export default function LandingPage() {
   }, [])
 
   return (
-    <div className="w-full min-h-screen relative bg-[#F8FAFC] overflow-x-hidden flex flex-col justify-start items-center">
+    <div className="w-full min-h-screen relative bg-white overflow-x-hidden flex flex-col justify-start items-center">
       {/* ── SKIP LINK: primeiro elemento focável da página ── */}
       <a
         href="#conteudo"
@@ -84,7 +84,7 @@ export default function LandingPage() {
               </section>
 
               {/* ── PROVA SOCIAL: bancos suportados, faixa compacta ─────── */}
-              <section aria-label="Bancos suportados" className="w-full">
+              <section aria-label="Bancos suportados" className="w-full band-tint">
                 <BanksIntegrationSection variant="strip" />
               </section>
 
@@ -94,7 +94,7 @@ export default function LandingPage() {
               </section>
 
               {/* ── SEÇÃO 3: INTELIGÊNCIA PREDITIVA EM 3 CAMADAS ─────────── */}
-              <section id="predicao" aria-label="Inteligência preditiva" className="w-full">
+              <section id="predicao" aria-label="Inteligência preditiva" className="w-full band-tint">
                 <PredictiveIntelligenceSection />
               </section>
 
@@ -104,7 +104,7 @@ export default function LandingPage() {
               </section>
 
               {/* ── SEÇÃO 5: CANAL DO CONTADOR & HARMONIA ────────────────── */}
-              <section id="contador" aria-label="Canal do contador" className="w-full">
+              <section id="contador" aria-label="Canal do contador" className="w-full band-tint">
                 <AccountantChannelSection />
               </section>
 
@@ -114,7 +114,7 @@ export default function LandingPage() {
               </section>
 
               {/* ── SEÇÃO 7: LIVE METRICS EM TEMPO REAL ──────────────────── */}
-              <section id="metricas" aria-label="Números da Rovee" className="w-full">
+              <section id="metricas" aria-label="Números da Rovee" className="w-full band-tint">
                 <LiveMetricsSection />
               </section>
 
@@ -124,7 +124,7 @@ export default function LandingPage() {
               </section>
 
               {/* ── SEÇÃO 9: ROADMAP ROVEE (TRANSPARÊNCIA DE PRODUTO) ───── */}
-              <section id="roadmap" aria-label="Roadmap do produto" className="w-full">
+              <section id="roadmap" aria-label="Roadmap do produto" className="w-full band-tint">
                 <RoadmapTeaserSection />
               </section>
 
@@ -134,7 +134,7 @@ export default function LandingPage() {
               </section>
 
               {/* ── SEÇÃO 11: PLANOS & PRICING (a própria seção já é <section>) ── */}
-              <div id="planos" className="w-full">
+              <div id="planos" className="w-full band-tint">
                 <PricingSection onOpenConsultant={handleOpenConsultant} />
               </div>
 

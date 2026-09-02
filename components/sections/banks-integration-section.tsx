@@ -111,7 +111,7 @@ export function BanksIntegrationSection({
         {/* Mesma moldura das demais seções: as linhas verticais da grade
             mestra precisam continuar através da faixa. */}
         <div className="self-stretch flex justify-center items-stretch">
-          <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] bg-[#F8FAFC] py-8 sm:py-10 px-4 sm:px-6 md:px-8 flex flex-col items-center gap-5">
+          <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] py-8 sm:py-10 px-4 sm:px-6 md:px-8 flex flex-col items-center gap-5">
             <p className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider text-[#6B6560] text-center">
               Conecta com as contas PJ que você já usa
             </p>
