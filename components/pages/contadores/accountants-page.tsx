@@ -11,12 +11,6 @@ import { AccountantsPortalSection } from "./accountants-portal-section"
 import { AccountantsFaqSection } from "./accountants-faq-section"
 import { trackEvent } from "../../../lib/analytics"
 
-/**
- * Página para escritórios contábeis.
- *
- * A home fala com o PJ; esta fala com quem atende o PJ.
- * Estruturada de forma 100% modular com componentes de seção dedicados.
- */
 export function AccountantsPage() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [modalAberto, setModalAberto] = useState(false)
