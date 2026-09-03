@@ -55,8 +55,6 @@ export function SecuritySection() {
 
       {/* Framing Container */}
       <div className="self-stretch flex justify-center items-stretch relative">
-        {/* Left vertical pattern */}
-
         {/* Center Container: 4 Pillars Grid */}
         <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[rgba(55,50,47,0.12)] bg-white">
           <div className="flex flex-col divide-y divide-[rgba(55,50,47,0.12)]">
@@ -119,8 +117,6 @@ export function SecuritySection() {
             })}
           </div>
         </div>
-
-        {/* Right vertical pattern */}
       </div>
     </div>
   )

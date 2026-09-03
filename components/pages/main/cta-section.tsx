@@ -1,14 +1,13 @@
+"use client"
+
 interface CTASectionProps {
   onOpenConsultant?: (origem?: string) => void
 }
 
-export default function CTASection({ onOpenConsultant }: CTASectionProps) {
+export function CTASection({ onOpenConsultant }: CTASectionProps) {
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       <div className="self-stretch flex justify-center items-stretch relative">
-        {/* Left vertical pattern */}
-
-        {/* Center Container */}
         <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] px-4 sm:px-6 md:px-8 py-16 sm:py-20 md:py-28 flex flex-col justify-center items-center text-center relative overflow-hidden bg-white">
           <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-6 relative z-10">
             <div className="self-stretch flex flex-col justify-start items-center gap-3">
@@ -44,9 +43,8 @@ export default function CTASection({ onOpenConsultant }: CTASectionProps) {
             </p>
           </div>
         </div>
-
-        {/* Right vertical pattern */}
       </div>
     </div>
   )
 }
+export default CTASection

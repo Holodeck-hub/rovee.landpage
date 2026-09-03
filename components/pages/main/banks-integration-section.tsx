@@ -5,10 +5,8 @@ import { ArrowRight, ShieldCheck } from "lucide-react"
 interface BanksIntegrationSectionProps {
   onOpenConsultant?: (origem?: string) => void
   /**
-   * "full" é a seção original, com o canvas e os badges flutuantes.
-   * "strip" é a faixa compacta de prova social que vai logo abaixo do hero —
-   * o mesmo movimento que Brex e Firecrawl fazem com logos de clientes; aqui
-   * o ativo equivalente, e verdadeiro, são os bancos suportados.
+   * "full" é a seção com badges flutuantes.
+   * "strip" é a faixa compacta de prova social logo abaixo do hero.
    */
   variant?: "full" | "strip"
 }
@@ -25,7 +23,6 @@ const STRIP_BANKS = [
   { code: "sicoob", name: "Sicoob" },
 ]
 
-// Authentic Bank Logos with exact brand colors and icons
 export function BankIcon({ code }: { code: string }) {
   switch (code) {
     case "itau":
@@ -108,8 +105,6 @@ export function BanksIntegrationSection({
   if (variant === "strip") {
     return (
       <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
-        {/* Mesma moldura das demais seções: as linhas verticais da grade
-            mestra precisam continuar através da faixa. */}
         <div className="self-stretch flex justify-center items-stretch">
           <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] py-8 sm:py-10 px-4 sm:px-6 md:px-8 flex flex-col items-center gap-5">
             <p className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider text-[#6B6560] text-center">
@@ -140,12 +135,8 @@ export function BanksIntegrationSection({
 
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center overflow-hidden">
-      {/* Framing Container */}
       <div className="self-stretch flex justify-center items-stretch relative">
-
-        {/* Center Canvas with Dotted Pattern & Floating Bank Badges */}
         <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-white relative flex flex-col items-center justify-center min-h-[540px]">
-          
           {/* Subtle Dot Grid Background */}
           <div
             className="absolute inset-0 opacity-[0.45] pointer-events-none"
@@ -155,39 +146,32 @@ export function BanksIntegrationSection({
             }}
           />
 
-          {/* ── FLOATING BANK BADGES (DESKTOP / TABLET) ── */}
-
-          {/* Top Left: Itaú Empresas */}
+          {/* ── FLOATING BANK BADGES ── */}
           <div className="hidden lg:flex absolute left-8 top-12 items-center gap-2.5 px-4 py-2 bg-white/95 backdrop-blur-xs rounded-full border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.08)] hover:scale-105 hover:shadow-md transition-all z-20 cursor-default animate-pulse">
             <BankIcon code="itau" />
             <span className="text-xs font-semibold text-secondary font-sans">Itaú Empresas</span>
           </div>
 
-          {/* Mid Left: Nubank PJ */}
           <div className="hidden lg:flex absolute left-4 top-48 items-center gap-2.5 px-4 py-2 bg-white/95 backdrop-blur-xs rounded-full border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.08)] hover:scale-105 hover:shadow-md transition-all z-20 cursor-default">
             <BankIcon code="nubank" />
             <span className="text-xs font-semibold text-secondary font-sans">Nubank PJ</span>
           </div>
 
-          {/* Bottom Left: Banco Inter */}
           <div className="hidden lg:flex absolute left-10 bottom-14 items-center gap-2.5 px-4 py-2 bg-white/95 backdrop-blur-xs rounded-full border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.08)] hover:scale-105 hover:shadow-md transition-all z-20 cursor-default">
             <BankIcon code="inter" />
             <span className="text-xs font-semibold text-secondary font-sans">Inter Empresas</span>
           </div>
 
-          {/* Top Right: Bradesco */}
           <div className="hidden lg:flex absolute right-8 top-12 items-center gap-2.5 px-4 py-2 bg-white/95 backdrop-blur-xs rounded-full border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.08)] hover:scale-105 hover:shadow-md transition-all z-20 cursor-default">
             <BankIcon code="bradesco" />
             <span className="text-xs font-semibold text-secondary font-sans">Bradesco PJ</span>
           </div>
 
-          {/* Mid Right: C6 Bank PJ */}
           <div className="hidden lg:flex absolute right-4 top-44 items-center gap-2.5 px-4 py-2 bg-white/95 backdrop-blur-xs rounded-full border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.08)] hover:scale-105 hover:shadow-md transition-all z-20 cursor-default">
             <BankIcon code="c6" />
             <span className="text-xs font-semibold text-secondary font-sans">C6 Bank Empresas</span>
           </div>
 
-          {/* Bottom Right: Santander */}
           <div className="hidden lg:flex absolute right-12 bottom-14 items-center gap-2.5 px-4 py-2 bg-white/95 backdrop-blur-xs rounded-full border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_16px_rgba(55,50,47,0.08)] hover:scale-105 hover:shadow-md transition-all z-20 cursor-default">
             <BankIcon code="santander" />
             <span className="text-xs font-semibold text-secondary font-sans">Santander PJ</span>
@@ -195,24 +179,20 @@ export function BanksIntegrationSection({
 
           {/* ── CENTRAL HERO CONTENT ── */}
           <div className="relative z-10 max-w-[620px] flex flex-col items-center text-center gap-4 py-4">
-            {/* Tag */}
             <div className="px-3.5 py-1 bg-white border border-[rgba(55,50,47,0.15)] rounded-full text-xs font-mono font-semibold text-secondary shadow-2xs">
               Integrações
             </div>
 
-            {/* Main Headline */}
             <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section">
               Integre como quiser!
               <br />
               <span className="text-primary font-bold">Open Finance, OFX, PDF!</span>
             </h2>
 
-            {/* Subtitle */}
             <p className="text-[#605A57] text-xs sm:text-sm md:text-base leading-relaxed font-sans max-w-[500px]">
               Conecte automaticamente suas contas bancárias via Open Finance a partir do Rovee Pro ou faça upload de arquivos de extrato com 1 clique no Starter.
             </p>
 
-            {/* Action Button */}
             <div className="pt-2">
               <button
                 type="button"
@@ -224,14 +204,13 @@ export function BanksIntegrationSection({
               </button>
             </div>
 
-            {/* Footnote */}
             <div className="text-[11px] text-[#6B6560] font-sans flex items-center justify-center gap-1.5 pt-1">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
               <span>Conexão 100% segura e regulada pelo Banco Central</span>
             </div>
           </div>
 
-          {/* ── MOBILE / TABLET PILLS GRID (FLEX-WRAP) ── */}
+          {/* ── MOBILE / TABLET PILLS GRID ── */}
           <div className="flex lg:hidden flex-wrap items-center justify-center gap-2.5 pt-8 relative z-10 max-w-[540px]">
             <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-[rgba(55,50,47,0.12)] shadow-2xs text-xs font-medium text-secondary">
               <BankIcon code="itau" />

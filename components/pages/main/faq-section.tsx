@@ -60,7 +60,7 @@ function ChevronDownIcon({ className }: { className?: string }) {
   )
 }
 
-export default function FAQSection() {
+export function FAQSection() {
   const [openItems, setOpenItems] = useState<number[]>([0])
 
   const toggleItem = (index: number) => {
@@ -103,15 +103,17 @@ export default function FAQSection() {
                     </div>
                     <div className="flex justify-center items-center">
                       <ChevronDownIcon
-                        className={`w-5 h-5 text-[#6B6560] transition-transform duration-300 ease-in-out ${isOpen ? "rotate-180 text-[#37322F]" : "rotate-0"
-                          }`}
+                        className={`w-5 h-5 text-[#6B6560] transition-transform duration-300 ease-in-out ${
+                          isOpen ? "rotate-180 text-[#37322F]" : "rotate-0"
+                        }`}
                       />
                     </div>
                   </button>
 
                   <div
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"
-                      }`}
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                      isOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"
+                    }`}
                   >
                     <div className="text-[#605A57] text-xs sm:text-sm font-normal leading-relaxed font-sans">
                       {item.answer}
@@ -126,3 +128,4 @@ export default function FAQSection() {
     </div>
   )
 }
+export default FAQSection

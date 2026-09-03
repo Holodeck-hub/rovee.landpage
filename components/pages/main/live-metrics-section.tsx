@@ -1,18 +1,5 @@
 "use client"
 
-/**
- * Números da Rovee, no layout que a Brex usa: título centralizado, três
- * colunas com rótulo, número em destaque e uma frase de contexto, e a nota
- * de método embaixo.
- *
- * A nota não é enfeite. A auditoria apontou que os números fortes do site
- * não declaravam base — e a própria Brex declara a dela ("métricas internas
- * de março de 2025"). Número forte sem base declarada custa credibilidade
- * em vez de gerar.
- *
- * Os três valores abaixo são verificáveis sem acesso a dado de cliente:
- * saem da Lei Complementar 123/2006 e do desenho do produto.
- */
 const numeros = [
   {
     rotulo: "Diferença de alíquota",

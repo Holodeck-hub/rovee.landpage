@@ -24,7 +24,6 @@ export function FiscalIntelligenceBentoSection() {
 
       {/* Bento Grid 4 Cards */}
       <div className="self-stretch flex justify-center items-start">
-
         <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-2 gap-0 border-l border-r border-[rgba(55,50,47,0.12)]">
           {/* Card 1: Clareza de Caixa */}
           <div className="border-b border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
@@ -94,7 +93,6 @@ export function FiscalIntelligenceBentoSection() {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   )

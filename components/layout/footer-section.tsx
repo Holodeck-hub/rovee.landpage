@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { AnimatedWave } from "../shared/animated-wave"
+import { AnimatedWave } from "./animated-wave"
 import { SITE } from "../../lib/site-config"
 
 export default function FooterSection() {

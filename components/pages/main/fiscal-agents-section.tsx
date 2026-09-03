@@ -1,9 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { PixelIcon } from "../shared/pixel-icon"
-import { AnimatedWave } from "../shared/animated-wave"
-import { CheckCircle2, ShieldAlert } from "lucide-react"
+import { PixelIcon } from "../../shared/pixel-icon"
+import { AnimatedWave } from "../../layout"
+import { ShieldAlert } from "lucide-react"
 
 const FISCAL_AGENTS = [
   {
@@ -59,7 +59,6 @@ const FISCAL_AGENTS = [
 export function FiscalAgentsSection() {
   const [selectedAgent, setSelectedAgent] = useState(0)
   const [progress, setProgress] = useState(0)
-  const agent = FISCAL_AGENTS[selectedAgent]
 
   // Auto-cycle through agents with smooth progress bar
   useEffect(() => {
@@ -112,8 +111,6 @@ export function FiscalAgentsSection() {
 
       {/* ── TOP SHOWCASE WINDOW ── */}
       <div className="self-stretch flex justify-center items-start">
-        {/* Left vertical pattern with stationed pixel agents */}
-
         {/* Center Container: Active Agent Showcase */}
         <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] bg-white p-6 sm:p-8 lg:p-12">
           <div className="grid grid-cols-1 grid-rows-1 w-full">
@@ -234,15 +231,10 @@ export function FiscalAgentsSection() {
             ))}
           </div>
         </div>
-
-        {/* Right vertical pattern with stationed pixel agents */}
       </div>
 
       {/* ── BOTTOM FEATURE CARDS SELECTOR ── */}
       <div className="self-stretch flex justify-center items-stretch border-t border-[rgba(55,50,47,0.12)]">
-        {/* Left vertical pattern */}
-
-        {/* 4 FeatureCards Grid with Active Progress Bars and Dividers */}
         <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#E0DEDB] border-l border-r border-[#E0DEDB]">
           {FISCAL_AGENTS.map((item, idx) => {
             const isActive = selectedAgent === idx
@@ -250,8 +242,9 @@ export function FiscalAgentsSection() {
               <div
                 key={item.id}
                 onClick={() => handleAgentClick(idx)}
-                className={`w-full self-stretch px-5 py-4 sm:px-6 sm:py-5 overflow-hidden flex flex-col justify-start items-start gap-1.5 cursor-pointer relative transition-colors ${isActive ? "bg-white shadow-[0px_0px_0px_0.75px_#E0DEDB_inset]" : "bg-transparent hover:bg-white/40"
-                  }`}
+                className={`w-full self-stretch px-5 py-4 sm:px-6 sm:py-5 overflow-hidden flex flex-col justify-start items-start gap-1.5 cursor-pointer relative transition-colors ${
+                  isActive ? "bg-white shadow-[0px_0px_0px_0.75px_#E0DEDB_inset]" : "bg-transparent hover:bg-white/40"
+                }`}
               >
                 {isActive && (
                   <div className="absolute top-0 left-0 w-full h-0.5 bg-[rgba(50,45,43,0.08)]">
@@ -271,8 +264,6 @@ export function FiscalAgentsSection() {
             )
           })}
         </div>
-
-        {/* Right vertical pattern */}
       </div>
     </div>
   )

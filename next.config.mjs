@@ -1,6 +1,5 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone",
+  output: process.platform === "win32" && !process.env.OUTPUT_STANDALONE ? undefined : "standalone",
   poweredByHeader: false,
   typescript: {
     ignoreBuildErrors: true,

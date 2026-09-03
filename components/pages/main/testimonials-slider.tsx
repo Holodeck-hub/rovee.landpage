@@ -2,19 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react"
 import { ChevronLeft, ChevronRight, Info, Quote } from "lucide-react"
-import { AnimatedWave } from "../shared/animated-wave"
+import { AnimatedWave } from "../../layout"
 
-/**
- * ⚠️ Estes NÃO são depoimentos de clientes identificados.
- *
- * O layout é o original da seção; o que mudou foi a atribuição. Enquanto não
- * houver depoimento autorizado por escrito por um cliente real, nenhum texto
- * aqui pode ser assinado por uma pessoa nomeada — anunciar prova social
- * inexistente tem a mesma exposição jurídica de anunciar desconto inexistente.
- *
- * Para virar depoimento real: trocar `persona` pelo nome da pessoa, `segment`
- * pela empresa, guardar a autorização e remover o aviso do rodapé da seção.
- */
 const testimonials = [
   {
     quote: "Com o pró-labore calibrado para cruzar os 28% do Fator R, a saída do Anexo V (15,5%) para o Anexo III (6%) representa mais de R$ 2.400 por mês em imposto que deixa de ser pago.",
@@ -67,7 +56,7 @@ export function TestimonialsSlider() {
     [goTo],
   )
 
-  // Rotação automática: pausa no hover/foco e para quem pediu menos movimento.
+  // Rotação automática
   useEffect(() => {
     if (isPaused) return
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
@@ -84,7 +73,6 @@ export function TestimonialsSlider() {
 
   const activeTestimonial = testimonials[activeIndex]
 
-  // 44×44 é o alvo mínimo de toque (item 3.6 da auditoria).
   const arrowClass =
     "w-11 h-11 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-[#F1F5F9] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary text-secondary cursor-pointer transition-colors"
 
@@ -92,7 +80,6 @@ export function TestimonialsSlider() {
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Header com AnimatedWave */}
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative overflow-hidden">
-        {/* Background Animated Wave */}
         <div className="absolute inset-0 w-full h-full opacity-40 sm:opacity-50 z-0 pointer-events-none">
           <AnimatedWave />
         </div>
@@ -114,8 +101,6 @@ export function TestimonialsSlider() {
 
       {/* Main Quote Carousel */}
       <div className="self-stretch flex justify-center items-start">
-        {/* Left vertical pattern */}
-
         <div
           className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-10 md:p-16 bg-white/70"
           onMouseEnter={() => setIsPaused(true)}
@@ -146,8 +131,7 @@ export function TestimonialsSlider() {
 
           <div
             aria-live="polite"
-            className={`transition-opacity duration-300 ${isAnimating ? "opacity-0" : "opacity-100"
-              }`}
+            className={`transition-opacity duration-300 ${isAnimating ? "opacity-0" : "opacity-100"}`}
           >
             <p className="text-xl sm:text-2xl md:text-3xl text-secondary font-normal leading-relaxed font-sans mb-8">
               {activeTestimonial.quote}
@@ -168,7 +152,7 @@ export function TestimonialsSlider() {
             </div>
           </div>
 
-          {/* Aviso obrigatório enquanto não houver depoimento autorizado */}
+          {/* Aviso obrigatório */}
           <p className="flex items-start gap-2 text-[11px] leading-relaxed text-[#6B6560] mt-8 pt-4 border-t border-[rgba(55,50,47,0.08)]">
             <Info className="w-3.5 h-3.5 shrink-0 mt-px" aria-hidden="true" />
             <span>
@@ -176,8 +160,6 @@ export function TestimonialsSlider() {
             </span>
           </p>
         </div>
-
-        {/* Right vertical pattern */}
       </div>
     </div>
   )

@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Check } from "lucide-react"
-import { AnimatedWave } from "../shared/animated-wave"
-import { trackEvent } from "../../lib/analytics"
+import { AnimatedWave } from "../../layout"
+import { trackEvent } from "../../../lib/analytics"
 
 interface PricingSectionProps {
   onOpenConsultant?: (origem?: string) => void
@@ -15,12 +15,9 @@ interface Plan {
   id: string
   name: string
   tagline: string
-  /** Preço cheio, cobrado mês a mês. */
   monthly: number
-  /** Preço mensal equivalente quando o pagamento é anual (20% OFF). */
   annualMonthly: number
   features: string[]
-  /** Destaca visualmente as features (plano principal). */
   featured?: boolean
   ctaLabel: string
 }
@@ -82,14 +79,11 @@ function formatBRL(value: number) {
   return `R$ ${brl.format(value)}`
 }
 
-export default function PricingSection({ onOpenConsultant }: PricingSectionProps) {
-  // Padrão é "mensal": o preço exibido por default é o que se paga sem
-  // compromisso anual. O desconto é uma escolha do visitante, não o preço-âncora.
+export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("mensal")
   const sectionRef = useRef<HTMLElement>(null)
   const hasTrackedScroll = useRef(false)
 
-  // Evento de funil: o visitante chegou até a seção de planos.
   useEffect(() => {
     const node = sectionRef.current
     if (!node) return
@@ -132,7 +126,6 @@ export default function PricingSection({ onOpenConsultant }: PricingSectionProps
     >
       {/* Header Section com AnimatedWave */}
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative overflow-hidden">
-        {/* Background Animated Wave */}
         <div className="absolute inset-0 w-full h-full opacity-40 sm:opacity-50 z-0 pointer-events-none">
           <AnimatedWave />
         </div>
@@ -262,3 +255,4 @@ export default function PricingSection({ onOpenConsultant }: PricingSectionProps
     </section>
   )
 }
+export default PricingSection

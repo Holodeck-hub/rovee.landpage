@@ -27,10 +27,8 @@ export function PredictiveIntelligenceSection() {
 
       {/* Interactive 3-Layer Visualizer */}
       <div className="self-stretch flex justify-center items-start">
-        {/* Left vertical pattern */}
-
         <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] p-4 sm:p-6 md:p-8 lg:p-12">
-          {/* Layer Selector Tabs (Non-technical ICP language) */}
+          {/* Layer Selector Tabs */}
           <div className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-8">
             <button
               onClick={() => setActiveTab("trend")}
@@ -281,8 +279,6 @@ export function PredictiveIntelligenceSection() {
             </div>
           </div>
         </div>
-
-        {/* Right vertical pattern */}
       </div>
     </div>
   )

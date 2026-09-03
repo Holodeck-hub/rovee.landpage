@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { AccountantsPage } from "../../components/pages/accountants-page"
+import { AccountantsPage } from "../../components/pages/contadores"
 
 export const metadata: Metadata = {
   title: "Rovee para contadores — o cliente chega com o extrato limpo",

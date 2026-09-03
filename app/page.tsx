@@ -1,22 +1,22 @@
 "use client"
 
 import { useCallback, useEffect, useState } from "react"
-import { StickyNavbar, TopNavbar } from "../components/layout/navbar"
-import { HeroShowcaseSection } from "../components/sections/hero-showcase-section"
-import { FiscalIntelligenceBentoSection } from "../components/sections/fiscal-intelligence-bento-section"
-import { PredictiveIntelligenceSection } from "../components/sections/predictive-intelligence-section"
-import { FiscalAgentsSection } from "../components/sections/fiscal-agents-section"
-import { AccountantChannelSection } from "../components/sections/accountant-channel-section"
-import { BanksIntegrationSection } from "../components/sections/banks-integration-section"
-import { LiveMetricsSection } from "../components/sections/live-metrics-section"
-import { TestimonialsSlider } from "../components/sections/testimonials-slider"
-import { RoadmapTeaserSection } from "../components/sections/roadmap-teaser-section"
-import { SecuritySection } from "../components/sections/security-section"
-import PricingSection from "../components/sections/pricing-section"
-import FAQSection from "../components/sections/faq-section"
-import CTASection from "../components/sections/cta-section"
-import FooterSection from "../components/layout/footer-section"
-import { ConsultantModal } from "../components/shared/consultant-modal"
+import { StickyNavbar, TopNavbar, FooterSection, ConsultantModal } from "../components/layout"
+import {
+  HeroShowcaseSection,
+  BanksIntegrationSection,
+  FiscalIntelligenceBentoSection,
+  PredictiveIntelligenceSection,
+  FiscalAgentsSection,
+  AccountantChannelSection,
+  LiveMetricsSection,
+  TestimonialsSlider,
+  RoadmapTeaserSection,
+  SecuritySection,
+  PricingSection,
+  FAQSection,
+  CTASection,
+} from "../components/pages/main"
 import { trackEvent } from "../lib/analytics"
 
 export default function LandingPage() {
@@ -66,15 +66,12 @@ export default function LandingPage() {
       <div className="relative flex flex-col justify-start items-center w-full">
         {/* Main container with framing vertical lines */}
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1320px] lg:w-[1320px] relative flex flex-col justify-start items-start min-h-screen">
-
-
           {/* Linhas verticais que emolduram a página inteira */}
-          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none"></div>
-          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none"></div>
+          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
+          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
 
           <div className="self-stretch pt-[9px] overflow-visible border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-center items-center relative z-10">
-
-            {/* ── NAVBAR DO TOPO (DENTRO DA GRADE ORIGINAL DO HERO) ── */}
+            {/* ── NAVBAR DO TOPO ── */}
             <header className="w-full">
               <TopNavbar onOpenConsultant={handleOpenConsultant} />
             </header>
@@ -135,7 +132,7 @@ export default function LandingPage() {
                 <SecuritySection />
               </section>
 
-              {/* ── SEÇÃO 11: PLANOS & PRICING (a própria seção já é <section>) ── */}
+              {/* ── SEÇÃO 11: PLANOS & PRICING ──────────────────────────── */}
               <div id="planos" className="w-full band-tint">
                 <PricingSection onOpenConsultant={handleOpenConsultant} />
               </div>
@@ -155,7 +152,6 @@ export default function LandingPage() {
             <div className="w-full">
               <FooterSection />
             </div>
-
           </div>
         </div>
       </div>

@@ -8,12 +8,6 @@ import {
   hasMetaPixel,
 } from "../../lib/analytics"
 
-/**
- * Scripts de terceiro carregados após a hidratação (afterInteractive), para
- * não competir com o first paint. Cada bloco só é renderizado quando o ID
- * correspondente existe no ambiente — em dev, sem .env, a página continua
- * com zero script de terceiro.
- */
 export function AnalyticsScripts() {
   return (
     <>

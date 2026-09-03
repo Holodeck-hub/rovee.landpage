@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowUpRight, BrainCircuit, FileSpreadsheet, Layers } from "lucide-react"
+import { BrainCircuit, FileSpreadsheet, Layers } from "lucide-react"
 
 const ROADMAP_ITEMS = [
   {
@@ -52,10 +52,8 @@ export function RoadmapTeaserSection() {
         </div>
       </div>
 
-      {/* 3 Roadmap Cards Grid with Side Frame Patterns */}
+      {/* 3 Roadmap Cards Grid */}
       <div className="self-stretch flex justify-center items-start">
-        {/* Left vertical pattern */}
-
         <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-0 border-l border-r border-[rgba(55,50,47,0.12)]">
           {ROADMAP_ITEMS.map((item, idx) => {
             const Icon = item.icon
@@ -84,8 +82,6 @@ export function RoadmapTeaserSection() {
             )
           })}
         </div>
-
-        {/* Right vertical pattern */}
       </div>
     </div>
   )

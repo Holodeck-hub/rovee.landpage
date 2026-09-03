@@ -82,10 +82,8 @@ export function AccountantChannelSection() {
         </div>
       </div>
 
-      {/* ── CONSOLE WINDOW + FEATURE CARDS (EXATO FORMATO APP.ROVEE.COM.BR / FISCAL-CONSOLE) ── */}
+      {/* ── CONSOLE WINDOW + FEATURE CARDS ── */}
       <div className="self-stretch flex justify-center items-start">
-        {/* Left vertical pattern */}
-
         {/* Center Container: Live Content */}
         <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] bg-white flex flex-col text-left">
           {/* Dashboard Content per Active Tab */}
@@ -370,15 +368,10 @@ export function AccountantChannelSection() {
             </div>
           </div>
         </div>
-
-        {/* Right vertical pattern */}
       </div>
 
-      {/* ── BOTTOM FEATURE CARDS SELECTOR (EXATO FORMATO APP.ROVEE.COM.BR / FISCAL-CONSOLE) ── */}
+      {/* ── BOTTOM FEATURE CARDS SELECTOR ── */}
       <div className="self-stretch flex justify-center items-stretch border-t border-[rgba(55,50,47,0.12)]">
-        {/* Left vertical pattern */}
-
-        {/* 3 FeatureCards Grid with Active Progress Bars and Borders */}
         <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#E0DEDB] border-l border-r border-[#E0DEDB]">
           {ACCOUNTANT_TABS.map((tab, idx) => {
             const isActive = activeTab === idx
@@ -411,8 +404,6 @@ export function AccountantChannelSection() {
             )
           })}
         </div>
-
-        {/* Right vertical pattern */}
       </div>
     </div>
   )
