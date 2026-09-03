@@ -5,25 +5,25 @@ import { DollarSign, TrendingUp, ShieldAlert, Clock } from "lucide-react"
 export function FiscalIntelligenceBentoSection() {
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
-      {/* Header */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
+      {/* Header com fundo preto */}
+      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-12 sm:py-16 md:py-20 bg-black text-white border-b border-white/10 flex flex-col justify-start items-center">
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400">
             Motor de Inteligência Fiscal
           </span>
 
-          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section">
+          <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section text-balance">
             O fim das dúvidas sobre imposto e pró-labore
           </h2>
 
-          <p className="text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
+          <p className="text-zinc-400 text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
             Não é apenas um gerenciador financeiro. A Rovee analisa os dados fiscais da sua PJ e entrega decisões que colocam mais dinheiro limpo no seu bolso.
           </p>
         </div>
       </div>
 
-      {/* Bento Grid 4 Cards */}
-      <div className="self-stretch flex justify-center items-start">
+      {/* Bento Grid: Cards com o fundo original preservado (sem mudar o background) */}
+      <div className="self-stretch flex justify-center items-start bg-white">
         <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-2 gap-0 border-l border-r border-[rgba(55,50,47,0.12)]">
           {/* Card 1: Clareza de Caixa */}
           <div className="border-b border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors">
