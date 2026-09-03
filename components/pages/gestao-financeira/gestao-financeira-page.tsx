@@ -138,9 +138,6 @@ export function GestaoFinanceiraPage() {
                     <div className="bg-white p-6 sm:p-8 rounded-xl border border-[rgba(55,50,47,0.14)] flex flex-col justify-between gap-5 shadow-xs">
                       <div>
                         <div className="flex items-start gap-3.5 mb-1">
-                          <div className="w-9 h-9 shrink-0 rounded-lg bg-slate-100 text-secondary flex items-center justify-center border border-[rgba(55,50,47,0.08)] mt-0.5">
-                            <Eye className="w-4 h-4 text-secondary" />
-                          </div>
                           <h2 className="text-base sm:text-lg font-semibold text-secondary leading-snug">
                             Do micro ao macro: sua visão financeira
                           </h2>
@@ -161,9 +158,6 @@ export function GestaoFinanceiraPage() {
                     <div className="bg-white p-6 sm:p-8 rounded-xl border border-[rgba(55,50,47,0.14)] flex flex-col justify-between gap-5 shadow-xs">
                       <div>
                         <div className="flex items-start gap-3.5 mb-1">
-                          <div className="w-9 h-9 shrink-0 rounded-lg bg-slate-100 text-secondary flex items-center justify-center border border-[rgba(55,50,47,0.08)] mt-0.5">
-                            <Bell className="w-4 h-4 text-secondary" />
-                          </div>
                           <h2 className="text-base sm:text-lg font-semibold text-secondary leading-snug">
                             Notificações sob medida para você
                           </h2>
@@ -181,9 +175,6 @@ export function GestaoFinanceiraPage() {
                     <div className="bg-white p-6 sm:p-8 rounded-xl border border-[rgba(55,50,47,0.14)] flex flex-col justify-between gap-5 shadow-xs">
                       <div>
                         <div className="flex items-start gap-3.5 mb-1">
-                          <div className="w-9 h-9 shrink-0 rounded-lg bg-slate-100 text-secondary flex items-center justify-center border border-[rgba(55,50,47,0.08)] mt-0.5">
-                            <Compass className="w-4 h-4 text-secondary" />
-                          </div>
                           <h2 className="text-base sm:text-lg font-semibold text-secondary leading-snug">
                             Mantenha seu futuro em foco
                           </h2>
