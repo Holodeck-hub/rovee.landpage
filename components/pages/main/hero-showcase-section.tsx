@@ -1,8 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { PlayCircle } from "lucide-react"
-import { AnimatedWave, VideoLightbox } from "../../layout"
+import { AnimatedWave } from "../../layout"
 import { HeroScene } from "./hero-scene"
 
 interface HeroShowcaseSectionProps {
@@ -11,7 +10,6 @@ interface HeroShowcaseSectionProps {
 
 export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionProps) {
   const [email, setEmail] = useState("")
-  const [videoAberto, setVideoAberto] = useState(false)
   const [activeCard, setActiveCard] = useState(0)
   const [progress, setProgress] = useState(0)
 
@@ -84,15 +82,6 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
                 </button>
               </div>
             </form>
-
-            <button
-              type="button"
-              onClick={() => setVideoAberto(true)}
-              className="inline-flex items-center gap-2 text-sm text-primary hover:underline cursor-pointer"
-            >
-              <PlayCircle className="w-[18px] h-[18px]" aria-hidden="true" />
-              Ver o app funcionando
-            </button>
           </div>
         </div>
 
@@ -101,8 +90,6 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
           <HeroScene />
         </div>
       </div>
-
-      <VideoLightbox isOpen={videoAberto} onClose={() => setVideoAberto(false)} />
 
       {/* ── DIVISOR DE TRANSIÇÃO COM ANIMATED WAVE ── */}
       <div className="self-stretch -mx-4 md:-mx-8 lg:mx-0 w-[calc(100%+32px)] md:w-[calc(100%+64px)] lg:w-full h-12 sm:h-14 relative overflow-hidden flex items-center justify-center bg-[#F8FAFC]">

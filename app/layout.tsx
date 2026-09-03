@@ -20,7 +20,7 @@ const instrumentSerif = Instrument_Serif({
   preload: true,
 })
 
-const TITLE = "Rovee Finance — Inteligência Fiscal & Otimização de Pró-labore"
+const TITLE = "Rovee Finance: Inteligência Fiscal e Otimização de Pró-labore"
 const DESCRIPTION =
   "A fintech que calcula seu pró-labore ótimo no Simples Nacional, separa o caixa pessoal da PJ e usa inteligência preditiva para antecipar seu faturamento sem surpresas fiscais."
 

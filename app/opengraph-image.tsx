@@ -2,13 +2,13 @@ import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
 export const alt =
-  "Rovee Finance — A contabilidade entrega números. A Rovee entrega economia."
+  "Rovee Finance: A contabilidade entrega números. A Rovee entrega economia."
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
 /**
  * Imagem de compartilhamento (WhatsApp, LinkedIn, X). Gerada no build, sem
- * dependência de asset externo — a headline é a mesma da página.
+ * dependência de asset externo: a headline é a mesma da página.
  */
 export default function OpengraphImage() {
   return new ImageResponse(

@@ -5,16 +5,10 @@ import { StickyNavbar, TopNavbar, FooterSection, ConsultantModal } from "../comp
 import {
   HeroShowcaseSection,
   BanksIntegrationSection,
-  FiscalIntelligenceBentoSection,
-  PredictiveIntelligenceSection,
   FiscalAgentsSection,
-  AccountantChannelSection,
   LiveMetricsSection,
   TestimonialsSlider,
   RoadmapTeaserSection,
-  SecuritySection,
-  PricingSection,
-  FAQSection,
   CTASection,
 } from "../components/pages/main"
 import { trackEvent } from "../lib/analytics"
@@ -49,7 +43,7 @@ export default function LandingPage() {
 
   return (
     <div className="w-full min-h-screen relative bg-white overflow-x-hidden flex flex-col justify-start items-center">
-      {/* ── SKIP LINK: primeiro elemento focável da página ── */}
+      {/* ── SKIP LINK ── */}
       <a
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2.5 focus:bg-primary focus:text-white focus:text-sm focus:font-semibold focus:rounded-lg focus:shadow-lg"
@@ -57,14 +51,13 @@ export default function LandingPage() {
         Pular para o conteúdo
       </a>
 
-      {/* ── 1. HEADER FLUTUANTE STICKY (QUANDO SCROLLA) ── */}
+      {/* ── 1. HEADER FLUTUANTE STICKY ── */}
       <header>
         <StickyNavbar isScrolled={isScrolled} onOpenConsultant={handleOpenConsultant} />
       </header>
 
-      {/* ── 2. CONTAINER MESTRE CENTRAL (CONTROLE GLOBAL DE LARGURA) ── */}
+      {/* ── 2. CONTAINER MESTRE CENTRAL ── */}
       <div className="relative flex flex-col justify-start items-center w-full">
-        {/* Main container with framing vertical lines */}
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1320px] lg:w-[1320px] relative flex flex-col justify-start items-start min-h-screen">
           {/* Linhas verticais que emolduram a página inteira */}
           <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
@@ -87,68 +80,33 @@ export default function LandingPage() {
                 <BanksIntegrationSection variant="strip" />
               </section>
 
-              {/* ── SEÇÃO 2: BENTO GRID - MOTOR DE INTELIGÊNCIA FISCAL ──── */}
-              <section id="fiscal" aria-label="Motor de inteligência fiscal" className="w-full">
-                <FiscalIntelligenceBentoSection />
-              </section>
-
-              {/* ── SEÇÃO 3: INTELIGÊNCIA PREDITIVA EM 3 CAMADAS ─────────── */}
-              <section id="predicao" aria-label="Inteligência preditiva" className="w-full band-tint">
-                <PredictiveIntelligenceSection />
-              </section>
-
-              {/* ── SEÇÃO 4: AGENTES FISCAIS & PREDITIVOS ────────────────── */}
+              {/* ── SEÇÃO 2: AGENTES FISCAIS & PREDITIVOS ────────────────── */}
               <section id="agentes" aria-label="Agentes fiscais e preditivos" className="w-full">
                 <FiscalAgentsSection />
               </section>
 
-              {/* ── SEÇÃO 5: CANAL DO CONTADOR & HARMONIA ────────────────── */}
-              <section id="contador" aria-label="Canal do contador" className="w-full band-tint">
-                <AccountantChannelSection />
-              </section>
-
-              {/* ── SEÇÃO 6: BANCOS & CONTAS INTEGRADAS (OPEN FINANCE) ───── */}
-              <section id="integracoes" aria-label="Bancos e contas integradas" className="w-full">
-                <BanksIntegrationSection onOpenConsultant={handleOpenConsultant} />
-              </section>
-
-              {/* ── SEÇÃO 7: LIVE METRICS EM TEMPO REAL ──────────────────── */}
+              {/* ── SEÇÃO 3: LIVE METRICS EM TEMPO REAL ──────────────────── */}
               <section id="metricas" aria-label="Números da Rovee" className="w-full band-tint">
                 <LiveMetricsSection />
               </section>
 
-              {/* ── SEÇÃO 8: CASOS DE USO ───────────────────────────────── */}
+              {/* ── SEÇÃO 4: CASOS DE USO ───────────────────────────────── */}
               <section id="depoimentos" aria-label="Cenários de uso" className="w-full">
                 <TestimonialsSlider />
               </section>
 
-              {/* ── SEÇÃO 9: ROADMAP ROVEE (TRANSPARÊNCIA DE PRODUTO) ───── */}
+              {/* ── SEÇÃO 5: ROADMAP ROVEE (TRANSPARÊNCIA DE PRODUTO) ───── */}
               <section id="roadmap" aria-label="Roadmap do produto" className="w-full band-tint">
                 <RoadmapTeaserSection />
               </section>
 
-              {/* ── SEÇÃO 10: SEGURANÇA DE NÍVEL BANCÁRIO & LGPD ─────────── */}
-              <section id="seguranca" aria-label="Segurança e conformidade" className="w-full">
-                <SecuritySection />
-              </section>
-
-              {/* ── SEÇÃO 11: PLANOS & PRICING ──────────────────────────── */}
-              <div id="planos" className="w-full band-tint">
-                <PricingSection onOpenConsultant={handleOpenConsultant} />
-              </div>
-
-              {/* ── SEÇÃO 12: FAQ (DÚVIDAS FREQUENTES) ───────────────────── */}
-              <section id="faq" aria-label="Dúvidas frequentes" className="w-full">
-                <FAQSection />
-              </section>
-
-              {/* ── SEÇÃO 13: CTA FINAL COM CONVERSÃO ────────────────────── */}
+              {/* ── SEÇÃO 6: CTA FINAL COM CONVERSÃO ────────────────────── */}
               <section aria-label="Comece agora" className="w-full">
                 <CTASection onOpenConsultant={handleOpenConsultant} />
               </section>
             </main>
 
-            {/* ── SEÇÃO 14: FOOTER ─────────────────────────────────────── */}
+            {/* ── FOOTER ── */}
             <div className="w-full">
               <FooterSection />
             </div>

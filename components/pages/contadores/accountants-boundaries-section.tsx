@@ -16,7 +16,7 @@ export function AccountantsBoundariesSection() {
             A Rovee não faz a sua parte.
           </h2>
           <p className="text-ink-muted text-base leading-[1.58] max-w-[32rem]">
-            Escrituração, guias e obrigações acessórias continuam com você — é a sua
+            Escrituração, guias e obrigações acessórias continuam com você: é a sua
             responsabilidade legal, e a Rovee não encosta nisso. O que ela faz é
             entregar o mês organizado antes de chegar na sua mesa.
           </p>

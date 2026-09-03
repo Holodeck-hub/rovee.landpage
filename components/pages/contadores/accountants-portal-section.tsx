@@ -19,7 +19,7 @@ export function AccountantsPortalSection({
         <p className="text-zinc-400 text-base leading-[1.58]">
           Hoje o acesso é por empresa, a convite do cliente, em perfil somente-leitura.
           Um painel para acompanhar todos os seus clientes num lugar só está em
-          desenvolvimento — e é exatamente o que queremos desenhar junto com os
+          desenvolvimento, e é exatamente o que queremos desenhar junto com os
           primeiros escritórios parceiros, antes de escrever a primeira linha.
         </p>
         <button

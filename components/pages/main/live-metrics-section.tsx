@@ -48,7 +48,7 @@ export function LiveMetricsSection() {
         <p className="text-ink-faint text-xs leading-relaxed text-center mt-14 sm:mt-16 max-w-[52rem] mx-auto">
           Alíquotas e o limite de 28% seguem a Lei Complementar 123/2006 e seus anexos, na
           redação vigente. A economia real depende do seu faturamento, da sua folha e do
-          seu anexo — e a apuração final é sempre do seu contador.
+          seu anexo. A apuração final é sempre do seu contador.
         </p>
       </div>
     </div>

@@ -20,7 +20,7 @@ const testimonials = [
     metric: "Caixa separado em 3 destinos",
   },
   {
-    quote: "Do lado do escritório contábil, o cliente PJ chega no fechamento com o extrato já classificado, o pró-labore calibrado e sem despesa pessoal misturada — o que elimina a reclassificação manual mês a mês.",
+    quote: "Do lado do escritório contábil, o cliente PJ chega no fechamento com o extrato já classificado, o pró-labore calibrado e sem despesa pessoal misturada, eliminando a reclassificação manual mês a mês.",
     persona: "Perfil: Contador Consultivo",
     role: "Cenário ilustrativo",
     segment: "Escritório com carteira de PJs",
@@ -156,7 +156,7 @@ export function TestimonialsSlider() {
           <p className="flex items-start gap-2 text-[11px] leading-relaxed text-[#6B6560] mt-8 pt-4 border-t border-[rgba(55,50,47,0.08)]">
             <Info className="w-3.5 h-3.5 shrink-0 mt-px" aria-hidden="true" />
             <span>
-              Cenários ilustrativos construídos sobre as regras do Simples Nacional. Não representam clientes específicos nem constituem promessa de resultado — a economia real depende do seu faturamento, da sua folha e do seu anexo.
+              Cenários ilustrativos construídos sobre as regras do Simples Nacional. Não representam clientes específicos nem constituem promessa de resultado: a economia real depende do seu faturamento, da sua folha e do seu anexo.
             </span>
           </p>
         </div>

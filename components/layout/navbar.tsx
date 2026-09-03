@@ -28,36 +28,20 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     label: "Produto",
     items: [
-      { href: "/#fiscal", label: "Inteligência Fiscal", desc: "Fator R, pró-labore e provisão de DAS" },
-      { href: "/#predicao", label: "Inteligência Preditiva", desc: "Projeção de caixa e runway" },
+      { href: "/gestao-financeira", label: "Gestão Financeira & Caixa", desc: "Cheque do Mês, Pockets e previsão de runway" },
+      { href: "/inteligencia-fiscal", label: "Inteligência Fiscal & Fator R", desc: "Redução de Simples Nacional e provisão do DAS" },
       { href: "/#agentes", label: "Agentes Proativos", desc: "Alertas antes do imposto vencer" },
     ],
   },
   {
-    label: "Integrações",
+    label: "Soluções",
     items: [
+      { href: "/contadores", label: "Para Escritórios & Contadores", desc: "Acesso viewer e memórias de cálculo prontas" },
       { href: "/#integracoes", label: "Bancos & Open Finance", desc: "Contas conectadas automaticamente" },
-      { href: "/#contador", label: "Canal do Contador", desc: "Acesso somente-leitura para o escritório" },
     ],
   },
-  {
-    label: "Confiança",
-    items: [
-      { href: "/#seguranca", label: "Segurança & LGPD", desc: "Criptografia e conformidade" },
-      { href: "/#metricas", label: "Números", desc: "O que a Rovee já processou" },
-      { href: "/#depoimentos", label: "Cenários de Uso", desc: "O que muda, caso a caso" },
-      { href: "/#roadmap", label: "Roadmap", desc: "O que vem pela frente" },
-    ],
-  },
-  // Link direto: o escritório contábil tem página própria, com outra promessa.
-  { label: "Contabilidade", href: "/contadores" },
-  {
-    label: "Planos",
-    items: [
-      { href: "/#planos", label: "Planos & Preços", desc: "Mensal ou anual, a partir de R$ 79,99" },
-      { href: "/#faq", label: "Dúvidas Frequentes", desc: "As perguntas que sempre chegam" },
-    ],
-  },
+  { label: "Segurança", href: "/seguranca" },
+  { label: "Planos & Preços", href: "/precos" },
 ]
 
 interface NavbarProps {
@@ -200,7 +184,7 @@ function DesktopNav({ label }: { label: string }) {
           group={{ label: group.label, items: group.items ?? [] }}
           isOpen={openIndex === index}
           onToggle={() => setOpenIndex((current) => (current === index ? null : index))}
-          // Com um menu já aberto, passar o mouse troca de aba — como num menu de sistema.
+          // Com um menu já aberto, passar o mouse troca de aba, como num menu de sistema.
           onOpenOnHover={() => setOpenIndex((current) => (current === null ? current : index))}
           onClose={close}
         />
@@ -381,11 +365,11 @@ export function StickyNavbar({ isScrolled, onOpenConsultant }: StickyNavbarProps
       }`}
     >
       <div className="flex items-center justify-between w-full max-w-[1320px] mx-auto relative">
-        <a href="#" className="flex items-center hover:opacity-85 transition-opacity">
+        <Link href="/" className="flex items-center hover:opacity-85 transition-opacity">
           <span className="text-secondary text-lg sm:text-xl font-bold font-sans tracking-tight">
             Rovee
           </span>
-        </a>
+        </Link>
 
         {/* Menu centralizado no espaco entre o logo e o CTA. Centralizar na
             barra inteira deixava 155px de folga a esquerda contra 48px a
@@ -411,11 +395,11 @@ export function TopNavbar({ onOpenConsultant }: NavbarProps) {
 
       {/* Barra de Navegação Central */}
       <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[820px] lg:w-[820px] h-11 sm:h-12 py-1.5 px-4 bg-[#F8FAFC]/90 backdrop-blur-md shadow-[0px_0px_0px_2px_white] rounded flex justify-between items-center relative z-30 border border-[rgba(55,50,47,0.12)]">
-        <a href="#" className="flex items-center hover:opacity-85 transition-opacity">
+        <Link href="/" className="flex items-center hover:opacity-85 transition-opacity">
           <span className="text-secondary text-lg sm:text-xl font-bold font-sans tracking-tight">
             Rovee
           </span>
-        </a>
+        </Link>
 
         {/* Menu centralizado no espaco entre o logo e o CTA (ver nota acima) */}
         <div className="flex-1 flex justify-center">

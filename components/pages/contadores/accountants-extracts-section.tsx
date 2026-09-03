@@ -34,7 +34,7 @@ export function AccountantsExtractsSection({
           <p className="text-ink-faint text-xs leading-relaxed max-w-[32rem]">
             A conexão bancária automática via Open Finance está em homologação de
             cobertura e segurança. Enquanto não conclui, a entrada é por importação de
-            arquivo — e nós não anunciamos o que ainda não está no ar.
+            arquivo, e nós não anunciamos o que ainda não está no ar.
           </p>
 
           <button

@@ -3,7 +3,7 @@
 const FAQ = [
   {
     p: "A Rovee substitui a contabilidade?",
-    r: "Não. O contador é o profissional legalmente responsável pela escrituração, pela emissão de guias e pelas obrigações acessórias perante o Fisco. A Rovee atua no dia a dia da empresa — calcula a calibragem do pró-labore, separa o que pode ser gasto e entrega as memórias de cálculo prontas para você validar.",
+    r: "Não. O contador é o profissional legalmente responsável pela escrituração, pela emissão de guias e pelas obrigações acessórias perante o Fisco. A Rovee atua no dia a dia da empresa: calcula a calibragem do pró-labore, separa o que pode ser gasto e entrega as memórias de cálculo prontas para você validar.",
   },
   {
     p: "Meu cliente me dá acesso aos relatórios?",
@@ -11,7 +11,7 @@ const FAQ = [
   },
   {
     p: "Existe um painel para gerir todos os meus clientes?",
-    r: "Ainda não. Hoje o acesso é por empresa, a convite do cliente. O painel de carteira está em desenvolvimento e é justamente o que queremos desenhar junto com escritórios parceiros — é para isso que serve a conversa.",
+    r: "Ainda não. Hoje o acesso é por empresa, a convite do cliente. O painel de carteira está em desenvolvimento e é justamente o que queremos desenhar junto com escritórios parceiros. É para isso que serve a nossa conversa.",
   },
 ]
 

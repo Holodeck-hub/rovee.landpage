@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { AccountantsPage } from "../../components/pages/contadores"
 
 export const metadata: Metadata = {
-  title: "Rovee para contadores — o cliente chega com o extrato limpo",
+  title: "Rovee para contadores: o cliente chega com o extrato limpo",
   description:
     "A Rovee calibra o pró-labore pelo Fator R e separa despesa pessoal da despesa da empresa durante o mês. O escritório recebe a memória de cálculo pronta, sem retrabalho no fechamento.",
   alternates: { canonical: "/contadores" },
