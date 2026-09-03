@@ -38,19 +38,19 @@ export default function FooterSection() {
               Produto
             </div>
             <div className="flex flex-col justify-end items-start gap-1 text-xs font-medium text-[#49423D]">
-              <a href="#fiscal" className="py-2 hover:text-secondary transition-colors">
+              <a href="/#fiscal" className="py-2 hover:text-secondary transition-colors">
                 Inteligência Fiscal
               </a>
-              <a href="#predicao" className="py-2 hover:text-secondary transition-colors">
+              <a href="/#predicao" className="py-2 hover:text-secondary transition-colors">
                 Predição & Machine Learning
               </a>
-              <a href="#agentes" className="py-2 hover:text-secondary transition-colors">
+              <a href="/#agentes" className="py-2 hover:text-secondary transition-colors">
                 Agentes Proativos
               </a>
-              <a href="#metricas" className="py-2 hover:text-secondary transition-colors">
+              <a href="/#metricas" className="py-2 hover:text-secondary transition-colors">
                 Métricas ao Vivo
               </a>
-              <a href="#depoimentos" className="py-2 hover:text-secondary transition-colors">
+              <a href="/#depoimentos" className="py-2 hover:text-secondary transition-colors">
                 Cenários de Uso
               </a>
             </div>

@@ -1,8 +1,9 @@
 "use client"
 
-import { useCallback, useState } from "react"
-import Link from "next/link"
-import { ArrowLeft, PlayCircle } from "lucide-react"
+import { useCallback, useEffect, useState } from "react"
+import { PlayCircle } from "lucide-react"
+import { StickyNavbar, TopNavbar } from "../layout/navbar"
+import FooterSection from "../layout/footer-section"
 import { ConsultantModal } from "../shared/consultant-modal"
 import { VideoLightbox } from "../shared/video-lightbox"
 import { PhoneFrame } from "../shared/phone-frame"
@@ -87,11 +88,20 @@ const FAQ = [
 ]
 
 export function AccountantsPage() {
+  const [isScrolled, setIsScrolled] = useState(false)
   const [modalAberto, setModalAberto] = useState(false)
   const [videoAberto, setVideoAberto] = useState(false)
   const [email, setEmail] = useState("")
   const [clientes, setClientes] = useState(40)
   const [emailInicial, setEmailInicial] = useState<string | undefined>()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const abrirModal = useCallback((origem: string, emailDigitado?: string) => {
     trackEvent("abriu_modal", { origem, perfil: "contabilidade" })
@@ -100,37 +110,35 @@ export function AccountantsPage() {
   }, [])
 
   return (
-    <div className="w-full min-h-screen bg-white flex flex-col items-center">
-      {/* ── Cabeçalho enxuto: esta página não tem as âncoras da home ── */}
-      <header className="w-full border-b border-[rgba(55,50,47,0.12)] bg-white sticky top-0 z-30">
-        <div className="w-full max-w-[1100px] mx-auto px-5 h-15 py-3 flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2.5 hover:opacity-85 transition-opacity">
-            <span className="text-secondary text-lg font-bold tracking-[-0.03em]">Rovee</span>
-              <span className="hidden sm:inline text-xs font-mono uppercase tracking-wider text-ink-faint">
-                para contadores
-              </span>
-          </Link>
+    <div className="w-full min-h-screen relative bg-white overflow-x-hidden flex flex-col justify-start items-center">
+      {/* ── SKIP LINK: primeiro elemento focável da página ── */}
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2.5 focus:bg-primary focus:text-white focus:text-sm focus:font-semibold focus:rounded-lg focus:shadow-lg"
+      >
+        Pular para o conteúdo
+      </a>
 
-          <div className="flex items-center gap-3">
-            <Link
-              href="/"
-              className="hidden sm:inline-flex items-center gap-1.5 text-sm text-ink-muted hover:text-secondary transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-              Site principal
-            </Link>
-            <button
-              type="button"
-              onClick={() => abrirModal("contadores_header")}
-              className="h-9 px-4 bg-primary hover:bg-primary-hover text-white text-sm font-normal rounded-lg transition-colors cursor-pointer"
-            >
-              Falar sobre parceria
-            </button>
-          </div>
-        </div>
+      {/* ── 1. HEADER FLUTUANTE STICKY (QUANDO SCROLLA) ── */}
+      <header>
+        <StickyNavbar isScrolled={isScrolled} onOpenConsultant={(origem) => abrirModal(origem ?? "contadores_sticky")} />
       </header>
 
-      <main id="conteudo" className="w-full flex flex-col items-center">
+      {/* ── 2. CONTAINER MESTRE CENTRAL (CONTROLE GLOBAL DE LARGURA) ── */}
+      <div className="relative flex flex-col justify-start items-center w-full">
+        {/* Main container with framing vertical lines */}
+        <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1320px] lg:w-[1320px] relative flex flex-col justify-start items-start min-h-screen">
+          {/* Linhas verticais que emolduram a página inteira */}
+          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none"></div>
+          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none"></div>
+
+          <div className="self-stretch pt-[9px] overflow-visible border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-center items-center relative z-10">
+            {/* ── NAVBAR DO TOPO (DENTRO DA GRADE ORIGINAL DO HERO) ── */}
+            <header className="w-full">
+              <TopNavbar onOpenConsultant={(origem) => abrirModal(origem ?? "contadores_top")} />
+            </header>
+
+            <main id="conteudo" className="w-full flex flex-col items-center">
         {/* ── Hero ── */}
         <section aria-label="Rovee para escritórios contábeis" className="w-full">
           <div className="w-full max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] items-center gap-12 px-5 pt-16 sm:pt-24 pb-16 sm:pb-20">
@@ -403,16 +411,14 @@ export function AccountantsPage() {
         </section>
       </main>
 
-      <footer className="w-full border-t border-[rgba(55,50,47,0.12)] py-10 px-5">
-        <div className="w-full max-w-[1100px] mx-auto flex flex-wrap gap-4 justify-between items-center text-xs text-ink-faint">
-          <span>© {new Date().getFullYear()} Rovee Tecnologia Financeira Ltda.</span>
-          <span className="flex gap-4">
-            <Link href="/" className="hover:text-secondary">Site principal</Link>
-            <Link href="/termos" className="hover:text-secondary">Termos</Link>
-            <Link href="/privacidade" className="hover:text-secondary">Privacidade</Link>
-          </span>
+      {/* ── FOOTER PADRÃO ── */}
+      <div className="w-full">
+        <FooterSection />
+      </div>
+
+          </div>
         </div>
-      </footer>
+      </div>
 
       <ConsultantModal
         isOpen={modalAberto}

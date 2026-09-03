@@ -28,25 +28,25 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     label: "Produto",
     items: [
-      { href: "#fiscal", label: "Inteligência Fiscal", desc: "Fator R, pró-labore e provisão de DAS" },
-      { href: "#predicao", label: "Inteligência Preditiva", desc: "Projeção de caixa e runway" },
-      { href: "#agentes", label: "Agentes Proativos", desc: "Alertas antes do imposto vencer" },
+      { href: "/#fiscal", label: "Inteligência Fiscal", desc: "Fator R, pró-labore e provisão de DAS" },
+      { href: "/#predicao", label: "Inteligência Preditiva", desc: "Projeção de caixa e runway" },
+      { href: "/#agentes", label: "Agentes Proativos", desc: "Alertas antes do imposto vencer" },
     ],
   },
   {
     label: "Integrações",
     items: [
-      { href: "#integracoes", label: "Bancos & Open Finance", desc: "Contas conectadas automaticamente" },
-      { href: "#contador", label: "Canal do Contador", desc: "Acesso somente-leitura para o escritório" },
+      { href: "/#integracoes", label: "Bancos & Open Finance", desc: "Contas conectadas automaticamente" },
+      { href: "/#contador", label: "Canal do Contador", desc: "Acesso somente-leitura para o escritório" },
     ],
   },
   {
     label: "Confiança",
     items: [
-      { href: "#seguranca", label: "Segurança & LGPD", desc: "Criptografia e conformidade" },
-      { href: "#metricas", label: "Números", desc: "O que a Rovee já processou" },
-      { href: "#depoimentos", label: "Cenários de Uso", desc: "O que muda, caso a caso" },
-      { href: "#roadmap", label: "Roadmap", desc: "O que vem pela frente" },
+      { href: "/#seguranca", label: "Segurança & LGPD", desc: "Criptografia e conformidade" },
+      { href: "/#metricas", label: "Números", desc: "O que a Rovee já processou" },
+      { href: "/#depoimentos", label: "Cenários de Uso", desc: "O que muda, caso a caso" },
+      { href: "/#roadmap", label: "Roadmap", desc: "O que vem pela frente" },
     ],
   },
   // Link direto: o escritório contábil tem página própria, com outra promessa.
@@ -54,8 +54,8 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     label: "Planos",
     items: [
-      { href: "#planos", label: "Planos & Preços", desc: "Mensal ou anual, a partir de R$ 79,99" },
-      { href: "#faq", label: "Dúvidas Frequentes", desc: "As perguntas que sempre chegam" },
+      { href: "/#planos", label: "Planos & Preços", desc: "Mensal ou anual, a partir de R$ 79,99" },
+      { href: "/#faq", label: "Dúvidas Frequentes", desc: "As perguntas que sempre chegam" },
     ],
   },
 ]
