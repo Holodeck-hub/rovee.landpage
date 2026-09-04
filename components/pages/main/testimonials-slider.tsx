@@ -142,13 +142,6 @@ export function TestimonialsSlider() {
             Depoimento {current + 1} de {testimonials.length}: {activeTestimonial.persona}
           </p>
 
-          {/* Aviso obrigatório */}
-          <p className="flex items-start gap-2 text-[11px] leading-relaxed text-[#6B6560] mt-8 pt-4 border-t border-[rgba(55,50,47,0.08)]">
-            <Info className="w-3.5 h-3.5 shrink-0 mt-px" aria-hidden="true" />
-            <span>
-              Cenários ilustrativos construídos sobre as regras do Simples Nacional. Não representam clientes específicos nem constituem promessa de resultado: a economia real depende do seu faturamento, da sua folha e do seu anexo.
-            </span>
-          </p>
         </div>
       </div>
     </div>
