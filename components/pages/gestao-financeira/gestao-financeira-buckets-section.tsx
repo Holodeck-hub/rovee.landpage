@@ -18,9 +18,9 @@ export function GestaoFinanceiraBucketsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1: Seu para Retirar */}
-          <div className="p-6 sm:p-8 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-xs flex flex-col justify-between gap-5 hover:border-white/20 hover:bg-white/[0.05] transition-all">
+          <div className="p-6 sm:p-8 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 backdrop-blur-md transition-all flex flex-col justify-between gap-5">
             <div>
-              <div className="text-xs font-mono font-semibold text-zinc-400 uppercase">Destino 1</div>
+              <div className="text-xs font-mono font-semibold text-zinc-400 uppercase tracking-wider">Destino 1</div>
               <h3 className="text-lg font-semibold text-white mt-1">Seu para Retirar (PF)</h3>
               <p className="text-xs text-zinc-400 font-mono mt-1">
                 Pró-labore calibrado e Lucro Isento
@@ -30,15 +30,15 @@ export function GestaoFinanceiraBucketsSection() {
               </p>
             </div>
             <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
-              <span className="text-zinc-400">Status:</span>
-              <span className="text-emerald-400 font-semibold">Livre para transferir</span>
+              <span className="text-zinc-500 uppercase tracking-wider text-[11px]">Status</span>
+              <span className="text-zinc-200 font-medium">Livre para transferir</span>
             </div>
           </div>
 
           {/* Card 2: Reserva da Empresa */}
-          <div className="p-6 sm:p-8 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-xs flex flex-col justify-between gap-5 hover:border-white/20 hover:bg-white/[0.05] transition-all">
+          <div className="p-6 sm:p-8 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 backdrop-blur-md transition-all flex flex-col justify-between gap-5">
             <div>
-              <div className="text-xs font-mono font-semibold text-zinc-400 uppercase">Destino 2</div>
+              <div className="text-xs font-mono font-semibold text-zinc-400 uppercase tracking-wider">Destino 2</div>
               <h3 className="text-lg font-semibold text-white mt-1">Reserva da Empresa (PJ)</h3>
               <p className="text-xs text-zinc-400 font-mono mt-1">
                 Capital de Giro e Custos Fixos
@@ -48,15 +48,15 @@ export function GestaoFinanceiraBucketsSection() {
               </p>
             </div>
             <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
-              <span className="text-zinc-400">Fôlego:</span>
-              <span className="text-white font-semibold">6 a 12 meses</span>
+              <span className="text-zinc-500 uppercase tracking-wider text-[11px]">Fôlego</span>
+              <span className="text-zinc-200 font-medium">6 a 12 meses</span>
             </div>
           </div>
 
           {/* Card 3: Provisão do DAS */}
-          <div className="p-6 sm:p-8 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-xs flex flex-col justify-between gap-5 hover:border-white/20 hover:bg-white/[0.05] transition-all">
+          <div className="p-6 sm:p-8 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 backdrop-blur-md transition-all flex flex-col justify-between gap-5">
             <div>
-              <div className="text-xs font-mono font-semibold text-zinc-400 uppercase">Destino 3</div>
+              <div className="text-xs font-mono font-semibold text-zinc-400 uppercase tracking-wider">Destino 3</div>
               <h3 className="text-lg font-semibold text-white mt-1">Provisão do DAS</h3>
               <p className="text-xs text-zinc-400 font-mono mt-1">
                 Imposto do Simples Nacional
@@ -66,8 +66,8 @@ export function GestaoFinanceiraBucketsSection() {
               </p>
             </div>
             <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
-              <span className="text-zinc-400">Vencimento:</span>
-              <span className="text-emerald-400 font-semibold">100% Coberto</span>
+              <span className="text-zinc-500 uppercase tracking-wider text-[11px]">Vencimento</span>
+              <span className="text-zinc-200 font-medium">100% Coberto</span>
             </div>
           </div>
         </div>
