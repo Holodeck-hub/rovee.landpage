@@ -1,14 +1,44 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
+import type { ReactNode } from "react"
 import { PixelIcon } from "../../shared/pixel-icon"
 import { AnimatedWave } from "../../layout"
-import { ShieldAlert } from "lucide-react"
 
-const FISCAL_AGENTS = [
+interface FiscalAgent {
+  id: string
+  title: string
+  subtitle: string
+  desc: string
+  stats: { value: string; label: string }[]
+  visual: ReactNode
+}
+
+/** Uma linha de dado dentro do painel de simulação: rótulo + valor, sem cor semântica. */
+function LinhaPainel({
+  rotulo,
+  valor,
+  destaque,
+}: {
+  rotulo: string
+  valor: string
+  destaque?: boolean
+}) {
+  return (
+    <div
+      className={`bg-white p-3.5 rounded-lg border ${
+        destaque ? "border-primary/30" : "border-[rgba(55,50,47,0.08)]"
+      }`}
+    >
+      <div className="text-[11px] text-[#605A57]">{rotulo}</div>
+      <div className={`text-sm font-semibold ${destaque ? "text-primary" : "text-secondary"}`}>{valor}</div>
+    </div>
+  )
+}
+
+const FISCAL_AGENTS: FiscalAgent[] = [
   {
     id: "fator-r",
-    tag: "OTIMIZAÇÃO TRIBUTÁRIA",
     title: "1. Agente Fator R",
     subtitle: "Redução Automática de Simples Nacional",
     desc: "Monitora continuamente a relação entre folha de pagamento (FS12) e receita bruta (RBT12). Calcula o pró-labore exato para migrar do Anexo V (15,5%+) para o Anexo III (6%+), economizando milhares de reais por ano.",
@@ -16,10 +46,19 @@ const FISCAL_AGENTS = [
       { value: "R$ 48.000+", label: "economia anual média" },
       { value: "28,0%", label: "alvo ótimo de folha" },
     ],
+    visual: (
+      <div className="space-y-3">
+        <LinhaPainel rotulo="Sem otimização" valor="Anexo V · Alíquota 15,5%" />
+        <LinhaPainel rotulo="Prescrição do agente" valor="Anexo III · Alíquota a partir de 6,0%" destaque />
+        <div className="pt-1 flex items-baseline justify-between text-xs font-mono text-[#605A57]">
+          <span>Economia líquida</span>
+          <span className="text-primary font-semibold">+R$ 28.400/ano</span>
+        </div>
+      </div>
+    ),
   },
   {
     id: "clareza",
-    tag: "GESTÃO DE CAIXA REAL",
     title: "2. Agente Clareza de Caixa",
     subtitle: "O Fim da Dúvida de Quanto Você Pode Retirar",
     desc: "Decompõe cada centavo que entra na empresa em 3 baldes matemáticos transparentes: Seu para Retirar (pró-labore + lucro isento), Reserva da Empresa (capital de giro) e Provisão do DAS. Responde diariamente quanto você pode gastar.",
@@ -27,10 +66,16 @@ const FISCAL_AGENTS = [
       { value: "3 Baldes", label: "separação automática" },
       { value: "100%", label: "lucro isento protegido" },
     ],
+    visual: (
+      <div className="space-y-2">
+        <LinhaPainel rotulo="1. Seu para retirar (lucro isento)" valor="R$ 18.450,00" />
+        <LinhaPainel rotulo="2. Reserva operacional da empresa" valor="R$ 8.200,00" />
+        <LinhaPainel rotulo="3. Provisão do DAS (imposto)" valor="R$ 2.850,00" destaque />
+      </div>
+    ),
   },
   {
     id: "sentinela",
-    tag: "BLINDAGEM PATRIMONIAL",
     title: "3. Agente Sentinela PF × PJ",
     subtitle: "Detector de Confusão Patrimonial e Risco Fiscal",
     desc: "Escaneia as transações bancárias da conta jurídica e identifica pagamentos com perfil de pessoa física (delivery, assinaturas pessoais, mercado). Quantifica o custo tributário oculto e afasta o risco do Art. 50 do Código Civil.",
@@ -38,10 +83,23 @@ const FISCAL_AGENTS = [
       { value: "Art. 50 CC", label: "mitigação jurídica" },
       { value: "0 risco", label: "de desconsideração" },
     ],
+    visual: (
+      <div className="space-y-3">
+        <div className="bg-white p-4 rounded-lg border border-primary/30">
+          <div className="text-xs font-semibold text-secondary mb-1">Mistura detectada no extrato</div>
+          <p className="text-xs text-[#605A57] leading-snug">
+            3 gastos pessoais pagos na conta PJ totalizando R$ 420,00 este mês.
+          </p>
+        </div>
+        <LinhaPainel
+          rotulo="Orientação do agente"
+          valor="Transferir via pró-labore antes de pagar despesas pessoais"
+        />
+      </div>
+    ),
   },
   {
     id: "provisao",
-    tag: "PROVISÃO AUTOMÁTICA",
     title: "4. Agente de Provisão do DAS",
     subtitle: "Zero Surpresas no Pagamento do Imposto",
     desc: "Rastreia cada nota fiscal e recebimento para provisionar o imposto devido no próximo dia 20. Permite separar o valor com 1 clique, garantindo que o dinheiro da guia esteja sempre garantido na conta.",
@@ -49,6 +107,20 @@ const FISCAL_AGENTS = [
       { value: "Dia 20", label: "sempre provisionado" },
       { value: "1 Clique", label: "para reservar valor" },
     ],
+    visual: (
+      <div className="space-y-3">
+        <div className="bg-white p-3.5 rounded-lg border border-primary/30 flex justify-between items-center">
+          <div>
+            <div className="text-xs text-[#605A57]">DAS competência atual</div>
+            <div className="text-base font-semibold text-secondary">R$ 3.420,00</div>
+          </div>
+          <span className="text-xs font-mono font-semibold text-primary">100% coberto</span>
+        </div>
+        <div className="text-xs text-center text-[#605A57]">
+          Vencimento: 20 do próximo mês · Valor já reservado em conta.
+        </div>
+      </div>
+    ),
   },
 ]
 
@@ -160,80 +232,13 @@ export function FiscalAgentsSection() {
                       <PixelIcon type="agents" size={20} />
                       <span>ESTADO DO AGENTE</span>
                     </div>
-                    <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="flex items-center gap-1.5 text-secondary font-semibold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                       EM EXECUÇÃO
                     </span>
                   </div>
 
-                  {idx === 0 && (
-                    <div className="space-y-3">
-                      <div className="bg-white p-3.5 rounded-lg border border-[rgba(55,50,47,0.08)]">
-                        <div className="text-[11px] text-[#605A57]">Cenário Atual (Sem Otimização)</div>
-                        <div className="text-sm font-semibold text-red-600">Anexo V · Alíquota 15,5%</div>
-                        <div className="text-xs text-[#6B6560] mt-1">Carga Anual: R$ 55.800/ano</div>
-                      </div>
-
-                      <div className="bg-white p-3.5 rounded-lg border border-emerald-500/80 shadow-xs">
-                        <div className="text-[11px] text-emerald-800 font-semibold">Prescrição do Agente Rovee</div>
-                        <div className="text-sm font-semibold text-emerald-700">Anexo III · Alíquota a partir de 6,0%</div>
-                        <div className="text-xs text-emerald-900 mt-1 font-mono font-semibold">
-                          Economia Líquida: +R$ 28.400/ano
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {idx === 1 && (
-                    <div className="space-y-2">
-                      <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)]">
-                        <div className="text-[11px] text-[#605A57]">1. Seu para Retirar (Lucro Isento)</div>
-                        <div className="text-base font-semibold text-secondary">R$ 18.450,00</div>
-                      </div>
-                      <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)]">
-                        <div className="text-[11px] text-[#605A57]">2. Reserva Operacional da Empresa</div>
-                        <div className="text-base font-semibold text-secondary">R$ 8.200,00</div>
-                      </div>
-                      <div className="bg-white p-3 rounded-lg border border-emerald-300">
-                        <div className="text-[11px] text-emerald-800 font-medium">3. Provisão do DAS (Imposto)</div>
-                        <div className="text-base font-semibold text-emerald-700">R$ 2.850,00</div>
-                      </div>
-                    </div>
-                  )}
-
-                  {idx === 2 && (
-                    <div className="space-y-3">
-                      <div className="bg-white p-4 rounded-lg border border-amber-200 bg-amber-50/50">
-                        <div className="flex items-center gap-2 text-xs font-semibold text-amber-800 mb-1">
-                          <ShieldAlert className="w-4 h-4 text-amber-600" />
-                          Mistura Detectada no Extrato
-                        </div>
-                        <p className="text-xs text-amber-900 leading-snug">
-                          3 gastos pessoais pagos na conta PJ totalizando R$ 420,00 este mês.
-                        </p>
-                      </div>
-                      <div className="bg-white p-3 rounded-lg border border-[rgba(55,50,47,0.08)] text-xs text-[#605A57]">
-                        Orientação: Transfira via pró-labore antes de pagar despesas pessoais.
-                      </div>
-                    </div>
-                  )}
-
-                  {idx === 3 && (
-                    <div className="space-y-3">
-                      <div className="bg-white p-3.5 rounded-lg border border-[rgba(55,50,47,0.08)] flex justify-between items-center">
-                        <div>
-                          <div className="text-xs text-[#605A57]">DAS Competência Atual</div>
-                          <div className="text-base font-semibold text-secondary">R$ 3.420,00</div>
-                        </div>
-                        <span className="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-[11px] font-semibold rounded-full">
-                          100% Coberto
-                        </span>
-                      </div>
-                      <div className="text-xs text-center text-[#605A57]">
-                        Vencimento: 20 do próximo mês · Valor já reservado em conta.
-                      </div>
-                    </div>
-                  )}
+                  {item.visual}
                 </div>
               </div>
             ))}
@@ -268,7 +273,7 @@ export function FiscalAgentsSection() {
                 {isActive && (
                   <div className="absolute top-0 left-0 w-full h-0.5 bg-[rgba(50,45,43,0.08)]">
                     <div
-                      className="h-full bg-emerald-700 transition-all duration-100 ease-linear"
+                      className="h-full bg-primary transition-all duration-100 ease-linear"
                       style={{ width: `${progress}%` }}
                     />
                   </div>

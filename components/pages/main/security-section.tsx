@@ -36,24 +36,24 @@ const SECURITY_PILLARS = [
 export function SecuritySection() {
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
-      {/* Section Header */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-12 sm:py-16 md:py-20 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
+      {/* Section Header com fundo preto */}
+      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-12 sm:py-16 md:py-20 bg-black text-white border-b border-white/10 flex flex-col justify-start items-center">
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400">
             Segurança & Conformidade
           </span>
 
-          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section">
+          <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section text-balance">
             Segurança de padrão bancário para blindar o seu negócio
           </h2>
 
-          <p className="text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
+          <p className="text-zinc-400 text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
             Desenvolvido sob rígidas normas de proteção financeira e jurídica. Sua empresa protegida contra riscos fiscais e vazamentos.
           </p>
         </div>
       </div>
 
-      {/* Framing Container */}
+      {/* Framing Container: Cards com cor e fundo originais preservados */}
       <div className="self-stretch flex justify-center items-stretch relative">
         {/* Center Container: 4 Pillars Grid */}
         <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[rgba(55,50,47,0.12)] bg-white">
