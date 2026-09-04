@@ -5,7 +5,6 @@ export { FiscalIntelligenceBentoSection } from "./fiscal-intelligence-bento-sect
 export { PredictiveIntelligenceSection } from "./predictive-intelligence-section"
 export { FiscalAgentsSection } from "./fiscal-agents-section"
 export { AccountantChannelSection } from "./accountant-channel-section"
-export { BanksIntegrationSection, BankIcon } from "./banks-integration-section"
 export { LiveMetricsSection } from "./live-metrics-section"
 export { TestimonialsSlider } from "./testimonials-slider"
 export { RoadmapTeaserSection } from "./roadmap-teaser-section"

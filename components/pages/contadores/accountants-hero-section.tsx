@@ -1,23 +1,20 @@
 "use client"
 
 import { useState } from "react"
-import { PlayCircle } from "lucide-react"
-import { PhoneFrame } from "./phone-frame"
 
 interface AccountantsHeroSectionProps {
   onOpenConsultant: (origem: string, email?: string) => void
-  onOpenVideo: () => void
+  onOpenVideo?: () => void
 }
 
 export function AccountantsHeroSection({
   onOpenConsultant,
-  onOpenVideo,
 }: AccountantsHeroSectionProps) {
   const [email, setEmail] = useState("")
 
   return (
     <section aria-label="Rovee para escritórios contábeis" className="w-full">
-      <div className="w-full max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] items-center gap-12 px-5 pt-16 sm:pt-24 pb-16 sm:pb-20">
+      <div className="w-full max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-center gap-12 px-5 pt-16 sm:pt-24 pb-16 sm:pb-20">
         <div className="flex flex-col items-start gap-5">
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-faint">
             Para escritórios contábeis
@@ -63,19 +60,17 @@ export function AccountantsHeroSection({
               </button>
             </div>
           </form>
-
-          <button
-            type="button"
-            onClick={onOpenVideo}
-            className="inline-flex items-center gap-2 text-sm text-primary hover:underline cursor-pointer"
-          >
-            <PlayCircle className="w-[18px] h-[18px]" aria-hidden="true" />
-            Ver o que o cliente enxerga
-          </button>
         </div>
 
+        {/* Imagem coffe.jpg à direita */}
         <div className="flex justify-center lg:justify-end">
-          <PhoneFrame larguraClasse="w-[220px] sm:w-[250px]" />
+          <div className="relative w-full max-w-[440px] aspect-[4/5] rounded-2xl overflow-hidden border border-[rgba(55,50,47,0.12)] shadow-sm">
+            <img
+              src="/imagens/coffe.jpg"
+              alt="Ambiente de trabalho tranquilo com café e computador"
+              className="w-full h-full object-cover select-none"
+            />
+          </div>
         </div>
       </div>
     </section>

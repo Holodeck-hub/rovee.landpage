@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react"
 import { StickyNavbar, TopNavbar, FooterSection, ConsultantModal } from "../components/layout"
 import {
   HeroShowcaseSection,
-  BanksIntegrationSection,
   FiscalAgentsSection,
   LiveMetricsSection,
   TestimonialsSlider,
@@ -73,11 +72,6 @@ export default function LandingPage() {
               {/* ── SEÇÃO 1: HERO COM DASHBOARD SHOWCASE INTERATIVO ────── */}
               <section aria-label="Apresentação da Rovee" className="w-full">
                 <HeroShowcaseSection onOpenConsultant={handleOpenConsultant} />
-              </section>
-
-              {/* ── PROVA SOCIAL: bancos suportados, faixa compacta ─────── */}
-              <section aria-label="Bancos suportados" className="w-full band-tint">
-                <BanksIntegrationSection variant="strip" />
               </section>
 
               {/* ── SEÇÃO 2: AGENTES FISCAIS & PREDITIVOS ────────────────── */}

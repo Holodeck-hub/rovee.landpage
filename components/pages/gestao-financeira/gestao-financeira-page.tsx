@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react"
 import { TopNavbar, StickyNavbar, FooterSection, ConsultantModal } from "../../layout"
-import { BanksIntegrationSection } from "../main/banks-integration-section"
 import { GestaoFinanceiraHeroSection } from "./gestao-financeira-hero-section"
 import { GestaoFinanceiraSalaryFlowSection } from "./gestao-financeira-salary-flow-section"
 import { GestaoFinanceiraFeaturesSection } from "./gestao-financeira-features-section"
@@ -76,11 +75,6 @@ export function GestaoFinanceiraPage() {
 
               {/* ── 4. AUTOMAÇÃO DE CAIXA: 3 DESTINOS ── */}
               <GestaoFinanceiraBucketsSection />
-
-              {/* ── 5. BANCOS CONECTADOS ── */}
-              <section aria-label="Conexão Bancária" className="w-full band-tint border-b border-[rgba(55,50,47,0.12)]">
-                <BanksIntegrationSection onOpenConsultant={handleOpenConsultant} />
-              </section>
 
               {/* ── 6. CTA FINAL ── */}
               <GestaoFinanceiraCtaSection onOpenConsultant={handleOpenConsultant} />
