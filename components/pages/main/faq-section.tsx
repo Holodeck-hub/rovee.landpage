@@ -1,6 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 interface FAQItem {
   question: string
@@ -45,28 +50,7 @@ const faqData: FAQItem[] = [
   },
 ]
 
-function ChevronDownIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
 export function FAQSection() {
-  const [openItems, setOpenItems] = useState<number[]>([0])
-
-  const toggleItem = (index: number) => {
-    setOpenItems((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]))
-  }
-
   return (
     <div className="w-full flex justify-center items-start border-b border-[rgba(55,50,47,0.12)]">
       <div className="flex-1 w-full px-4 md:px-12 py-16 md:py-24 flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-16">
@@ -76,9 +60,9 @@ export function FAQSection() {
             Dúvidas Frequentes
           </span>
 
-          <h2 className="w-full text-[#37322F] font-medium font-sans text-3xl sm:text-4xl h-section">
+          <h3 className="w-full text-[#37322F] font-medium font-sans text-3xl sm:text-4xl h-section">
             Perguntas Frequentes sobre a Rovee
-          </h2>
+          </h3>
 
           <p className="w-full text-[#605A57] text-sm sm:text-base font-normal leading-relaxed font-sans">
             Tudo o que você precisa saber sobre o funcionamento da Fintech Fiscal, a segurança dos dados e o modelo de parceria com os contadores.
@@ -87,42 +71,22 @@ export function FAQSection() {
 
         {/* Right Column - FAQ Items */}
         <div className="w-full lg:flex-1 flex flex-col justify-center items-center">
-          <div className="w-full flex flex-col">
-            {faqData.map((item, index) => {
-              const isOpen = openItems.includes(index)
-
-              return (
-                <div key={index} className="w-full border-b border-[rgba(55,50,47,0.12)] overflow-hidden">
-                  <button
-                    onClick={() => toggleItem(index)}
-                    className="w-full py-4 sm:py-5 flex justify-between items-center gap-4 text-left hover:bg-[rgba(55,50,47,0.02)] transition-colors duration-200"
-                    aria-expanded={isOpen}
-                  >
-                    <div className="flex-1 text-[#37322F] text-sm sm:text-base font-semibold leading-snug font-sans">
-                      {item.question}
-                    </div>
-                    <div className="flex justify-center items-center">
-                      <ChevronDownIcon
-                        className={`w-5 h-5 text-[#6B6560] transition-transform duration-300 ease-in-out ${
-                          isOpen ? "rotate-180 text-[#37322F]" : "rotate-0"
-                        }`}
-                      />
-                    </div>
-                  </button>
-
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      isOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"
-                    }`}
-                  >
-                    <div className="text-[#605A57] text-xs sm:text-sm font-normal leading-relaxed font-sans">
-                      {item.answer}
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+          <Accordion type="multiple" defaultValue={["item-0"]} className="w-full">
+            {faqData.map((item, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="border-b border-[rgba(55,50,47,0.12)] last:border-b-0"
+              >
+                <AccordionTrigger className="py-4 sm:py-5 rounded-none text-sm sm:text-base font-semibold text-[#37322F] font-sans hover:no-underline hover:bg-[rgba(55,50,47,0.02)]">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-[#605A57] text-xs sm:text-sm font-normal leading-relaxed font-sans">
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </div>

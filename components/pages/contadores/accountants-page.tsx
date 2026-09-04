@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useEffect, useState } from "react"
-import { TopNavbar, StickyNavbar, FooterSection, ConsultantModal, VideoLightbox } from "../../layout"
+import { TopNavbar, StickyNavbar, FooterSection, ConsultantModal } from "../../layout"
 import { AccountantsHeroSection } from "./accountants-hero-section"
 import { AccountantsPainPointsSection } from "./accountants-pain-points-section"
 import { AccountantsBoundariesSection } from "./accountants-boundaries-section"
@@ -14,7 +14,6 @@ import { trackEvent } from "../../../lib/analytics"
 export function AccountantsPage() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [modalAberto, setModalAberto] = useState(false)
-  const [videoAberto, setVideoAberto] = useState(false)
   const [emailInicial, setEmailInicial] = useState<string | undefined>()
 
   useEffect(() => {
@@ -61,11 +60,8 @@ export function AccountantsPage() {
             </header>
 
             <main id="conteudo" className="w-full flex flex-col items-center">
-              {/* ── SEÇÃO 1: HERO COM FORMULÁRIO E FRAME DE CELULAR ── */}
-              <AccountantsHeroSection
-                onOpenConsultant={abrirModal}
-                onOpenVideo={() => setVideoAberto(true)}
-              />
+              {/* ── SEÇÃO 1: HERO COM FORMULÁRIO ── */}
+              <AccountantsHeroSection onOpenConsultant={abrirModal} />
 
               {/* ── SEÇÃO 2: O QUE MUDA NO FECHAMENTO (DORES RESOLVIDAS) ── */}
               <AccountantsPainPointsSection />
@@ -94,13 +90,12 @@ export function AccountantsPage() {
         </div>
       </div>
 
-      {/* ── MODAIS DE SUPORTE E VÍDEO ── */}
+      {/* ── MODAL DE SUPORTE ── */}
       <ConsultantModal
         isOpen={modalAberto}
         onClose={() => setModalAberto(false)}
         emailInicial={emailInicial}
       />
-      <VideoLightbox isOpen={videoAberto} onClose={() => setVideoAberto(false)} />
     </div>
   )
 }

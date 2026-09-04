@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { Check } from "lucide-react"
 import { AnimatedWave } from "../../layout"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { trackEvent } from "../../../lib/analytics"
 
 interface PricingSectionProps {
@@ -112,11 +113,8 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
     onOpenConsultant?.(`planos_${plan.id}`)
   }
 
-  const toggleBase =
-    "px-4 py-2.5 min-h-[44px] rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer"
-  const toggleActive = "bg-primary text-white shadow-xs"
-  const toggleIdle =
-    "bg-white text-[#605A57] border border-[rgba(55,50,47,0.12)] hover:bg-[#F1F5F9]"
+  const toggleItemClass =
+    "rounded-full first:rounded-full last:rounded-full px-4 py-2.5 min-h-[44px] text-xs sm:text-sm font-medium border border-[rgba(55,50,47,0.12)] bg-white text-[#605A57] hover:bg-[#F1F5F9] data-[state=on]:border-transparent data-[state=on]:bg-primary data-[state=on]:text-white data-[state=on]:shadow-xs data-[state=on]:hover:bg-primary-hover"
 
   return (
     <section
@@ -135,12 +133,12 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
             Planos & Preços
           </span>
 
-          <h2
+          <h1
             id="planos-titulo"
             className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section"
           >
             Investimento que se paga no primeiro DAS economizado
-          </h2>
+          </h1>
 
           <p className="text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
             Escolha o plano ideal para o faturamento da sua PJ. Todos os planos incluem
@@ -150,30 +148,22 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
       </div>
 
       {/* Alternador de periodicidade */}
-      <div
-        className="flex justify-center items-center gap-2 my-6"
-        role="group"
+      <ToggleGroup
+        type="single"
+        value={billingPeriod}
+        onValueChange={(value) => {
+          if (value) setBillingPeriod(value as BillingPeriod)
+        }}
         aria-label="Periodicidade da cobrança"
+        className="gap-2 bg-transparent my-6"
       >
-        <button
-          type="button"
-          onClick={() => setBillingPeriod("mensal")}
-          aria-pressed={billingPeriod === "mensal"}
-          className={`${toggleBase} ${billingPeriod === "mensal" ? toggleActive : toggleIdle}`}
-        >
+        <ToggleGroupItem value="mensal" className={toggleItemClass}>
           Mensal
-        </button>
-        <button
-          type="button"
-          onClick={() => setBillingPeriod("anual")}
-          aria-pressed={billingPeriod === "anual"}
-          className={`${toggleBase} flex items-center gap-2 ${
-            billingPeriod === "anual" ? toggleActive : toggleIdle
-          }`}
-        >
+        </ToggleGroupItem>
+        <ToggleGroupItem value="anual" className={`${toggleItemClass} flex items-center gap-2`}>
           Anual <span className="font-semibold">(20% OFF)</span>
-        </button>
-      </div>
+        </ToggleGroupItem>
+      </ToggleGroup>
 
       {/* Pricing Cards Grid */}
       <div className="w-full px-4 sm:px-6 md:px-8 pb-16 grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -10,14 +10,16 @@ export function GestaoFinanceiraFeaturesSection() {
             <div>
               <div className="flex items-start gap-3.5 mb-1">
                 <h2 className="text-base sm:text-lg font-semibold text-secondary leading-snug">
-                  Do micro ao macro: sua visão financeira
+                  Do lançamento avulso ao runway de 12 meses
                 </h2>
               </div>
               <p className="text-ink-muted text-xs sm:text-sm leading-relaxed mt-3">
-                Gerencie seu dinheiro com análises que oferecem tanto um panorama rápido quanto detalhes aprofundados.
+                Acompanhe o Cheque do Mês num relance ou abra a memória de cálculo completa do
+                Fator R e do DAS provisionado.
               </p>
               <p className="text-ink-muted text-xs sm:text-sm leading-relaxed mt-3">
-                Acompanhe seus hábitos de consumo e conecte contas externas para uma visão completa das suas finanças.
+                Conecte todas as contas PJ e veja o caixa consolidado, sem depender de planilha
+                paralela.
               </p>
             </div>
             <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs font-mono text-[#605A57]">
@@ -30,11 +32,12 @@ export function GestaoFinanceiraFeaturesSection() {
             <div>
               <div className="flex items-start gap-3.5 mb-1">
                 <h2 className="text-base sm:text-lg font-semibold text-secondary leading-snug">
-                  Notificações sob medida para você
+                  Alertas antes do imposto vencer
                 </h2>
               </div>
               <p className="text-ink-muted text-xs sm:text-sm leading-relaxed mt-3">
-                Receba notificações em tempo real sobre a atividade da sua conta e saiba quando estiver perto do limite do seu planejamento.
+                Seja avisado quando o DAS estiver perto do vencimento, quando o Fator R sair de
+                faixa ou quando um gasto pessoal cair na conta errada.
               </p>
             </div>
             <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs font-mono text-[#605A57]">
@@ -47,15 +50,16 @@ export function GestaoFinanceiraFeaturesSection() {
             <div>
               <div className="flex items-start gap-3.5 mb-1">
                 <h2 className="text-base sm:text-lg font-semibold text-secondary leading-snug">
-                  Mantenha seu futuro em foco
+                  Runway de caixa sempre visível
                 </h2>
               </div>
               <p className="text-ink-muted text-xs sm:text-sm leading-relaxed mt-3">
-                Uma visão completa do seu dinheiro. Saldo, seu patrimônio líquido em um só lugar e siga firme rumo às suas metas de longo prazo.
+                Projeção de quanto caixa sua PJ tem para os próximos meses, considerando
+                sazonalidade de faturamento e a reserva já provisionada.
               </p>
             </div>
             <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs font-mono text-[#605A57]">
-              Metas de longo prazo
+              Runway projetado
             </div>
           </div>
         </div>

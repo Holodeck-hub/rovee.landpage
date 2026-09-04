@@ -3,6 +3,14 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react"
 import Link from "next/link"
 import { ChevronDown, Menu, X } from "lucide-react"
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu"
 
 interface NavLink {
   href: string
@@ -37,7 +45,7 @@ export const NAV_GROUPS: NavGroup[] = [
     label: "Soluções",
     items: [
       { href: "/contadores", label: "Para Escritórios & Contadores", desc: "Acesso viewer e memórias de cálculo prontas" },
-      { href: "/#integracoes", label: "Bancos & Open Finance", desc: "Contas conectadas automaticamente" },
+      { href: "/gestao-financeira", label: "Bancos & Open Finance", desc: "Contas conectadas automaticamente" },
     ],
   },
   { label: "Segurança", href: "/seguranca" },
@@ -54,143 +62,52 @@ interface StickyNavbarProps extends NavbarProps {
 
 /* ─────────────────────────── Navegação desktop ─────────────────────────── */
 
-function NavDropdown({
-  group,
-  isOpen,
-  onToggle,
-  onOpenOnHover,
-  onClose,
-}: {
-  group: { label: string; items: NavLink[] }
-  isOpen: boolean
-  onToggle: () => void
-  onOpenOnHover: () => void
-  onClose: (returnFocus?: boolean) => void
-}) {
-  const panelId = useId()
-  const buttonRef = useRef<HTMLButtonElement>(null)
-  const panelRef = useRef<HTMLDivElement>(null)
-  const firstItemRef = useRef<HTMLAnchorElement>(null)
-
-  useEffect(() => {
-    if (!isOpen) return
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        event.stopPropagation()
-        onClose(true)
-        buttonRef.current?.focus()
-      }
-    }
-
-    const handlePointerDown = (event: PointerEvent) => {
-      const target = event.target as Node
-      if (panelRef.current?.contains(target) || buttonRef.current?.contains(target)) return
-      onClose(false)
-    }
-
-    document.addEventListener("keydown", handleKeyDown)
-    document.addEventListener("pointerdown", handlePointerDown)
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown)
-      document.removeEventListener("pointerdown", handlePointerDown)
-    }
-  }, [isOpen, onClose])
-
-  return (
-    <div
-      className="relative"
-      onMouseEnter={onOpenOnHover}
-      onBlur={(event) => {
-        // So fecha quando o foco vai para outro elemento fora do grupo (Tab).
-        // No mousedown o relatedTarget vem null: fechar ali removia o painel
-        // antes do clique chegar no link.
-        const proximo = event.relatedTarget as Node | null
-        if (proximo && !event.currentTarget.contains(proximo)) onClose(false)
-      }}
-    >
-      <button
-        ref={buttonRef}
-        type="button"
-        onClick={onToggle}
-        onKeyDown={(event) => {
-          if (event.key === "ArrowDown") {
-            event.preventDefault()
-            if (!isOpen) onToggle()
-            window.setTimeout(() => firstItemRef.current?.focus(), 0)
-          }
-        }}
-        aria-expanded={isOpen}
-        aria-controls={panelId}
-        aria-haspopup="true"
-        className={`flex items-center gap-1 px-2 py-1.5 rounded transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
-          isOpen ? "text-secondary bg-[rgba(55,50,47,0.06)]" : "hover:text-secondary"
-        }`}
-      >
-        {group.label}
-        <ChevronDown
-          className={`w-3 h-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-          aria-hidden="true"
-        />
-      </button>
-
-      <div
-        ref={panelRef}
-        id={panelId}
-        hidden={!isOpen}
-        className="absolute left-1/2 -translate-x-1/2 top-full z-50 w-[300px] pt-2"
-      >
-        <div className="bg-white border border-[rgba(55,50,47,0.12)] rounded-xl shadow-[0px_12px_32px_rgba(15,23,42,0.14)] p-1.5">
-        {group.items.map((item, index) => (
-          <a
-            key={item.href}
-            ref={index === 0 ? firstItemRef : undefined}
-            href={item.href}
-            onClick={() => onClose(false)}
-            className="block px-3 py-2.5 rounded-lg hover:bg-[#F1F5F9] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary transition-colors"
-          >
-            <span className="block text-xs font-semibold text-secondary">{item.label}</span>
-            <span className="block text-[11px] text-[#6B6560] leading-snug mt-0.5">{item.desc}</span>
-          </a>
-        ))}
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function DesktopNav({ label }: { label: string }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-
-  const close = useCallback(() => setOpenIndex(null), [])
-
   return (
-    <nav
+    <NavigationMenu
       aria-label={label}
-      className="hidden md:flex items-center gap-1 pl-2 text-xs font-medium text-[rgba(49,45,43,0.80)] font-sans"
+      className="hidden md:flex max-w-none flex-none items-center gap-1 pl-2 text-xs font-medium text-[rgba(49,45,43,0.80)] font-sans"
     >
-      {NAV_GROUPS.map((group, index) =>
-        group.href ? (
-          <Link
-            key={group.label}
-            href={group.href}
-            className="px-2 py-1.5 rounded hover:text-secondary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-          >
-            {group.label}
-          </Link>
-        ) : (
-        <NavDropdown
-          key={group.label}
-          group={{ label: group.label, items: group.items ?? [] }}
-          isOpen={openIndex === index}
-          onToggle={() => setOpenIndex((current) => (current === index ? null : index))}
-          // Com um menu já aberto, passar o mouse troca de aba, como num menu de sistema.
-          onOpenOnHover={() => setOpenIndex((current) => (current === null ? current : index))}
-          onClose={close}
-        />
-        ),
-      )}
-    </nav>
+      <NavigationMenuList className="gap-1">
+        {NAV_GROUPS.map((group) =>
+          group.href ? (
+            <NavigationMenuItem key={group.label}>
+              <NavigationMenuLink asChild>
+                <Link
+                  href={group.href}
+                  className="rounded px-2 py-1.5 text-xs font-medium hover:bg-transparent hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                >
+                  {group.label}
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          ) : (
+            <NavigationMenuItem key={group.label}>
+              <NavigationMenuTrigger className="h-auto rounded bg-transparent px-2 py-1.5 text-xs font-medium text-[rgba(49,45,43,0.80)] hover:bg-[rgba(55,50,47,0.06)] hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary data-[state=open]:bg-[rgba(55,50,47,0.06)] data-[state=open]:text-secondary">
+                {group.label}
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[300px] gap-1 p-1.5">
+                  {(group.items ?? []).map((item) => (
+                    <li key={item.href}>
+                      <NavigationMenuLink asChild>
+                        <a
+                          href={item.href}
+                          className="block rounded-lg px-3 py-2.5 hover:bg-[#F1F5F9] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary"
+                        >
+                          <span className="block text-xs font-semibold text-secondary">{item.label}</span>
+                          <span className="mt-0.5 block text-[11px] leading-snug text-[#6B6560]">{item.desc}</span>
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          ),
+        )}
+      </NavigationMenuList>
+    </NavigationMenu>
   )
 }
 

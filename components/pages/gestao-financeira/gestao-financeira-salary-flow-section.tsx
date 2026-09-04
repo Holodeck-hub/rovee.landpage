@@ -23,10 +23,12 @@ export function GestaoFinanceiraSalaryFlowSection() {
               Fluxo Automatizado
             </span>
             <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-medium h-section text-balance mt-2 leading-[1.15]">
-              Simplifique a gestão do seu salário automaticamente
+              Do faturamento ao pró-labore, sem digitar nada
             </h2>
             <p className="text-zinc-400 text-base sm:text-lg leading-relaxed mt-4 max-w-[34rem]">
-              Distribua seu salário entre despesas, contas remuneradas, gastos e mais. Depois, automatize tudo assim que o dinheiro cair na conta. Um jeito simples de deixar o dia de pagamento ainda mais tranquilo.
+              Assim que o faturamento cai na conta PJ, a Rovee separa automaticamente em três
+              baldes — seu, empresa e imposto — e transfere o pró-labore calibrado sem você mexer
+              em nada.
             </p>
           </div>
 

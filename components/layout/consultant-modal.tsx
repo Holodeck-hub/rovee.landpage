@@ -1,8 +1,29 @@
 "use client"
 
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useEffect } from "react"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
 import Link from "next/link"
-import { X, Send, User, Mail, Phone, Building2, HelpCircle, CheckCircle2 } from "lucide-react"
+import { Send, User, Mail, Phone, Building2, HelpCircle, CheckCircle2 } from "lucide-react"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { trackEvent } from "../../lib/analytics"
 import { SITE } from "../../lib/site-config"
 
@@ -22,9 +43,6 @@ const INTERESTS = [
   { value: "Outro assunto", label: "Outro assunto" },
 ]
 
-const FOCUSABLE =
-  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-
 /** Formata o telefone no padrão (99) 99999-9999 conforme o usuário digita. */
 function formatPhone(raw: string) {
   const digits = raw.replace(/\D/g, "").slice(0, 11)
@@ -34,92 +52,41 @@ function formatPhone(raw: string) {
   return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`
 }
 
+const leadSchema = z.object({
+  nome: z.string().trim().min(1, "Informe seu nome completo"),
+  email: z.string().trim().min(1, "Informe seu e-mail").email("E-mail inválido"),
+  telefone: z.string().trim().min(14, "Informe um WhatsApp válido com DDD"),
+  perfil: z.enum(["pj", "contabilidade"]),
+  interesse: z.string().min(1, "Selecione um assunto"),
+})
+type LeadFormValues = z.infer<typeof leadSchema>
+
+const inputWrapClass = "relative"
+const inputClass = "pl-9"
+const iconClass = "w-4 h-4 text-[#6B6560] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none z-10"
+
 export function ConsultantModal({ isOpen, onClose, emailInicial }: ConsultantModalProps) {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
-  const [profile, setProfile] = useState<"pj" | "contabilidade">("pj")
-  const [interest, setInterest] = useState("")
+  const form = useForm<LeadFormValues>({
+    resolver: zodResolver(leadSchema),
+    defaultValues: { nome: "", email: "", telefone: "", perfil: "pj", interesse: "" },
+  })
 
-  const dialogRef = useRef<HTMLDivElement>(null)
-  const firstFieldRef = useRef<HTMLInputElement>(null)
-  /** Elemento que abriu o modal, para devolver o foco ao fechar. */
-  const openerRef = useRef<HTMLElement | null>(null)
-
-  const handleClose = useCallback(() => {
-    onClose()
-  }, [onClose])
-
-  // Esc, trava de scroll, foco inicial e trap de foco.
+  // Reabrir com o modal limpo, mas com o e-mail já digitado no hero (se houver).
   useEffect(() => {
-    if (!isOpen) return
-
-    openerRef.current = document.activeElement as HTMLElement | null
-    document.body.style.overflow = "hidden"
-    if (emailInicial) setEmail(emailInicial)
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        event.preventDefault()
-        handleClose()
-        return
-      }
-
-      if (event.key !== "Tab") return
-
-      const dialog = dialogRef.current
-      if (!dialog) return
-
-      const focusables = Array.from(dialog.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
-        (el) => el.offsetParent !== null,
-      )
-      if (focusables.length === 0) return
-
-      const first = focusables[0]
-      const last = focusables[focusables.length - 1]
-      const active = document.activeElement
-
-      if (event.shiftKey && (active === first || !dialog.contains(active))) {
-        event.preventDefault()
-        last.focus()
-      } else if (!event.shiftKey && active === last) {
-        event.preventDefault()
-        first.focus()
-      }
+    if (isOpen) {
+      form.reset({ nome: "", email: emailInicial ?? "", telefone: "", perfil: "pj", interesse: "" })
     }
+  }, [isOpen, emailInicial, form])
 
-    window.addEventListener("keydown", handleKeyDown)
-    // Foca o primeiro campo depois da pintura, para não brigar com a animação.
-    const focusTimer = window.setTimeout(() => firstFieldRef.current?.focus(), 40)
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown)
-      window.clearTimeout(focusTimer)
-      document.body.style.overflow = ""
-    }
-  }, [isOpen, handleClose, emailInicial])
-
-  // Devolve o foco ao botão de origem quando o modal fecha.
-  useEffect(() => {
-    if (isOpen) return
-    const opener = openerRef.current
-    if (opener && document.contains(opener)) {
-      opener.focus()
-      openerRef.current = null
-    }
-  }, [isOpen])
-
-  if (!isOpen) return null
-
-  const profileLabel =
-    profile === "pj" ? "Prestador de Serviços / Empresa PJ" : "Escritório de Contabilidade / Contador"
+  const profileLabel = (perfil: LeadFormValues["perfil"]) =>
+    perfil === "pj" ? "Prestador de Serviços / Empresa PJ" : "Escritório de Contabilidade / Contador"
 
   /**
    * Registra o lead antes do redirect. Sem await: `keepalive` garante o envio
    * mesmo com a aba trocando, e o window.open precisa continuar síncrono para
    * não ser bloqueado como popup.
    */
-  const captureLead = () => {
+  const captureLead = (values: LeadFormValues) => {
     const webhook = process.env.NEXT_PUBLIC_LEAD_WEBHOOK_URL
     if (!webhook) return
 
@@ -129,11 +96,11 @@ export function ConsultantModal({ isOpen, onClose, emailInicial }: ConsultantMod
         headers: { "Content-Type": "application/json" },
         keepalive: true,
         body: JSON.stringify({
-          nome: name.trim(),
-          email: email.trim(),
-          whatsapp: phone.trim(),
-          perfil: profileLabel,
-          interesse: interest,
+          nome: values.nome,
+          email: values.email,
+          whatsapp: values.telefone,
+          perfil: profileLabel(values.perfil),
+          interesse: values.interesse,
           origem: "landing-page",
           url: window.location.href,
           enviado_em: new Date().toISOString(),
@@ -144,233 +111,211 @@ export function ConsultantModal({ isOpen, onClose, emailInicial }: ConsultantMod
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-
-    trackEvent("enviou_lead", { perfil: profile, interesse: interest })
-    captureLead()
+  const onSubmit = (values: LeadFormValues) => {
+    trackEvent("enviou_lead", { perfil: values.perfil, interesse: values.interesse })
+    captureLead(values)
 
     const message = `👋 *Olá! Gostaria de falar com um consultor da Rovee.*
 
 📌 *Dados do Contato:*
-• *Nome:* ${name.trim()}
-• *E-mail:* ${email.trim()}
-• *WhatsApp:* ${phone.trim()}
-• *Perfil:* ${profileLabel}
-• *Interesse Principal:* ${interest}
+• *Nome:* ${values.nome}
+• *E-mail:* ${values.email}
+• *WhatsApp:* ${values.telefone}
+• *Perfil:* ${profileLabel(values.perfil)}
+• *Interesse Principal:* ${values.interesse}
 
 _Enviado através da landing page oficial da Rovee._`
 
     const whatsappUrl = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(message)}`
 
     window.open(whatsappUrl, "_blank", "noopener,noreferrer")
-    handleClose()
+    onClose()
   }
 
-  const inputClass =
-    "w-full pl-9 pr-3 py-2.5 text-xs bg-white border border-[rgba(55,50,47,0.25)] rounded-lg text-secondary placeholder-[#6B6560] focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
-      {/* Backdrop */}
-      <div
-        onClick={handleClose}
-        aria-hidden="true"
-        className="fixed inset-0 bg-[#0F172A]/50 backdrop-blur-xs transition-opacity cursor-pointer"
-      />
-
-      {/* Modal Card */}
-      <div
-        ref={dialogRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="consultor-titulo"
-        aria-describedby="consultor-descricao"
-        className="relative w-full max-w-[520px] max-h-[90vh] overflow-y-auto bg-white rounded-2xl border border-[rgba(55,50,47,0.12)] shadow-[0px_16px_48px_rgba(15,23,42,0.18)] p-6 sm:p-8 z-10 text-left font-sans animate-scaleUp"
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent
+        className="max-w-[520px] max-h-[90vh] overflow-y-auto rounded-2xl border-[rgba(55,50,47,0.12)] shadow-[0px_16px_48px_rgba(15,23,42,0.18)] p-6 sm:p-8 text-left font-sans gap-0"
+        showCloseButton
       >
-        {/* Header */}
-        <div className="flex items-start justify-between pb-4 border-b border-[rgba(55,50,47,0.08)]">
-          <div>
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-              Atendimento Exclusivo
-            </span>
-            <h2
-              id="consultor-titulo"
-              className="text-xl sm:text-2xl font-medium text-secondary mt-1.5 font-sans"
-            >
-              Fale com um Consultor Rovee
-            </h2>
-            <p id="consultor-descricao" className="text-xs text-[#605A57] mt-0.5">
-              Preencha os dados abaixo para ser direcionado ao WhatsApp do nosso especialista.
-            </p>
-          </div>
-          <button
-            onClick={handleClose}
-            type="button"
-            aria-label="Fechar"
-            className="w-11 h-11 -mt-2 -mr-2 flex items-center justify-center text-[#6B6560] hover:text-secondary hover:bg-[#F1F5F9] rounded-lg transition-colors cursor-pointer shrink-0 ml-2"
-          >
-            <X className="w-5 h-5" aria-hidden="true" />
-          </button>
-        </div>
+        <DialogHeader className="pb-4 border-b border-[rgba(55,50,47,0.08)] gap-0">
+          <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 w-fit">
+            Atendimento Exclusivo
+          </span>
+          <DialogTitle className="text-xl sm:text-2xl font-medium text-secondary mt-1.5 font-sans">
+            Fale com um Consultor Rovee
+          </DialogTitle>
+          <DialogDescription className="text-xs text-[#605A57] mt-0.5">
+            Preencha os dados abaixo para ser direcionado ao WhatsApp do nosso especialista.
+          </DialogDescription>
+        </DialogHeader>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4 pt-4">
-          {/* Nome */}
-          <div>
-            <label htmlFor="lead-nome" className="block text-xs font-semibold text-secondary mb-1">
-              Nome completo *
-            </label>
-            <div className="relative">
-              <User className="w-4 h-4 text-[#6B6560] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true" />
-              <input
-                ref={firstFieldRef}
-                id="lead-nome"
-                name="nome"
-                type="text"
-                required
-                autoComplete="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Ex.: Carlos Eduardo"
-                className={inputClass}
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 pt-4">
+            {/* Nome */}
+            <FormField
+              control={form.control}
+              name="nome"
+              render={({ field }) => (
+                <FormItem className="gap-1">
+                  <FormLabel className="text-xs font-semibold text-secondary">Nome completo *</FormLabel>
+                  <div className={inputWrapClass}>
+                    <User className={iconClass} aria-hidden="true" />
+                    <FormControl>
+                      <Input
+                        {...field}
+                        autoComplete="name"
+                        placeholder="Ex.: Carlos Eduardo"
+                        className={inputClass}
+                      />
+                    </FormControl>
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Grid E-mail + WhatsApp */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem className="gap-1">
+                    <FormLabel className="text-xs font-semibold text-secondary">E-mail corporativo *</FormLabel>
+                    <div className={inputWrapClass}>
+                      <Mail className={iconClass} aria-hidden="true" />
+                      <FormControl>
+                        <Input
+                          {...field}
+                          type="email"
+                          autoComplete="email"
+                          inputMode="email"
+                          placeholder="carlos@empresa.com.br"
+                          className={inputClass}
+                        />
+                      </FormControl>
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="telefone"
+                render={({ field }) => (
+                  <FormItem className="gap-1">
+                    <FormLabel className="text-xs font-semibold text-secondary">WhatsApp com DDD *</FormLabel>
+                    <div className={inputWrapClass}>
+                      <Phone className={iconClass} aria-hidden="true" />
+                      <FormControl>
+                        <Input
+                          {...field}
+                          onChange={(e) => field.onChange(formatPhone(e.target.value))}
+                          type="tel"
+                          autoComplete="tel"
+                          inputMode="tel"
+                          placeholder="(92) 99999-9999"
+                          className={inputClass}
+                        />
+                      </FormControl>
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
             </div>
-          </div>
 
-          {/* Grid E-mail + WhatsApp */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label htmlFor="lead-email" className="block text-xs font-semibold text-secondary mb-1">
-                E-mail corporativo *
-              </label>
-              <div className="relative">
-                <Mail className="w-4 h-4 text-[#6B6560] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true" />
-                <input
-                  id="lead-email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  inputMode="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="carlos@empresa.com.br"
-                  className={inputClass}
-                />
-              </div>
-            </div>
+            {/* Perfil (PJ x Contabilidade) */}
+            <FormField
+              control={form.control}
+              name="perfil"
+              render={({ field }) => (
+                <FormItem className="gap-1.5">
+                  <FormLabel className="text-xs font-semibold text-secondary">Qual é o seu perfil? *</FormLabel>
+                  <FormControl>
+                    <ToggleGroup
+                      type="single"
+                      value={field.value}
+                      onValueChange={(value) => value && field.onChange(value)}
+                      className="grid grid-cols-2 gap-2 w-full"
+                    >
+                      <ToggleGroupItem
+                        value="pj"
+                        className="p-3 min-h-[44px] rounded-lg border text-xs font-medium flex items-center justify-center gap-2 border-[rgba(55,50,47,0.18)] bg-[#F8FAFC] text-[#605A57] hover:bg-gray-100 data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-primary data-[state=on]:font-semibold data-[state=on]:shadow-xs"
+                      >
+                        <Building2 className="w-4 h-4 shrink-0" aria-hidden="true" />
+                        <span>Prestador PJ / Empresa</span>
+                      </ToggleGroupItem>
+                      <ToggleGroupItem
+                        value="contabilidade"
+                        className="p-3 min-h-[44px] rounded-lg border text-xs font-medium flex items-center justify-center gap-2 border-[rgba(55,50,47,0.18)] bg-[#F8FAFC] text-[#605A57] hover:bg-gray-100 data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-primary data-[state=on]:font-semibold data-[state=on]:shadow-xs"
+                      >
+                        <CheckCircle2 className="w-4 h-4 shrink-0" aria-hidden="true" />
+                        <span>Escritório Contábil</span>
+                      </ToggleGroupItem>
+                    </ToggleGroup>
+                  </FormControl>
+                </FormItem>
+              )}
+            />
 
-            <div>
-              <label htmlFor="lead-telefone" className="block text-xs font-semibold text-secondary mb-1">
-                WhatsApp com DDD *
-              </label>
-              <div className="relative">
-                <Phone className="w-4 h-4 text-[#6B6560] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true" />
-                <input
-                  id="lead-telefone"
-                  name="telefone"
-                  type="tel"
-                  required
-                  autoComplete="tel"
-                  inputMode="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(formatPhone(e.target.value))}
-                  placeholder="(92) 99999-9999"
-                  className={inputClass}
-                />
-              </div>
-            </div>
-          </div>
+            {/* Interesse */}
+            <FormField
+              control={form.control}
+              name="interesse"
+              render={({ field }) => (
+                <FormItem className="gap-1">
+                  <FormLabel className="text-xs font-semibold text-secondary">Principal interesse ou dúvida *</FormLabel>
+                  <div className={inputWrapClass}>
+                    <HelpCircle className={`${iconClass} left-3`} aria-hidden="true" />
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <FormControl>
+                        <SelectTrigger className="w-full pl-9 text-xs">
+                          <SelectValue placeholder="Selecione o assunto" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {INTERESTS.map((option) => (
+                          <SelectItem key={option.value} value={option.value} className="text-xs">
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          {/* Perfil (PJ x Contabilidade) */}
-          <fieldset>
-            <legend className="block text-xs font-semibold text-secondary mb-1.5">
-              Qual é o seu perfil? *
-            </legend>
-            <div className="grid grid-cols-2 gap-2">
+            {/* Submit Button */}
+            <div className="pt-2">
               <button
-                type="button"
-                onClick={() => setProfile("pj")}
-                aria-pressed={profile === "pj"}
-                className={`p-3 min-h-[44px] rounded-lg border text-xs font-medium flex items-center justify-center gap-2 transition-all cursor-pointer ${
-                  profile === "pj"
-                    ? "border-primary bg-primary/5 text-primary font-semibold shadow-xs"
-                    : "border-[rgba(55,50,47,0.18)] bg-[#F8FAFC] text-[#605A57] hover:bg-gray-100"
-                }`}
+                type="submit"
+                className="w-full py-3 px-4 min-h-[44px] bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded-lg flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer"
               >
-                <Building2 className="w-4 h-4 shrink-0" aria-hidden="true" />
-                <span>Prestador PJ / Empresa</span>
+                <Send className="w-4 h-4" aria-hidden="true" />
+                <span>Enviar e abrir conversa no WhatsApp</span>
               </button>
 
-              <button
-                type="button"
-                onClick={() => setProfile("contabilidade")}
-                aria-pressed={profile === "contabilidade"}
-                className={`p-3 min-h-[44px] rounded-lg border text-xs font-medium flex items-center justify-center gap-2 transition-all cursor-pointer ${
-                  profile === "contabilidade"
-                    ? "border-primary bg-primary/5 text-primary font-semibold shadow-xs"
-                    : "border-[rgba(55,50,47,0.18)] bg-[#F8FAFC] text-[#605A57] hover:bg-gray-100"
-                }`}
-              >
-                <CheckCircle2 className="w-4 h-4 shrink-0" aria-hidden="true" />
-                <span>Escritório Contábil</span>
-              </button>
+              <p className="text-[11px] leading-relaxed text-center text-[#6B6560] mt-3">
+                Usamos seus dados apenas para retornar este contato comercial. Você será
+                redirecionado para o WhatsApp {SITE.whatsappDisplay}. Detalhes na{" "}
+                <Link
+                  href="/privacidade"
+                  target="_blank"
+                  className="text-primary hover:underline font-medium"
+                >
+                  Política de Privacidade
+                </Link>
+                .
+              </p>
             </div>
-          </fieldset>
-
-          {/* Interesse */}
-          <div>
-            <label htmlFor="lead-interesse" className="block text-xs font-semibold text-secondary mb-1">
-              Principal interesse ou dúvida *
-            </label>
-            <div className="relative">
-              <HelpCircle className="w-4 h-4 text-[#6B6560] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true" />
-              <select
-                id="lead-interesse"
-                name="interesse"
-                required
-                value={interest}
-                onChange={(e) => setInterest(e.target.value)}
-                className={`${inputClass} cursor-pointer`}
-              >
-                <option value="" disabled>
-                  Selecione o assunto
-                </option>
-                {INTERESTS.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          {/* Submit Button */}
-          <div className="pt-2">
-            <button
-              type="submit"
-              className="w-full py-3 px-4 min-h-[44px] bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded-lg flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer"
-            >
-              <Send className="w-4 h-4" aria-hidden="true" />
-              <span>Enviar e abrir conversa no WhatsApp</span>
-            </button>
-
-            <p className="text-[11px] leading-relaxed text-center text-[#6B6560] mt-3">
-              Usamos seus dados apenas para retornar este contato comercial. Você será
-              redirecionado para o WhatsApp {SITE.whatsappDisplay}. Detalhes na{" "}
-              <Link
-                href="/privacidade"
-                target="_blank"
-                className="text-primary hover:underline font-medium"
-              >
-                Política de Privacidade
-              </Link>
-              .
-            </p>
-          </div>
-        </form>
-      </div>
-    </div>
+          </form>
+        </Form>
+      </DialogContent>
+    </Dialog>
   )
 }

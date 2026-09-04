@@ -1,8 +1,9 @@
 "use client"
 
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { ChevronLeft, ChevronRight, Info, Quote } from "lucide-react"
 import { AnimatedWave } from "../../layout"
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel"
 
 const testimonials = [
   {
@@ -36,42 +37,25 @@ const testimonials = [
 ]
 
 export function TestimonialsSlider() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [isAnimating, setIsAnimating] = useState(false)
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const timeoutRef = useRef<number | null>(null)
 
-  const goTo = useCallback((getNext: (prev: number) => number) => {
-    if (timeoutRef.current) window.clearTimeout(timeoutRef.current)
-    setIsAnimating(true)
-    timeoutRef.current = window.setTimeout(() => {
-      setActiveIndex(getNext)
-      setIsAnimating(false)
-    }, 250)
-  }, [])
-
-  const handleNext = useCallback(() => goTo((prev) => (prev + 1) % testimonials.length), [goTo])
-  const handlePrev = useCallback(
-    () => goTo((prev) => (prev - 1 + testimonials.length) % testimonials.length),
-    [goTo],
-  )
-
-  // Rotação automática
   useEffect(() => {
-    if (isPaused) return
+    if (!api) return
+    setCurrent(api.selectedScrollSnap())
+    api.on("select", () => setCurrent(api.selectedScrollSnap()))
+  }, [api])
+
+  // Rotação automática: pausa em hover/foco e respeita prefers-reduced-motion.
+  useEffect(() => {
+    if (!api || isPaused) return
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-    const interval = window.setInterval(handleNext, 6000)
+    const interval = window.setInterval(() => api.scrollNext(), 6000)
     return () => window.clearInterval(interval)
-  }, [handleNext, isPaused])
+  }, [api, isPaused])
 
-  useEffect(
-    () => () => {
-      if (timeoutRef.current) window.clearTimeout(timeoutRef.current)
-    },
-    [],
-  )
-
-  const activeTestimonial = testimonials[activeIndex]
+  const activeTestimonial = testimonials[current]
 
   const arrowClass =
     "w-11 h-11 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-[#F1F5F9] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary text-secondary cursor-pointer transition-colors"
@@ -118,39 +102,45 @@ export function TestimonialsSlider() {
             {/* Controls */}
             <div className="flex items-center gap-2">
               <span className="text-xs font-mono text-[#6B6560]">
-                {String(activeIndex + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+                {String(current + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
               </span>
-              <button type="button" onClick={handlePrev} className={arrowClass} aria-label="Anterior">
+              <button type="button" onClick={() => api?.scrollPrev()} className={arrowClass} aria-label="Anterior">
                 <ChevronLeft className="w-4 h-4" aria-hidden="true" />
               </button>
-              <button type="button" onClick={handleNext} className={arrowClass} aria-label="Próximo">
+              <button type="button" onClick={() => api?.scrollNext()} className={arrowClass} aria-label="Próximo">
                 <ChevronRight className="w-4 h-4" aria-hidden="true" />
               </button>
             </div>
           </div>
 
-          <div
-            aria-live="polite"
-            className={`transition-opacity duration-300 ${isAnimating ? "opacity-0" : "opacity-100"}`}
-          >
-            <p className="text-xl sm:text-2xl md:text-3xl text-secondary font-normal leading-relaxed font-sans mb-8">
-              {activeTestimonial.quote}
-            </p>
+          <Carousel setApi={setApi} opts={{ loop: true }} className="w-full">
+            <CarouselContent className="-ml-0">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="pl-0">
+                  <p className="text-xl sm:text-2xl md:text-3xl text-secondary font-normal leading-relaxed font-sans mb-8">
+                    {testimonial.quote}
+                  </p>
 
-            <div className="flex items-center gap-4 pt-6 border-t border-[rgba(55,50,47,0.08)]">
-              <div className="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center shrink-0">
-                <Quote className="w-4 h-4" aria-hidden="true" />
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-secondary">
-                  {activeTestimonial.persona}
-                </div>
-                <div className="text-xs text-[#605A57]">
-                  {activeTestimonial.role} · {activeTestimonial.segment}
-                </div>
-              </div>
-            </div>
-          </div>
+                  <div className="flex items-center gap-4 pt-6 border-t border-[rgba(55,50,47,0.08)]">
+                    <div className="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center shrink-0">
+                      <Quote className="w-4 h-4" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-secondary">{testimonial.persona}</div>
+                      <div className="text-xs text-[#605A57]">
+                        {testimonial.role} · {testimonial.segment}
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          {/* Região viva só para leitor de tela: o slide em si já é anunciado visualmente */}
+          <p className="sr-only" aria-live="polite">
+            Depoimento {current + 1} de {testimonials.length}: {activeTestimonial.persona}
+          </p>
 
           {/* Aviso obrigatório */}
           <p className="flex items-start gap-2 text-[11px] leading-relaxed text-[#6B6560] mt-8 pt-4 border-t border-[rgba(55,50,47,0.08)]">

@@ -4,7 +4,7 @@ import { LegalPage, Section } from "../../components/legal/legal-page"
 import { SITE } from "../../lib/site-config"
 
 export const metadata: Metadata = {
-  title: "Termos de Uso — Rovee Finance",
+  title: "Termos de Uso",
   description:
     "Condições de uso do site da Rovee Finance e do canal de contato com consultores. Regras de acesso, propriedade intelectual, limitação de responsabilidade e foro.",
   alternates: { canonical: "/termos" },

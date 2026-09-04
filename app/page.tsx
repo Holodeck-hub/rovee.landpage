@@ -8,6 +8,7 @@ import {
   LiveMetricsSection,
   TestimonialsSlider,
   RoadmapTeaserSection,
+  AccountantsTeaserSection,
   CTASection,
 } from "../components/pages/main"
 import { trackEvent } from "../lib/analytics"
@@ -92,6 +93,11 @@ export default function LandingPage() {
               {/* ── SEÇÃO 5: ROADMAP ROVEE (TRANSPARÊNCIA DE PRODUTO) ───── */}
               <section id="roadmap" aria-label="Roadmap do produto" className="w-full band-tint">
                 <RoadmapTeaserSection />
+              </section>
+
+              {/* ── SEÇÃO 5.1: CANAL DO CONTADOR (ICP QUE NÃO APARECIA AQUI) ── */}
+              <section aria-label="Parceria com escritórios contábeis" className="w-full">
+                <AccountantsTeaserSection />
               </section>
 
               {/* ── SEÇÃO 6: CTA FINAL COM CONVERSÃO ────────────────────── */}

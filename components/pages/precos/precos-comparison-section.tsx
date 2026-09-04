@@ -1,6 +1,14 @@
 "use client"
 
 import { Check } from "lucide-react"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 const COMPARISON_FEATURES = [
   { name: "Importação manual de OFX / PDF", starter: true, pro: true, escritorio: true },
@@ -26,51 +34,55 @@ export function PrecosComparisonSection() {
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
             Comparativo Detalhado
           </span>
-          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl font-medium h-section text-balance mt-2">
+          <h3 className="text-secondary text-2xl sm:text-3xl md:text-4xl font-medium h-section text-balance mt-2">
             Compare cada funcionalidade lado a lado
-          </h2>
+          </h3>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse text-xs sm:text-sm">
-            <thead>
-              <tr className="border-b-2 border-[rgba(55,50,47,0.12)]">
-                <th className="py-4 px-4 font-semibold text-secondary">Recurso</th>
-                <th className="py-4 px-4 font-semibold text-secondary text-center">Starter PJ</th>
-                <th className="py-4 px-4 font-semibold text-primary text-center">Rovee Pro</th>
-                <th className="py-4 px-4 font-semibold text-secondary text-center">Escritório & Sócios</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-[rgba(55,50,47,0.08)]">
-              {COMPARISON_FEATURES.map((feat, idx) => (
-                <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
-                  <td className="py-3.5 px-4 text-[#49423D] font-medium">{feat.name}</td>
-                  <td className="py-3.5 px-4 text-center">
-                    {feat.starter ? (
-                      <Check className="w-4 h-4 text-emerald-700 mx-auto" />
-                    ) : (
-                      <span className="inline-block w-2.5 h-0.5 bg-zinc-200" aria-label="Não incluso" />
-                    )}
-                  </td>
-                  <td className="py-3.5 px-4 text-center bg-indigo-50/30">
-                    {feat.pro ? (
-                      <Check className="w-4 h-4 text-emerald-700 mx-auto" />
-                    ) : (
-                      <span className="inline-block w-2.5 h-0.5 bg-zinc-200" aria-label="Não incluso" />
-                    )}
-                  </td>
-                  <td className="py-3.5 px-4 text-center">
-                    {feat.escritorio ? (
-                      <Check className="w-4 h-4 text-emerald-700 mx-auto" />
-                    ) : (
-                      <span className="inline-block w-2.5 h-0.5 bg-zinc-200" aria-label="Não incluso" />
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <Table className="text-xs sm:text-sm">
+          <TableHeader>
+            <TableRow className="border-b-2 border-[rgba(55,50,47,0.12)] hover:bg-transparent">
+              <TableHead className="sticky left-0 z-10 bg-white py-4 px-4 font-semibold text-secondary">
+                Recurso
+              </TableHead>
+              <TableHead className="py-4 px-4 text-center font-semibold text-secondary">Starter PJ</TableHead>
+              <TableHead className="py-4 px-4 text-center font-semibold text-primary">Rovee Pro</TableHead>
+              <TableHead className="py-4 px-4 text-center font-semibold text-secondary">
+                Escritório & Sócios
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {COMPARISON_FEATURES.map((feat, idx) => (
+              <TableRow key={idx} className="border-[rgba(55,50,47,0.08)] hover:bg-slate-50/50">
+                <TableCell className="sticky left-0 z-10 whitespace-normal bg-white py-3.5 px-4 font-medium text-[#49423D]">
+                  {feat.name}
+                </TableCell>
+                <TableCell className="py-3.5 px-4 text-center">
+                  {feat.starter ? (
+                    <Check className="w-4 h-4 text-emerald-700 mx-auto" />
+                  ) : (
+                    <span className="inline-block w-2.5 h-0.5 bg-zinc-200" aria-label="Não incluso" />
+                  )}
+                </TableCell>
+                <TableCell className="py-3.5 px-4 text-center bg-indigo-50/30">
+                  {feat.pro ? (
+                    <Check className="w-4 h-4 text-emerald-700 mx-auto" />
+                  ) : (
+                    <span className="inline-block w-2.5 h-0.5 bg-zinc-200" aria-label="Não incluso" />
+                  )}
+                </TableCell>
+                <TableCell className="py-3.5 px-4 text-center">
+                  {feat.escritorio ? (
+                    <Check className="w-4 h-4 text-emerald-700 mx-auto" />
+                  ) : (
+                    <span className="inline-block w-2.5 h-0.5 bg-zinc-200" aria-label="Não incluso" />
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
     </section>
   )

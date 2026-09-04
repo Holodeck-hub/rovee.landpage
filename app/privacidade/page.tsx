@@ -4,7 +4,7 @@ import { LegalPage, Section } from "../../components/legal/legal-page"
 import { SITE } from "../../lib/site-config"
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade — Rovee Finance",
+  title: "Política de Privacidade",
   description:
     "Como a Rovee Finance trata os dados pessoais coletados neste site: quais dados, para quê, com que base legal na LGPD, com quem são compartilhados e como exercer seus direitos.",
   alternates: { canonical: "/privacidade" },

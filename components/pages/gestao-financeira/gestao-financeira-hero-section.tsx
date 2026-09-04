@@ -17,11 +17,13 @@ export function GestaoFinanceiraHeroSection({
         </span>
 
         <h1 className="text-secondary text-[34px] sm:text-[44px] md:text-[56px] font-medium h-display text-balance max-w-[48rem]">
-          Planeje com precisão
+          Cada real que entra já sai dividido
         </h1>
 
         <p className="text-ink-muted text-base sm:text-lg leading-relaxed max-w-[38rem]">
-          Seu dinheiro, do seu jeito. Organize tudo em um só lugar, desde gastos do dia a dia e planejamentos mensais até a gestão do seu patrimônio e seus objetivos futuros.
+          Pró-labore, reserva da empresa e provisão de DAS calculados a cada entrada — para você
+          nunca abrir uma planilha para saber quanto pode gastar ou quanto falta para o próximo
+          imposto.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">

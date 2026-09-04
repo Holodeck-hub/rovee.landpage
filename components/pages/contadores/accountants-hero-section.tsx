@@ -4,7 +4,6 @@ import { useState } from "react"
 
 interface AccountantsHeroSectionProps {
   onOpenConsultant: (origem: string, email?: string) => void
-  onOpenVideo?: () => void
 }
 
 export function AccountantsHeroSection({
