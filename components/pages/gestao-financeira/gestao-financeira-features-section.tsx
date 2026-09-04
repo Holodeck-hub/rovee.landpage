@@ -10,20 +10,20 @@ export function GestaoFinanceiraFeaturesSection() {
             <div>
               <div className="flex items-start gap-3.5 mb-1">
                 <h2 className="text-base sm:text-lg font-semibold text-secondary leading-snug">
-                  Do lançamento avulso ao runway de 12 meses
+                  Conecte todas as suas contas PJ
                 </h2>
               </div>
+              <p className="text-ink-muted text-xs sm:text-sm leading-relaxed mt-3">
+                Bancos, contas e cartões da empresa em um só lugar via Open Finance, sem
+                depender de planilha paralela ou exportar extrato à mão.
+              </p>
               <p className="text-ink-muted text-xs sm:text-sm leading-relaxed mt-3">
                 Acompanhe o Cheque do Mês num relance ou abra a memória de cálculo completa do
                 Fator R e do DAS provisionado.
               </p>
-              <p className="text-ink-muted text-xs sm:text-sm leading-relaxed mt-3">
-                Conecte todas as contas PJ e veja o caixa consolidado, sem depender de planilha
-                paralela.
-              </p>
             </div>
             <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs font-mono text-[#605A57]">
-              Visão consolidada
+              Contas conectadas automaticamente
             </div>
           </div>
 
