@@ -73,7 +73,7 @@ export function InteligenciaFiscalPage() {
               </section>
 
               {/* ── 3. AGENTES AUTÔNOMOS FISCAIS ── */}
-              <section aria-label="Agentes Proativos" className="w-full band-tint border-b border-[rgba(55,50,47,0.12)]">
+              <section id="agentes" aria-label="Agentes Proativos" className="w-full band-tint border-b border-[rgba(55,50,47,0.12)]">
                 <FiscalAgentsSection />
               </section>
 

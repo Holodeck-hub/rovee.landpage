@@ -21,7 +21,7 @@ export function GestaoFinanceiraHeroSection({
         </h1>
 
         <p className="text-ink-muted text-base sm:text-lg leading-relaxed max-w-[38rem]">
-          Pró-labore, reserva da empresa e provisão de DAS calculados a cada entrada — para você
+          Pró-labore, reserva da empresa e provisão de DAS calculados a cada entrada, para você
           nunca abrir uma planilha para saber quanto pode gastar ou quanto falta para o próximo
           imposto.
         </p>

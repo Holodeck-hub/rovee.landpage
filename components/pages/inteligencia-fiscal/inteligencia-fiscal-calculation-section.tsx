@@ -1,6 +1,7 @@
 "use client"
 
 import { InteligenciaFiscalAnexosChart } from "./inteligencia-fiscal-anexos-chart"
+import { InteligenciaFiscalMemoriaTabela } from "./inteligencia-fiscal-memoria-tabela"
 
 export function InteligenciaFiscalCalculationSection() {
   return (
@@ -22,43 +23,13 @@ export function InteligenciaFiscalCalculationSection() {
           <InteligenciaFiscalAnexosChart />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Card 1: Limpo, padrão Rovee */}
-          <div className="p-6 sm:p-8 rounded-xl border border-[rgba(55,50,47,0.12)] bg-white flex flex-col justify-between gap-5 shadow-xs">
-            <div>
-              <div className="text-xs font-mono font-semibold text-[#605A57] uppercase">
-                Sem calibração (Anexo V)
-              </div>
-              <div className="text-2xl font-bold text-secondary mt-2">
-                Alíquota a partir de 15,5%
-              </div>
-              <p className="text-xs sm:text-sm text-ink-muted mt-3 leading-relaxed">
-                Se o pró-labore não alcançar 28% do faturamento dos últimos 12 meses (RBT12), sua empresa cai no Anexo V e recolhe uma das alíquotas mais altas do Simples Nacional.
-              </p>
-            </div>
-            <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs font-mono text-[#605A57]">
-              Custo fiscal elevado sem otimização
-            </div>
-          </div>
+        <InteligenciaFiscalMemoriaTabela />
 
-          {/* Card 2: Limpo, padrão Rovee */}
-          <div className="p-6 sm:p-8 rounded-xl border border-[rgba(55,50,47,0.12)] bg-white flex flex-col justify-between gap-5 shadow-xs">
-            <div>
-              <div className="text-xs font-mono font-semibold text-[#605A57] uppercase">
-                Calibrado com a Rovee (Anexo III)
-              </div>
-              <div className="text-2xl font-bold text-secondary mt-2">
-                Alíquota a partir de 6,0%
-              </div>
-              <p className="text-xs sm:text-sm text-ink-muted mt-3 leading-relaxed">
-                A Rovee calcula exatamente o pró-labore que cruza a régua dos 28%, minimizando a soma de DAS, INSS e IRPF com memória de cálculo pronta para o contador.
-              </p>
-            </div>
-            <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs font-mono text-secondary font-semibold">
-              Economia média de R$ 2.400 por mês
-            </div>
-          </div>
-        </div>
+        <p className="mt-6 text-center text-xs sm:text-sm text-ink-muted max-w-[38rem] mx-auto leading-relaxed">
+          Se o pró-labore não alcançar 28% do faturamento dos últimos 12 meses (Fator R), a
+          empresa cai no Anexo V. A Rovee calcula o pró-labore que cruza essa régua e minimiza a
+          soma de DAS, INSS e IRPF, com a memória de cálculo pronta para o contador.
+        </p>
       </div>
     </section>
   )

@@ -2,25 +2,12 @@
 
 import { Bar, BarChart, CartesianGrid, Cell, LabelList, XAxis, YAxis } from "recharts"
 import { ChartContainer, type ChartConfig } from "@/components/ui/chart"
+import { DAS_ANEXO_III, DAS_ANEXO_V, FATURAMENTO_MES, brl } from "./inteligencia-fiscal-anexos-data"
 
 /**
  * "Basic bar chart" do plano: DAS no Anexo V contra o Anexo III, mesmo
- * faturamento. Duas barras, um eixo. As alíquotas e parcelas a deduzir são
- * reais (tabela oficial do Simples Nacional, 2ª faixa: 180.000,01 a
- * 360.000,00 de RBT12) — só o faturamento de exemplo é hipotético.
+ * faturamento. Duas barras, um eixo.
  */
-const FATURAMENTO_MES = 25_000
-const RBT12 = FATURAMENTO_MES * 12 // 300.000 — dentro da 2ª faixa nos dois anexos
-
-// (RBT12 × alíquota nominal − parcela a deduzir) / RBT12 = alíquota efetiva
-const aliquotaEfetiva = (aliquotaNominal: number, parcelaDeduzir: number) =>
-  (RBT12 * aliquotaNominal - parcelaDeduzir) / RBT12
-
-const DAS_ANEXO_V = FATURAMENTO_MES * aliquotaEfetiva(0.18, 4_500)
-const DAS_ANEXO_III = FATURAMENTO_MES * aliquotaEfetiva(0.112, 9_360)
-
-const brl = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 })
-
 const COMPARATIVO = [
   { anexo: "anexoV", label: "Anexo V", das: Math.round(DAS_ANEXO_V), fill: "var(--color-anexoV)" },
   { anexo: "anexoIII", label: "Anexo III", das: Math.round(DAS_ANEXO_III), fill: "var(--color-anexoIII)" },

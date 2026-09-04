@@ -30,7 +30,7 @@ export function InteligenciaFiscalHeroSection({
             onClick={() => onOpenConsultant("fiscal_hero")}
             className="h-11 px-6 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded-lg flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-sm"
           >
-            <span>Calcular economia para meu CNPJ</span>
+            <span>Falar sobre minha economia fiscal</span>
             <ArrowRight className="w-4 h-4" />
           </button>
           <a

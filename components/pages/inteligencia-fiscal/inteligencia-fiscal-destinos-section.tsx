@@ -1,23 +1,50 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { Cell, Label, Pie, PieChart } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "@/components/ui/chart"
 
 /**
- * Donut chart com total no centro — "Donut chart with center total" do
- * plano, mesmo padrão do exemplo c-chart-19 do reui (github.com/keenthemes/
- * reui), mas usando components/ui/chart.tsx que o projeto já tem (nenhum
- * arquivo novo em components/reui/ foi necessário) e a paleta de 3 séries
- * já validada no documento do plano (banda de luminosidade, piso de croma,
- * separação para daltonismo). Números de exemplo — sem conta real hoje.
+ * Donut chart com total no centro ("Donut chart with center total" do
+ * plano), mesmo padrão do exemplo c-chart-19 do reui (github.com/keenthemes/
+ * reui), mas usando components/ui/chart.tsx que o projeto já tem e a
+ * paleta de 3 séries já validada no documento do plano (banda de
+ * luminosidade, piso de croma, separação para daltonismo). Números de
+ * exemplo, sem conta real hoje.
+ *
+ * Cicla entre 3 cenários de faturamento para deixar claro, pelo movimento,
+ * que a divisão responde ao que entra — não é um número fixo. Pausa em
+ * hover/foco e respeita prefers-reduced-motion.
  */
-const DESTINOS = [
-  { destino: "prolabore", label: "Pró-labore", valor: 8400, fill: "var(--color-prolabore)" },
-  { destino: "impostos", label: "Impostos", valor: 3360, fill: "var(--color-impostos)" },
-  { destino: "reserva", label: "Reserva", valor: 2240, fill: "var(--color-reserva)" },
+const CENARIOS = [
+  {
+    id: "tech-lead",
+    total: 14_000,
+    destinos: [
+      { destino: "prolabore", label: "Pró-labore", valor: 8_400, fill: "var(--color-prolabore)" },
+      { destino: "impostos", label: "Impostos", valor: 3_360, fill: "var(--color-impostos)" },
+      { destino: "reserva", label: "Reserva", valor: 2_240, fill: "var(--color-reserva)" },
+    ],
+  },
+  {
+    id: "consultoria",
+    total: 22_000,
+    destinos: [
+      { destino: "prolabore", label: "Pró-labore", valor: 12_100, fill: "var(--color-prolabore)" },
+      { destino: "impostos", label: "Impostos", valor: 5_500, fill: "var(--color-impostos)" },
+      { destino: "reserva", label: "Reserva", valor: 4_400, fill: "var(--color-reserva)" },
+    ],
+  },
+  {
+    id: "estudio",
+    total: 9_500,
+    destinos: [
+      { destino: "prolabore", label: "Pró-labore", valor: 5_700, fill: "var(--color-prolabore)" },
+      { destino: "impostos", label: "Impostos", valor: 1_900, fill: "var(--color-impostos)" },
+      { destino: "reserva", label: "Reserva", valor: 1_900, fill: "var(--color-reserva)" },
+    ],
+  },
 ]
-
-const TOTAL = DESTINOS.reduce((soma, item) => soma + item.valor, 0)
 
 const brl = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 })
 
@@ -29,6 +56,20 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function InteligenciaFiscalDestinosSection() {
+  const [indice, setIndice] = useState(0)
+  const [pausado, setPausado] = useState(false)
+
+  useEffect(() => {
+    if (pausado) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    const intervalo = window.setInterval(() => {
+      setIndice((atual) => (atual + 1) % CENARIOS.length)
+    }, 4500)
+    return () => window.clearInterval(intervalo)
+  }, [pausado])
+
+  const cenario = CENARIOS[indice]
+
   return (
     <section aria-label="Para onde vai cada real" className="w-full py-20 px-5 border-b border-[rgba(55,50,47,0.12)] bg-white">
       <div className="w-full max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center">
@@ -41,93 +82,119 @@ export function InteligenciaFiscalDestinosSection() {
           </h2>
           <p className="text-ink-muted text-sm sm:text-base mt-3 max-w-[26rem] leading-relaxed">
             A Rovee separa automaticamente o que é seu para retirar, o que é imposto
-            provisionado e o que fica de reserva na empresa — antes de qualquer
+            provisionado e o que fica de reserva na empresa, antes de qualquer
             transferência para a pessoa física.
           </p>
 
-          <ul className="mt-6 flex flex-col gap-2.5">
-            {DESTINOS.map((item) => (
+          <ul className="mt-6 flex flex-col gap-2.5" aria-live="polite">
+            {cenario.destinos.map((item) => (
               <li key={item.destino} className="flex items-center justify-between gap-3 text-sm">
                 <span className="flex items-center gap-2 text-[#49423D]">
                   <i className="h-2.5 w-2.5 rounded-sm" style={{ background: item.fill }} aria-hidden="true" />
                   {item.label}
                 </span>
-                <span className="font-mono tabular-nums text-secondary">
+                <span className="font-mono tabular-nums text-secondary transition-all duration-500">
                   {brl.format(item.valor)}{" "}
                   <span className="text-[#8B8D9B]">
-                    ({Math.round((item.valor / TOTAL) * 100)}%)
+                    ({Math.round((item.valor / cenario.total) * 100)}%)
                   </span>
                 </span>
               </li>
             ))}
           </ul>
 
-          <p className="mt-5 text-xs text-[#8B8D9B] leading-relaxed">
-            Cenário ilustrativo para um faturamento de {brl.format(TOTAL)} no mês — não
-            representa nenhum cliente específico. A divisão real depende do seu Fator
-            R, do seu Anexo e da meta de reserva que você definir.
+          <div className="mt-4 flex items-center gap-1.5" role="tablist" aria-label="Cenários de exemplo">
+            {CENARIOS.map((item, i) => (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                aria-selected={i === indice}
+                aria-label={`Ver cenário ${i + 1} de ${CENARIOS.length}`}
+                onClick={() => setIndice(i)}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  i === indice ? "w-5 bg-primary" : "w-1.5 bg-[rgba(55,50,47,0.15)] hover:bg-[rgba(55,50,47,0.3)]"
+                }`}
+              />
+            ))}
+          </div>
+
+          <p className="mt-4 text-xs text-[#8B8D9B] leading-relaxed">
+            Cenário ilustrativo para um faturamento de {brl.format(cenario.total)} no mês. Não
+            representa nenhum cliente específico: a divisão real depende do seu Fator R, do seu
+            Anexo e da meta de reserva que você definir.
           </p>
         </div>
 
-        <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[260px] w-full">
-          <PieChart>
-            <ChartTooltip
-              content={
-                <ChartTooltipContent
-                  hideLabel
-                  formatter={(value, name) => (
-                    <div className="flex w-full items-center justify-between gap-3">
-                      <span className="text-muted-foreground">
-                        {chartConfig[name as keyof typeof chartConfig]?.label ?? name}
-                      </span>
-                      <span className="text-foreground font-semibold tabular-nums">
-                        {brl.format(Number(value))}
-                      </span>
-                    </div>
-                  )}
-                />
-              }
-            />
-            <Pie
-              data={DESTINOS}
-              dataKey="valor"
-              nameKey="destino"
-              innerRadius={70}
-              outerRadius={100}
-              paddingAngle={2}
-              stroke="var(--background)"
-              strokeWidth={2}
-            >
-              {DESTINOS.map((item) => (
-                <Cell key={item.destino} fill={item.fill} />
-              ))}
-              <Label
-                content={({ viewBox }) => {
-                  if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                    return (
-                      <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle" dominantBaseline="middle">
-                        <tspan
-                          x={viewBox.cx}
-                          y={(viewBox.cy ?? 0) - 8}
-                          className="fill-[#8B8D9B] text-[10px] font-mono uppercase tracking-wider"
-                        >
-                          Total
-                        </tspan>
-                        <tspan
-                          x={viewBox.cx}
-                          y={(viewBox.cy ?? 0) + 16}
-                          className="fill-secondary text-2xl font-semibold tabular-nums"
-                        >
-                          {brl.format(TOTAL)}
-                        </tspan>
-                      </text>
-                    )
-                  }
-                }}
+        <div
+          onMouseEnter={() => setPausado(true)}
+          onMouseLeave={() => setPausado(false)}
+          onFocusCapture={() => setPausado(true)}
+          onBlurCapture={() => setPausado(false)}
+        >
+          <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[260px] w-full">
+            <PieChart>
+              <ChartTooltip
+                content={
+                  <ChartTooltipContent
+                    hideLabel
+                    formatter={(value, name) => (
+                      <div className="flex w-full items-center justify-between gap-3">
+                        <span className="text-muted-foreground">
+                          {chartConfig[name as keyof typeof chartConfig]?.label ?? name}
+                        </span>
+                        <span className="text-foreground font-semibold tabular-nums">
+                          {brl.format(Number(value))}
+                        </span>
+                      </div>
+                    )}
+                  />
+                }
               />
-            </Pie>
-          </PieChart>
-        </ChartContainer>
+              <Pie
+                data={cenario.destinos}
+                dataKey="valor"
+                nameKey="destino"
+                innerRadius={70}
+                outerRadius={100}
+                paddingAngle={2}
+                stroke="var(--background)"
+                strokeWidth={2}
+                isAnimationActive
+                animationDuration={600}
+                animationEasing="ease-out"
+              >
+                {cenario.destinos.map((item) => (
+                  <Cell key={item.destino} fill={item.fill} />
+                ))}
+                <Label
+                  content={({ viewBox }) => {
+                    if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                      return (
+                        <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle" dominantBaseline="middle">
+                          <tspan
+                            x={viewBox.cx}
+                            y={(viewBox.cy ?? 0) - 8}
+                            className="fill-[#8B8D9B] text-[10px] font-mono uppercase tracking-wider"
+                          >
+                            Total
+                          </tspan>
+                          <tspan
+                            x={viewBox.cx}
+                            y={(viewBox.cy ?? 0) + 16}
+                            className="fill-secondary text-2xl font-semibold tabular-nums"
+                          >
+                            {brl.format(cenario.total)}
+                          </tspan>
+                        </text>
+                      )
+                    }
+                  }}
+                />
+              </Pie>
+            </PieChart>
+          </ChartContainer>
+        </div>
       </div>
     </section>
   )

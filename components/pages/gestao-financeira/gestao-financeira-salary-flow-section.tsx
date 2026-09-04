@@ -27,7 +27,7 @@ export function GestaoFinanceiraSalaryFlowSection() {
             </h2>
             <p className="text-zinc-400 text-base sm:text-lg leading-relaxed mt-4 max-w-[34rem]">
               Assim que o faturamento cai na conta PJ, a Rovee separa automaticamente em três
-              baldes — seu, empresa e imposto — e transfere o pró-labore calibrado sem você mexer
+              baldes (seu, empresa e imposto) e transfere o pró-labore calibrado sem você mexer
               em nada.
             </p>
           </div>

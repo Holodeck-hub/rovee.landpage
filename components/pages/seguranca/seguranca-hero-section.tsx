@@ -17,7 +17,7 @@ export function SegurancaHeroSection({
         </span>
 
         <h1 className="text-secondary text-[34px] sm:text-[44px] md:text-[56px] font-medium h-display text-balance max-w-[48rem]">
-          Seus dados fiscais e bancários protegidos com rigor militar.
+          Acesso 100% somente-leitura. Criptografia de padrão bancário.
         </h1>
 
         <p className="text-ink-muted text-base sm:text-lg leading-relaxed max-w-[38rem]">

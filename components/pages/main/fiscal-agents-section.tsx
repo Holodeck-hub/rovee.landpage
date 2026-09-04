@@ -16,7 +16,6 @@ const FISCAL_AGENTS = [
       { value: "R$ 48.000+", label: "economia anual média" },
       { value: "28,0%", label: "alvo ótimo de folha" },
     ],
-    pillColor: "bg-emerald-50 text-emerald-800 border-emerald-200",
   },
   {
     id: "clareza",
@@ -28,7 +27,6 @@ const FISCAL_AGENTS = [
       { value: "3 Baldes", label: "separação automática" },
       { value: "100%", label: "lucro isento protegido" },
     ],
-    pillColor: "bg-blue-50 text-blue-800 border-blue-200",
   },
   {
     id: "sentinela",
@@ -40,7 +38,6 @@ const FISCAL_AGENTS = [
       { value: "Art. 50 CC", label: "mitigação jurídica" },
       { value: "0 risco", label: "de desconsideração" },
     ],
-    pillColor: "bg-amber-50 text-amber-800 border-amber-200",
   },
   {
     id: "provisao",
@@ -52,16 +49,19 @@ const FISCAL_AGENTS = [
       { value: "Dia 20", label: "sempre provisionado" },
       { value: "1 Clique", label: "para reservar valor" },
     ],
-    pillColor: "bg-purple-50 text-purple-800 border-purple-200",
   },
 ]
 
 export function FiscalAgentsSection() {
   const [selectedAgent, setSelectedAgent] = useState(0)
   const [progress, setProgress] = useState(0)
+  const [pausado, setPausado] = useState(false)
 
-  // Auto-cycle through agents with smooth progress bar
+  // Auto-cycle through agents with smooth progress bar. Pausa em hover/foco:
+  // sem isso, o card trocava debaixo do usuário no meio da leitura.
   useEffect(() => {
+    if (pausado) return
+
     const duration = 8000 // 8s per agent
     const intervalTime = 50
     const step = (intervalTime / duration) * 100
@@ -77,7 +77,7 @@ export function FiscalAgentsSection() {
     }, intervalTime)
 
     return () => clearInterval(timer)
-  }, [selectedAgent])
+  }, [selectedAgent, pausado])
 
   const handleAgentClick = (idx: number) => {
     setSelectedAgent(idx)
@@ -110,15 +110,23 @@ export function FiscalAgentsSection() {
       </div>
 
       {/* ── TOP SHOWCASE WINDOW ── */}
-      <div className="self-stretch flex justify-center items-start">
+      <div
+        className="self-stretch flex justify-center items-start"
+        onMouseEnter={() => setPausado(true)}
+        onMouseLeave={() => setPausado(false)}
+        onFocusCapture={() => setPausado(true)}
+        onBlurCapture={() => setPausado(false)}
+      >
         {/* Center Container: Active Agent Showcase */}
         <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] bg-white p-6 sm:p-8 lg:p-12">
           <div className="grid grid-cols-1 grid-rows-1 w-full">
             {FISCAL_AGENTS.map((item, idx) => (
               <div
                 key={item.id}
-                className={`col-start-1 row-start-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch text-left transition-opacity duration-300 ${
-                  selectedAgent === idx ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none invisible z-0"
+                className={`col-start-1 row-start-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch text-left transition-all duration-300 ${
+                  selectedAgent === idx
+                    ? "opacity-100 translate-y-0 pointer-events-auto z-10"
+                    : "opacity-0 translate-y-1.5 pointer-events-none invisible z-0"
                 }`}
               >
                 <div className="lg:col-span-7 flex flex-col justify-between gap-4 h-full">
@@ -234,15 +242,26 @@ export function FiscalAgentsSection() {
       </div>
 
       {/* ── BOTTOM FEATURE CARDS SELECTOR ── */}
-      <div className="self-stretch flex justify-center items-stretch border-t border-[rgba(55,50,47,0.12)]">
+      <div
+        className="self-stretch flex justify-center items-stretch border-t border-[rgba(55,50,47,0.12)]"
+        role="tablist"
+        aria-label="Agentes autônomos"
+        onMouseEnter={() => setPausado(true)}
+        onMouseLeave={() => setPausado(false)}
+        onFocusCapture={() => setPausado(true)}
+        onBlurCapture={() => setPausado(false)}
+      >
         <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#E0DEDB] border-l border-r border-[#E0DEDB]">
           {FISCAL_AGENTS.map((item, idx) => {
             const isActive = selectedAgent === idx
             return (
-              <div
+              <button
                 key={item.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
                 onClick={() => handleAgentClick(idx)}
-                className={`w-full self-stretch px-5 py-4 sm:px-6 sm:py-5 overflow-hidden flex flex-col justify-start items-start gap-1.5 cursor-pointer relative transition-colors ${
+                className={`w-full self-stretch px-5 py-4 sm:px-6 sm:py-5 overflow-hidden flex flex-col justify-start items-start gap-1.5 text-left cursor-pointer relative transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary ${
                   isActive ? "bg-white shadow-[0px_0px_0px_0.75px_#E0DEDB_inset]" : "bg-transparent hover:bg-white/40"
                 }`}
               >
@@ -260,7 +279,7 @@ export function FiscalAgentsSection() {
                 <div className="self-stretch text-[#605A57] text-xs font-normal leading-relaxed font-sans line-clamp-2">
                   {item.subtitle}
                 </div>
-              </div>
+              </button>
             )
           })}
         </div>
