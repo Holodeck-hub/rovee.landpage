@@ -7,6 +7,7 @@
  * "No integrations empty state" do reui (github.com/keenthemes/reui,
  * registry-reui/bases/radix/components/empty/c-empty-19.tsx), portada à
  * mão e ampliada de 4 para 6 nós — só tokens de cor do projeto, sem ícone.
+ * Usada em /contadores e em /integracoes.
  */
 export function BankConstellation() {
   const raio = 85

@@ -1,6 +1,6 @@
 "use client"
 
-import { BankConstellation } from "./bank-constellation"
+import { BankConstellation } from "../../shared/bank-constellation"
 
 interface AccountantsExtractsSectionProps {
   onOpenConsultant: (origem: string) => void
@@ -29,12 +29,6 @@ export function AccountantsExtractsSection({
             Contador: o extrato entra pelo lado do cliente, por OFX ou PDF, e já chega
             classificado, com a despesa pessoal separada da despesa da empresa. Você
             deixa de perseguir arquivo por WhatsApp no fechamento.
-          </p>
-
-          <p className="text-ink-faint text-xs leading-relaxed max-w-[32rem]">
-            A conexão bancária automática via Open Finance está em homologação de
-            cobertura e segurança. Enquanto não conclui, a entrada é por importação de
-            arquivo, e nós não anunciamos o que ainda não está no ar.
           </p>
 
           <button

@@ -38,14 +38,13 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       { href: "/gestao-financeira", label: "Gestão Financeira & Caixa", desc: "Cheque do Mês, Pockets e previsão de runway" },
       { href: "/inteligencia-fiscal", label: "Inteligência Fiscal & Fator R", desc: "Redução de Simples Nacional e provisão do DAS" },
-      { href: "/inteligencia-fiscal#agentes", label: "Agentes Proativos", desc: "Alertas antes do imposto vencer" },
     ],
   },
   {
     label: "Soluções",
     items: [
       { href: "/contadores", label: "Para Escritórios & Contadores", desc: "Acesso viewer e memórias de cálculo prontas" },
-      { href: "/gestao-financeira#pilares-gestao", label: "Bancos & Open Finance", desc: "Contas conectadas automaticamente" },
+      { href: "/integracoes", label: "Bancos & Open Finance", desc: "Contas conectadas automaticamente" },
     ],
   },
   { label: "Segurança", href: "/seguranca" },
