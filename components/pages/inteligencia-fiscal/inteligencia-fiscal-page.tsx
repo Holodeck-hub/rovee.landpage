@@ -5,6 +5,7 @@ import { TopNavbar, StickyNavbar, FooterSection, ConsultantModal } from "../../l
 import { FiscalIntelligenceBentoSection, FiscalAgentsSection } from "../main"
 import { InteligenciaFiscalHeroSection } from "./inteligencia-fiscal-hero-section"
 import { InteligenciaFiscalCalculationSection } from "./inteligencia-fiscal-calculation-section"
+import { InteligenciaFiscalDestinosSection } from "./inteligencia-fiscal-destinos-section"
 import { InteligenciaFiscalCtaSection } from "./inteligencia-fiscal-cta-section"
 import { trackEvent } from "../../../lib/analytics"
 
@@ -78,6 +79,9 @@ export function InteligenciaFiscalPage() {
 
               {/* ── 4. MEMÓRIA DE CÁLCULO ── */}
               <InteligenciaFiscalCalculationSection />
+
+              {/* ── 4.1. PARA ONDE VAI CADA REAL (3 DESTINOS) ── */}
+              <InteligenciaFiscalDestinosSection />
 
               {/* ── 5. CTA FINAL ── */}
               <InteligenciaFiscalCtaSection onOpenConsultant={handleOpenConsultant} />

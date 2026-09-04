@@ -1,5 +1,7 @@
 "use client"
 
+import { InteligenciaFiscalAnexosChart } from "./inteligencia-fiscal-anexos-chart"
+
 export function InteligenciaFiscalCalculationSection() {
   return (
     <section aria-label="Comparativo de Anexos" className="w-full py-20 px-5 border-b border-[rgba(55,50,47,0.12)] bg-white">
@@ -14,6 +16,10 @@ export function InteligenciaFiscalCalculationSection() {
           <p className="text-ink-muted text-sm sm:text-base mt-2 max-w-[34rem] mx-auto">
             Para prestadores de serviços de TI, engenharia e consultoria no Simples Nacional.
           </p>
+        </div>
+
+        <div className="mb-10 max-w-[420px] mx-auto">
+          <InteligenciaFiscalAnexosChart />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
