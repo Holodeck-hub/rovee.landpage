@@ -5,11 +5,11 @@ export function GestaoFinanceiraSalaryFlowSection() {
     <section aria-label="Gestão de Salário e Distribuição" className="w-full bg-black border-b border-white/10 text-white relative overflow-hidden">
       {/* Imagem: 40% da largura à direita, limpa e sem filtros de blur */}
       <div
-        className="absolute right-0 md:right-[2%] lg:right-[4%] top-[53%] sm:top-[54%] md:top-[55%] -translate-y-1/2 w-full sm:w-[48%] md:w-[42%] lg:w-[38%] h-[120%] md:h-[130%] pointer-events-none select-none overflow-hidden z-0 flex items-center justify-center"
+        className="absolute right-0 top-[53%] sm:top-[54%] md:top-[55%] -translate-y-1/2 w-full sm:w-[48%] md:w-[42%] lg:w-[38%] h-[120%] md:h-[130%] pointer-events-none select-none overflow-hidden z-0 flex items-center justify-center"
         aria-hidden="true"
       >
         <img
-          src="/openfinance/backgroud-mobile-v1.jpg"
+          src="/imagens/backgroud-mobile-v1.jpg"
           alt=""
           className="w-full h-full object-contain object-center scale-100 sm:scale-105 md:scale-112 opacity-100 drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] translate-y-0 sm:translate-y-1 md:translate-y-2"
         />
