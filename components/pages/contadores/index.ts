@@ -1,0 +1,8 @@
+export { AccountantsPage, default } from "./accountants-page"
+export { AccountantsHeroSection } from "./accountants-hero-section"
+export { AccountantsPainPointsSection } from "./accountants-pain-points-section"
+export { AccountantsBoundariesSection } from "./accountants-boundaries-section"
+export { AccountantsMetricsSection } from "./accountants-metrics-section"
+export { AccountantsExtractsSection } from "./accountants-extracts-section"
+export { AccountantsPortalSection } from "./accountants-portal-section"
+export { AccountantsFaqSection } from "./accountants-faq-section"

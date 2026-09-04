@@ -1,0 +1,6 @@
+export { GestaoFinanceiraPage } from "./gestao-financeira-page"
+export { GestaoFinanceiraHeroSection } from "./gestao-financeira-hero-section"
+export { GestaoFinanceiraSalaryFlowSection } from "./gestao-financeira-salary-flow-section"
+export { GestaoFinanceiraFeaturesSection } from "./gestao-financeira-features-section"
+export { GestaoFinanceiraBucketsSection } from "./gestao-financeira-buckets-section"
+export { GestaoFinanceiraCtaSection } from "./gestao-financeira-cta-section"

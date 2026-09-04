@@ -110,7 +110,11 @@ function NavigationMenuViewport({
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
-          'origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)]',
+          // A animação de entrada (animate-in + zoom-in-90) trava com o scale
+          // nunca chegando a 1: a caixa (borda/sombra) aparece, o conteúdo
+          // fica invisível. Confirmado ao vivo — removendo só a animação, o
+          // conteúdo aparece. Ver components/layout/navbar.tsx.
+          'origin-top-center bg-popover text-popover-foreground relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)]',
           className,
         )}
         {...props}

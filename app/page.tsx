@@ -1,26 +1,22 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { StickyNavbar, TopNavbar } from "../components/layout/navbar"
-import { HeroShowcaseSection } from "../components/sections/hero-showcase-section"
-import { FiscalIntelligenceBentoSection } from "../components/sections/fiscal-intelligence-bento-section"
-import { PredictiveIntelligenceSection } from "../components/sections/predictive-intelligence-section"
-import { FiscalAgentsSection } from "../components/sections/fiscal-agents-section"
-import { AccountantChannelSection } from "../components/sections/accountant-channel-section"
-import { BanksIntegrationSection } from "../components/sections/banks-integration-section"
-import { LiveMetricsSection } from "../components/sections/live-metrics-section"
-import { TestimonialsSlider } from "../components/sections/testimonials-slider"
-import { RoadmapTeaserSection } from "../components/sections/roadmap-teaser-section"
-import { SecuritySection } from "../components/sections/security-section"
-import PricingSection from "../components/sections/pricing-section"
-import FAQSection from "../components/sections/faq-section"
-import CTASection from "../components/sections/cta-section"
-import FooterSection from "../components/layout/footer-section"
-import { ConsultantModal } from "../components/shared/consultant-modal"
+import { useCallback, useEffect, useState } from "react"
+import { StickyNavbar, TopNavbar, FooterSection, ConsultantModal } from "../components/layout"
+import {
+  HeroShowcaseSection,
+  FiscalAgentsTeaserSection,
+  LiveMetricsSection,
+  TestimonialsSlider,
+  RoadmapTeaserSection,
+  AccountantsTeaserSection,
+  CTASection,
+} from "../components/pages/main"
+import { trackEvent } from "../lib/analytics"
 
 export default function LandingPage() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isConsultantModalOpen, setIsConsultantModalOpen] = useState(false)
+  const [emailInicial, setEmailInicial] = useState<string | undefined>()
 
   // Scroll listener for sticky floating header motion
   useEffect(() => {
@@ -31,107 +27,89 @@ export default function LandingPage() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const handleOpenConsultant = () => {
+  /**
+   * Ponto único de abertura do modal: todo CTA da página passa por aqui, então
+   * o evento `abriu_modal` é disparado uma vez só, sempre com a origem do clique.
+   */
+  const handleOpenConsultant = useCallback((origem?: string, email?: string) => {
+    trackEvent("abriu_modal", { origem: origem ?? "nao_identificada" })
+    setEmailInicial(email)
     setIsConsultantModalOpen(true)
-  }
+  }, [])
 
-  const handleCloseConsultant = () => {
+  const handleCloseConsultant = useCallback(() => {
     setIsConsultantModalOpen(false)
-  }
+  }, [])
 
   return (
-    <div className="w-full min-h-screen relative bg-[#F8FAFC] overflow-x-hidden flex flex-col justify-start items-center">
-      {/* ── 1. HEADER FLUTUANTE STICKY (QUANDO SCROLLA) ── */}
-      <StickyNavbar
-        isScrolled={isScrolled}
-        onOpenConsultant={handleOpenConsultant}
-      />
+    <div className="w-full min-h-screen relative bg-white overflow-x-hidden flex flex-col justify-start items-center">
+      {/* ── SKIP LINK ── */}
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2.5 focus:bg-primary focus:text-white focus:text-sm focus:font-semibold focus:rounded-lg focus:shadow-lg"
+      >
+        Pular para o conteúdo
+      </a>
 
-      {/* ── 2. CONTAINER MESTRE CENTRAL (CONTROLE GLOBAL DE LARGURA) ── */}
+      {/* ── 1. HEADER FLUTUANTE STICKY ── */}
+      <header>
+        <StickyNavbar isScrolled={isScrolled} onOpenConsultant={handleOpenConsultant} />
+      </header>
+
+      {/* ── 2. CONTAINER MESTRE CENTRAL ── */}
       <div className="relative flex flex-col justify-start items-center w-full">
-        {/* Main container with framing vertical lines */}
         <div className="w-full max-w-none px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-[1320px] lg:w-[1320px] relative flex flex-col justify-start items-start min-h-screen">
-          {/* Left vertical framing line */}
-          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none"></div>
-
-          {/* Right vertical framing line */}
-          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none"></div>
+          {/* Linhas verticais que emolduram a página inteira */}
+          <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
+          <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
 
           <div className="self-stretch pt-[9px] overflow-visible border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-center items-center relative z-10">
+            {/* ── NAVBAR DO TOPO ── */}
+            <header className="w-full">
+              <TopNavbar onOpenConsultant={handleOpenConsultant} />
+            </header>
 
-            {/* ── NAVBAR DO TOPO (DENTRO DA GRADE ORIGINAL DO HERO) ── */}
-            <TopNavbar onOpenConsultant={handleOpenConsultant} />
+            <main id="conteudo" className="w-full flex flex-col items-center">
+              {/* ── SEÇÃO 1: HERO COM DASHBOARD SHOWCASE INTERATIVO ────── */}
+              <section aria-label="Apresentação da Rovee" className="w-full">
+                <HeroShowcaseSection onOpenConsultant={handleOpenConsultant} />
+              </section>
 
-            {/* ── SEÇÃO 1: HERO COM DASHBOARD SHOWCASE INTERATIVO ────── */}
-            <div className="w-full">
-              <HeroShowcaseSection onOpenConsultant={handleOpenConsultant} />
-            </div>
+              {/* ── SEÇÃO 2: INTELIGÊNCIA FISCAL, RESUMO (detalhe fica só em /inteligencia-fiscal#agentes) ── */}
+              <section aria-label="Inteligência fiscal, resumo" className="w-full">
+                <FiscalAgentsTeaserSection />
+              </section>
 
-            {/* ── SEÇÃO 2: BENTO GRID - MOTOR DE INTELIGÊNCIA FISCAL ──── */}
-            <div id="fiscal" className="w-full">
-              <FiscalIntelligenceBentoSection />
-            </div>
+              {/* ── SEÇÃO 3: LIVE METRICS EM TEMPO REAL ──────────────────── */}
+              <section id="metricas" aria-label="Números da Rovee" className="w-full band-tint">
+                <LiveMetricsSection />
+              </section>
 
-            {/* ── SEÇÃO 3: INTELIGÊNCIA PREDITIVA EM 3 CAMADAS ─────────── */}
-            <div id="predicao" className="w-full">
-              <PredictiveIntelligenceSection />
-            </div>
+              {/* ── SEÇÃO 4: CASOS DE USO ───────────────────────────────── */}
+              <section id="depoimentos" aria-label="Cenários de uso" className="w-full">
+                <TestimonialsSlider />
+              </section>
 
-            {/* ── SEÇÃO 4: AGENTES FISCAIS & PREDITIVOS ────────────────── */}
-            <div id="agentes" className="w-full">
-              <FiscalAgentsSection />
-            </div>
+              {/* ── SEÇÃO 5: ROADMAP ROVEE (TRANSPARÊNCIA DE PRODUTO) ───── */}
+              <section id="roadmap" aria-label="Roadmap do produto" className="w-full band-tint">
+                <RoadmapTeaserSection />
+              </section>
 
-            {/* ── SEÇÃO 5: CANAL DO CONTADOR & HARMONIA ────────────────── */}
-            <div id="contador" className="w-full">
-              <AccountantChannelSection />
-            </div>
+              {/* ── SEÇÃO 5.1: CANAL DO CONTADOR (ICP QUE NÃO APARECIA AQUI) ── */}
+              <section aria-label="Parceria com escritórios contábeis" className="w-full">
+                <AccountantsTeaserSection />
+              </section>
 
-            {/* ── SEÇÃO 6: BANCOS & CONTAS INTEGRADAS (OPEN FINANCE) ───── */}
-            <div id="integracoes" className="w-full">
-              <BanksIntegrationSection onOpenConsultant={handleOpenConsultant} />
-            </div>
+              {/* ── SEÇÃO 6: CTA FINAL COM CONVERSÃO ────────────────────── */}
+              <section aria-label="Comece agora" className="w-full">
+                <CTASection onOpenConsultant={handleOpenConsultant} />
+              </section>
+            </main>
 
-            {/* ── SEÇÃO 7: LIVE METRICS EM TEMPO REAL ──────────────────── */}
-            <div id="metricas" className="w-full">
-              <LiveMetricsSection />
-            </div>
-
-            {/* ── SEÇÃO 8: DEPOIMENTOS REAIS ──────────────────────────── */}
-            <div id="depoimentos" className="w-full">
-              <TestimonialsSlider />
-            </div>
-
-            {/* ── SEÇÃO 9: ROADMAP ROVEE (TRANSPARÊNCIA DE PRODUTO) ───── */}
-            <div id="roadmap" className="w-full">
-              <RoadmapTeaserSection />
-            </div>
-
-            {/* ── SEÇÃO 10: SEGURANÇA DE NÍVEL BANCÁRIO & LGPD ─────────── */}
-            <div id="seguranca" className="w-full">
-              <SecuritySection />
-            </div>
-
-            {/* ── SEÇÃO 11: PLANOS & PRICING ──────────────────────────── */}
-            <div id="planos" className="w-full">
-              <PricingSection onOpenConsultant={handleOpenConsultant} />
-            </div>
-
-            {/* ── SEÇÃO 12: FAQ (DÚVIDAS FREQUENTES) ───────────────────── */}
-            <div className="w-full">
-              <FAQSection />
-            </div>
-
-            {/* ── SEÇÃO 13: CTA FINAL COM CONVERSÃO ────────────────────── */}
-            <div className="w-full">
-              <CTASection onOpenConsultant={handleOpenConsultant} />
-            </div>
-
-            {/* ── SEÇÃO 14: FOOTER ─────────────────────────────────────── */}
+            {/* ── FOOTER ── */}
             <div className="w-full">
               <FooterSection />
             </div>
-
           </div>
         </div>
       </div>
@@ -140,6 +118,7 @@ export default function LandingPage() {
       <ConsultantModal
         isOpen={isConsultantModalOpen}
         onClose={handleCloseConsultant}
+        emailInicial={emailInicial}
       />
     </div>
   )

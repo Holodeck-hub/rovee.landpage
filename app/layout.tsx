@@ -1,7 +1,9 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, Instrument_Serif } from "next/font/google"
 import "./globals.css"
+import { AnalyticsNoScript, AnalyticsScripts } from "../components/analytics/analytics-scripts"
+import { SITE } from "../lib/site-config"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,15 +20,76 @@ const instrumentSerif = Instrument_Serif({
   preload: true,
 })
 
+const TITLE = "Rovee Finance: Inteligência Fiscal e Otimização de Pró-labore"
+const DESCRIPTION =
+  "A fintech que calcula seu pró-labore ótimo no Simples Nacional, separa o caixa pessoal da PJ e usa inteligência preditiva para antecipar seu faturamento sem surpresas fiscais."
+
 export const metadata: Metadata = {
-  title: "Rovee Finance — Inteligência Fiscal & Otimização de Pró-labore",
-  description:
-    "A Fintech que calcula seu pró-labore ótimo no Simples Nacional, separa o caixa pessoal da PJ e usa inteligência preditiva para antecipar seu faturamento sem surpresas fiscais.",
-  icons: {
-    icon: "/logo/logo-rovee-icon.PNG",
-    shortcut: "/logo/logo-rovee-icon.PNG",
-    apple: "/logo/logo-rovee-icon.PNG",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: TITLE,
+    template: "%s | Rovee Finance",
   },
+  description: DESCRIPTION,
+  applicationName: SITE.name,
+  keywords: [
+    "Fator R",
+    "Simples Nacional",
+    "pró-labore",
+    "Anexo III",
+    "Anexo V",
+    "DAS",
+    "gestão financeira PJ",
+    "Open Finance",
+    "contabilidade para PJ",
+  ],
+  authors: [{ name: SITE.legalName }],
+  creator: SITE.legalName,
+  publisher: SITE.legalName,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: SITE.url,
+    siteName: SITE.name,
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  formatDetection: {
+    telephone: false,
+  },
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#4F46E5",
 }
 
 export default function RootLayout({
@@ -37,7 +100,6 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${inter.variable} ${instrumentSerif.variable} antialiased`}>
       <head>
-        <link rel="icon" href="/logo/logo-rovee-icon.PNG" type="image/png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -46,7 +108,11 @@ export default function RootLayout({
         />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400&display=swap" />
       </head>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <AnalyticsNoScript />
+        {children}
+        <AnalyticsScripts />
+      </body>
     </html>
   )
 }

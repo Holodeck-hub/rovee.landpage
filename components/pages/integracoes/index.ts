@@ -1,0 +1,5 @@
+export { IntegracoesPage, default } from "./integracoes-page"
+export { IntegracoesHeroSection } from "./integracoes-hero-section"
+export { IntegracoesComoFuncionaSection } from "./integracoes-como-funciona-section"
+export { IntegracoesBancosSection } from "./integracoes-bancos-section"
+export { IntegracoesCtaSection } from "./integracoes-cta-section"
