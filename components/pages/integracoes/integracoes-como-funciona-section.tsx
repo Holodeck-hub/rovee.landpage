@@ -4,7 +4,7 @@ const PASSOS = [
   {
     numero: "01",
     titulo: "Autorize a conexão",
-    desc: "Você escolhe o banco e autoriza pelo próprio app dele. A Rovee recebe um token temporário e revogável do Banco Central — nunca a sua senha.",
+    desc: "Você escolhe o banco e autoriza pelo próprio app dele. A Rovee recebe um token temporário e revogável do Banco Central, nunca a sua senha.",
   },
   {
     numero: "02",

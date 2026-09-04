@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react"
 import { StickyNavbar, TopNavbar, FooterSection, ConsultantModal } from "../components/layout"
 import {
   HeroShowcaseSection,
-  FiscalAgentsSection,
+  FiscalAgentsTeaserSection,
   LiveMetricsSection,
   TestimonialsSlider,
   RoadmapTeaserSection,
@@ -75,9 +75,9 @@ export default function LandingPage() {
                 <HeroShowcaseSection onOpenConsultant={handleOpenConsultant} />
               </section>
 
-              {/* ── SEÇÃO 2: AGENTES FISCAIS & PREDITIVOS ────────────────── */}
-              <section id="agentes" aria-label="Agentes fiscais e preditivos" className="w-full">
-                <FiscalAgentsSection />
+              {/* ── SEÇÃO 2: INTELIGÊNCIA FISCAL, RESUMO (detalhe fica só em /inteligencia-fiscal#agentes) ── */}
+              <section aria-label="Inteligência fiscal, resumo" className="w-full">
+                <FiscalAgentsTeaserSection />
               </section>
 
               {/* ── SEÇÃO 3: LIVE METRICS EM TEMPO REAL ──────────────────── */}
