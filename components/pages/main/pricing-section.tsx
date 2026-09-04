@@ -173,13 +173,14 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
           const annualTotal = plan.annualMonthly * 12
           const annualSaving = (plan.monthly - plan.annualMonthly) * 12
 
-          return (
+          // O plano recomendado se destaca por profundidade (cartões empilhados
+          // atrás dele), não por cor: a mesma borda neutra dos outros dois.
+          const card = (
             <div
-              key={plan.id}
-              className={`bg-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between ${
+              className={`relative z-[1] bg-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-[rgba(55,50,47,0.12)] ${
                 plan.featured
-                  ? "border-2 border-primary shadow-[0px_8px_30px_rgba(55,50,47,0.12)] relative"
-                  : "border border-[rgba(55,50,47,0.12)] shadow-[0px_2px_8px_rgba(55,50,47,0.04)]"
+                  ? "shadow-[0px_8px_30px_rgba(55,50,47,0.12)]"
+                  : "shadow-[0px_2px_8px_rgba(55,50,47,0.04)]"
               }`}
             >
               <div className="flex flex-col gap-4">
@@ -238,6 +239,25 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
               >
                 {plan.ctaLabel}
               </button>
+            </div>
+          )
+
+          if (!plan.featured) {
+            return <div key={plan.id}>{card}</div>
+          }
+
+          return (
+            <div key={plan.id} className="relative">
+              {card}
+              {/* Efeito de profundidade: dois cartões-fantasma atrás, sem cor nem badge */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-4 -bottom-3 z-0 rounded-2xl border border-[rgba(55,50,47,0.12)] bg-white shadow-md shadow-black/5"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-2 -bottom-1.5 z-0 rounded-2xl border border-[rgba(55,50,47,0.12)] bg-white shadow-md shadow-black/5"
+              />
             </div>
           )
         })}

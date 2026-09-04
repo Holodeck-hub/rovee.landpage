@@ -1,34 +1,36 @@
 "use client"
 
-import { BrainCircuit, FileSpreadsheet, Layers } from "lucide-react"
+import {
+  Timeline,
+  TimelineContent,
+  TimelineHeader,
+  TimelineIndicator,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineTitle,
+} from "@/components/reui/timeline"
 
 const ROADMAP_ITEMS = [
   {
+    step: 1,
     id: "scrum-153",
-    tag: "SIMULAÇÃO DE DECISÃO",
-    badge: "EM DESENVOLVIMENTO",
-    badgeColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
+    tag: "Em desenvolvimento · Simulação de decisão",
     title: "Simulador de Decisão de 24 Meses",
     desc: "Projete cenários com inteligência preditiva: novas contratações, reajuste de pró-labore e novos contratos. A Rovee calcula o impacto fiscal e o runway de caixa para os próximos 2 anos antes de você assinar.",
-    icon: BrainCircuit,
   },
   {
+    step: 2,
     id: "scrum-160",
-    tag: "INTEGRAÇÃO PF × PJ",
-    badge: "PRÓXIMO CICLO",
-    badgeColor: "bg-amber-50 text-amber-800 border-amber-200",
+    tag: "Próximo ciclo · Integração PF × PJ",
     title: "Prontidão de IRPF Integrada",
     desc: "A ponte automática entre o fechamento fiscal da empresa e a declaração de ajuste anual da Pessoa Física. Controle de lucros isentos distribuídos e carnê-leão sem surpresas com a Receita Federal.",
-    icon: FileSpreadsheet,
   },
   {
+    step: 3,
     id: "scrum-189",
-    tag: "AUTOMAÇÃO & IA",
-    badge: "PLANEJADO",
-    badgeColor: "bg-slate-100 text-[#605A57] border-slate-200",
+    tag: "Planejado · Automação & IA",
     title: "Ingestão Inteligente Multicanal",
     desc: "Envie notas e comprovantes via WhatsApp, e-mail dedicado ou Google Drive. O motor de OCR extrai valores, categoriza despesas e alimenta a provisão do DAS em segundos.",
-    icon: Layers,
   },
 ]
 
@@ -52,35 +54,26 @@ export function RoadmapTeaserSection() {
         </div>
       </div>
 
-      {/* 3 Roadmap Cards Grid */}
+      {/* Roadmap como linha do tempo: a ordem dos passos já é o roadmap */}
       <div className="self-stretch flex justify-center items-start">
-        <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-0 border-l border-r border-[rgba(55,50,47,0.12)]">
-          {ROADMAP_ITEMS.map((item, idx) => {
-            const Icon = item.icon
-            const isLast = idx === ROADMAP_ITEMS.length - 1
-            return (
-              <div
-                key={item.id}
-                className={`p-6 sm:p-8 md:p-10 flex flex-col justify-between gap-6 bg-white/70 hover:bg-white transition-colors ${
-                  isLast ? "border-b-0" : "border-b md:border-b-0 border-r-0 md:border-r border-[rgba(55,50,47,0.12)]"
-                }`}
-              >
-                <div>
-                  <div className="flex items-center gap-2.5 mb-2">
-                    <Icon className="w-5 h-5 text-secondary shrink-0" />
-                    <h3 className="text-xl font-semibold text-secondary">{item.title}</h3>
-                  </div>
-                  <p className="text-sm text-[#605A57] leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center text-xs font-mono text-[#605A57]">
-                  <span className="text-[#6B6560] text-[11px] uppercase tracking-wider">{item.tag}</span>
-                </div>
-              </div>
-            )
-          })}
+        <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] px-6 sm:px-10 md:px-16 py-14 sm:py-16">
+          <Timeline defaultValue={1} className="mx-auto w-full max-w-[640px]">
+            {ROADMAP_ITEMS.map((item) => (
+              <TimelineItem key={item.id} step={item.step}>
+                <TimelineHeader>
+                  <TimelineSeparator />
+                  <TimelineTitle className="text-lg font-semibold text-secondary">{item.title}</TimelineTitle>
+                  <TimelineIndicator />
+                </TimelineHeader>
+                <TimelineContent className="mt-1.5">
+                  <span className="mb-2 block text-[11px] font-mono uppercase tracking-wider text-[#8B8D9B]">
+                    {item.tag}
+                  </span>
+                  <p className="text-sm text-[#605A57] leading-relaxed">{item.desc}</p>
+                </TimelineContent>
+              </TimelineItem>
+            ))}
+          </Timeline>
         </div>
       </div>
     </div>
