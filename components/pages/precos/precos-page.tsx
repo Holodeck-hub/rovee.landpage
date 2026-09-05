@@ -11,7 +11,7 @@ export function PrecosPage() {
   return (
     <>
       {/* ── 1. CARDS DE PRICING PRINCIPAL ── */}
-      <div className="w-full">
+      <div className="w-full ">
         <PricingSection onOpenConsultant={openConsultant} />
       </div>
 

@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react"
 import { Check } from "lucide-react"
 import { AnimatedWave } from "../../layout"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { trackEvent } from "../../../lib/analytics"
 
 interface PricingSectionProps {
@@ -113,14 +112,11 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
     onOpenConsultant?.(`planos_${plan.id}`)
   }
 
-  const toggleItemClass =
-    "rounded-full first:rounded-full last:rounded-full px-4 py-2.5 min-h-[44px] text-xs sm:text-sm font-medium border border-[rgba(55,50,47,0.12)] bg-white text-[#605A57] hover:bg-[#F1F5F9] data-[state=on]:border-transparent data-[state=on]:bg-primary data-[state=on]:text-white data-[state=on]:shadow-xs data-[state=on]:hover:bg-primary-hover"
-
   return (
     <section
       ref={sectionRef}
       aria-labelledby="planos-titulo"
-      className="w-full flex flex-col justify-center items-center gap-2 border-b border-[rgba(55,50,47,0.12)]"
+      className="w-full flex flex-col justify-center items-center gap-0 border-b border-[rgba(55,50,47,0.12)]"
     >
       {/* Header Section com AnimatedWave */}
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative overflow-hidden">
@@ -147,26 +143,37 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
         </div>
       </div>
 
-      {/* Alternador de periodicidade */}
-      <ToggleGroup
-        type="single"
-        value={billingPeriod}
-        onValueChange={(value) => {
-          if (value) setBillingPeriod(value as BillingPeriod)
-        }}
-        aria-label="Periodicidade da cobrança"
-        className="gap-2 bg-transparent my-6"
-      >
-        <ToggleGroupItem value="mensal" className={toggleItemClass}>
-          Mensal
-        </ToggleGroupItem>
-        <ToggleGroupItem value="anual" className={`${toggleItemClass} flex items-center gap-2`}>
-          Anual <span className="font-semibold">(20% OFF)</span>
-        </ToggleGroupItem>
-      </ToggleGroup>
+      <div className="w-full band-tint flex flex-col justify-start items-center">
+        {/* Alternador de periodicidade */}
+        <div className="my-6 flex justify-center items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setBillingPeriod("mensal")}
+            className={`rounded-full px-5 py-2.5 min-h-[44px] text-xs sm:text-sm font-medium transition-colors cursor-pointer select-none ${
+              billingPeriod === "mensal"
+                ? "bg-primary text-white"
+                : "border border-[rgba(55,50,47,0.12)] bg-[var(--ground-alt)] text-[#605A57] hover:text-secondary hover:bg-black/5"
+            }`}
+          >
+            Mensal
+          </button>
 
-      {/* Pricing Cards Grid */}
-      <div className="w-full px-4 sm:px-6 md:px-8 pb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <button
+            type="button"
+            onClick={() => setBillingPeriod("anual")}
+            className={`rounded-full px-5 py-2.5 min-h-[44px] text-xs sm:text-sm font-medium transition-colors cursor-pointer select-none flex items-center gap-2 ${
+              billingPeriod === "anual"
+                ? "bg-primary text-white"
+                : "border border-[rgba(55,50,47,0.12)] bg-[var(--ground-alt)] text-[#605A57] hover:text-secondary hover:bg-black/5"
+            }`}
+          >
+            <span>Anual</span>
+            <span className="font-semibold">(20% OFF)</span>
+          </button>
+        </div>
+
+        {/* Pricing Cards Grid */}
+        <div className="w-full max-w-[1140px] mx-auto px-4 sm:px-6 md:px-8 pb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
         {PLANS.map((plan) => {
           const isAnnual = billingPeriod === "anual"
           const displayMonthly = isAnnual ? plan.annualMonthly : plan.monthly
@@ -177,7 +184,7 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
           // atrás dele), não por cor: a mesma borda neutra dos outros dois.
           const card = (
             <div
-              className={`relative z-[1] bg-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-[rgba(55,50,47,0.12)] ${
+              className={`relative z-[1] bg-white rounded-2xl p-6 sm:p-7 flex flex-col justify-between border border-[rgba(55,50,47,0.12)] ${
                 plan.featured
                   ? "shadow-[0px_8px_30px_rgba(55,50,47,0.12)]"
                   : "shadow-[0px_2px_8px_rgba(55,50,47,0.04)]"
@@ -262,6 +269,9 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
           )
         })}
       </div>
+
+      </div>
+
     </section>
   )
 }

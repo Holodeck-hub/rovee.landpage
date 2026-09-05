@@ -15,7 +15,11 @@ export default function LandingPage() {
   const { openConsultant } = useConsultant()
 
   return (
-    <>
+<div className="w-full relative flex flex-col items-center">
+      {/* ── BORDAS LATERAIS (delimitam a página) ── */}
+      <div className="w-[1px] h-full absolute left-4 sm:left-6 md:left-8 lg:left-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
+      <div className="w-[1px] h-full absolute right-4 sm:right-6 md:right-8 lg:right-0 top-0 bg-[rgba(55,50,47,0.12)] shadow-[1px_0px_0px_white] z-0 pointer-events-none" />
+
       {/* ── SEÇÃO 1: HERO COM DASHBOARD SHOWCASE INTERATIVO ────── */}
       <section aria-label="Apresentação da Rovee" className="w-full">
         <HeroShowcaseSection onOpenConsultant={openConsultant} />
@@ -47,9 +51,9 @@ export default function LandingPage() {
       </section>
 
       {/* ── SEÇÃO 6: CTA FINAL COM CONVERSÃO ────────────────────── */}
-      <section aria-label="Comece agora" className="w-full">
+      <section aria-label="Comece agora" className="w-full band-tint">
         <CTASection onOpenConsultant={openConsultant} />
       </section>
-    </>
+    </div>
   )
 }

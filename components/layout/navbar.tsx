@@ -306,9 +306,6 @@ export function StickyNavbar({ isScrolled, onOpenConsultant }: StickyNavbarProps
 export function TopNavbar({ onOpenConsultant }: NavbarProps) {
   return (
     <div className="w-full h-12 sm:h-14 md:h-16 lg:h-[84px] flex justify-center items-center z-30 px-6 sm:px-8 md:px-12 lg:px-0 relative">
-      {/* Linha horizontal passando por trás */}
-      <div className="w-full h-0 absolute left-0 top-6 sm:top-7 md:top-8 lg:top-[42px] border-t border-[rgba(55,50,47,0.12)] shadow-[0px_1px_0px_white]"></div>
-
       {/* Barra de Navegação Central Transparente Fosca */}
       <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[820px] lg:w-[820px] h-11 sm:h-12 py-1.5 px-4 bg-white/70 backdrop-blur-xl rounded flex justify-between items-center relative z-30 border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_24px_rgba(55,50,47,0.04)]">
         <Link href="/" className="flex items-center hover:opacity-85 transition-opacity">

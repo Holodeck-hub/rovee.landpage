@@ -177,7 +177,7 @@
 :root {
   /* O segundo fundo da alternância. A Brex usa #F3F3F7; este puxa um fio
      para o índigo da marca em vez de ser cinza neutro. */
-  --ground-alt: #F3F3F8;
+  --ground-alt: #E9EDF2;
   --ink-muted:  #5E6270;
   --ink-faint:  #8B8D9B;
 }
