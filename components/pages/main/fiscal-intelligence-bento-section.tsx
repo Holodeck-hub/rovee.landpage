@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { DollarSign, TrendingUp, ShieldAlert, Clock } from "lucide-react"
+import { AnimatedWave } from "@/components/layout"
 
 const CARDS = [
   {
@@ -105,10 +106,14 @@ function BentoCard({
 
 export function FiscalIntelligenceBentoSection() {
   return (
-    <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
+    <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center relative overflow-hidden">
       {/* Header com fundo preto */}
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-12 sm:py-16 md:py-20 bg-black text-white border-b border-white/10 flex flex-col justify-start items-center">
-        <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
+        {/* Background Animated Wave para o header */}
+        <div className="absolute inset-0 w-full h-full opacity-40 sm:opacity-50 z-0 pointer-events-none">
+          <AnimatedWave />
+        </div>
+        <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center relative z-10">
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400">
             Motor de Inteligência Fiscal
           </span>

@@ -9,28 +9,24 @@ const testimonials = [
   {
     quote: "Com o pró-labore calibrado para cruzar os 28% do Fator R, a saída do Anexo V (15,5%) para o Anexo III (6%) representa mais de R$ 2.400 por mês em imposto que deixa de ser pago.",
     persona: "Perfil: Tech Lead & Consultor PJ",
-    role: "Cenário ilustrativo",
     segment: "DevOps & Cloud",
     metric: "Diferença de alíquota: 15,5% → 6%",
   },
   {
     quote: "R$ 40 mil na conta da empresa não são R$ 40 mil disponíveis. O Cheque do Mês separa o que é retirada, o que é reserva e o que é provisão de DAS antes da transferência para a pessoa física.",
     persona: "Perfil: Fundadora & Designer",
-    role: "Cenário ilustrativo",
     segment: "Estúdio B2B, sócia única",
     metric: "Caixa separado em 3 destinos",
   },
   {
     quote: "Do lado do escritório contábil, o cliente PJ chega no fechamento com o extrato já classificado, o pró-labore calibrado e sem despesa pessoal misturada, eliminando a reclassificação manual mês a mês.",
     persona: "Perfil: Contador Consultivo",
-    role: "Cenário ilustrativo",
     segment: "Escritório com carteira de PJs",
     metric: "Fechamento sem reclassificação",
   },
   {
     quote: "O alerta de sazonalidade aponta a queda histórica de faturamento de fim de ano com antecedência, e converte essa curva em meta de reserva mensal em vez de susto em dezembro.",
     persona: "Perfil: Diretor de Engenharia",
-    role: "Cenário ilustrativo",
     segment: "Software house sazonal",
     metric: "Previsibilidade de 6 meses",
   },
@@ -128,7 +124,7 @@ export function TestimonialsSlider() {
                     <div>
                       <div className="text-sm font-semibold text-secondary">{testimonial.persona}</div>
                       <div className="text-xs text-[#605A57]">
-                        {testimonial.role} · {testimonial.segment}
+                        {testimonial.segment}
                       </div>
                     </div>
                   </div>

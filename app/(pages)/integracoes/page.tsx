@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { IntegracoesPage } from "../../components/pages/integracoes"
+import { IntegracoesPage } from "@/components/pages/integracoes"
+
 
 export const metadata: Metadata = {
   title: "Bancos & Open Finance",

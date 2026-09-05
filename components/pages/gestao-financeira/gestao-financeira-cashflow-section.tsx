@@ -3,13 +3,6 @@
 import { GestaoFinanceiraRunwayChart } from "./gestao-financeira-runway-chart"
 import { GestaoFinanceiraDasChart } from "./gestao-financeira-das-chart"
 
-/**
- * Preenche o buraco deixado pela seção de bancos removida: em vez de
- * conexão bancária, mostra o que a automação de caixa produz — runway
- * projetado e DAS provisionado x pago. Os dois gráficos que faltavam do
- * plano ("Stacked area chart with dashed strokes" e "Diagonal stripe bar
- * chart"), com o mesmo aviso de cenário ilustrativo do resto do site.
- */
 export function GestaoFinanceiraCashflowSection() {
   return (
     <section id="predicao" aria-label="Caixa e provisão ao longo do ano" className="w-full band-tint border-b border-[rgba(55,50,47,0.12)]">

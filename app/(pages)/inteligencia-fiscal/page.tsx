@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { InteligenciaFiscalPage } from "../../components/pages/inteligencia-fiscal"
+import { InteligenciaFiscalPage } from "@/components/pages/inteligencia-fiscal"
+
 
 export const metadata: Metadata = {
   title: "Inteligência Fiscal e Fator R",
