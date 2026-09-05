@@ -183,7 +183,7 @@ function MobileMenu({
         ref={panelRef}
         id={panelId}
         hidden={!isOpen}
-        className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 max-h-[70vh] overflow-y-auto bg-white border border-[rgba(55,50,47,0.12)] rounded-xl shadow-[0px_12px_32px_rgba(15,23,42,0.12)] p-2"
+        className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 max-h-[70vh] overflow-y-auto bg-white/85 backdrop-blur-2xl border border-[rgba(55,50,47,0.12)] rounded-xl shadow-[0px_16px_36px_rgba(15,23,42,0.14)] p-2"
       >
         <nav aria-label="Menu principal (mobile)" className="flex flex-col">
           {NAV_GROUPS.map((group, index) => {
@@ -274,7 +274,7 @@ export function StickyNavbar({ isScrolled, onOpenConsultant }: StickyNavbarProps
   return (
     <div
       aria-hidden={!isScrolled}
-      className={`fixed top-0 left-0 right-0 w-full h-14 z-50 bg-white/95 backdrop-blur-xl border-b border-[rgba(55,50,47,0.12)] shadow-[0px_2px_8px_rgba(55,50,47,0.04)] px-4 sm:px-8 md:px-12 flex items-center justify-between transition-all duration-300 ease-out origin-center ${
+      className={`fixed top-0 left-0 right-0 w-full h-14 z-50 bg-white/75 backdrop-blur-xl border-b border-[rgba(55,50,47,0.08)] shadow-[0px_4px_20px_rgba(55,50,47,0.04)] px-4 sm:px-8 md:px-12 flex items-center justify-between transition-all duration-300 ease-out origin-center ${
         isScrolled
           ? "opacity-100 scale-100 pointer-events-auto translate-y-0"
           : "opacity-0 scale-95 pointer-events-none -translate-y-2"
@@ -309,8 +309,8 @@ export function TopNavbar({ onOpenConsultant }: NavbarProps) {
       {/* Linha horizontal passando por trás */}
       <div className="w-full h-0 absolute left-0 top-6 sm:top-7 md:top-8 lg:top-[42px] border-t border-[rgba(55,50,47,0.12)] shadow-[0px_1px_0px_white]"></div>
 
-      {/* Barra de Navegação Central */}
-      <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[820px] lg:w-[820px] h-11 sm:h-12 py-1.5 px-4 bg-[#F8FAFC]/90 backdrop-blur-md shadow-[0px_0px_0px_2px_white] rounded flex justify-between items-center relative z-30 border border-[rgba(55,50,47,0.12)]">
+      {/* Barra de Navegação Central Transparente Fosca */}
+      <div className="w-full max-w-[calc(100%-32px)] sm:max-w-[calc(100%-48px)] md:max-w-[calc(100%-64px)] lg:max-w-[820px] lg:w-[820px] h-11 sm:h-12 py-1.5 px-4 bg-white/70 backdrop-blur-xl rounded flex justify-between items-center relative z-30 border border-[rgba(55,50,47,0.12)] shadow-[0px_4px_24px_rgba(55,50,47,0.04)]">
         <Link href="/" className="flex items-center hover:opacity-85 transition-opacity">
           <span className="text-secondary text-lg sm:text-xl font-bold font-sans tracking-tight">
             Rovee

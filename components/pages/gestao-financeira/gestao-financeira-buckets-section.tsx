@@ -1,9 +1,17 @@
 "use client"
 
+import { AnimatedWave } from "@/components/layout"
+
 export function GestaoFinanceiraBucketsSection() {
   return (
-    <section aria-label="Organização de Caixa" className="w-full py-20 px-5 border-y border-white/10 bg-black text-white">
-      <div className="w-full max-w-[1100px] mx-auto">
+    <section aria-label="Organização de Caixa" className="w-full py-20 px-5 border-y border-white/10 bg-black text-white relative overflow-hidden">
+      {/* Background Animated Wave */}
+      <div className="absolute inset-0 w-full h-full opacity-40 sm:opacity-50 z-0 pointer-events-none">
+        <AnimatedWave />
+      </div>
+
+      <div className="w-full max-w-[1100px] mx-auto relative z-10">
+
         <div className="max-w-[42rem] mb-12">
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400">
             Automação de Caixa

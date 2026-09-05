@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { PrecosPage } from "../../components/pages/precos"
+import { PrecosPage } from "@/components/pages/precos"
+
 
 export const metadata: Metadata = {
   title: "Planos e Preços",

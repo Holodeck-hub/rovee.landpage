@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { GestaoFinanceiraPage } from "../../components/pages/gestao-financeira"
+import { GestaoFinanceiraPage } from "@/components/pages/gestao-financeira"
+
 
 export const metadata: Metadata = {
   title: "Gestão Financeira PJ e Pockets de Caixa",

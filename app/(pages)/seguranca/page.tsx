@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { SegurancaPage } from "../../components/pages/seguranca"
+import { SegurancaPage } from "@/components/pages/seguranca"
+
 
 export const metadata: Metadata = {
   title: "Segurança de Nível Bancário e Conformidade LGPD",
