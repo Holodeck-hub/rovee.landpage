@@ -35,7 +35,6 @@ export function AccountantsMetricsSection() {
         </div>
 
         {/* Moldura Mestre Bento Grid (layout exemplo-2.jpg ampliado) */}
-        <div className="rounded-[32px] sm:rounded-[36px] border border-[rgba(55,50,47,0.08)] bg-[#F5F6F8] p-4 sm:p-6 md:p-8 shadow-[0px_8px_32px_rgba(0,0,0,0.03)]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
             {/* ── CARD ESQUERDO (COLUNA 1 - FULL HEIGHT) ── */}
             <div className="lg:col-span-4 rounded-2xl sm:rounded-3xl border border-[rgba(55,50,47,0.08)] bg-white p-7 sm:p-9 md:p-10 flex flex-col justify-between gap-8 relative overflow-hidden shadow-xs min-h-[440px] sm:min-h-[500px]">
@@ -52,7 +51,7 @@ export function AccountantsMetricsSection() {
 
               <div className="relative z-10">
                 {/* Ícone de destaque estilo App Icon ampliado */}
-                <div className="w-14 h-14 rounded-2xl bg-[#FF4F00] text-white flex items-center justify-center shadow-md mb-7">
+                <div className="w-14 h-14 rounded-2xl bg-indigo-500 text-white flex items-center justify-center shadow-md mb-7">
                   <Zap className="w-7 h-7" />
                 </div>
 
@@ -81,8 +80,8 @@ export function AccountantsMetricsSection() {
                   role="switch"
                   aria-checked={conciliacaoAtiva}
                   onClick={() => setConciliacaoAtiva((v) => !v)}
-                  className={`w-12 h-7 rounded-full transition-colors relative cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-                    conciliacaoAtiva ? "bg-[#FF4F00]" : "bg-[#D1D5DB]"
+                  className={`w-12 h-7 rounded-full transition-colors relative cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 ${
+                    conciliacaoAtiva ? "bg-indigo-500" : "bg-[#D1D5DB]"
                   }`}
                 >
                   <span
@@ -116,7 +115,7 @@ export function AccountantsMetricsSection() {
                       <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-purple-100 border-2 border-white flex items-center justify-center text-purple-700 shadow-xs">
                         <Building2 className="w-4 h-4 sm:w-5 sm:h-5" />
                       </span>
-                      <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-orange-100 border-2 border-white flex items-center justify-center text-orange-700 shadow-xs">
+                      <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-indigo-100 border-2 border-white flex items-center justify-center text-indigo-600 shadow-xs">
                         <Landmark className="w-4 h-4 sm:w-5 sm:h-5" />
                       </span>
                       <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-emerald-100 border-2 border-white flex items-center justify-center text-emerald-700 shadow-xs">
@@ -171,7 +170,7 @@ export function AccountantsMetricsSection() {
                             const n = Number(e.target.value)
                             setClientes(Number.isFinite(n) ? Math.min(999, Math.max(1, n)) : 1)
                           }}
-                          className="w-14 text-center font-bold text-secondary bg-[#F5F6F8] rounded-lg border border-[rgba(55,50,47,0.14)] py-1 px-1.5 focus:border-primary focus:outline-none"
+                          className="w-14 text-center font-bold text-secondary bg-[#F5F6F8] rounded-lg border border-[rgba(55,50,47,0.14)] py-1 px-1.5 focus:border-indigo-500 focus:outline-none"
                         />
                         <span className="font-sans font-medium text-secondary">clientes PJ</span>
                       </label>
@@ -212,7 +211,7 @@ export function AccountantsMetricsSection() {
               {/* ── CARD INFERIOR (ESTILO SHORTCUT KEYS AMPLIADO) ── */}
               <div className="rounded-2xl sm:rounded-3xl border border-[rgba(55,50,47,0.08)] bg-white p-5 sm:p-6 md:p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 shadow-xs">
                 <div className="flex items-center gap-4">
-                  <span className="w-11 h-11 rounded-xl bg-[#F5F6F8] border border-[rgba(55,50,47,0.08)] flex items-center justify-center text-[#FF4F00] shrink-0">
+                  <span className="w-11 h-11 rounded-xl bg-[#F5F6F8] border border-[rgba(55,50,47,0.08)] flex items-center justify-center text-indigo-500 shrink-0">
                     <FileSpreadsheet className="w-5 h-5" />
                   </span>
                   <div>
@@ -243,7 +242,6 @@ export function AccountantsMetricsSection() {
             </div>
           </div>
         </div>
-      </div>
     </section>
   )
 }
