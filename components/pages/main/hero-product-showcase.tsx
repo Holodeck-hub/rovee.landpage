@@ -113,7 +113,7 @@ export function HeroProductShowcase() {
 
   return (
     <div
-      className="w-full flex flex-col justify-center items-center border-t border-[rgba(55,50,47,0.12)] bg-white"
+      className="w-full flex flex-col justify-center items-center bg-white"
       onMouseEnter={() => setPausado(true)}
       onMouseLeave={() => setPausado(false)}
       onFocusCapture={() => setPausado(true)}

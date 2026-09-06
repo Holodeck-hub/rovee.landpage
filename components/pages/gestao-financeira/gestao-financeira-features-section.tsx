@@ -56,6 +56,7 @@ export function GestaoFinanceiraFeaturesSection() {
                       alt={card.titulo}
                       width={1000}
                       height={800}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                   )}

@@ -2,7 +2,7 @@
 
 export function LiveMetricsSection() {
   return (
-    <section aria-label="Métricas de Precisão" className="w-full border-b border-[rgba(55,50,47,0.12)] px-4 sm:px-6 md:px-8 py-20 sm:py-24 md:py-28 bg-[#E9EDF2]">
+    <section aria-label="Métricas de Precisão" className="w-full px-4 sm:px-6 md:px-8 py-20 sm:py-24 md:py-28 bg-[#E9EDF2]">
       <div className="w-full max-w-[1040px] mx-auto">
         {/* Cabeçalho */}
         <div className="text-center max-w-[620px] mx-auto mb-14 sm:mb-16">
@@ -46,6 +46,7 @@ export function LiveMetricsSection() {
                   <img
                     src="/imagens/alexandra-fuller-wkgv7I2VTzM-unsplash.jpg"
                     alt="Sócio PJ"
+                    loading="lazy"
                     className="w-10 h-10 rounded-full object-cover grayscale contrast-125 border border-black/10 shadow-xs"
                   />
                 </div>
@@ -157,6 +158,7 @@ export function LiveMetricsSection() {
                 <img
                   src="/imagens/alexandra-fuller-wkgv7I2VTzM-unsplash.jpg"
                   alt="Mariana Silva"
+                  loading="lazy"
                   className="w-10 h-10 rounded-full object-cover grayscale contrast-125 border border-white/60 shadow-2xs"
                 />
                 <div>

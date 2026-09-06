@@ -1,6 +1,6 @@
 "use client"
 
-import { useConsultant } from "../../layout"
+import { useConsultant, Reveal } from "../../layout"
 import { IntegracoesHeroSection } from "./integracoes-hero-section"
 import { IntegracoesComoFuncionaSection } from "./integracoes-como-funciona-section"
 import { IntegracoesBancosSection } from "./integracoes-bancos-section"
@@ -12,16 +12,24 @@ export function IntegracoesPage() {
   return (
     <>
       {/* ── 1. HERO INTEGRAÇÕES ── */}
-      <IntegracoesHeroSection onOpenConsultant={openConsultant} />
+      <Reveal>
+        <IntegracoesHeroSection onOpenConsultant={openConsultant} />
+      </Reveal>
 
       {/* ── 2. COMO FUNCIONA O OPEN FINANCE ── */}
-      <IntegracoesComoFuncionaSection />
+      <Reveal>
+        <IntegracoesComoFuncionaSection />
+      </Reveal>
 
       {/* ── 3. BANCOS HOMOLOGADOS ── */}
-      <IntegracoesBancosSection />
+      <Reveal>
+        <IntegracoesBancosSection />
+      </Reveal>
 
       {/* ── 4. CTA FINAL ── */}
-      <IntegracoesCtaSection onOpenConsultant={openConsultant} />
+      <Reveal>
+        <IntegracoesCtaSection onOpenConsultant={openConsultant} />
+      </Reveal>
     </>
   )
 }

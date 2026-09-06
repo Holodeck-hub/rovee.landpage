@@ -10,7 +10,7 @@ import Link from "next/link"
  */
 export function AccountantsTeaserSection() {
   return (
-    <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
+    <div className="w-full flex flex-col justify-center items-center">
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-20 flex flex-col justify-start items-center">
         <div className="w-full max-w-[640px] flex flex-col justify-start items-center gap-3 text-center">
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">

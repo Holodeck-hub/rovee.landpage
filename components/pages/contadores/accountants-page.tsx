@@ -1,6 +1,6 @@
 "use client"
 
-import { useConsultant } from "../../layout"
+import { useConsultant, Reveal } from "../../layout"
 import { AccountantsHeroSection } from "./accountants-hero-section"
 import { AccountantsPainPointsSection } from "./accountants-pain-points-section"
 import { AccountantsBoundariesSection } from "./accountants-boundaries-section"
@@ -15,25 +15,39 @@ export function AccountantsPage() {
   return (
     <>
       {/* ── SEÇÃO 1: HERO COM FORMULÁRIO ── */}
-      <AccountantsHeroSection onOpenConsultant={openConsultant} />
+      <Reveal>
+        <AccountantsHeroSection onOpenConsultant={openConsultant} />
+      </Reveal>
 
       {/* ── SEÇÃO 2: O QUE MUDA NO FECHAMENTO (DORES RESOLVIDAS) ── */}
-      <AccountantsPainPointsSection />
+      <Reveal>
+        <AccountantsPainPointsSection />
+      </Reveal>
 
       {/* ── SEÇÃO 3: A FRONTEIRA / LIMITES DA ROVEE ── */}
-      <AccountantsBoundariesSection />
+      <Reveal>
+        <AccountantsBoundariesSection />
+      </Reveal>
 
       {/* ── SEÇÃO 4: NÚMEROS E CALCULADORA DINÂMICA ── */}
-      <AccountantsMetricsSection />
+      <Reveal>
+        <AccountantsMetricsSection />
+      </Reveal>
 
       {/* ── SEÇÃO 5: DE ONDE VÊM OS EXTRATOS (INTEGRAÇÃO BANCÁRIA) ── */}
-      <AccountantsExtractsSection onOpenConsultant={openConsultant} />
+      <Reveal>
+        <AccountantsExtractsSection onOpenConsultant={openConsultant} />
+      </Reveal>
 
       {/* ── SEÇÃO 6: PORTAL DO ESCRITÓRIO (ROADMAP E PARCERIA) ── */}
-      <AccountantsPortalSection onOpenConsultant={openConsultant} />
+      <Reveal>
+        <AccountantsPortalSection onOpenConsultant={openConsultant} />
+      </Reveal>
 
       {/* ── SEÇÃO 7: PERGUNTAS FREQUENTES (FAQ) ── */}
-      <AccountantsFaqSection />
+      <Reveal>
+        <AccountantsFaqSection />
+      </Reveal>
     </>
   )
 }
