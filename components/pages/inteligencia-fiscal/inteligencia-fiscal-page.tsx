@@ -1,6 +1,6 @@
 "use client"
 
-import { useConsultant } from "../../layout"
+import { useConsultant, Reveal } from "../../layout"
 import { FiscalIntelligenceBentoSection, FiscalAgentsSection } from "../main"
 import { InteligenciaFiscalHeroSection } from "./inteligencia-fiscal-hero-section"
 import { InteligenciaFiscalCalculationSection } from "./inteligencia-fiscal-calculation-section"
@@ -13,26 +13,38 @@ export function InteligenciaFiscalPage() {
   return (
     <>
       {/* ── 1. HERO INTELIGÊNCIA FISCAL ── */}
-      <InteligenciaFiscalHeroSection onOpenConsultant={openConsultant} />
+      <Reveal>
+        <InteligenciaFiscalHeroSection onOpenConsultant={openConsultant} />
+      </Reveal>
 
       {/* ── 2. BENTO GRID FISCAL ── */}
-      <section id="fator-r" aria-label="Pilares fiscais" className="w-full">
-        <FiscalIntelligenceBentoSection />
-      </section>
+      <Reveal asChild>
+        <section id="fator-r" aria-label="Pilares fiscais" className="w-full">
+          <FiscalIntelligenceBentoSection />
+        </section>
+      </Reveal>
 
       {/* ── 3. AGENTES AUTÔNOMOS FISCAIS ── */}
-      <section id="agentes" aria-label="Agentes Proativos" className="w-full band-tint border-b border-[rgba(55,50,47,0.12)]">
-        <FiscalAgentsSection />
-      </section>
+      <Reveal asChild>
+        <section id="agentes" aria-label="Agentes Proativos" className="w-full band-tint border-b border-[rgba(55,50,47,0.12)]">
+          <FiscalAgentsSection />
+        </section>
+      </Reveal>
 
       {/* ── 4. MEMÓRIA DE CÁLCULO ── */}
-      <InteligenciaFiscalCalculationSection />
+      <Reveal>
+        <InteligenciaFiscalCalculationSection />
+      </Reveal>
 
       {/* ── 4.1. PARA ONDE VAI CADA REAL (3 DESTINOS) ── */}
-      <InteligenciaFiscalDestinosSection />
+      <Reveal>
+        <InteligenciaFiscalDestinosSection />
+      </Reveal>
 
       {/* ── 5. CTA FINAL ── */}
-      <InteligenciaFiscalCtaSection onOpenConsultant={openConsultant} />
+      <Reveal>
+        <InteligenciaFiscalCtaSection onOpenConsultant={openConsultant} />
+      </Reveal>
     </>
   )
 }

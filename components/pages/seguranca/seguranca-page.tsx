@@ -1,6 +1,6 @@
 "use client"
 
-import { useConsultant } from "../../layout"
+import { useConsultant, Reveal } from "../../layout"
 import { SecuritySection } from "../main"
 import { SegurancaHeroSection } from "./seguranca-hero-section"
 import { SegurancaPrivacySection } from "./seguranca-privacy-section"
@@ -12,18 +12,26 @@ export function SegurancaPage() {
   return (
     <>
       {/* ── 1. HERO SEGURANÇA ── */}
-      <SegurancaHeroSection onOpenConsultant={openConsultant} />
+      <Reveal>
+        <SegurancaHeroSection onOpenConsultant={openConsultant} />
+      </Reveal>
 
       {/* ── 2. 4 PILARES DE SEGURANÇA ── */}
-      <section id="pilares" aria-label="Pilares de segurança" className="w-full">
-        <SecuritySection />
-      </section>
+      <Reveal asChild>
+        <section id="pilares" aria-label="Pilares de segurança" className="w-full">
+          <SecuritySection />
+        </section>
+      </Reveal>
 
       {/* ── 3. DETALHAMENTO TÉCNICO DE PRIVACIDADE ── */}
-      <SegurancaPrivacySection />
+      <Reveal>
+        <SegurancaPrivacySection />
+      </Reveal>
 
       {/* ── 4. CTA FINAL ── */}
-      <SegurancaCtaSection onOpenConsultant={openConsultant} />
+      <Reveal>
+        <SegurancaCtaSection onOpenConsultant={openConsultant} />
+      </Reveal>
     </>
   )
 }

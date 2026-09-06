@@ -1,6 +1,6 @@
 "use client"
 
-import { useConsultant } from "../../layout"
+import { useConsultant, Reveal } from "../../layout"
 import { GestaoFinanceiraHeroSection } from "./gestao-financeira-hero-section"
 import { GestaoFinanceiraSalaryFlowSection } from "./gestao-financeira-salary-flow-section"
 import { GestaoFinanceiraFeaturesSection } from "./gestao-financeira-features-section"
@@ -14,22 +14,34 @@ export function GestaoFinanceiraPage() {
   return (
     <>
       {/* ── 1. HERO GESTÃO FINANCEIRA ── */}
-      <GestaoFinanceiraHeroSection onOpenConsultant={openConsultant} />
+      <Reveal>
+        <GestaoFinanceiraHeroSection onOpenConsultant={openConsultant} />
+      </Reveal>
 
       {/* ── 2. FLUXO AUTOMATIZADO DE SALÁRIO ── */}
-      <GestaoFinanceiraSalaryFlowSection />
+      <Reveal>
+        <GestaoFinanceiraSalaryFlowSection />
+      </Reveal>
 
       {/* ── 3. RECURSOS DO MICRO AO MACRO ── */}
-      <GestaoFinanceiraFeaturesSection />
+      <Reveal>
+        <GestaoFinanceiraFeaturesSection />
+      </Reveal>
 
       {/* ── 4. AUTOMAÇÃO DE CAIXA: 3 DESTINOS ── */}
-      <GestaoFinanceiraBucketsSection />
+      <Reveal>
+        <GestaoFinanceiraBucketsSection />
+      </Reveal>
 
       {/* ── 5. RUNWAY E DAS PROVISIONADO ── */}
-      <GestaoFinanceiraCashflowSection />
+      <Reveal>
+        <GestaoFinanceiraCashflowSection />
+      </Reveal>
 
       {/* ── 6. CTA FINAL ── */}
-      <GestaoFinanceiraCtaSection onOpenConsultant={openConsultant} />
+      <Reveal>
+        <GestaoFinanceiraCtaSection onOpenConsultant={openConsultant} />
+      </Reveal>
     </>
   )
 }

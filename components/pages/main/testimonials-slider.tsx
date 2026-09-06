@@ -57,9 +57,9 @@ export function TestimonialsSlider() {
     "w-11 h-11 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-[#F1F5F9] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary text-secondary cursor-pointer transition-colors"
 
   return (
-    <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
+    <div className="w-full flex flex-col justify-center items-center">
       {/* Header com AnimatedWave */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative overflow-hidden">
+      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 flex flex-col justify-start items-center relative overflow-hidden">
         <div className="absolute inset-0 w-full h-full opacity-40 sm:opacity-50 z-0 pointer-events-none">
           <AnimatedWave />
         </div>
@@ -82,7 +82,7 @@ export function TestimonialsSlider() {
       {/* Main Quote Carousel */}
       <div className="self-stretch flex justify-center items-start">
         <div
-          className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] p-6 sm:p-10 md:p-16 bg-white/70"
+          className="flex-1 w-full p-6 sm:p-10 md:p-16 bg-white/70"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onFocusCapture={() => setIsPaused(true)}

@@ -36,9 +36,9 @@ const ROADMAP_ITEMS = [
 
 export function RoadmapTeaserSection() {
   return (
-    <div className="w-full bg-[#E9EDF2] border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
+    <div className="w-full bg-[#E9EDF2] flex flex-col justify-center items-center">
       {/* Section Header */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center">
+      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 flex flex-col justify-start items-center">
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
             Evolução Contínua & Roadmap
@@ -56,7 +56,7 @@ export function RoadmapTeaserSection() {
 
       {/* Roadmap como linha do tempo: a ordem dos passos já é o roadmap */}
       <div className="self-stretch flex justify-center items-start">
-        <div className="flex-1 w-full border-l border-r border-[rgba(55,50,47,0.12)] px-6 sm:px-10 md:px-16 py-14 sm:py-16">
+        <div className="flex-1 w-full px-6 sm:px-10 md:px-16 py-14 sm:py-16">
           <Timeline defaultValue={1} className="mx-auto w-full max-w-[640px]">
             {ROADMAP_ITEMS.map((item) => (
               <TimelineItem key={item.id} step={item.step}>

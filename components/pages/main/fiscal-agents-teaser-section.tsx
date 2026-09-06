@@ -32,7 +32,7 @@ const FISCAL_PILLARS_TEASER = [
 
 export function FiscalAgentsTeaserSection() {
   return (
-    <section aria-label="Inteligência fiscal, resumo" className="w-full bg-black text-white border-b border-white/10 flex flex-col justify-center items-center">
+    <section aria-label="Inteligência fiscal, resumo" className="w-full bg-black text-white flex flex-col justify-center items-center">
       <div className="self-stretch px-5 sm:px-6 md:px-8 w-full max-w-[1100px] mx-auto py-16 sm:py-20 md:py-24 flex flex-col justify-start items-center text-center gap-8">
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3">
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400">
