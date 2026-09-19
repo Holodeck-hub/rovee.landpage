@@ -67,12 +67,6 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
         </div>
       </div>
 
-      <div className="self-stretch -mx-4 md:-mx-8 lg:mx-0 w-[calc(100%+32px)] md:w-[calc(100%+64px)] lg:w-full h-12 sm:h-14 relative overflow-hidden flex items-center justify-center bg-[#F8FAFC]">
-        <div className="w-full h-full opacity-40 pointer-events-none select-none">
-          <AnimatedWave />
-        </div>
-      </div>
-
       <HeroProductShowcase />
     </div>
   )

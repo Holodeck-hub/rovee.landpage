@@ -1,241 +1,259 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
+import { useRef, useState, useEffect, useCallback } from "react"
+import Link from "next/link"
+import {
+  Store,
+  CreditCard,
+  ShieldCheck,
+  FileText,
+  TrendingUp,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+} from "lucide-react"
 
 /**
- * Showcase interativo dos 3 casos de uso (Clareza de Caixa, Otimizador de
- * Fator R, Inteligência Preditiva) — peça separada do hero com o celular.
- *
- * As 3 abas ficam empilhadas na MESMA célula de grid (col-start-1
- * row-start-1, como em fiscal-agents-section.tsx) o tempo todo, só a
- * ativa com opacidade 100%. Isso trava a altura do bloco no tamanho da
- * aba mais alta, sempre — trocar de aba nunca empurra o resto da página.
- * O painel de números é a Table (components/ui/table.tsx) que o site já
- * usa em outros lugares, não mais linhas soltas.
+ * Showcase de funcionalidades da Rovee:
+ * Headline à esquerda e carrossel de cartões à direita com passagem infinita
+ * e efeito de blur (frosted glass) nítido e proeminente no lado direito.
  */
-interface ShowcaseTab {
+
+interface ShowcaseItem {
   id: string
   title: string
-  subtitle: string
   desc: string
-  stats: { value: string; label: string }[]
-  linhas: { item: string; nota: string; valor: string; destaque?: boolean }[]
-  rodape?: string
+  icon: React.ComponentType<{ className?: string }>
+  href: string
 }
 
-const ALOCACAO_BALDES = [
-  { rotulo: "Retirada Pessoal PF", valor: 24_200, tipo: "solido" as const },
-  { rotulo: "Reserva Operacional PJ", valor: 9_800, tipo: "tinta" as const },
-  { rotulo: "Provisão Guia DAS", valor: 4_450, tipo: "listrado" as const },
-]
-const TOTAL_ALOCACAO = ALOCACAO_BALDES.reduce((soma, item) => soma + item.valor, 0)
-
-const TABS: ShowcaseTab[] = [
+const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     id: "cheque-do-mes",
-    title: "Clareza de Caixa",
-    subtitle: '"Cheque do Mês"',
-    desc: "Decomposição matemática de R$ 38.450,00 de faturamento bruto do mês em 3 baldes: quanto é seu para retirar, da empresa e do imposto.",
-    stats: [
-      { value: "62,9%", label: "margem líquida" },
-      { value: "100%", label: "conciliado" },
-    ],
-    linhas: [
-      { item: "Retirada Pessoal PF", nota: "100% livre de IRPF", valor: "R$ 24.200,00", destaque: true },
-      { item: "Reserva Operacional PJ", nota: "Custos fixos + giro seguro", valor: "R$ 9.800,00" },
-      { item: "Provisão Guia DAS", nota: "Vencimento 20/06 · Anexo III 6,0%", valor: "R$ 4.450,00" },
-    ],
+    title: "Cheque do Mês",
+    desc: "Separe automaticamente o faturamento em 3 baldes: retirada pessoal livre de IRPF, reserva de giro da PJ e provisão do imposto.",
+    icon: Store,
+    href: "/inteligencia-fiscal",
   },
   {
     id: "fator-r",
     title: "Otimizador de Fator R",
-    subtitle: "Anexo V → Anexo III",
-    desc: "Calibragem da folha de pagamento para atingir os 28% do Fator R e migrar do Anexo V (15,5%) para o Anexo III (6%).",
-    stats: [
-      { value: "+R$ 34.200/ano", label: "economia prescrita" },
-      { value: "6,00%", label: "alíquota com Rovee" },
-    ],
-    linhas: [
-      { item: "Sem gestão (Anexo V)", nota: "Alíquota efetiva do DAS", valor: "15,50%" },
-      { item: "Com Rovee (Anexo III)", nota: "Pró-labore calibrado em 28,2% da folha", valor: "6,00%", destaque: true },
-      { item: "Imposto devido no ano", nota: "R$ 55.800 → R$ 21.600", valor: "-R$ 34.200", destaque: true },
-    ],
-    rodape: "Memória de cálculo pronta com o pró-labore exato para envio ao contador no fechamento.",
+    desc: "Calibre a folha de pagamento para atingir os 28% e migre do Anexo V (15,5%) para o Anexo III (6,0%), economizando até R$ 34.200 ao ano.",
+    icon: CreditCard,
+    href: "/inteligencia-fiscal",
   },
   {
-    id: "runway",
+    id: "blindagem",
+    title: "Blindagem Patrimonial",
+    desc: "Detector contínuo de despesas pessoais na conta jurídica. Proteja seu patrimônio pessoal contra o risco do Art. 50 do Código Civil.",
+    icon: ShieldCheck,
+    href: "/inteligencia-fiscal",
+  },
+  {
+    id: "provisao-das",
+    title: "Provisão Contínua do DAS",
+    desc: "A cada nota emitida, o imposto do dia 20 é calculado e provisionado com 1 clique. Tenha zero surpresas no fechamento mensal.",
+    icon: FileText,
+    href: "/inteligencia-fiscal",
+  },
+  {
+    id: "preditiva",
     title: "Inteligência Preditiva",
-    subtitle: "Caixa & Runway",
-    desc: "Projeção contínua dos próximos meses, considerando sazonalidade de faturamento e fôlego operacional real.",
-    stats: [
-      { value: "8,4 meses", label: "fôlego de reserva" },
-      { value: "0%", label: "risco de liquidez" },
-    ],
-    linhas: [
-      { item: "Maio/2026 · Realizado", nota: "Provisão de DAS: R$ 4.450,00", valor: "R$ 38.450,00" },
-      { item: "Junho/2026 · Projetado (+12%)", nota: "Provisão de DAS: R$ 4.730,00", valor: "R$ 43.000,00" },
-      { item: "Julho/2026 · Projetado (+18%)", nota: "Provisão de DAS: R$ 5.005,00", valor: "R$ 45.500,00", destaque: true },
-    ],
-    rodape: "Burn rate médio de R$ 4.580,00/mês, considerado na projeção de fôlego acima.",
+    desc: "Projeção contínua de fluxo de caixa e fôlego de reserva para você tomar decisões seguras de pró-labore, contratações e expansão.",
+    icon: TrendingUp,
+    href: "/inteligencia-fiscal",
   },
 ]
 
 export function HeroProductShowcase() {
-  const [activeTab, setActiveTab] = useState(0)
-  const [progress, setProgress] = useState(0)
-  const [pausado, setPausado] = useState(false)
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
 
-  // Pausa em hover/foco: sem isso, o card trocava debaixo do usuário no meio da leitura.
+  const updateScrollState = useCallback(() => {
+    const el = scrollRef.current
+    if (!el) return
+
+    const { scrollLeft, scrollWidth, clientWidth } = el
+    setCanScrollLeft(scrollLeft > 10)
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 15)
+
+    const cardWidth = 330 + 20
+    const index = Math.round(scrollLeft / cardWidth)
+    setActiveIndex(Math.max(0, Math.min(SHOWCASE_ITEMS.length - 1, index)))
+  }, [])
+
   useEffect(() => {
-    if (pausado) return
+    const el = scrollRef.current
+    if (!el) return
 
-    const intervalTime = 100
-    const step = (intervalTime / 5000) * 100 // 5s por aba
+    updateScrollState()
+    el.addEventListener("scroll", updateScrollState, { passive: true })
+    window.addEventListener("resize", updateScrollState)
 
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          setActiveTab((current) => (current + 1) % TABS.length)
-          return 0
-        }
-        return prev + step
-      })
-    }, intervalTime)
+    return () => {
+      el.removeEventListener("scroll", updateScrollState)
+      window.removeEventListener("resize", updateScrollState)
+    }
+  }, [updateScrollState])
 
-    return () => clearInterval(timer)
-  }, [pausado])
+  const scrollToIndex = (index: number) => {
+    const el = scrollRef.current
+    if (!el) return
 
-  const handleTabClick = (index: number) => {
-    setActiveTab(index)
-    setProgress(0)
+    const cardWidth = 330 + 20
+    el.scrollTo({
+      left: index * cardWidth,
+      behavior: "smooth",
+    })
+  }
+
+  const handlePrev = () => {
+    const el = scrollRef.current
+    if (!el) return
+
+    const cardWidth = 330 + 20
+    el.scrollBy({ left: -cardWidth, behavior: "smooth" })
+  }
+
+  const handleNext = () => {
+    const el = scrollRef.current
+    if (!el) return
+
+    const cardWidth = 330 + 20
+    el.scrollBy({ left: cardWidth, behavior: "smooth" })
   }
 
   return (
-    <div
-      className="w-full flex flex-col justify-center items-center bg-white"
-      onMouseEnter={() => setPausado(true)}
-      onMouseLeave={() => setPausado(false)}
-      onFocusCapture={() => setPausado(true)}
-      onBlurCapture={() => setPausado(false)}
+    <section
+      aria-label="Funcionalidades da Inteligência Fiscal"
+      className="w-full flex flex-col justify-center items-start bg-[#E9EDF2] py-2 sm:py-8 md:py-12 overflow-hidden relative"
     >
-      <div className="w-full max-w-[1100px] px-4 sm:px-6 md:px-8 py-14 sm:py-16">
-        {/* As 3 abas ficam na mesma célula de grid — a altura do bloco é
-            sempre a da aba mais alta, então trocar de aba não move nada
-            abaixo. */}
-        <div className="grid grid-cols-1 grid-rows-1">
-          {TABS.map((tab, idx) => (
-            <div
-              key={tab.id}
-              className={`col-start-1 row-start-1 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch transition-opacity duration-300 ${
-                activeTab === idx
-                  ? "opacity-100 pointer-events-auto z-10"
-                  : "opacity-0 pointer-events-none invisible z-0"
-              }`}
-            >
-              {/* Coluna 1: título, descrição e stats do caso */}
-              <div className="lg:col-span-7 flex flex-col justify-between gap-5">
-                <div>
-                  <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
-                    {tab.subtitle}
-                  </span>
-                  <h3 className="text-secondary text-xl sm:text-2xl font-semibold leading-tight font-sans mt-1">
-                    {tab.title}
-                  </h3>
-                  <p className="text-[#605A57] text-sm leading-relaxed font-sans mt-3">{tab.desc}</p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4 py-4 border-y border-[rgba(55,50,47,0.08)]">
-                  {tab.stats.map((stat, i) => (
-                    <div key={i}>
-                      <div className="text-xl sm:text-2xl font-semibold text-secondary font-sans">{stat.value}</div>
-                      <div className="text-xs text-[#605A57] font-medium font-sans">{stat.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Coluna 2: o caso em números, numa Table de verdade */}
-              <div className="lg:col-span-5 bg-[#F8FAFC] rounded-xl border border-[rgba(55,50,47,0.08)] p-2 flex flex-col justify-between gap-2">
-                <Table>
-                  <TableBody>
-                    {tab.linhas.map((linha) => (
-                      <TableRow key={linha.item} className="border-[rgba(55,50,47,0.08)] hover:bg-transparent">
-                        <TableCell className="py-3 whitespace-normal">
-                          <div className="text-xs font-medium text-secondary">{linha.item}</div>
-                          <div className="text-[11px] text-[#8B8D9B] mt-0.5">{linha.nota}</div>
-                        </TableCell>
-                        <TableCell
-                          className={`py-3 text-right font-mono font-semibold whitespace-nowrap ${
-                            linha.destaque ? "text-primary" : "text-secondary"
-                          }`}
-                        >
-                          {linha.valor}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-
-                {tab.id === "cheque-do-mes" ? (
-                  <div className="flex items-center gap-1 h-3 overflow-hidden rounded-[3px] px-2 pb-1">
-                    {ALOCACAO_BALDES.map((item) => (
-                      <div
-                        key={item.rotulo}
-                        style={{
-                          width: `${(item.valor / TOTAL_ALOCACAO) * 100}%`,
-                          background:
-                            item.tipo === "listrado"
-                              ? "repeating-linear-gradient(45deg, var(--primary) 0 1.5px, transparent 1.5px 4px)"
-                              : undefined,
-                        }}
-                        className={`h-full rounded-[3px] ${
-                          item.tipo === "solido" ? "bg-primary" : item.tipo === "tinta" ? "bg-primary/30" : "border border-primary/40"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  tab.rodape && (
-                    <p className="text-[11px] text-[#8B8D9B] leading-relaxed px-2 pb-1">{tab.rodape}</p>
-                  )
-                )}
-              </div>
-            </div>
-          ))}
+      {/* Container principal alinhado à esquerda e estendendo até a borda da tela */}
+      <div className="w-full flex flex-col lg:flex-row items-start gap-8 lg:gap-12 pl-4 sm:pl-6 md:pl-10 lg:pl-16 xl:pl-24 2xl:pl-32 pr-0">
+        {/* Coluna Esquerda: Título Fixo */}
+        <div className="w-full lg:w-[320px] xl:w-[360px] shrink-0 pt-2 sm:pt-4 pr-4 sm:pr-6 lg:pr-0">
+          <h2 className="text-[#101828] text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-bold font-sans tracking-tight leading-[1.18] text-balance">
+            Uma inteligência fiscal equipada com tudo que sua empresa precisa
+          </h2>
         </div>
 
-        {/* Seletor de casos de uso */}
-        <div
-          className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-[rgba(55,50,47,0.1)] pt-6"
-          role="tablist"
-          aria-label="Casos de uso do produto"
+        {/* Coluna Direita: Passagem Infinita com Blur Real (Frosted Glass) */}
+        <div className="w-full flex-1 min-w-0 relative overflow-hidden">
+          {/* Trilho de Scroll dos Cartões (sem máscara de transparência para o blur agir sobre os cartões) */}
+          <div
+            ref={scrollRef}
+            className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 pl-1 pr-24 sm:pr-40 md:pr-56 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {SHOWCASE_ITEMS.map((item) => {
+              const IconComponent = item.icon
+              return (
+                <div
+                  key={item.id}
+                  className="w-[290px] sm:w-[320px] md:w-[340px] shrink-0 snap-start bg-white rounded-[20px] border border-[#EAECF0] hover:border-[#D0D5DD] hover:shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between h-[360px] sm:h-[380px]"
+                >
+                  {/* Topo do Card: Ícone em Círculo + Título + Descrição */}
+                  <div>
+                    {/* Ícone Circular Minimalista */}
+                    <div className="w-11 h-11 rounded-full bg-[#F2F4F7] text-[#344054] flex items-center justify-center mb-6">
+                      <IconComponent className="w-5 h-5 stroke-[1.8]" />
+                    </div>
+
+                    {/* Título do Card */}
+                    <h3 className="text-[1.125rem] sm:text-xl font-bold text-[#101828] leading-snug mb-3">
+                      {item.title}
+                    </h3>
+
+                    {/* Descrição Concisa (3-4 linhas) */}
+                    <p className="text-sm text-[#475467] leading-relaxed line-clamp-4">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  {/* Rodapé do Card: Linha Divisória + Link "Saiba mais ↗" */}
+                  <div className="border-t border-[#F2F4F7] pt-4 mt-auto">
+                    <Link
+                      href={item.href}
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary-hover hover:underline transition-colors"
+                    >
+                      <span>Saiba mais</span>
+                      <ArrowUpRight className="w-4 h-4 stroke-[2]" />
+                    </Link>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Efeito Visível de Blur (Frosted Glass) & Fade Gradual na Borda Direita em #E9EDF2 */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-0 right-0 bottom-0 w-40 sm:w-60 md:w-80 lg:w-96 z-20"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(233, 237, 242, 0) 0%, rgba(233, 237, 242, 0.45) 25%, rgba(233, 237, 242, 0.85) 65%, #E9EDF2 100%)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              maskImage:
+                "linear-gradient(to right, transparent 0%, black 30%)",
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent 0%, black 30%)",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Controles de Navegação (Setas + Indicador de Paginação) */}
+      <div className="w-full flex items-center justify-center gap-4 mt-6 sm:mt-8 pr-4 sm:pr-6 md:pr-10 lg:pr-16 xl:pr-24">
+        {/* Seta Esquerda */}
+        <button
+          type="button"
+          onClick={handlePrev}
+          disabled={!canScrollLeft}
+          aria-label="Cartão anterior"
+          className="w-9 h-9 rounded-full flex items-center justify-center text-[#667085] hover:text-[#101828] hover:bg-[#F2F4F7] disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
         >
-          {TABS.map((item, idx) => {
-            const isActive = activeTab === idx
+          <ArrowLeft className="w-5 h-5 stroke-[1.8]" />
+        </button>
+
+        {/* Indicadores de Paginação (Pill Ativa + Pontos) */}
+        <div
+          className="flex items-center gap-1.5"
+          role="tablist"
+          aria-label="Indicadores do carrossel"
+        >
+          {SHOWCASE_ITEMS.map((item, idx) => {
+            const isActive = activeIndex === idx
             return (
               <button
                 key={item.id}
                 type="button"
                 role="tab"
                 aria-selected={isActive}
-                onClick={() => handleTabClick(idx)}
-                className={`text-left px-4 py-3.5 rounded-lg border relative overflow-hidden transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary ${
+                aria-label={`Ir para ${item.title}`}
+                onClick={() => scrollToIndex(idx)}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${
                   isActive
-                    ? "border-primary/30 bg-primary/5"
-                    : "border-[rgba(55,50,47,0.1)] hover:bg-[#F8FAFC]"
+                    ? "w-6 h-1.5 bg-primary"
+                    : "w-1.5 h-1.5 bg-[#D0D5DD] hover:bg-[#98A2B3]"
                 }`}
-              >
-                {isActive && (
-                  <div className="absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-100 ease-linear" style={{ width: `${progress}%` }} />
-                )}
-                <div className="text-sm font-semibold text-secondary">{item.title}</div>
-                <div className="text-xs text-[#605A57] mt-0.5">{item.subtitle}</div>
-              </button>
+              />
             )
           })}
         </div>
+
+        {/* Seta Direita */}
+        <button
+          type="button"
+          onClick={handleNext}
+          disabled={!canScrollRight}
+          aria-label="Próximo cartão"
+          className="w-9 h-9 rounded-full flex items-center justify-center text-[#667085] hover:text-[#101828] hover:bg-[#F2F4F7] disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
+        >
+          <ArrowRight className="w-5 h-5 stroke-[1.8]" />
+        </button>
       </div>
-    </div>
+    </section>
   )
 }
