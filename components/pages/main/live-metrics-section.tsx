@@ -34,11 +34,11 @@ export function LiveMetricsSection() {
                 </div>
               </div>
 
-              {/* Card 1B: Miriam Bell / Nurse -> Pró-labore Ótimo com foto P&B */}
+              {/* Card 1B: Miriam Bell / Nurse -> Enquadramento Ótimo com foto P&B */}
               <div className="rounded-[28px] bg-white p-6 sm:p-7 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-md transition-shadow">
                 <div>
                   <div className="text-xs sm:text-sm font-semibold text-secondary leading-snug">
-                    Pró-labore Ótimo
+                    Enquadramento Ótimo
                   </div>
                   <div className="text-[11px] font-normal text-[#717680] mt-0.5">Meta Fator R</div>
                 </div>
@@ -174,7 +174,7 @@ export function LiveMetricsSection() {
                   <span className="w-3.5 h-3.5 rounded-full bg-black text-white flex items-center justify-center shrink-0 text-[9px] font-bold">
                     ✓
                   </span>
-                  <span className="truncate">Pró-labore ajustado nos 28% do Fator R</span>
+                  <span className="truncate">Enquadramento ajustado nos 28% do Fator R</span>
                 </div>
 
                 {/* Item 2: Círculo preto preenchido com check branco */}

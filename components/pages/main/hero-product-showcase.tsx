@@ -59,7 +59,7 @@ const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     id: "preditiva",
     title: "Inteligência Preditiva",
-    desc: "Projeção contínua de fluxo de caixa e fôlego de reserva para você tomar decisões seguras de pró-labore, contratações e expansão.",
+    desc: "Projeção contínua de fluxo de caixa e fôlego de reserva para você tomar decisões seguras de tributação, contratações e expansão.",
     icon: TrendingUp,
     href: "/inteligencia-fiscal",
   },

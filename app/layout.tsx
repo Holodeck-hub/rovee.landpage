@@ -20,9 +20,9 @@ const instrumentSerif = Instrument_Serif({
   preload: true,
 })
 
-const TITLE = "Rovee Finance: Inteligência Fiscal e Otimização de Pró-labore"
+const TITLE = "Rovee Finance: Inteligência Fiscal"
 const DESCRIPTION =
-  "A fintech que calcula seu pró-labore ótimo no Simples Nacional, separa o caixa pessoal da PJ e usa inteligência preditiva para antecipar seu faturamento sem surpresas fiscais."
+  "Inteligência fiscal e gerenciamento financeiro na palma da mão. Transforme dados financeiros reais em decisões tributárias corretas, antecipadas e acionáveis."
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -35,7 +35,6 @@ export const metadata: Metadata = {
   keywords: [
     "Fator R",
     "Simples Nacional",
-    "pró-labore",
     "Anexo III",
     "Anexo V",
     "DAS",
