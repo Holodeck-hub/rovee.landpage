@@ -74,7 +74,7 @@ export function Reveal({
   return (
     <Comp
       ref={ref as React.Ref<HTMLDivElement>}
-      className={cn("transition-all duration-700 ease-out", visible ? "opacity-100" : "opacity-0", className)}
+      className={cn("w-full transition-all duration-700 ease-out", visible ? "opacity-100" : "opacity-0", className)}
       style={{
         transitionDelay: delay ? `${delay}ms` : undefined,
         transform: visible ? undefined : `translateY(${distance}px)`,
