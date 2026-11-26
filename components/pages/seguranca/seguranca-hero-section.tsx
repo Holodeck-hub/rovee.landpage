@@ -12,7 +12,7 @@ export function SegurancaHeroSection({
   return (
     <section aria-label="Segurança Rovee" className="w-full border-b border-[rgba(55,50,47,0.12)]">
       <div className="w-full max-w-[1100px] mx-auto px-5 pt-16 sm:pt-24 pb-16 sm:pb-20 flex flex-col items-center text-center gap-6">
-        <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+        <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
           Segurança de Nível Bancário e LGPD
         </span>
 

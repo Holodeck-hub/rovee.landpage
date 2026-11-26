@@ -30,7 +30,7 @@ function LinhaPainel({
         destaque ? "border-primary/30" : "border-[rgba(55,50,47,0.08)]"
       }`}
     >
-      <div className="text-[11px] text-[#605A57]">{rotulo}</div>
+      <div className="text-[11px] text-ink-muted">{rotulo}</div>
       <div className={`text-sm font-semibold ${destaque ? "text-primary" : "text-secondary"}`}>{valor}</div>
     </div>
   )
@@ -50,7 +50,7 @@ const FISCAL_AGENTS: FiscalAgent[] = [
       <div className="space-y-3">
         <LinhaPainel rotulo="Sem otimização" valor="Anexo V · Alíquota 15,5%" />
         <LinhaPainel rotulo="Prescrição do agente" valor="Anexo III · Alíquota a partir de 6,0%" destaque />
-        <div className="pt-1 flex items-baseline justify-between text-xs font-mono text-[#605A57]">
+        <div className="pt-1 flex items-baseline justify-between text-xs font-mono text-ink-muted">
           <span>Economia líquida</span>
           <span className="text-primary font-semibold">+R$ 28.400/ano</span>
         </div>
@@ -87,7 +87,7 @@ const FISCAL_AGENTS: FiscalAgent[] = [
       <div className="space-y-3">
         <div className="bg-white p-4 rounded-lg border border-primary/30">
           <div className="text-xs font-semibold text-secondary mb-1">Mistura detectada no extrato</div>
-          <p className="text-xs text-[#605A57] leading-snug">
+          <p className="text-xs text-ink-muted leading-snug">
             3 gastos pessoais pagos na conta PJ totalizando R$ 420,00 este mês.
           </p>
         </div>
@@ -111,12 +111,12 @@ const FISCAL_AGENTS: FiscalAgent[] = [
       <div className="space-y-3">
         <div className="bg-white p-3.5 rounded-lg border border-primary/30 flex justify-between items-center">
           <div>
-            <div className="text-xs text-[#605A57]">DAS competência atual</div>
+            <div className="text-xs text-ink-muted">DAS competência atual</div>
             <div className="text-base font-semibold text-secondary">R$ 3.420,00</div>
           </div>
           <span className="text-xs font-mono font-semibold text-primary">100% coberto</span>
         </div>
-        <div className="text-xs text-center text-[#605A57]">
+        <div className="text-xs text-center text-ink-muted">
           Vencimento: 20 do próximo mês · Valor já reservado em conta.
         </div>
       </div>
@@ -167,7 +167,7 @@ export function FiscalAgentsSection() {
 
         {/* Conteúdo Central */}
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center relative z-10">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
             Agentes Especializados
           </span>
 
@@ -175,7 +175,7 @@ export function FiscalAgentsSection() {
             4 Agentes Autônomos trabalhando pelo seu caixa
           </h2>
 
-          <p className="text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
+          <p className="text-ink-muted text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
             Cada agente opera uma especialidade crítica: otimização tributária do Fator R, blindagem patrimonial, provisão automática de impostos e inteligência preditiva contínua.
           </p>
         </div>

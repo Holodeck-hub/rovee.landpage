@@ -63,7 +63,7 @@ type LeadFormValues = z.infer<typeof leadSchema>
 
 const inputWrapClass = "relative"
 const inputClass = "pl-9"
-const iconClass = "w-4 h-4 text-[#6B6560] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none z-10"
+const iconClass = "w-4 h-4 text-ink-faint absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none z-10"
 
 export function ConsultantModal({ isOpen, onClose, emailInicial }: ConsultantModalProps) {
   const form = useForm<LeadFormValues>({
@@ -145,7 +145,7 @@ _Enviado através da landing page oficial da Rovee._`
           <DialogTitle className="text-xl sm:text-2xl font-medium text-secondary mt-1.5 font-sans">
             Fale com um Consultor Rovee
           </DialogTitle>
-          <DialogDescription className="text-xs text-[#605A57] mt-0.5">
+          <DialogDescription className="text-xs text-ink-muted mt-0.5">
             Preencha os dados abaixo para ser direcionado ao WhatsApp do nosso especialista.
           </DialogDescription>
         </DialogHeader>
@@ -243,14 +243,14 @@ _Enviado através da landing page oficial da Rovee._`
                     >
                       <ToggleGroupItem
                         value="pj"
-                        className="p-3 min-h-[44px] rounded-lg border text-xs font-medium flex items-center justify-center gap-2 border-[rgba(55,50,47,0.18)] bg-[#F8FAFC] text-[#605A57] hover:bg-gray-100 data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-primary data-[state=on]:font-semibold data-[state=on]:shadow-xs"
+                        className="p-3 min-h-[44px] rounded-lg border text-xs font-medium flex items-center justify-center gap-2 border-[rgba(55,50,47,0.18)] bg-ground-alt text-ink-muted hover:bg-gray-100 data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-primary data-[state=on]:font-semibold data-[state=on]:shadow-xs"
                       >
                         <Building2 className="w-4 h-4 shrink-0" aria-hidden="true" />
                         <span>Prestador PJ / Empresa</span>
                       </ToggleGroupItem>
                       <ToggleGroupItem
                         value="contabilidade"
-                        className="p-3 min-h-[44px] rounded-lg border text-xs font-medium flex items-center justify-center gap-2 border-[rgba(55,50,47,0.18)] bg-[#F8FAFC] text-[#605A57] hover:bg-gray-100 data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-primary data-[state=on]:font-semibold data-[state=on]:shadow-xs"
+                        className="p-3 min-h-[44px] rounded-lg border text-xs font-medium flex items-center justify-center gap-2 border-[rgba(55,50,47,0.18)] bg-ground-alt text-ink-muted hover:bg-gray-100 data-[state=on]:border-primary data-[state=on]:bg-primary/5 data-[state=on]:text-primary data-[state=on]:font-semibold data-[state=on]:shadow-xs"
                       >
                         <CheckCircle2 className="w-4 h-4 shrink-0" aria-hidden="true" />
                         <span>Escritório Contábil</span>
@@ -300,7 +300,7 @@ _Enviado através da landing page oficial da Rovee._`
                 <span>Enviar e abrir conversa no WhatsApp</span>
               </button>
 
-              <p className="text-[11px] leading-relaxed text-center text-[#6B6560] mt-3">
+              <p className="text-[11px] leading-relaxed text-center text-ink-faint mt-3">
                 Usamos seus dados apenas para retornar este contato comercial. Você será
                 redirecionado para o WhatsApp {SITE.whatsappDisplay}. Detalhes na{" "}
                 <Link

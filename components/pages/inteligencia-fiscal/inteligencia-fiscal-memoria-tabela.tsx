@@ -27,40 +27,40 @@ export function InteligenciaFiscalMemoriaTabela() {
       <Table className="text-sm">
         <TableHeader>
           <TableRow className="hover:bg-transparent">
-            <TableHead className="text-[#605A57]">Parâmetro</TableHead>
-            <TableHead className="text-center text-[#605A57]">Anexo V</TableHead>
+            <TableHead className="text-ink-muted">Parâmetro</TableHead>
+            <TableHead className="text-center text-ink-muted">Anexo V</TableHead>
             <TableHead className="text-center font-semibold text-primary">Anexo III</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           <TableRow>
-            <TableCell className="text-[#49423D]">Faturamento do mês (exemplo)</TableCell>
+            <TableCell className="text-secondary">Faturamento do mês (exemplo)</TableCell>
             <TableCell colSpan={2} className="text-center font-mono tabular-nums text-secondary">
               {brl.format(FATURAMENTO_MES)}
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="text-[#49423D]">RBT12 (últimos 12 meses)</TableCell>
+            <TableCell className="text-secondary">RBT12 (últimos 12 meses)</TableCell>
             <TableCell colSpan={2} className="text-center font-mono tabular-nums text-secondary">
               {brl.format(RBT12)}
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="text-[#49423D]">Alíquota nominal</TableCell>
+            <TableCell className="text-secondary">Alíquota nominal</TableCell>
             <TableCell className="text-center font-mono tabular-nums">{pct(ANEXO_V.nominal)}</TableCell>
             <TableCell className="text-center font-mono tabular-nums font-semibold text-primary">
               {pct(ANEXO_III.nominal)}
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="text-[#49423D]">Parcela a deduzir</TableCell>
+            <TableCell className="text-secondary">Parcela a deduzir</TableCell>
             <TableCell className="text-center font-mono tabular-nums">{brl.format(ANEXO_V.parcelaDeduzir)}</TableCell>
             <TableCell className="text-center font-mono tabular-nums font-semibold text-primary">
               {brl.format(ANEXO_III.parcelaDeduzir)}
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="text-[#49423D]">Alíquota efetiva</TableCell>
+            <TableCell className="text-secondary">Alíquota efetiva</TableCell>
             <TableCell className="text-center font-mono tabular-nums">{pct(ALIQUOTA_EFETIVA_ANEXO_V)}</TableCell>
             <TableCell className="text-center font-mono tabular-nums font-semibold text-primary">
               {pct(ALIQUOTA_EFETIVA_ANEXO_III)}
@@ -79,7 +79,7 @@ export function InteligenciaFiscalMemoriaTabela() {
       </Table>
 
       <div className="mt-4 flex items-center justify-between gap-3 rounded-xl border border-[rgba(55,50,47,0.12)] bg-white px-5 py-4 shadow-xs">
-        <span className="text-sm text-[#49423D]">Economia no mês, mesmo faturamento</span>
+        <span className="text-sm text-secondary">Economia no mês, mesmo faturamento</span>
         <span className="font-mono text-lg font-semibold tabular-nums text-primary">
           {brl.format(ECONOMIA_MENSAL)}
         </span>

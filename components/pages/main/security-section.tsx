@@ -61,12 +61,12 @@ export function SecuritySection() {
             {SECURITY_PILLARS.slice(0, 2).map((pillar, idx) => {
               const Icon = pillar.icon
               return (
-                <div key={idx} className="p-6 sm:p-8 lg:p-10 flex flex-col justify-between gap-4 bg-white/60 hover:bg-[#F8FAFC]/80 transition-colors">
+                <div key={idx} className="p-6 sm:p-8 lg:p-10 flex flex-col justify-between gap-4 bg-white/60 hover:bg-ground-alt/80 transition-colors">
                   <div className="flex items-start justify-between">
                     <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-secondary border border-[rgba(55,50,47,0.08)]">
                       <Icon className="w-5 h-5 text-secondary" />
                     </div>
-                    <span className="text-[10px] font-mono text-[#6B6560] font-semibold">
+                    <span className="text-[10px] font-mono text-ink-faint font-semibold">
                       {pillar.badge}
                     </span>
                   </div>
@@ -78,7 +78,7 @@ export function SecuritySection() {
                     <div className="text-xs font-medium text-emerald-700 font-sans mb-2">
                       {pillar.subtitle}
                     </div>
-                    <p className="text-xs sm:text-sm text-[#605A57] leading-relaxed">
+                    <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
                       {pillar.desc}
                     </p>
                   </div>
@@ -91,12 +91,12 @@ export function SecuritySection() {
             {SECURITY_PILLARS.slice(2, 4).map((pillar, idx) => {
               const Icon = pillar.icon
               return (
-                <div key={idx} className="p-6 sm:p-8 lg:p-10 flex flex-col justify-between gap-4 bg-white/60 hover:bg-[#F8FAFC]/80 transition-colors">
+                <div key={idx} className="p-6 sm:p-8 lg:p-10 flex flex-col justify-between gap-4 bg-white/60 hover:bg-ground-alt/80 transition-colors">
                   <div className="flex items-start justify-between">
                     <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-secondary border border-[rgba(55,50,47,0.08)]">
                       <Icon className="w-5 h-5 text-secondary" />
                     </div>
-                    <span className="text-[10px] font-mono text-[#6B6560] font-semibold">
+                    <span className="text-[10px] font-mono text-ink-faint font-semibold">
                       {pillar.badge}
                     </span>
                   </div>
@@ -108,7 +108,7 @@ export function SecuritySection() {
                     <div className="text-xs font-medium text-emerald-700 font-sans mb-2">
                       {pillar.subtitle}
                     </div>
-                    <p className="text-xs sm:text-sm text-[#605A57] leading-relaxed">
+                    <p className="text-xs sm:text-sm text-ink-muted leading-relaxed">
                       {pillar.desc}
                     </p>
                   </div>

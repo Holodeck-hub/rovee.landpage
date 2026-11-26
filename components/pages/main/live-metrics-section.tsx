@@ -2,17 +2,17 @@
 
 export function LiveMetricsSection() {
   return (
-    <section aria-label="Métricas de Precisão" className="w-full px-4 sm:px-6 md:px-8 py-20 sm:py-24 md:py-28 bg-[#E9EDF2]">
+    <section aria-label="Métricas de Precisão" className="w-full px-4 sm:px-6 md:px-8 py-20 sm:py-24 md:py-28 bg-ground-alt">
       <div className="w-full max-w-[1040px] mx-auto">
         {/* Cabeçalho */}
         <div className="text-center max-w-[620px] mx-auto mb-14 sm:mb-16">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#717885]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-faint">
             Métricas de Precisão
           </span>
           <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl font-medium font-sans h-section text-balance mt-2">
             Pague menos imposto sem inventar nada.
           </h2>
-          <p className="text-[#555C67] text-sm sm:text-base leading-relaxed mt-3">
+          <p className="text-ink-muted text-sm sm:text-base leading-relaxed mt-3">
             Sem manobras arriscadas e sem achismo. A inteligência fiscal da Rovee calibra a relação entre folha e faturamento todo mês.
           </p>
         </div>
@@ -27,7 +27,7 @@ export function LiveMetricsSection() {
               <div className="rounded-[28px] bg-white p-6 sm:p-7 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-md transition-shadow">
                 <div className="text-xs sm:text-sm font-semibold text-secondary leading-snug">
                   Simples Nacional
-                  <div className="text-[11px] font-normal text-[#717680] mt-0.5">Anexo III</div>
+                  <div className="text-[11px] font-normal text-ink-muted mt-0.5">Anexo III</div>
                 </div>
                 <div className="text-4xl sm:text-[2.6rem] font-bold tracking-tight text-secondary leading-none">
                   6,0%
@@ -40,7 +40,7 @@ export function LiveMetricsSection() {
                   <div className="text-xs sm:text-sm font-semibold text-secondary leading-snug">
                     Enquadramento Ótimo
                   </div>
-                  <div className="text-[11px] font-normal text-[#717680] mt-0.5">Meta Fator R</div>
+                  <div className="text-[11px] font-normal text-ink-muted mt-0.5">Meta Fator R</div>
                 </div>
                 <div className="pt-2">
                   <img
@@ -55,7 +55,7 @@ export function LiveMetricsSection() {
 
             {/* LINHA 2 ESQUERDA: Card Slate Cinza (Evaluation and alignment models) */}
             <div className="rounded-[28px] bg-[#D4D9E2] p-6 sm:p-7 flex flex-col justify-between h-[155px] shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:shadow-md transition-shadow text-secondary">
-              <div className="text-xs sm:text-[13px] font-medium text-[#555C67] leading-tight">
+              <div className="text-xs sm:text-[13px] font-medium text-ink-muted leading-tight">
                 Art. 50 do Código Civil
                 <br />
                 Blindagem Patrimonial
@@ -72,7 +72,7 @@ export function LiveMetricsSection() {
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <div className="text-sm font-semibold text-secondary leading-snug">Fator R</div>
-                  <div className="text-xs text-[#717680] mt-0.5">Folha / Receita: 28%</div>
+                  <div className="text-xs text-ink-muted mt-0.5">Folha / Receita: 28%</div>
                 </div>
                 {/* Badge pastel verde idêntico ao Strong da imagem */}
                 <span className="px-3.5 py-1 rounded-full bg-[#E4EDDB] text-[#3D5428] text-xs font-semibold">
@@ -105,7 +105,7 @@ export function LiveMetricsSection() {
                   <div className="text-sm font-semibold text-secondary leading-snug">
                     Redução de Imposto
                   </div>
-                  <div className="text-xs text-[#717680] mt-0.5">Meta atingida: 100%</div>
+                  <div className="text-xs text-ink-muted mt-0.5">Meta atingida: 100%</div>
                 </div>
                 {/* Badge pastel pêssego/laranja idêntico ao Excellent */}
                 <span className="px-3.5 py-1 rounded-full bg-[#FCE5D2] text-[#9E4915] text-xs font-semibold">
@@ -132,7 +132,7 @@ export function LiveMetricsSection() {
             <div className="rounded-[28px] bg-white p-6 sm:p-7 flex flex-col justify-between h-[155px] shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-xs text-[#717680]">Provisão contínua · Vencimento dia 20</div>
+                  <div className="text-xs text-ink-muted">Provisão contínua · Vencimento dia 20</div>
                   <div className="text-sm font-semibold text-secondary mt-0.5">DAS Simples Nacional</div>
                 </div>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E4EDDB] text-[#3D5428] text-xs font-semibold">
@@ -144,7 +144,7 @@ export function LiveMetricsSection() {
               <div className="space-y-2 pt-2">
                 <div className="flex items-baseline justify-between text-xs font-mono">
                   <span className="text-secondary font-bold text-base sm:text-lg">R$ 3.840,00</span>
-                  <span className="text-[#717680]">Reservado em conta</span>
+                  <span className="text-ink-muted">Reservado em conta</span>
                 </div>
                 <div className="w-full h-2 bg-[#F0F2F5] rounded-full overflow-hidden">
                   <div className="h-full bg-secondary rounded-full w-full" />
@@ -163,7 +163,7 @@ export function LiveMetricsSection() {
                 />
                 <div>
                   <div className="text-sm font-semibold text-secondary leading-tight">Mariana Silva</div>
-                  <div className="text-xs text-[#555C67] mt-0.5">Sócia PJ · Tech Lead</div>
+                  <div className="text-xs text-ink-muted mt-0.5">Sócia PJ · Tech Lead</div>
                 </div>
               </div>
 
@@ -202,7 +202,7 @@ export function LiveMetricsSection() {
         </div>
 
         {/* Rodapé legal discreto */}
-        <p className="text-[#717885] text-xs leading-relaxed text-center mt-12 sm:mt-14 max-w-[52rem] mx-auto">
+        <p className="text-ink-faint text-xs leading-relaxed text-center mt-12 sm:mt-14 max-w-[52rem] mx-auto">
           Alíquotas e o limite de 28% seguem a Lei Complementar 123/2006 e seus anexos. A economia real depende do seu faturamento, folha e enquadramento. A apuração final é sempre validada com seu contador.
         </p>
       </div>

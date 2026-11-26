@@ -31,7 +31,7 @@ export function PrecosComparisonSection() {
     <section aria-label="Comparativo de Planos" className="w-full py-20 px-5 border-b border-[rgba(55,50,47,0.12)] bg-white">
       <div className="w-full max-w-[1000px] mx-auto">
         <div className="text-center mb-12">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
             Comparativo Detalhado
           </span>
           <h3 className="text-secondary text-2xl sm:text-3xl md:text-4xl font-medium h-section text-balance mt-2">
@@ -55,7 +55,7 @@ export function PrecosComparisonSection() {
           <TableBody>
             {COMPARISON_FEATURES.map((feat, idx) => (
               <TableRow key={idx} className="border-[rgba(55,50,47,0.08)] hover:bg-slate-50/50">
-                <TableCell className="sticky left-0 z-10 whitespace-normal bg-white py-3.5 px-4 font-medium text-[#49423D]">
+                <TableCell className="sticky left-0 z-10 whitespace-normal bg-white py-3.5 px-4 font-medium text-secondary">
                   {feat.name}
                 </TableCell>
                 <TableCell className="py-3.5 px-4 text-center">

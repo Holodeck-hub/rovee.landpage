@@ -8,7 +8,7 @@ export function GestaoFinanceiraCashflowSection() {
     <section id="predicao" aria-label="Caixa e provisão ao longo do ano" className="w-full band-tint border-b border-[rgba(55,50,47,0.12)]">
       <div className="w-full max-w-[1100px] mx-auto px-5 py-20 sm:py-24">
         <div className="text-center mb-12 max-w-[38rem] mx-auto">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
             Automação de Caixa
           </span>
           <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl font-medium h-section text-balance mt-2">

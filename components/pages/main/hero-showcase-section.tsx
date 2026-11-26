@@ -17,12 +17,12 @@ export function HeroShowcaseSection({ onOpenConsultant }: HeroShowcaseSectionPro
       <div className="w-full grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] items-center gap-10 lg:gap-4">
         <div className="px-4 sm:px-6 md:px-10 lg:pl-16 xl:pl-24 2xl:pl-32 lg:pr-4 pt-16 sm:pt-24 md:pt-28 lg:pt-16 pb-4 lg:pb-16 flex flex-col justify-center items-start">
           <div className="w-full max-w-[38rem] xl:max-w-[42rem] flex flex-col justify-center items-start gap-6">
-            <h1 className="text-secondary text-[32px] sm:text-[42px] md:text-[50px] lg:text-[58px] font-bold font-sans tracking-tight leading-[1.08] text-balance">
+            <h1 className="text-secondary text-[32px] sm:text-[42px] md:text-[50px] lg:text-[58px] font-medium h-display text-balance">
               Diagnóstico Fiscal e Financeiro.{" "}
-              <span className="text-primary block sm:inline font-bold">Mais economia, menos impostos.</span>
+              <span className="text-primary block sm:inline font-medium">Mais economia, menos impostos.</span>
             </h1>
 
-            <p className="w-full max-w-[36rem] xl:max-w-[39rem] text-[#475467] text-base md:text-[1.125rem] leading-[1.6] font-sans font-medium text-pretty">
+            <p className="w-full max-w-[36rem] xl:max-w-[39rem] text-ink-muted text-base md:text-[1.125rem] leading-[1.6] font-sans font-medium text-pretty">
               Descubra pontos de melhoria na sua gestão com a{" "}
               <strong className="font-semibold text-secondary">Inteligência Fiscal</strong> que
               prepara você para tomar as melhores decisões do próximo ciclo.

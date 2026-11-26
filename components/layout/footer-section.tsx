@@ -20,12 +20,12 @@ export default function FooterSection() {
             <div className="text-primary text-2xl font-bold font-sans tracking-tight">Rovee</div>
           </div>
 
-          <p className="text-[#605A57] text-xs sm:text-sm font-normal leading-relaxed font-sans">
+          <p className="text-ink-muted text-xs sm:text-sm font-normal leading-relaxed font-sans">
             A fintech construída para transformar faturamento em decisões tributárias
             lucrativas e clareza absoluta de caixa para quem empreende.
           </p>
 
-          <div className="text-[11px] text-[#6B6560] font-mono">
+          <div className="text-[11px] text-ink-faint font-mono">
             Origem: Amazônia, Brasil 🇧🇷 • Operação Nacional
           </div>
         </div>
@@ -37,7 +37,7 @@ export default function FooterSection() {
             <div id="footer-produto" className="text-[rgba(73,66,61,0.62)] text-xs font-semibold uppercase tracking-wider font-mono">
               Produto
             </div>
-            <div className="flex flex-col justify-end items-start gap-1 text-xs font-medium text-[#49423D]">
+            <div className="flex flex-col justify-end items-start gap-1 text-xs font-medium text-secondary">
               <a href="/inteligencia-fiscal" className="py-2 hover:text-secondary transition-colors">
                 Inteligência Fiscal
               </a>
@@ -61,11 +61,11 @@ export default function FooterSection() {
             <div className="text-[rgba(73,66,61,0.62)] text-xs font-semibold uppercase tracking-wider font-mono">
               Segurança
             </div>
-            <div className="flex flex-col justify-center items-start gap-2 text-xs font-medium text-[#49423D]">
-              <span className="text-[#605A57]">Criptografia AES-256</span>
-              <span className="text-[#605A57]">Conformidade LGPD</span>
-              <span className="text-[#605A57]">Matemática Determinística</span>
-              <span className="text-[#605A57]">Parceiro do Contador</span>
+            <div className="flex flex-col justify-center items-start gap-2 text-xs font-medium text-secondary">
+              <span className="text-ink-muted">Criptografia AES-256</span>
+              <span className="text-ink-muted">Conformidade LGPD</span>
+              <span className="text-ink-muted">Matemática Determinística</span>
+              <span className="text-ink-muted">Parceiro do Contador</span>
             </div>
           </div>
 
@@ -74,7 +74,7 @@ export default function FooterSection() {
             <div id="footer-empresa" className="text-[rgba(73,66,61,0.62)] text-xs font-semibold uppercase tracking-wider font-mono">
               Empresa
             </div>
-            <div className="flex flex-col justify-center items-start gap-1 text-xs font-medium text-[#49423D]">
+            <div className="flex flex-col justify-center items-start gap-1 text-xs font-medium text-secondary">
               <Link href="/contadores" className="py-2 hover:text-secondary hover:underline transition-colors">
                 Para contadores
               </Link>
@@ -98,7 +98,7 @@ export default function FooterSection() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="self-stretch border-t border-[rgba(55,50,47,0.12)] px-4 md:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6B6560] relative z-10 bg-white/30 backdrop-blur-xs">
+      <div className="self-stretch border-t border-[rgba(55,50,47,0.12)] px-4 md:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-faint relative z-10 bg-white/30 backdrop-blur-xs">
         <div>
           © {new Date().getFullYear()} {SITE.legalName} Todos os direitos reservados.
         </div>

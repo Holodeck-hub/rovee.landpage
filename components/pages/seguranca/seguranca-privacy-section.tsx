@@ -7,7 +7,7 @@ export function SegurancaPrivacySection() {
     <section aria-label="Privacidade e Dados" className="w-full band-tint py-20 px-5 border-b border-[rgba(55,50,47,0.12)]">
       <div className="w-full max-w-[1000px] mx-auto">
         <div className="max-w-[40rem] mb-12">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
             Compromisso de Privacidade
           </span>
           <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl font-medium h-section text-balance mt-2">

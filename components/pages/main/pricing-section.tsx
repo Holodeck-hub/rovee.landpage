@@ -125,7 +125,7 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
         </div>
 
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center relative z-10">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
             Planos & Preços
           </span>
 
@@ -136,7 +136,7 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
             Investimento que se paga no primeiro DAS economizado
           </h1>
 
-          <p className="text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
+          <p className="text-ink-muted text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
             Escolha o plano ideal para o faturamento da sua PJ. Todos os planos incluem
             segurança de padrão bancário e suporte dedicado.
           </p>
@@ -152,7 +152,7 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
             className={`rounded-full px-5 py-2.5 min-h-[44px] text-xs sm:text-sm font-medium transition-colors cursor-pointer select-none ${
               billingPeriod === "mensal"
                 ? "bg-primary text-white"
-                : "border border-[rgba(55,50,47,0.12)] bg-[var(--ground-alt)] text-[#605A57] hover:text-secondary hover:bg-black/5"
+                : "border border-[rgba(55,50,47,0.12)] bg-[var(--ground-alt)] text-ink-muted hover:text-secondary hover:bg-black/5"
             }`}
           >
             Mensal
@@ -164,7 +164,7 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
             className={`rounded-full px-5 py-2.5 min-h-[44px] text-xs sm:text-sm font-medium transition-colors cursor-pointer select-none flex items-center gap-2 ${
               billingPeriod === "anual"
                 ? "bg-primary text-white"
-                : "border border-[rgba(55,50,47,0.12)] bg-[var(--ground-alt)] text-[#605A57] hover:text-secondary hover:bg-black/5"
+                : "border border-[rgba(55,50,47,0.12)] bg-[var(--ground-alt)] text-ink-muted hover:text-secondary hover:bg-black/5"
             }`}
           >
             <span>Anual</span>
@@ -193,7 +193,7 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
               <div className="flex flex-col gap-4">
                 <div>
                   <h3 className="text-xl font-semibold text-secondary mt-1">{plan.name}</h3>
-                  <p className="text-xs text-[#605A57] mt-1">{plan.tagline}</p>
+                  <p className="text-xs text-ink-muted mt-1">{plan.tagline}</p>
                 </div>
 
                 <div className="py-2">
@@ -201,11 +201,11 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
                     <span className="text-3xl sm:text-4xl font-semibold text-secondary">
                       {formatBRL(displayMonthly)}
                     </span>
-                    <span className="text-xs text-[#6B6560]">/mês</span>
+                    <span className="text-xs text-ink-faint">/mês</span>
                   </div>
 
                   {isAnnual ? (
-                    <p className="text-[11px] leading-relaxed text-[#6B6560] mt-1.5">
+                    <p className="text-[11px] leading-relaxed text-ink-faint mt-1.5">
                       {formatBRL(annualTotal)} cobrados uma vez por ano.
                       <br />
                       <span className="text-emerald-700 font-medium">
@@ -214,7 +214,7 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
                       em relação ao plano mensal ({formatBRL(plan.monthly)}/mês).
                     </p>
                   ) : (
-                    <p className="text-[11px] leading-relaxed text-[#6B6560] mt-1.5">
+                    <p className="text-[11px] leading-relaxed text-ink-faint mt-1.5">
                       Cobrança mensal, sem fidelidade.
                       <br />
                       No plano anual sai por {formatBRL(plan.annualMonthly)}/mês.
@@ -222,7 +222,7 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
                   )}
                 </div>
 
-                <div className="space-y-2.5 pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs text-[#49423D]">
+                <div className="space-y-2.5 pt-4 border-t border-[rgba(55,50,47,0.08)] text-xs text-secondary">
                   {plan.features.map((feature) => (
                     <div
                       key={feature}
@@ -241,7 +241,7 @@ export function PricingSection({ onOpenConsultant }: PricingSectionProps) {
                 className={`w-full mt-6 py-3 px-4 min-h-[44px] text-xs font-semibold rounded-full text-center transition-colors cursor-pointer ${
                   plan.featured
                     ? "bg-primary hover:bg-primary-hover text-white shadow-sm"
-                    : "bg-[#F1F5F9] hover:bg-gray-200 text-secondary border border-[rgba(55,50,47,0.1)]"
+                    : "bg-ground-alt hover:bg-gray-200 text-secondary border border-[rgba(55,50,47,0.1)]"
                 }`}
               >
                 {plan.ctaLabel}

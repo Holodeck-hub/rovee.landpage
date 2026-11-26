@@ -75,7 +75,7 @@ export function GestaoFinanceiraDasChart() {
         </BarChart>
       </ChartContainer>
 
-      <div className="mt-3 flex items-center justify-center gap-5 text-xs text-[#605A57]">
+      <div className="mt-3 flex items-center justify-center gap-5 text-xs text-ink-muted">
         <span className="flex items-center gap-1.5">
           <i className="h-2.5 w-2.5 rounded-xs bg-primary" aria-hidden="true" />
           Pago

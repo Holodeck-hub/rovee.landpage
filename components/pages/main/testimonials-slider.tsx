@@ -54,7 +54,7 @@ export function TestimonialsSlider() {
   const activeTestimonial = testimonials[current]
 
   const arrowClass =
-    "w-11 h-11 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-[#F1F5F9] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary text-secondary cursor-pointer transition-colors"
+    "w-11 h-11 rounded-full border border-[rgba(55,50,47,0.12)] bg-white flex items-center justify-center hover:bg-ground-alt focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary text-secondary cursor-pointer transition-colors"
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
@@ -65,7 +65,7 @@ export function TestimonialsSlider() {
         </div>
 
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center relative z-10">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
             Cenários de Uso
           </span>
 
@@ -73,7 +73,7 @@ export function TestimonialsSlider() {
             Quem empreende com a Rovee lucra mais e dorme tranquilo
           </h2>
 
-          <p className="text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
+          <p className="text-ink-muted text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
             Veja como desenvolvedores, consultores PJ e contadores parceiros transformam o caos fiscal em lucro e segurança.
           </p>
         </div>
@@ -90,14 +90,14 @@ export function TestimonialsSlider() {
         >
           <div className="flex items-center justify-between gap-4 mb-8">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
                 {activeTestimonial.metric}
               </span>
             </div>
 
             {/* Controls */}
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-[#6B6560]">
+              <span className="text-xs font-mono text-ink-faint">
                 {String(current + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
               </span>
               <button type="button" onClick={() => api?.scrollPrev()} className={arrowClass} aria-label="Anterior">
@@ -123,7 +123,7 @@ export function TestimonialsSlider() {
                     </div>
                     <div>
                       <div className="text-sm font-semibold text-secondary">{testimonial.persona}</div>
-                      <div className="text-xs text-[#605A57]">
+                      <div className="text-xs text-ink-muted">
                         {testimonial.segment}
                       </div>
                     </div>

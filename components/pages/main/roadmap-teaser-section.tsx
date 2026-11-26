@@ -36,11 +36,11 @@ const ROADMAP_ITEMS = [
 
 export function RoadmapTeaserSection() {
   return (
-    <div className="w-full bg-[#E9EDF2] flex flex-col justify-center items-center">
+    <div className="w-full bg-ground-alt flex flex-col justify-center items-center">
       {/* Section Header */}
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-24 flex flex-col justify-start items-center">
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
             Evolução Contínua & Roadmap
           </span>
 
@@ -48,7 +48,7 @@ export function RoadmapTeaserSection() {
             O futuro da gestão fiscal e patrimonial está sendo construído aqui
           </h2>
 
-          <p className="text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
+          <p className="text-ink-muted text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
             Acompanhe com total transparência as inovações que nosso time de engenharia e inteligência tributária está preparando para o ecossistema Rovee.
           </p>
         </div>
@@ -66,10 +66,10 @@ export function RoadmapTeaserSection() {
                   <TimelineIndicator />
                 </TimelineHeader>
                 <TimelineContent className="mt-1.5">
-                  <span className="mb-2 block text-[11px] font-mono uppercase tracking-wider text-[#8B8D9B]">
+                  <span className="mb-2 block text-[11px] font-mono uppercase tracking-wider text-ink-faint">
                     {item.tag}
                   </span>
-                  <p className="text-sm text-[#605A57] leading-relaxed">{item.desc}</p>
+                  <p className="text-sm text-ink-muted leading-relaxed">{item.desc}</p>
                 </TimelineContent>
               </TimelineItem>
             ))}

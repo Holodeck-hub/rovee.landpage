@@ -92,10 +92,10 @@ function DesktopNav({ label }: { label: string }) {
                       <NavigationMenuLink asChild>
                         <a
                           href={item.href}
-                          className="block rounded-lg px-3 py-2.5 hover:bg-[#F1F5F9] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary"
+                          className="block rounded-lg px-3 py-2.5 hover:bg-ground-alt focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary"
                         >
                           <span className="block text-xs font-semibold text-secondary">{item.label}</span>
-                          <span className="mt-0.5 block text-[11px] leading-snug text-[#6B6560]">{item.desc}</span>
+                          <span className="mt-0.5 block text-[11px] leading-snug text-ink-faint">{item.desc}</span>
                         </a>
                       </NavigationMenuLink>
                     </li>
@@ -174,7 +174,7 @@ function MobileMenu({
         aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
         aria-expanded={isOpen}
         aria-controls={panelId}
-        className="w-11 h-11 -mr-1.5 flex items-center justify-center rounded-lg text-secondary hover:bg-[#F1F5F9] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors cursor-pointer"
+        className="w-11 h-11 -mr-1.5 flex items-center justify-center rounded-lg text-secondary hover:bg-ground-alt focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors cursor-pointer"
       >
         {isOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
       </button>
@@ -193,7 +193,7 @@ function MobileMenu({
                   key={group.label}
                   href={group.href}
                   onClick={() => close(false)}
-                  className="px-3 py-3 min-h-[44px] flex items-center text-sm font-semibold text-secondary rounded-lg hover:bg-[#F1F5F9] border-b border-[rgba(55,50,47,0.08)] last:border-b-0 transition-colors"
+                  className="px-3 py-3 min-h-[44px] flex items-center text-sm font-semibold text-secondary rounded-lg hover:bg-ground-alt border-b border-[rgba(55,50,47,0.08)] last:border-b-0 transition-colors"
                 >
                   {group.label}
                 </Link>
@@ -207,11 +207,11 @@ function MobileMenu({
                   type="button"
                   onClick={() => setOpenGroup((current) => (current === index ? null : index))}
                   aria-expanded={isGroupOpen}
-                  className="w-full px-3 py-3 min-h-[44px] flex items-center justify-between text-sm font-semibold text-secondary rounded-lg hover:bg-[#F1F5F9] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary transition-colors cursor-pointer"
+                  className="w-full px-3 py-3 min-h-[44px] flex items-center justify-between text-sm font-semibold text-secondary rounded-lg hover:bg-ground-alt focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary transition-colors cursor-pointer"
                 >
                   {group.label}
                   <ChevronDown
-                    className={`w-4 h-4 text-[#6B6560] transition-transform duration-200 ${
+                    className={`w-4 h-4 text-ink-faint transition-transform duration-200 ${
                       isGroupOpen ? "rotate-180" : ""
                     }`}
                     aria-hidden="true"
@@ -224,7 +224,7 @@ function MobileMenu({
                       key={item.href}
                       href={item.href}
                       onClick={() => close(false)}
-                      className="pl-6 pr-3 py-2.5 min-h-[44px] flex items-center text-sm font-medium text-[#49423D] rounded-lg hover:bg-[#F1F5F9] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary transition-colors"
+                      className="pl-6 pr-3 py-2.5 min-h-[44px] flex items-center text-sm font-medium text-secondary rounded-lg hover:bg-ground-alt focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary transition-colors"
                     >
                       {item.label}
                     </a>

@@ -56,15 +56,15 @@ export function FAQSection() {
       <div className="flex-1 w-full px-4 md:px-12 py-16 md:py-24 flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-16">
         {/* Left Column - Header */}
         <div className="w-full lg:flex-1 flex flex-col justify-center items-start gap-3 lg:py-4">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
             Dúvidas Frequentes
           </span>
 
-          <h3 className="w-full text-[#37322F] font-medium font-sans text-3xl sm:text-4xl h-section">
+          <h3 className="w-full text-secondary font-medium font-sans text-3xl sm:text-4xl h-section">
             Perguntas Frequentes sobre a Rovee
           </h3>
 
-          <p className="w-full text-[#605A57] text-sm sm:text-base font-normal leading-relaxed font-sans">
+          <p className="w-full text-ink-muted text-sm sm:text-base font-normal leading-relaxed font-sans">
             Tudo o que você precisa saber sobre o funcionamento da Fintech Fiscal, a segurança dos dados e o modelo de parceria com os contadores.
           </p>
         </div>
@@ -78,10 +78,10 @@ export function FAQSection() {
                 value={`item-${index}`}
                 className="border-b border-[rgba(55,50,47,0.12)] last:border-b-0"
               >
-                <AccordionTrigger className="py-4 sm:py-5 rounded-none text-sm sm:text-base font-semibold text-[#37322F] font-sans hover:no-underline hover:bg-[rgba(55,50,47,0.02)]">
+                <AccordionTrigger className="py-4 sm:py-5 rounded-none text-sm sm:text-base font-semibold text-secondary font-sans hover:no-underline hover:bg-[rgba(55,50,47,0.02)]">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-[#605A57] text-xs sm:text-sm font-normal leading-relaxed font-sans">
+                <AccordionContent className="text-ink-muted text-xs sm:text-sm font-normal leading-relaxed font-sans">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>

@@ -13,7 +13,7 @@ export function AccountantsTeaserSection() {
     <div className="w-full flex flex-col justify-center items-center">
       <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-14 sm:py-18 md:py-20 flex flex-col justify-start items-center">
         <div className="w-full max-w-[640px] flex flex-col justify-start items-center gap-3 text-center">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
             Parceria & Harmonia Contábil
           </span>
 
@@ -21,7 +21,7 @@ export function AccountantsTeaserSection() {
             A inteligência que o seu contador sempre quis que você tivesse
           </h2>
 
-          <p className="text-[#605A57] text-sm sm:text-base leading-relaxed font-sans max-w-[540px]">
+          <p className="text-ink-muted text-sm sm:text-base leading-relaxed font-sans max-w-[540px]">
             A Rovee não substitui a sua contabilidade, nós a potencializamos: memória de cálculo do
             Fator R pronta, extrato PJ despoluído e acesso viewer para o seu escritório, sem
             digitação manual.
@@ -29,7 +29,7 @@ export function AccountantsTeaserSection() {
 
           <Link
             href="/contadores"
-            className="mt-2 h-11 px-6 inline-flex items-center justify-center bg-white hover:bg-[#F1F5F9] text-secondary border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded transition-all"
+            className="mt-2 h-11 px-6 inline-flex items-center justify-center bg-white hover:bg-ground-alt text-secondary border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded transition-all"
           >
             Ver para escritórios e contadores
           </Link>

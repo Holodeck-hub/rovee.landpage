@@ -128,7 +128,7 @@ export function HeroProductShowcase() {
   return (
     <section
       aria-label="Funcionalidades da Inteligência Fiscal"
-      className="w-full flex flex-col justify-center items-start bg-[#E9EDF2] py-2 sm:py-8 md:py-12 overflow-hidden relative"
+      className="w-full flex flex-col justify-center items-start bg-ground-alt py-2 sm:py-8 md:py-12 overflow-hidden relative"
     >
       {/* Container principal alinhado à esquerda e estendendo até a borda da tela */}
       <div className="w-full flex flex-col lg:flex-row items-start gap-8 lg:gap-12 pl-4 sm:pl-6 md:pl-10 lg:pl-16 xl:pl-24 2xl:pl-32 pr-0">

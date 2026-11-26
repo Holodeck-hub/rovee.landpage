@@ -74,7 +74,7 @@ export function InteligenciaFiscalDestinosSection() {
     <section aria-label="Para onde vai cada real" className="w-full py-20 px-5 border-b border-[rgba(55,50,47,0.12)] bg-white">
       <div className="w-full max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center">
         <div>
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
             Cheque do Mês
           </span>
           <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl font-medium h-section text-balance mt-2">
@@ -89,7 +89,7 @@ export function InteligenciaFiscalDestinosSection() {
           <ul className="mt-6 flex flex-col gap-2.5" aria-live="polite">
             {cenario.destinos.map((item) => (
               <li key={item.destino} className="flex items-center justify-between gap-3 text-sm">
-                <span className="flex items-center gap-2 text-[#49423D]">
+                <span className="flex items-center gap-2 text-secondary">
                   <i className="h-2.5 w-2.5 rounded-sm" style={{ background: item.fill }} aria-hidden="true" />
                   {item.label}
                 </span>

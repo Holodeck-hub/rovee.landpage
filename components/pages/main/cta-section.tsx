@@ -11,13 +11,13 @@ export function CTASection({ onOpenConsultant }: CTASectionProps) {
         <div className="flex-1 w-full px-4 sm:px-6 md:px-8 py-16 sm:py-20 md:py-28 flex flex-col justify-center items-center text-center relative overflow-hidden">
           <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-6 relative z-10">
             <div className="self-stretch flex flex-col justify-start items-center gap-3">
-              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
                 Comece Hoje Mesmo
               </span>
               <h2 className="self-stretch text-center text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section">
                 Pronto para saber seu lucro real e pagar menos imposto?
               </h2>
-              <p className="self-stretch text-center text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px] mx-auto">
+              <p className="self-stretch text-center text-ink-muted text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px] mx-auto">
                 Crie sua conta em 3 minutos, importe seu extrato e descubra seu Fator R ótimo, seu Cheque do Mês e a blindagem contra a mistura de contas.
               </p>
             </div>
@@ -32,13 +32,13 @@ export function CTASection({ onOpenConsultant }: CTASectionProps) {
               </button>
               <a
                 href="#fiscal"
-                className="h-12 px-6 bg-white hover:bg-[#F1F5F9] text-secondary border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
+                className="h-12 px-6 bg-white hover:bg-ground-alt text-secondary border border-[rgba(55,50,47,0.15)] text-sm font-medium rounded flex items-center justify-center transition-all"
               >
                 Ver como funciona
               </a>
             </div>
 
-            <p className="text-[11px] text-[#6B6560] font-sans">
+            <p className="text-[11px] text-ink-faint font-sans">
               Sem necessidade de cartão de crédito • Totalmente compatível com Simples Nacional e Lucro Presumido
             </p>
           </div>

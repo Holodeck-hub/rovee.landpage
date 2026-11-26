@@ -43,7 +43,7 @@ export function IntegracoesBancosSection() {
             {BANCOS.map((banco) => (
               <li
                 key={banco}
-                className="px-3 py-1.5 rounded-full border border-[rgba(55,50,47,0.14)] text-xs font-medium text-[#49423D]"
+                className="px-3 py-1.5 rounded-full border border-[rgba(55,50,47,0.14)] text-xs font-medium text-secondary"
               >
                 {banco}
               </li>

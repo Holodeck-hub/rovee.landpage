@@ -8,7 +8,7 @@ export function InteligenciaFiscalCalculationSection() {
     <section aria-label="Comparativo de Anexos" className="w-full py-20 px-5 border-b border-[rgba(55,50,47,0.12)] bg-white">
       <div className="w-full max-w-[900px] mx-auto">
         <div className="text-center mb-12">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#605A57]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-muted">
             Memória de Cálculo
           </span>
           <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl font-medium h-section text-balance mt-2">

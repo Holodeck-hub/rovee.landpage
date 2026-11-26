@@ -29,7 +29,7 @@ export function AccountantsMetricsSection() {
           <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium h-section text-balance mt-2">
             O trabalho que sai da conta do escritório.
           </h2>
-          <p className="text-[#605A57] text-sm sm:text-base md:text-lg leading-relaxed mt-3">
+          <p className="text-ink-muted text-sm sm:text-base md:text-lg leading-relaxed mt-3">
             Menos tempo cobrando extratos e recalculando pró-labore. Mais tempo para consultoria estratégica de alto valor.
           </p>
         </div>
@@ -59,7 +59,7 @@ export function AccountantsMetricsSection() {
                   Fechamento sem Vai e Vém
                 </h3>
 
-                <p className="text-sm sm:text-base text-[#605A57] leading-relaxed mt-4">
+                <p className="text-sm sm:text-base text-ink-muted leading-relaxed mt-4">
                   Pedir extrato, cobrar comprovantes e separar despesas pessoais deixam de ser tarefas do escritório. O cliente chega ao fechamento com tudo categorizado e memória pronta.
                 </p>
               </div>
@@ -70,7 +70,7 @@ export function AccountantsMetricsSection() {
                   type="button"
                   className="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-secondary bg-[#F5F6F8] hover:bg-[#ECEEF2] border border-[rgba(55,50,47,0.08)] transition-colors cursor-pointer"
                 >
-                  <SlidersHorizontal className="w-4 h-4 text-[#605A57]" />
+                  <SlidersHorizontal className="w-4 h-4 text-ink-muted" />
                   <span>Automação Ativa</span>
                 </button>
 
@@ -154,7 +154,7 @@ export function AccountantsMetricsSection() {
                     </div>
 
                     {/* Rodapé com controle para o número de clientes */}
-                    <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs sm:text-sm text-[#605A57] font-mono">
+                    <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs sm:text-sm text-ink-muted font-mono">
                       <span>Simulação:</span>
                       <label
                         htmlFor="qtd-clientes-bento"
@@ -201,7 +201,7 @@ export function AccountantsMetricsSection() {
                     <h4 className="text-lg sm:text-xl font-semibold text-secondary leading-snug">
                       Poder de Movimentação
                     </h4>
-                    <p className="text-sm sm:text-base text-[#605A57] leading-relaxed mt-2.5">
+                    <p className="text-sm sm:text-base text-ink-muted leading-relaxed mt-2.5">
                       Acesso 100% somente-leitura. Não transferimos, não pagamos boletos e não emitimos nada sem a aprovação do titular.
                     </p>
                   </div>

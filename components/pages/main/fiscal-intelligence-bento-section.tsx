@@ -94,10 +94,10 @@ function BentoCard({
           </span>
           <h3 className="text-xl font-semibold text-secondary">{card.title}</h3>
         </div>
-        <p className="text-sm text-[#605A57] leading-relaxed">{card.desc}</p>
+        <p className="text-sm text-ink-muted leading-relaxed">{card.desc}</p>
       </div>
-      <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-[#605A57]">
-        <span className="text-[#6B6560] text-[11px] uppercase tracking-wider">{card.rotulo}</span>
+      <div className="pt-4 border-t border-[rgba(55,50,47,0.08)] flex items-center justify-between text-xs font-mono text-ink-muted">
+        <span className="text-ink-faint text-[11px] uppercase tracking-wider">{card.rotulo}</span>
         <span className={`font-medium tabular-nums ${card.valorClass}`}>{card.valor}</span>
       </div>
     </div>
@@ -107,22 +107,22 @@ function BentoCard({
 export function FiscalIntelligenceBentoSection() {
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center relative overflow-hidden">
-      {/* Header com fundo preto */}
-      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-12 sm:py-16 md:py-20 bg-black text-white border-b border-white/10 flex flex-col justify-start items-center">
+      {/* Header com fundo claro */}
+      <div className="self-stretch px-4 sm:px-6 md:px-8 lg:px-0 w-full py-12 sm:py-16 md:py-20 bg-ground-alt border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-start items-center relative">
         {/* Background Animated Wave para o header */}
-        <div className="absolute inset-0 w-full h-full opacity-40 sm:opacity-50 z-0 pointer-events-none">
+        <div className="absolute inset-0 w-full h-full opacity-20 sm:opacity-25 z-0 pointer-events-none">
           <AnimatedWave />
         </div>
         <div className="w-full max-w-[680px] flex flex-col justify-start items-center gap-3 text-center relative z-10">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-faint">
             Motor de Inteligência Fiscal
           </span>
 
-          <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section text-balance">
+          <h2 className="text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium font-sans h-section text-balance">
             O fim das dúvidas sobre imposto e pró-labore
           </h2>
 
-          <p className="text-zinc-400 text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
+          <p className="text-ink-muted text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-[580px]">
             Não é apenas um gerenciador financeiro. A Rovee analisa os dados fiscais da sua PJ e entrega decisões que colocam mais dinheiro limpo no seu bolso.
           </p>
         </div>
